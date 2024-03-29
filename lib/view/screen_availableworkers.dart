@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenAvailableWorkers extends StatelessWidget {
@@ -24,14 +25,14 @@ class ScreenAvailableWorkers extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.sd_card_alert_rounded,
                 color: Colors.black,
               ))
         ],
       ),
       body: Column(children: [
-        ListTile(
+        const ListTile(
           leading: CircleAvatar(backgroundColor: Colors.amber),
           title: Text("MC HOUSE BUILDING"),
         ),
@@ -41,12 +42,14 @@ class ScreenAvailableWorkers extends StatelessWidget {
             SizedBox(
                 height: 30,
                 child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      workprovider.selectAvailable();
+                    },
                     child: Text("Select",
                         style: GoogleFonts.amaranth(
                           color: Colors.black,
                         )))),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             SizedBox(
@@ -58,7 +61,7 @@ class ScreenAvailableWorkers extends StatelessWidget {
                         style: GoogleFonts.amaranth(
                           color: Colors.black,
                         )))),
-            SizedBox(
+            const SizedBox(
               width: 30,
             )
           ],
@@ -70,11 +73,11 @@ class ScreenAvailableWorkers extends StatelessWidget {
             height: 668,
             decoration: BoxDecoration(
                 color: Colors.white,
-                boxShadow: [BoxShadow(blurRadius: 3)],
+                boxShadow: const [BoxShadow(blurRadius: 3)],
                 borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -82,31 +85,45 @@ class ScreenAvailableWorkers extends StatelessWidget {
                   style: GoogleFonts.concertOne(
                       fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: CircleAvatar(
+                        leading: const CircleAvatar(
                             backgroundColor: Color.fromARGB(255, 0, 100, 17)),
                         title: Text("Sruthi Payal worker",
                             style: GoogleFonts.alata()),
                         trailing: SizedBox(
-                          height: 30,
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  backgroundColor:
-                                      Color.fromARGB(255, 37, 49, 117)),
-                              onPressed: () {
-                                workprovider.workassigndropdown(context);
-                              },
-                              child: Text(
-                                "Assign",
-                                style:
-                                    GoogleFonts.amaranth(color: Colors.white),
-                              )),
+                          width: 110,
+                          child: Row(children: [
+                            SizedBox(
+                              height: 30,
+                              child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 37, 49, 117)),
+                                  onPressed: () {
+                                    workprovider.workassigndropdown(context);
+                                  },
+                                  child: Text(
+                                    "Assign",
+                                    style: GoogleFonts.amaranth(
+                                        color: Colors.white),
+                                  )),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            workprovider.isselected
+                                ? RoundCheckBox(
+                                    size: 20,
+                                    onTap: (p0) {},
+                                  )
+                                : const SizedBox()
+                          ]),
                         ),
                       );
                     },
