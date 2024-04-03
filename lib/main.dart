@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/view/screen_agencies.dart';
-import 'package:workforce_project/view/screen_agentregister.dart';
-import 'package:workforce_project/view/screen_alert.dart';
-import 'package:workforce_project/view/screen_availablemanagers.dart';
-import 'package:workforce_project/view/screen_availableworkers.dart';
-import 'package:workforce_project/view/screen_camw.dart';
-import 'package:workforce_project/view/screen_changepassword.dart';
-import 'package:workforce_project/view/screen_closedcomplaints.dart';
-import 'package:workforce_project/view/screen_complaints.dart';
-import 'package:workforce_project/view/screen_login.dart';
-import 'package:workforce_project/view/screen_managers.dart';
-import 'package:workforce_project/view/screen_messages.dart';
-import 'package:workforce_project/view/screen_newcomplaints.dart';
-import 'package:workforce_project/view/screen_notification.dart';
-import 'package:workforce_project/view/screen_ongoinginvestigation.dart';
-import 'package:workforce_project/view/screen_upsa.dart';
-import 'package:workforce_project/view/screen_readclosedcomplaints.dart';
-import 'package:workforce_project/view/screen_readnewcomplaints.dart';
-import 'package:workforce_project/view/screen_register.dart';
-import 'package:workforce_project/view/screen_reportissue.dart';
-import 'package:workforce_project/view/screen_signup.dart';
-import 'package:workforce_project/view/screen_workers.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/view/police/screen_aboutus.dart';
+import 'package:workforce_project/view/police/screen_complaints.dart';
+import 'package:workforce_project/view/police/screen_agencies.dart';
+import 'package:workforce_project/view/agent/screen_agentregister.dart';
+import 'package:workforce_project/view/police/screen_alert.dart';
+import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
+import 'package:workforce_project/view/agent/screen_availableworkers.dart';
+import 'package:workforce_project/view/police/screen_changepassword.dart';
+import 'package:workforce_project/view/police/screen_closedcomplaints.dart';
+import 'package:workforce_project/view/police/screen_managers.dart';
+import 'package:workforce_project/view/agent/screen_messages.dart';
+import 'package:workforce_project/view/police/screen_notification.dart';
+import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
+import 'package:workforce_project/view/police/screen_settings.dart';
+import 'package:workforce_project/view/police/screen_updateprofile.dart';
+import 'package:workforce_project/view/police/screen_upsa.dart';
+import 'package:workforce_project/view/police/screen_readclosedcomplaints.dart';
+import 'package:workforce_project/view/police/screen_readnewcomplaints.dart';
+import 'package:workforce_project/view/user/screen_signup.dart';
+import 'package:workforce_project/view/police/screen_workers.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
-import 'package:workforce_project/view/screen_complaints.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +56,7 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          home: ScreenUpdtPswdSttngAbt()),
+          home: ScreenHomeAgent()),
     );
   }
 }
