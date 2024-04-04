@@ -40,6 +40,7 @@ dependencies:
   get: ^4.6.5
   roundcheckbox: ^2.0.5
   dialog_alert: ^0.0.3
+  toggle_switch: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
       - assets\construction1.webp
       - assets\con4.jpg
       - assets\con3.jpeg
+      - assets\MC1.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -8,6 +8,7 @@ class WorkProvider extends ChangeNotifier {
   String construction2 = "assets/003e4355-1ff1-40bf-a92d-5c1451df9bc4.jpeg";
   String construction3 = "assets/con3.jpeg";
   String construction4 = "assets/con4.jpg";
+  String MC1 = "assets/MC1.jpg";
   List complaints = [
     "New Complaints",
     "Closed Complaints",

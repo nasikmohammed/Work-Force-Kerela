@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
+import 'package:workforce_project/view/agent/screen_upsaagent.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_complaints.dart';
 import 'package:workforce_project/view/police/screen_agencies.dart';
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          home: ScreenHomeAgent()),
+          home: ScreenOngoingProjectAgent()),
     );
   }
 }
