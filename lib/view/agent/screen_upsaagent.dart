@@ -36,7 +36,7 @@ class ScreenAgentProfile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage(workprovider.MC1),
+              backgroundImage: AssetImage(workprovider.mc),
             ),
             Text(
               "MC HOUSE BUILDING",

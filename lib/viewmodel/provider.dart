@@ -8,7 +8,11 @@ class WorkProvider extends ChangeNotifier {
   String construction2 = "assets/003e4355-1ff1-40bf-a92d-5c1451df9bc4.jpeg";
   String construction3 = "assets/con3.jpeg";
   String construction4 = "assets/con4.jpg";
-  String MC1 = "assets/MC1.jpg";
+  String mc = "assets/MC1.jpg";
+  String aadharcard = "assets/Aadhar card.png";
+  String drivingLicense = "assets/driver license.png";
+  String passport = "assets/passport1.jpeg";
+  String house = "assets/house.webp";
   List complaints = [
     "New Complaints",
     "Closed Complaints",
@@ -31,7 +35,7 @@ class WorkProvider extends ChangeNotifier {
             child: Container(
               width: 100,
               height: 100,
-              color: const Color.fromARGB(255, 201, 191, 190),
+              color: Colors.white,
               child: DropdownButtonFormField(
                 value: selectedoption,
                 items: department.map<DropdownMenuItem>((e) {

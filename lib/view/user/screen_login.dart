@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/user/screen_signup.dart';
 
 class ScreenLogin extends StatelessWidget {
   const ScreenLogin({super.key});
@@ -54,7 +55,7 @@ class ScreenLogin extends StatelessWidget {
             ),
             OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                    backgroundColor:const Color.fromARGB(255, 245, 255, 158),
+                    backgroundColor: const Color.fromARGB(255, 245, 255, 158),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {},
@@ -79,7 +80,13 @@ class ScreenLogin extends StatelessWidget {
                   style: GoogleFonts.amaranth(),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenSignup();
+                        },
+                      ));
+                    },
                     child: Text(
                       "sign up",
                       style: GoogleFonts.amaranth(),

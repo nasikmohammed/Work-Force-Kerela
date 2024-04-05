@@ -38,7 +38,7 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
               const SizedBox(
                 width: 20,
               ),
-              CircleAvatar(backgroundImage: AssetImage(workprovider.MC1)),
+              CircleAvatar(backgroundImage: AssetImage(workprovider.mc)),
               const SizedBox(
                 width: 10,
               ),
@@ -76,7 +76,7 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  Image.asset(workprovider.MC1),
+                                  Image.asset(workprovider.mc),
                                   Text(
                                       "Cunstruction work of super market isin progress",
                                       style: GoogleFonts.alata(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/user/screen_login.dart';
 
 class ScreenSignup extends StatelessWidget {
   const ScreenSignup({super.key});
@@ -107,7 +108,13 @@ class ScreenSignup extends StatelessWidget {
                 style: GoogleFonts.amaranth(),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenLogin();
+                      },
+                    ));
+                  },
                   child: Text(
                     "Log in",
                     style: GoogleFonts.amaranth(),
