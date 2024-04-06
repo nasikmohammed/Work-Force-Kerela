@@ -41,6 +41,7 @@ dependencies:
   roundcheckbox: ^2.0.5
   dialog_alert: ^0.0.3
   toggle_switch: ^2.3.0
+  responsive_builder: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,10 @@ flutter:
       - assets\driver license.png
       - assets\passport1.jpeg
       - assets\house.webp
+      - assets\adminlogin.jpeg
+      - assets\abb.webp
+      - assets\cn.jpeg
+      - assets\kanew.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

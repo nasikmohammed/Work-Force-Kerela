@@ -89,7 +89,7 @@ class ScreenYourProjects extends StatelessWidget {
                                     icon: Icon(Icons.keyboard_control))
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             SizedBox(

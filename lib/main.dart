@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/admin/screen_adminlogin.dart';
+import 'package:workforce_project/view/admin/screen_pending_verification.dart';
+import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/view/admin/screen_verifications.dart';
+import 'package:workforce_project/view/admin/screen_verified_registrations.dart';
 import 'package:workforce_project/view/agent/screen_aboutusagent.dart';
 import 'package:workforce_project/view/agent/screen_changepasswordagent.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
@@ -73,7 +78,7 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          home: ScreenYourProjects()),
+          home: ScreenVerifiedRegisstrations()),
     );
   }
 }

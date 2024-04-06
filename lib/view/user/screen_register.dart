@@ -140,20 +140,6 @@ class ScreenRegister extends StatelessWidget {
                   decoration: InputDecoration(
                       contentPadding:
                           EdgeInsets.only(left: 30, right: 30, top: 30),
-                      hintText: "E-Mail",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Container(
-                decoration: BoxDecoration(color: Colors.white),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Adhaar Number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
