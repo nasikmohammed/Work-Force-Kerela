@@ -17,6 +17,16 @@ import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
 import 'package:workforce_project/view/agent/screen_settingsagent.dart';
 import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
 import 'package:workforce_project/view/agent/screen_upsaagent.dart';
+import 'package:workforce_project/view/manager/screen_employee_details.dart';
+import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
+import 'package:workforce_project/view/manager/screen_manager_change_password.dart';
+import 'package:workforce_project/view/manager/screen_manager_messages.dart';
+import 'package:workforce_project/view/manager/screen_manager_profile.dart';
+import 'package:workforce_project/view/manager/screen_manager_reportproblems.dart';
+import 'package:workforce_project/view/manager/screen_manager_settings.dart';
+import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
+import 'package:workforce_project/view/manager/screen_managernotifications.dart';
+import 'package:workforce_project/view/manager/screen_project_details.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_complaints.dart';
@@ -60,29 +70,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<WorkProvider>(
-          create: (context) {
-            return WorkProvider();
-          },
-        )
-      ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
-            primarySwatch: Colors.blue,
-          ),
-          home: ScreenHumanResouceManagement()),
-    );
+        providers: [
+          ChangeNotifierProvider<WorkProvider>(
+            create: (context) {
+              return WorkProvider();
+            },
+          )
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              // This is the theme of your application.
+              //
+              // Try running your application with "flutter run". You'll see the
+              // application has a blue toolbar. Then, without quitting the app, try
+              // changing the primarySwatch below to Colors.green and then invoke
+              // "hot reload" (press "r" in the console where you ran "flutter run",
+              // or simply save your changes to "hot reload" in a Flutter IDE).
+              // Notice that the counter didn't reset back to zero; the application
+              // is not restarted.
+              primarySwatch: Colors.blue,
+            ),
+            home: ScreenAgentProfile()));
   }
 }

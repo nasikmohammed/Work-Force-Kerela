@@ -6,19 +6,20 @@ import 'package:provider/provider.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenAvailableWorkers extends StatelessWidget {
-  const ScreenAvailableWorkers({super.key});
+class ScreenAgentAvailableWorkers extends StatelessWidget {
+  const ScreenAgentAvailableWorkers({super.key});
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 238, 234, 234),
         title: Text(
           "Work force kerala",
-          style: GoogleFonts.righteous(
+          style: GoogleFonts.nunitoSans(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -26,15 +27,20 @@ class ScreenAvailableWorkers extends StatelessWidget {
           IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.sd_card_alert_rounded,
+                Icons.error,
                 color: Colors.black,
               ))
         ],
       ),
       body: Column(children: [
-        const ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.amber),
-          title: Text("MC HOUSE BUILDING"),
+        ListTile(
+          leading: CircleAvatar(
+            backgroundImage: AssetImage(workprovider.mc),
+          ),
+          title: Text(
+            "MC HOUSE BUILDING",
+            style: GoogleFonts.andika(),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -73,7 +79,7 @@ class ScreenAvailableWorkers extends StatelessWidget {
             height: 668,
             decoration: BoxDecoration(
                 color: Colors.white,
-                boxShadow: const [BoxShadow(blurRadius: 3)],
+                boxShadow: const [BoxShadow(blurRadius: 2)],
                 borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
@@ -82,20 +88,21 @@ class ScreenAvailableWorkers extends StatelessWidget {
                 ),
                 Text(
                   "Available Workers",
-                  style: GoogleFonts.concertOne(
+                  style: GoogleFonts.amaranth(
                       fontSize: 17, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: const CircleAvatar(
-                            backgroundColor: Color.fromARGB(255, 0, 100, 17)),
-                        title: Text("Sruthi Payal worker",
-                            style: GoogleFonts.alata()),
+                        leading: CircleAvatar(
+                          backgroundImage: AssetImage(workprovider.debruyne),
+                        ),
+                        title: Text("Sruthi Payal", style: GoogleFonts.alata()),
+                        subtitle: Text("Construction worker"),
                         trailing: SizedBox(
                           width: 110,
                           child: Row(children: [

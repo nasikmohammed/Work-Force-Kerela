@@ -12,7 +12,7 @@ class ScreenAdminNotifications extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.red[50],
+      backgroundColor: Color.fromARGB(255, 253, 244, 245),
       body: Row(
         children: [
           workprovider.admindrawer(),

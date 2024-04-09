@@ -23,49 +23,22 @@ class ScreenHumanResouceManagement extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(40),
               child: Container(
-                color: Colors.white,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black)),
                 child: Column(
                   children: [
-                    Text(
-                      "Managers",
-                      style: GoogleFonts.amaranth(fontWeight: FontWeight.bold),
-                    ),
-                    Expanded(child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        return SizedBox(
-                          height: 70,
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: AssetImage(workprovider.kanew),
-                            ),
-                            title: Row(
-                              children: [
-                                Text(
-                                  "ravichander123@gmail.com",
-                                  style: GoogleFonts.amaranth(
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            trailing: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    backgroundColor:
-                                        Color.fromARGB(255, 17, 58, 19)),
-                                onPressed: () {},
-                                child: Text(
-                                  "Remove",
-                                  style: GoogleFonts.amaranth(),
-                                )),
-                          ),
-                        );
-                      },
-                    )),
-                    Text(
-                      "Workers",
-                      style: GoogleFonts.amaranth(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Managers",
+                          style: GoogleFonts.amaranth(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                        IconButton(
+                            onPressed: () {}, icon: Icon(Icons.arrow_drop_down))
+                      ],
                     ),
                     Expanded(child: ListView.builder(
                       itemBuilder: (context, index) {
@@ -78,19 +51,68 @@ class ScreenHumanResouceManagement extends StatelessWidget {
                             title: Text(
                               "ravichander123@gmail.com",
                               style: GoogleFonts.amaranth(
-                                  fontWeight: FontWeight.w600),
+                                  color: Color.fromARGB(255, 153, 153, 153),
+                                  fontWeight: FontWeight.w400),
                             ),
                             trailing: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                    elevation: 10,
                                     shape: RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                          color: Colors.red,
+                                        ),
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    backgroundColor:
-                                        Color.fromARGB(255, 17, 58, 19)),
+                                    backgroundColor: Colors.white),
                                 onPressed: () {},
                                 child: Text(
                                   "Remove",
-                                  style: GoogleFonts.amaranth(),
+                                  style:
+                                      GoogleFonts.amaranth(color: Colors.black),
+                                )),
+                          ),
+                        );
+                      },
+                    )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Workers",
+                          style: GoogleFonts.amaranth(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                        IconButton(
+                            onPressed: () {}, icon: Icon(Icons.arrow_drop_down))
+                      ],
+                    ),
+                    Expanded(child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          height: 70,
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: AssetImage(workprovider.kanew),
+                            ),
+                            title: Text(
+                              "ravichander123@gmail.com",
+                              style: GoogleFonts.amaranth(
+                                  color: Color.fromARGB(255, 153, 153, 153),
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            trailing: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(color: Colors.red),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    backgroundColor: Colors.white),
+                                onPressed: () {},
+                                child: Text(
+                                  "Remove",
+                                  style:
+                                      GoogleFonts.amaranth(color: Colors.black),
                                 )),
                           ),
                         );

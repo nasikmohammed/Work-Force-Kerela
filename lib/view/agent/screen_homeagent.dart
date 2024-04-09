@@ -15,9 +15,9 @@ class ScreenHomeAgent extends StatelessWidget {
       drawer: Padding(
           padding: const EdgeInsets.only(top: 90, bottom: 400, right: 170),
           child: workprovider.agentdrawer()),
-      backgroundColor: Colors.green[100],
+      backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
-        backgroundColor: Colors.green[100],
+        backgroundColor: Color.fromARGB(255, 238, 234, 234),
         leading: Builder(builder: (context) {
           return IconButton(
               onPressed: () {
@@ -30,7 +30,7 @@ class ScreenHomeAgent extends StatelessWidget {
         }),
         title: Text(
           "Work force kerela",
-          style: GoogleFonts.righteous(
+          style: GoogleFonts.nunitoSans(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

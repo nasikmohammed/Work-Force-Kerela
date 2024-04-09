@@ -19,7 +19,7 @@ class WorkProvider extends ChangeNotifier {
   String adminprofile = "assets/abb.webp";
   String adminverifyy = "assets/cn.jpeg";
   String kanew = "assets/kanew.jpg";
-  String Notificator = "assets\notficator.webp";
+  String debruyne = "assets/debruyne.jpg";
 
   List complaints = [
     "New Complaints",

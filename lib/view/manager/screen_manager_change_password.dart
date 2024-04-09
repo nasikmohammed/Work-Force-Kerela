@@ -3,10 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ScreenPoliceChangePassword
- extends StatelessWidget {
-  const ScreenPoliceChangePassword
-  ({super.key});
+class ScreenManagerChangePassword extends StatelessWidget {
+  const ScreenManagerChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {

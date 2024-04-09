@@ -5,16 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenAgentProfile extends StatelessWidget {
-  const ScreenAgentProfile({super.key});
+class ScreenManagerUpsa extends StatelessWidget {
+  const ScreenManagerUpsa({super.key});
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Colors.white,
         title: Text(
           "Work force kerela",
           style: GoogleFonts.nunitoSans(color: Colors.black),
@@ -35,11 +35,15 @@ class ScreenAgentProfile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage(workprovider.mc),
+            SizedBox(
+              height: 70,
+              width: 70,
+              child: CircleAvatar(
+                backgroundImage: AssetImage(workprovider.debruyne),
+              ),
             ),
             Text(
-              "MC HOUSE BUILDING",
+              "Anand Varma",
               style: GoogleFonts.mukta(),
             ),
             const SizedBox(
@@ -53,7 +57,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: const Color.fromARGB(255, 244, 242, 241),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -81,7 +85,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: const Color.fromARGB(255, 244, 242, 241),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -109,7 +113,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: const Color.fromARGB(255, 244, 242, 241),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -137,7 +141,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: const Color.fromARGB(255, 244, 242, 241),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(

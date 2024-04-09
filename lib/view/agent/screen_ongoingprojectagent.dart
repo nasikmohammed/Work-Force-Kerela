@@ -12,9 +12,9 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.green[100],
+      backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
-        backgroundColor: Colors.green[100],
+        backgroundColor: Color.fromARGB(255, 238, 234, 234),
         elevation: 0,
         title: Text(
           "Work force kerelaa",
@@ -53,8 +53,8 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Container(
               decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 5)],
-                  color: Color.fromARGB(255, 224, 235, 225),
+                  boxShadow: [BoxShadow(blurRadius: 2)],
+                  color: Color.fromARGB(255, 239, 240, 239),
                   borderRadius: BorderRadius.circular(15)),
               width: 400,
               height: 700,

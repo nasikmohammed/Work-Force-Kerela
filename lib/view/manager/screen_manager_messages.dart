@@ -5,13 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenAgentMessages extends StatelessWidget {
-  const ScreenAgentMessages({super.key});
+class ScreenManagerMessages extends StatelessWidget {
+  const ScreenManagerMessages({super.key});
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -27,7 +28,6 @@ class ScreenAgentMessages extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               boxShadow: [BoxShadow(blurRadius: 1)],
-              border: Border.all(color: Colors.black),
               color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(20)),
           child: Column(
@@ -44,7 +44,7 @@ class ScreenAgentMessages extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: const Icon(Icons.search),
                         hintText: "Search",
                         hintStyle: GoogleFonts.quicksand(),
                         contentPadding: EdgeInsets.all(10),
@@ -53,7 +53,7 @@ class ScreenAgentMessages extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -66,25 +66,26 @@ class ScreenAgentMessages extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: AssetImage(workprovider.debruyne),
+                        backgroundImage: AssetImage(workprovider.kanew),
                       ),
-                      title: Text("Abc Company", style: GoogleFonts.alata()),
+                      title: Text("Harshal (employee)",
+                          style: GoogleFonts.alata()),
                       subtitle: Text(
-                          "hey, we are intrested to have a discussion with you"),
+                        "hey, we are intrested to have a discussion with you",
+                        style: GoogleFonts.amaranth(),
+                      ),
                       trailing: Column(
                         children: [
-                          Text(
-                            "2 minutes ago",
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          SizedBox(
+                          Text("2 minutes ago",
+                              style: GoogleFonts.amaranth(fontSize: 10)),
+                          const SizedBox(
                             height: 8,
                           ),
                           Container(
                             width: 17,
                             height: 17,
                             decoration: BoxDecoration(
-                                color: Colors.indigo,
+                                color: Colors.red,
                                 borderRadius: BorderRadius.circular(100)),
                             child: Center(
                               child: Text(

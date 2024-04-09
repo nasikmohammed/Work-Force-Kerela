@@ -3,15 +3,15 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ScreenAgentAboutUs extends StatelessWidget {
-  const ScreenAgentAboutUs({super.key});
+class ScreenManagerAboutUs extends StatelessWidget {
+  const ScreenManagerAboutUs({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Colors.white,
         title: Text(
           "About us",
           style: GoogleFonts.nunitoSans(color: Colors.black),

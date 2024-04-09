@@ -5,16 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenUpdateProfileAgent extends StatelessWidget {
-  const ScreenUpdateProfileAgent({super.key});
+class ScreenManagerProfile extends StatelessWidget {
+  const ScreenManagerProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 238, 234, 234),
+          backgroundColor: Colors.white,
           elevation: 0,
           title: workprovider.isselected
               ? Text(
@@ -38,10 +38,10 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage(workprovider.mc),
+            backgroundImage: AssetImage(workprovider.debruyne),
           ),
           Text(
-            "MC HOUSE BUILDING",
+            "Anand Varma",
             style: GoogleFonts.merienda(fontSize: 15),
           ),
           const SizedBox(
@@ -77,7 +77,7 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          "Agency Name",
+                          "Name",
                           style: GoogleFonts.merienda(fontSize: 17),
                         ),
                         TextFormField(
@@ -91,19 +91,6 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Address",
-                          style: GoogleFonts.merienda(fontSize: 17),
-                        ),
-                        TextFormField(
-                          readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
-                              border: OutlineInputBorder()),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Company Name",
                           style: GoogleFonts.merienda(fontSize: 17),
                         ),
                         TextFormField(
@@ -154,9 +141,6 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         Text(
                           "Email ID",
                           style: GoogleFonts.merienda(fontSize: 17),
@@ -170,8 +154,24 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Text(
                           "Password",
+                          style: GoogleFonts.merienda(fontSize: 17),
+                        ),
+                        TextFormField(
+                          readOnly: true,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(15),
+                              border: OutlineInputBorder()),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Website",
                           style: GoogleFonts.merienda(fontSize: 17),
                         ),
                         TextFormField(

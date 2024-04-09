@@ -9,25 +9,20 @@ class ScreenChangePasswordAgent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[100],
+      backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
-        backgroundColor: Colors.green[100],
+        backgroundColor: Color.fromARGB(255, 238, 234, 234),
         elevation: 0,
-        leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.black,
-            )),
         title: Text(
           "Change password",
           style: GoogleFonts.merriweather(color: Colors.black),
         ),
+        centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
-                Icons.battery_alert_rounded,
+              icon: const Icon(
+                Icons.error,
                 color: Colors.black,
               ))
         ],

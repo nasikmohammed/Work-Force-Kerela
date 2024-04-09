@@ -6,19 +6,20 @@ import 'package:provider/provider.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenAvailableManagers extends StatelessWidget {
-  const ScreenAvailableManagers({super.key});
+class ScreenAgentAvailableManagers extends StatelessWidget {
+  const ScreenAgentAvailableManagers({super.key});
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 238, 234, 234),
         title: Text(
           "Work force kerala",
-          style: GoogleFonts.righteous(
+          style: GoogleFonts.nunitoSans(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -26,15 +27,20 @@ class ScreenAvailableManagers extends StatelessWidget {
           IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.sd_card_alert_rounded,
+                Icons.error,
                 color: Colors.black,
               ))
         ],
       ),
       body: Column(children: [
-        const ListTile(
-          leading: CircleAvatar(backgroundColor: Colors.amber),
-          title: Text("MC HOUSE BUILDING"),
+        ListTile(
+          leading: CircleAvatar(
+            backgroundImage: AssetImage(workprovider.mc),
+          ),
+          title: Text(
+            "MC HOUSE BUILDING",
+            style: GoogleFonts.andika(),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -92,11 +98,14 @@ class ScreenAvailableManagers extends StatelessWidget {
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: const CircleAvatar(
-                            backgroundColor:
-                                Color.fromARGB(255, 237, 174, 195)),
-                        title: Text("Sruthi Payal manager",
-                            style: GoogleFonts.alata()),
+                        leading: CircleAvatar(
+                          backgroundImage: AssetImage(workprovider.kanew),
+                        ),
+                        title: Text("Sruthi Payal", style: GoogleFonts.alata()),
+                        subtitle: Text(
+                          "Building Designer",
+                          style: GoogleFonts.libreFranklin(),
+                        ),
                         trailing: SizedBox(
                           width: 110,
                           child: Row(
