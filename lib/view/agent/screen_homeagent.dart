@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -5,16 +6,35 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenHomeAgent extends StatelessWidget {
+class ScreenHomeAgent extends StatefulWidget {
   const ScreenHomeAgent({super.key});
 
+  @override
+  State<ScreenHomeAgent> createState() => _ScreenHomeAgentState();
+}
+
+class _ScreenHomeAgentState extends State<ScreenHomeAgent> {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: workprovider.intexnumber,
+          onTap: (value) {
+            setState(() {
+              workprovider.intexnumber = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.message_rounded), label: "Chat"),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.bell), label: "notifications")
+          ]),
       drawer: Padding(
           padding: const EdgeInsets.only(top: 90, bottom: 400, right: 170),
-          child: workprovider.agentdrawer()),
+          child: workprovider.agentdrawer(context)),
       backgroundColor: Color.fromARGB(255, 238, 234, 234),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 238, 234, 234),

@@ -26,8 +26,8 @@ class ScreenManagerChangePassword extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
-                Icons.battery_alert_rounded,
+              icon: const Icon(
+                Icons.error,
                 color: Colors.black,
               ))
         ],
@@ -36,28 +36,28 @@ class ScreenManagerChangePassword extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
               width: 400,
               height: 450,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 243, 241, 241),
+                  color: const Color.fromARGB(255, 249, 246, 246),
                   borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
                       "Previous password",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -65,14 +65,14 @@ class ScreenManagerChangePassword extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
                       "New password",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -80,14 +80,14 @@ class ScreenManagerChangePassword extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
                       "Confirm password",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -95,20 +95,21 @@ class ScreenManagerChangePassword extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(
                       child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 32, 42, 97),
+                              backgroundColor:const Color.fromARGB(255, 32, 42, 97),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10))),
                           onPressed: () {},
                           child: Text(
                             "Update",
                             style: GoogleFonts.amaranth(
-                                color: Color.fromARGB(255, 255, 255, 255)),
+                                color:
+                                    const Color.fromARGB(255, 255, 255, 255)),
                           )),
                     )
                   ],

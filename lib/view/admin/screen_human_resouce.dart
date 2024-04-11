@@ -15,7 +15,7 @@ class ScreenHumanResouceManagement extends StatelessWidget {
       backgroundColor: Colors.indigo,
       body: Row(
         children: [
-          workprovider.admindrawer(),
+          workprovider.admindrawer(context),
           Container(
             width: 936,
             height: 800,

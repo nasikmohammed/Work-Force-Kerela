@@ -15,7 +15,7 @@ class ScreenAdminNotifications extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 253, 244, 245),
       body: Row(
         children: [
-          workprovider.admindrawer(),
+          workprovider.admindrawer(context),
           Expanded(child: ListView.builder(
             itemBuilder: (context, index) {
               return SizedBox(

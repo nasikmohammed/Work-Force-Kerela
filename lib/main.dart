@@ -29,6 +29,7 @@ import 'package:workforce_project/view/manager/screen_managernotifications.dart'
 import 'package:workforce_project/view/manager/screen_project_details.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
+import 'package:workforce_project/view/police/screen_camw.dart';
 import 'package:workforce_project/view/police/screen_complaints.dart';
 import 'package:workforce_project/view/police/screen_agencies.dart';
 import 'package:workforce_project/view/agent/screen_agentregister.dart';
@@ -92,6 +93,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenAgentProfile()));
+            home: ScreenAdminLogin()));
   }
 }

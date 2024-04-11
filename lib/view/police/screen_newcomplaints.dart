@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_readnewcomplaints.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenNewComplaints extends StatelessWidget {
@@ -52,7 +53,12 @@ class ScreenNewComplaints extends StatelessWidget {
                             backgroundColor: Colors.indigo,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => ScreenReadNewComplaints(),
+                          ));
+                        },
                         child: Text(
                           "Read",
                           style: GoogleFonts.amaranth(color: Colors.white),

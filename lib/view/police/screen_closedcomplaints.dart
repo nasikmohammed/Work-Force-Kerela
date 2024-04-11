@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_readclosedcomplaints.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenClosedComplaints extends StatelessWidget {
@@ -18,14 +19,14 @@ class ScreenClosedComplaints extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Closed Complaints",
-          style: GoogleFonts.sourceCodePro(
+          style: GoogleFonts.quicksand(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.error,
                 color: Colors.black,
               ))
@@ -52,7 +53,12 @@ class ScreenClosedComplaints extends StatelessWidget {
                             backgroundColor: Colors.indigo,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => ScreenReadClosedComplaints(),
+                          ));
+                        },
                         child: Text(
                           "Read",
                           style: GoogleFonts.amaranth(color: Colors.white),

@@ -14,7 +14,7 @@ class ScreenAboutUs extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           "About us",
-          style: GoogleFonts.nunitoSans(color: Colors.black),
+          style: GoogleFonts.quicksand(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0,

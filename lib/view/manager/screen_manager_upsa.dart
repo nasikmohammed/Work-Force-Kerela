@@ -3,6 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
+import 'package:workforce_project/view/manager/screen_manager_change_password.dart';
+import 'package:workforce_project/view/manager/screen_manager_profile.dart';
+import 'package:workforce_project/view/manager/screen_manager_settings.dart';
+import 'package:workforce_project/view/police/screen_updateprofile.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenManagerUpsa extends StatelessWidget {
@@ -51,7 +56,8 @@ class ScreenManagerUpsa extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Update profile");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenManagerProfile()));
               },
               child: Container(
                 width: 200,
@@ -79,7 +85,9 @@ class ScreenManagerUpsa extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Change password");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenManagerChangePassword(),
+                ));
               },
               child: Container(
                 width: 200,
@@ -107,7 +115,9 @@ class ScreenManagerUpsa extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Settings");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenManagerSettings(),
+                ));
               },
               child: Container(
                 width: 200,
@@ -135,7 +145,9 @@ class ScreenManagerUpsa extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("About us");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenManagerAboutUs(),
+                ));
               },
               child: Container(
                 width: 200,

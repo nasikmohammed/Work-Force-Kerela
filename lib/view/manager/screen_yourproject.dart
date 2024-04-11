@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/manager/screen_project_details.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenYourProjects extends StatelessWidget {
@@ -23,7 +24,7 @@ class ScreenYourProjects extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon:const Icon(
+              icon: const Icon(
                 Icons.question_mark_outlined,
                 color: Colors.black,
               ))
@@ -40,12 +41,12 @@ class ScreenYourProjects extends StatelessWidget {
                   height: 190,
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(
@@ -65,7 +66,7 @@ class ScreenYourProjects extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                       ),
                       Padding(
@@ -100,7 +101,13 @@ class ScreenYourProjects extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       backgroundColor: Colors.indigo),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(
+                                      builder: (context) =>
+                                          ScreenProjectDetails(),
+                                    ));
+                                  },
                                   child: Text(
                                     "View Details",
                                     style: GoogleFonts.mukta(),

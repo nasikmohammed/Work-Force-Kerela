@@ -6,13 +6,32 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
-class ScreenReportProblems extends StatelessWidget {
+class ScreenReportProblems extends StatefulWidget {
   const ScreenReportProblems({super.key});
 
+  @override
+  State<ScreenReportProblems> createState() => _ScreenReportProblemsState();
+}
+
+class _ScreenReportProblemsState extends State<ScreenReportProblems> {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: workprovider.intexnumber,
+        onTap: (value) {
+          setState(() {
+            workprovider.intexnumber = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: "Notifications")
+        ],
+      ),
       body: Stack(
         children: [
           Container(
@@ -44,7 +63,7 @@ class ScreenReportProblems extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 18),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.arrow_right,
                         color: Colors.black,
                         size: 30,

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_newcomplaints.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenReadNewComplaints extends StatelessWidget {
@@ -26,7 +27,7 @@ class ScreenReadNewComplaints extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.error,
                 color: Colors.black,
               ))
@@ -36,7 +37,7 @@ class ScreenReadNewComplaints extends StatelessWidget {
         child: Column(children: [
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               CircleAvatar(
@@ -52,7 +53,7 @@ class ScreenReadNewComplaints extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
@@ -68,7 +69,7 @@ class ScreenReadNewComplaints extends StatelessWidget {
                     "Accept",
                     style: GoogleFonts.amaranth(color: Colors.white),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               OutlinedButton(
@@ -76,7 +77,11 @@ class ScreenReadNewComplaints extends StatelessWidget {
                       backgroundColor: Colors.red,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenNewComplaints(),
+                    ));
+                  },
                   child: Text(
                     "Reject",
                     style: GoogleFonts.amaranth(color: Colors.white),

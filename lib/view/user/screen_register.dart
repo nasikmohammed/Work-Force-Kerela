@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/user/screen_repotproblems.dart';
 
 class ScreenRegister extends StatelessWidget {
   const ScreenRegister({super.key});
@@ -14,6 +15,9 @@ class ScreenRegister extends StatelessWidget {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              const SizedBox(
+                height: 40,
+              ),
               InkWell(
                 onTap: () {
                   print("image picker clicked");
@@ -28,7 +32,7 @@ class ScreenRegister extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Text(
@@ -36,7 +40,7 @@ class ScreenRegister extends StatelessWidget {
                           style: GoogleFonts.kanit(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Icon(Icons.add_box)
+                        const Icon(Icons.add_box)
                       ],
                     ),
                   ),
@@ -50,7 +54,7 @@ class ScreenRegister extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "First Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -64,7 +68,7 @@ class ScreenRegister extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Last Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -81,7 +85,7 @@ class ScreenRegister extends StatelessWidget {
                       suffixIcon: IconButton(
                           onPressed: () {}, icon: Icon(Icons.arrow_drop_down)),
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Country",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -96,7 +100,7 @@ class ScreenRegister extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Address",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -107,11 +111,11 @@ class ScreenRegister extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "City",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -125,7 +129,7 @@ class ScreenRegister extends StatelessWidget {
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "E-Mail",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -135,11 +139,11 @@ class ScreenRegister extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
                   decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Adhaar Number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -149,13 +153,13 @@ class ScreenRegister extends StatelessWidget {
                 height: 15,
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {}, icon: Icon(Icons.arrow_drop_down)),
                       contentPadding:
-                          EdgeInsets.only(left: 30, right: 30, top: 30),
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       hintText: "Material Status",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -169,7 +173,11 @@ class ScreenRegister extends StatelessWidget {
                       backgroundColor: Colors.blue[400],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenReportProblems(),
+                    ));
+                  },
                   child: Text(
                     "Register Now",
                     style: GoogleFonts.amaranth(color: Colors.black),

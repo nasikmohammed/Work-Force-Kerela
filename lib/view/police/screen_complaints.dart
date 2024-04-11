@@ -4,6 +4,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_availableworkers.dart';
+import 'package:workforce_project/view/police/screen_closedcomplaints.dart';
+import 'package:workforce_project/view/police/screen_newcomplaints.dart';
+import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenComplaints extends StatelessWidget {
@@ -18,7 +21,7 @@ class ScreenComplaints extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           "Complaints",
-          style: GoogleFonts.righteous(
+          style: GoogleFonts.mulish(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -26,55 +29,122 @@ class ScreenComplaints extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.error,
                 color: Colors.black,
               ))
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 200),
+        padding: const EdgeInsets.only(top: 200, left: 40),
         child: Column(
           children: [
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, right: 20, top: 15),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                          borderRadius: BorderRadius.circular(20)),
-                      child: ListTile(
-                        onTap: () {},
-                        contentPadding: EdgeInsets.only(
-                          left: 40,
-                          right: 40,
-                        ),
-                        title: Text(
-                          workprovider.complaints[index],
-                          style: GoogleFonts.signikaNegative(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        trailing: Container(
-                          width: 25,
-                          height: 25,
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(45)),
-                          child: Center(
-                              child: Text(
-                            "140",
-                            style: TextStyle(fontSize: 10),
-                          )),
-                        ),
-                      ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenNewComplaints(),
+                ));
+              },
+              child: Container(
+                width: 300,
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 1,
+                      )
+                    ]),
+                child: ListTile(
+                  title: Text(
+                    "New Complaints",
+                    style: GoogleFonts.montserrat(),
+                  ),
+                  trailing: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(100),
                     ),
-                  );
-                },
-                itemCount: 3,
+                    child: Center(child: Text("14")),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenClosedComplaints(),
+                ));
+              },
+              child: Container(
+                width: 300,
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 1,
+                      )
+                    ]),
+                child: ListTile(
+                  title: Text(
+                    "Closed Complaints",
+                    style: GoogleFonts.montserrat(),
+                  ),
+                  trailing: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(child: Text("14")),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenOngoingInvestigation(),
+                ));
+              },
+              child: Container(
+                width: 300,
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 1,
+                      )
+                    ]),
+                child: ListTile(
+                  title: Text(
+                    "Ongoing Investigations",
+                    style: GoogleFonts.montserrat(),
+                  ),
+                  trailing: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(child: Text("14")),
+                  ),
+                ),
               ),
             )
           ],

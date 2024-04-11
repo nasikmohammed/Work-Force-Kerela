@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/admin/screen_pending_verification.dart';
+import 'package:workforce_project/view/admin/screen_verified_registrations.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenAdminVerification extends StatelessWidget {
@@ -14,7 +16,7 @@ class ScreenAdminVerification extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          workprovider.admindrawer(),
+          workprovider.admindrawer(context),
           Stack(
             children: [
               Container(
@@ -35,7 +37,14 @@ class ScreenAdminVerification extends StatelessWidget {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.black),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ScreenPendingVerifications(),
+                                ));
+                          },
                           child: Text(
                             "Pending verifications",
                             style: GoogleFonts.workSans(
@@ -43,7 +52,7 @@ class ScreenAdminVerification extends StatelessWidget {
                             ),
                           )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
@@ -52,7 +61,14 @@ class ScreenAdminVerification extends StatelessWidget {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.black),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ScreenVerifiedRegisstrations(),
+                                ));
+                          },
                           child: Text(
                             "Verified registrations",
                             style: GoogleFonts.workSans(

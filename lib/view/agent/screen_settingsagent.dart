@@ -15,7 +15,7 @@ class ScreenSettingsAgent extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 238, 234, 234),
         title: Text(
           "Settings",
-          style: GoogleFonts.nunitoSans(color: Colors.black),
+          style: GoogleFonts.quicksand(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0,

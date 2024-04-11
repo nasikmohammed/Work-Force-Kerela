@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
+import 'package:workforce_project/view/user/screen_selectidentity.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenUserProfile extends StatelessWidget {
@@ -108,8 +109,12 @@ class ScreenUserProfile extends StatelessWidget {
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(7))),
-                    onPressed: () {},
-                    icon: Icon(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenSelectIdentity(),
+                      ));
+                    },
+                    icon: const Icon(
                       Icons.perm_identity,
                       color: Colors.black,
                     ),
@@ -126,7 +131,7 @@ class ScreenUserProfile extends StatelessWidget {
                           const SizedBox(
                             width: 40,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_right,
                             color: Colors.black,
                           )
@@ -143,7 +148,7 @@ class ScreenUserProfile extends StatelessWidget {
                       workprovider.selectAvailable();
                       workprovider.workassigndropdown(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.gps_fixed_outlined,
                       color: Colors.black,
                     ),
@@ -175,7 +180,7 @@ class ScreenUserProfile extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 150,
           ),
           Text(

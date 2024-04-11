@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenProjectDetails extends StatelessWidget {
@@ -104,7 +105,12 @@ class ScreenProjectDetails extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor: Color.fromARGB(255, 21, 41, 153)),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => ScreenEmployeeDetails(),
+                          ));
+                        },
                         child: Text(
                           "View",
                           style: GoogleFonts.amaranth(color: Colors.white),

@@ -3,6 +3,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_changepasswordagent.dart';
+import 'package:workforce_project/view/agent/screen_settingsagent.dart';
+import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
+import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenAgentProfile extends StatelessWidget {
@@ -47,7 +51,9 @@ class ScreenAgentProfile extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Update profile");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenUpdateProfileAgent(),
+                ));
               },
               child: Container(
                 width: 200,
@@ -75,7 +81,9 @@ class ScreenAgentProfile extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Change password");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenChangePasswordAgent(),
+                ));
               },
               child: Container(
                 width: 200,
@@ -103,7 +111,9 @@ class ScreenAgentProfile extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("Settings");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenSettingsAgent(),
+                ));
               },
               child: Container(
                 width: 200,
@@ -131,7 +141,9 @@ class ScreenAgentProfile extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print("About us");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenAboutUs(),
+                ));
               },
               child: Container(
                 width: 200,

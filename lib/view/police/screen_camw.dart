@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_agencies.dart';
+import 'package:workforce_project/view/police/screen_complaints.dart';
+import 'package:workforce_project/view/police/screen_managers.dart';
+import 'package:workforce_project/view/police/screen_workers.dart';
+import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenCompamw extends StatelessWidget {
   const ScreenCompamw({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      drawer: workprovider.policehomedrawer(context),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
@@ -18,10 +26,20 @@ class ScreenCompamw extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ));
+        }),
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.error,
                 color: Colors.black,
               ))
@@ -34,7 +52,9 @@ class ScreenCompamw extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                print("Complaints");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenComplaints(),
+                ));
               },
               child: Container(
                 width: 170,
@@ -46,7 +66,7 @@ class ScreenCompamw extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.phone_android,
                       size: 45,
                     ),
@@ -59,7 +79,7 @@ class ScreenCompamw extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Padding(
@@ -68,7 +88,9 @@ class ScreenCompamw extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      print("Agencies Complaints");
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenAgencies(),
+                      ));
                     },
                     child: Container(
                       width: 110,
@@ -80,7 +102,7 @@ class ScreenCompamw extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.add_home_work,
                             size: 45,
                           ),
@@ -93,12 +115,14 @@ class ScreenCompamw extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   InkWell(
                     onTap: () {
-                      print("Managers Complaints");
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenManagers(),
+                      ));
                     },
                     child: Container(
                       width: 110,
@@ -110,7 +134,7 @@ class ScreenCompamw extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.supervised_user_circle,
                             size: 45,
                           ),
@@ -123,12 +147,14 @@ class ScreenCompamw extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   InkWell(
                     onTap: () {
-                      print("Workers Complaints");
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenWorkers(),
+                      ));
                     },
                     child: Container(
                       width: 110,
@@ -140,7 +166,7 @@ class ScreenCompamw extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.supervisor_account,
                             size: 45,
                           ),

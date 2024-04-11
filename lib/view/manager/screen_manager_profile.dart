@@ -64,7 +64,7 @@ class ScreenManagerProfile extends StatelessWidget {
               width: 400,
               height: 600,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 246, 244, 244),
+                  color: Color.fromARGB(255, 249, 246, 246),
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [BoxShadow(blurRadius: 1)]),
               child: Padding(
@@ -82,7 +82,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -95,7 +95,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -108,7 +108,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -121,7 +121,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -134,7 +134,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -147,7 +147,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -163,7 +163,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -176,7 +176,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),
@@ -189,7 +189,7 @@ class ScreenManagerProfile extends StatelessWidget {
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(15),
                               border: OutlineInputBorder()),
                         ),

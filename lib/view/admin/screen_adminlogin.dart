@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenAdminLogin extends StatelessWidget {
@@ -112,7 +113,11 @@ class ScreenAdminLogin extends StatelessWidget {
                   child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 23, 40, 137)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => ScreenRegisterAnEmployee(),
+                        ));
+                      },
                       child: Text(
                         "LOGIN",
                         style: GoogleFonts.urbanist(

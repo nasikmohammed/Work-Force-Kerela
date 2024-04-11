@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/user/screen_userprofile.dart';
 
 class ScreenReportIssue extends StatelessWidget {
   const ScreenReportIssue({super.key});
@@ -37,7 +38,7 @@ class ScreenReportIssue extends StatelessWidget {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             OutlinedButton(
@@ -45,7 +46,11 @@ class ScreenReportIssue extends StatelessWidget {
                     backgroundColor: Colors.blue[400],
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenUserProfile(),
+                  ));
+                },
                 child: Text(
                   "Report the issue",
                   style: GoogleFonts.amaranth(color: Colors.black),
