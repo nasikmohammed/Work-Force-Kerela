@@ -58,6 +58,7 @@ import 'package:workforce_project/view/user/screen_signup.dart';
 import 'package:workforce_project/view/police/screen_workers.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 void main() {
@@ -76,6 +77,11 @@ class MyApp extends StatelessWidget {
             create: (context) {
               return WorkProvider();
             },
+          ),
+          ChangeNotifierProvider<FunProvider>(
+            create: (context) {
+              return FunProvider();
+            },
           )
         ],
         child: MaterialApp(
@@ -93,6 +99,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenAdminLogin()));
+            home: ScreenSignOrLogin()));
   }
 }

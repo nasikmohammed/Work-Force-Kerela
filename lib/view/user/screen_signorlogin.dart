@@ -73,7 +73,7 @@ class ScreenSignOrLogin extends StatelessWidget {
                       "Log in",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     )),
-                SizedBox(
+const SizedBox(
                   height: 300,
                 ),
                 Text(

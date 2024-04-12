@@ -43,6 +43,9 @@ dependencies:
   toggle_switch: ^2.3.0
   responsive_builder: ^0.7.0
   percent_indicator: ^4.2.3
+  google_sign_in: ^6.1.6
+  firebase_auth: ^4.16.0
+
 
 dev_dependencies:
   flutter_test:

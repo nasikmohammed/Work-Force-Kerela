@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenSignup extends StatelessWidget {
   const ScreenSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       body: Padding(
@@ -22,6 +25,7 @@ class ScreenSignup extends StatelessWidget {
           Container(
             decoration: BoxDecoration(color: Colors.white),
             child: TextFormField(
+              controller: funprovider.emailcontroller,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 30, right: 30, top: 30),
                   hintText: "E-Mail",
@@ -35,6 +39,7 @@ class ScreenSignup extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(color: Colors.white),
             child: TextFormField(
+              controller: funprovider.usernamecontroller,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 30, right: 30, top: 30),
                   hintText: "Usename",
@@ -49,6 +54,7 @@ class ScreenSignup extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(color: Colors.white),
             child: TextFormField(
+              controller: funprovider.passwordcontroller,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 30, right: 30, top: 30),
                   hintText: "Password",
@@ -63,6 +69,7 @@ class ScreenSignup extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(color: Colors.white),
             child: TextFormField(
+              controller: funprovider.confirmpasswordcontroller,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 30, right: 30, top: 30),
                   hintText: "Confirm Password",
@@ -93,7 +100,9 @@ class ScreenSignup extends StatelessWidget {
                   backgroundColor: const Color.fromARGB(255, 243, 148, 238),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              onPressed: () {},
+              onPressed: () {
+                funprovider.signInWithGoogle();
+              },
               child: Text(
                 "Sign in with google",
                 style: GoogleFonts.amaranth(color: Colors.black),
