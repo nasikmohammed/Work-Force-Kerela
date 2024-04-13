@@ -10,6 +10,7 @@ import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
 import 'package:workforce_project/view/admin/screen_verified_registrations.dart';
 import 'package:workforce_project/view/agent/screen_aboutusagent.dart';
+import 'package:workforce_project/view/agent/screen_agent_bottom.dart';
 import 'package:workforce_project/view/agent/screen_changepasswordagent.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
@@ -99,6 +100,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenSignOrLogin()));
+            home: ScreenAgentBottom()));
   }
 }

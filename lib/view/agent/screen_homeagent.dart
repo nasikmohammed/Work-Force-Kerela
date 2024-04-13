@@ -18,20 +18,7 @@ class _ScreenHomeAgentState extends State<ScreenHomeAgent> {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: workprovider.intexnumber,
-          onTap: (value) {
-            setState(() {
-              workprovider.intexnumber = value;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.message_rounded), label: "Chat"),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.bell), label: "notifications")
-          ]),
+     
       drawer: Padding(
           padding: const EdgeInsets.only(top: 90, bottom: 400, right: 170),
           child: workprovider.agentdrawer(context)),

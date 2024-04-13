@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -19,7 +20,8 @@ class ScreenUserPersonalInfo extends StatelessWidget {
           title: workprovider.isselected
               ? Text(
                   "Update Profile",
-                  style: GoogleFonts.nunitoSans(color: Colors.black),
+                  style: GoogleFonts.nunitoSans(
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 )
               : Text(
                   "Personal information",
@@ -54,12 +56,12 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                 onPressed: () {
                   workprovider.selectAvailable();
                 },
-                icon: Icon(Icons.edit_square)),
+                icon: Icon(Icons.swipe_up_rounded)),
           ),
           Padding(
             padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
+              left: 20,
+              right: 20,
             ),
             child: Container(
               width: 400,
@@ -69,7 +71,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [BoxShadow(blurRadius: 1)]),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: SingleChildScrollView(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,12 +81,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Name",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -92,12 +97,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Address",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -105,12 +113,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Contact Number",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -118,12 +129,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "State",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -131,12 +145,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "City",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -144,12 +161,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Email ID",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -160,12 +180,15 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Password",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -173,25 +196,31 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         Text(
                           "Website",
-                          style: GoogleFonts.merienda(fontSize: 17),
-                        ),
-                        TextFormField(
-                          readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
-                              border: OutlineInputBorder()),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
+                        TextFormField(
+                          readOnly: true,
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              border: OutlineInputBorder()),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
                         Text(
                           "Company Logo",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.ubuntu(fontSize: 17),
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         TextFormField(
                           readOnly: true,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -199,11 +228,11 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                         ),
                         workprovider.isselected
                             ? Padding(
-                                padding: const EdgeInsets.only(left: 150),
+                                padding: const EdgeInsets.only(left: 120),
                                 child: OutlinedButton(
                                     style: OutlinedButton.styleFrom(
-                                        backgroundColor:
-                                            Color.fromARGB(255, 57, 73, 163),
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 57, 73, 163),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(10))),

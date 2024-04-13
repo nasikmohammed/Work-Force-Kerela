@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
+import 'package:workforce_project/view/user/screen_register.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenSignup extends StatelessWidget {
@@ -86,7 +87,11 @@ class ScreenSignup extends StatelessWidget {
                   backgroundColor: Colors.blue[400],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenRegister(),
+                ));
+              },
               child: Text(
                 "Sign up",
                 style: GoogleFonts.amaranth(color: Colors.black),
@@ -101,7 +106,7 @@ class ScreenSignup extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
-                funprovider.signInWithGoogle();
+                //    funprovider.signInWithGoogle();
               },
               child: Text(
                 "Sign in with google",

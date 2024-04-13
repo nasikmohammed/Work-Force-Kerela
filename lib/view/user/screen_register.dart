@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
+import 'package:workforce_project/view/user/screenbottom.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenRegister extends StatelessWidget {
   const ScreenRegister({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       body: SafeArea(
@@ -20,7 +24,7 @@ class ScreenRegister extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  print("image picker clicked");
+                  funprovider.imagePickforregister();
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -175,7 +179,7 @@ class ScreenRegister extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenReportProblems(),
+                      builder: (context) => ScreenBottomNav(),
                     ));
                   },
                   child: Text(

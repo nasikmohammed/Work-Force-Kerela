@@ -46,11 +46,7 @@ class ScreenReportIssue extends StatelessWidget {
                     backgroundColor: Colors.blue[400],
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenUserProfile(),
-                  ));
-                },
+                onPressed: () {},
                 child: Text(
                   "Report the issue",
                   style: GoogleFonts.amaranth(color: Colors.black),

@@ -16,7 +16,7 @@ class ScreenUserProfile extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 219, 197, 123),
         elevation: 0,
         title: Text(
           "Your Profile",
@@ -31,7 +31,7 @@ class ScreenUserProfile extends StatelessWidget {
             width: 400,
             height: 300,
             decoration: const BoxDecoration(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 219, 197, 123),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25),
                     bottomRight: Radius.circular(25))),
@@ -46,7 +46,7 @@ class ScreenUserProfile extends StatelessWidget {
                     width: 150,
                     height: 150,
                     child: Image.asset(
-                      workprovider.person,
+                      workprovider.kanew,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -79,7 +79,7 @@ class ScreenUserProfile extends StatelessWidget {
                         },
                       ));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.person_rounded,
                       color: Colors.black,
                     ),
@@ -96,7 +96,7 @@ class ScreenUserProfile extends StatelessWidget {
                           const SizedBox(
                             width: 35,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_right,
                             color: Colors.black,
                           )
@@ -181,7 +181,7 @@ class ScreenUserProfile extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 150,
+            height: 100,
           ),
           Text(
             "You can update your profile at any time",

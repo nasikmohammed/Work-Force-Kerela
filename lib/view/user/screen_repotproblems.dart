@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
+import 'package:workforce_project/view/user/screen_usernotifications.dart';
+import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenReportProblems extends StatefulWidget {
@@ -14,24 +16,12 @@ class ScreenReportProblems extends StatefulWidget {
 }
 
 class _ScreenReportProblemsState extends State<ScreenReportProblems> {
+
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: workprovider.intexnumber,
-        onTap: (value) {
-          setState(() {
-            workprovider.intexnumber = value;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Notifications")
-        ],
-      ),
+    
       body: Stack(
         children: [
           Container(
@@ -71,7 +61,8 @@ class _ScreenReportProblemsState extends State<ScreenReportProblems> {
                     ],
                   ),
                 )),
-          )
+          ),
+          
         ],
       ),
     );
