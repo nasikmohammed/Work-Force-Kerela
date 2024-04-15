@@ -18,13 +18,12 @@ class _ScreenHomeAgentState extends State<ScreenHomeAgent> {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-     
       drawer: Padding(
           padding: const EdgeInsets.only(top: 90, bottom: 400, right: 170),
           child: workprovider.agentdrawer(context)),
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 206, 225, 204),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Color.fromARGB(255, 206, 225, 204),
         leading: Builder(builder: (context) {
           return IconButton(
               onPressed: () {

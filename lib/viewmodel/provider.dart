@@ -34,6 +34,14 @@ class WorkProvider extends ChangeNotifier {
   String adminverifyy = "assets/cn.jpeg";
   String kanew = "assets/kanew.jpg";
   String debruyne = "assets/debruyne.jpg";
+  String handshake = "assets/handshake.jpeg";
+  String homemanager = "assets/homemanager.jpeg";
+  List flats = <String>[
+    "assets/flat4.jpeg",
+    "assets/flat3.jpeg",
+    "assets/flat2.jpeg",
+    "assets/flat1.jpeg",
+  ];
 
   List complaints = [
     "New Complaints",
@@ -408,4 +416,61 @@ class WorkProvider extends ChangeNotifier {
   }
 
   int intexnumber = 0;
+  managerdrawer(context) {
+    return Drawer(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
+      child: Column(children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 50),
+          child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenManagerUpsa()));
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Profile",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              )),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+          child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              onPressed: () {},
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Notification",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              )),
+        )
+      ]),
+    );
+  }
 }

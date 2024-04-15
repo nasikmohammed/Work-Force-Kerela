@@ -4,8 +4,13 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_agentregister.dart';
+import 'package:workforce_project/view/agent/screen_upsaagent.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
+import 'package:workforce_project/view/police/screen_camw.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_signup.dart';
+import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenSignOrLogin extends StatelessWidget {
@@ -17,7 +22,7 @@ class ScreenSignOrLogin extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
               width: 400,
               height: 900,
               child: Image.asset(workprovider.construction4, fit: BoxFit.fill)),
@@ -33,8 +38,9 @@ class ScreenSignOrLogin extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 400),
+            padding: const EdgeInsets.only(top: 300, left: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 OutlinedButton(
                     style: OutlinedButton.styleFrom(
@@ -49,13 +55,9 @@ class ScreenSignOrLogin extends StatelessWidget {
                       ));
                     },
                     child: Text(
-                      "Sign up",
+                      "User",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     )),
-                Text(
-                  "or",
-                  style: GoogleFonts.cormorant(),
-                ),
                 OutlinedButton(
                     style: OutlinedButton.styleFrom(
                         backgroundColor:
@@ -65,26 +67,61 @@ class ScreenSignOrLogin extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) {
-                          return ScreenLogin();
+                          return ScreenAgentRegister();
                         },
                       ));
                     },
                     child: Text(
-                      "Log in",
+                      "Agent",
                       style: GoogleFonts.amaranth(color: Colors.black),
                     )),
-const SizedBox(
-                  height: 300,
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 115, 209, 230),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenHomeManager();
+                        },
+                      ));
+                    },
+                    child: Text(
+                      "Manager",
+                      style: GoogleFonts.amaranth(color: Colors.black),
+                    )),
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 222, 243, 108),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenCompamw();
+                        },
+                      ));
+                    },
+                    child: Text(
+                      "Police",
+                      style: GoogleFonts.amaranth(color: Colors.black),
+                    )),
+                const SizedBox(
+                  height: 200,
                 ),
-                Text(
-                  "Indroducing Work Force Kerela:Your Unltimate Employee Registration Solution",
-                  style: GoogleFonts.amaranth(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                  textAlign: TextAlign.center,
-                )
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 800),
+            child: Text(
+              "Indroducing Work Force Kerela:Your Unltimate Employee Registration Solution",
+              style: GoogleFonts.amaranth(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+              textAlign: TextAlign.center,
             ),
           )
         ],

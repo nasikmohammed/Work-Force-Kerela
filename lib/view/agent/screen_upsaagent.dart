@@ -16,9 +16,9 @@ class ScreenAgentProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 206, 225, 204),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Color.fromARGB(255, 206, 225, 204),
         title: Text(
           "Work force kerela",
           style: GoogleFonts.nunitoSans(color: Colors.black),
@@ -59,7 +59,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: Color.fromARGB(255, 211, 228, 209),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -89,7 +89,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: Color.fromARGB(255, 211, 228, 209),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -119,7 +119,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: Color.fromARGB(255, 211, 228, 209),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(
@@ -149,7 +149,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 width: 200,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 221, 214, 214),
+                    color: Color.fromARGB(255, 211, 228, 209),
                     borderRadius: BorderRadius.circular(20)),
                 child: Row(children: [
                   const Icon(

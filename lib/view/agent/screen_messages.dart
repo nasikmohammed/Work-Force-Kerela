@@ -12,12 +12,13 @@ class ScreenAgentMessages extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 206, 225, 204),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 206, 225, 204),
         elevation: 0,
         title: Text(
           "Messages",
-          style: GoogleFonts.merriweather(
+          style: GoogleFonts.quicksand(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -26,8 +27,7 @@ class ScreenAgentMessages extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-              boxShadow: [BoxShadow(blurRadius: 1)],
-              border: Border.all(color: Colors.black),
+              boxShadow: const [BoxShadow(blurRadius: 1)],
               color: Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(20)),
           child: Column(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "817839298426",
+    "project_id": "work-force-kerala",
+    "storage_bucket": "work-force-kerala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817839298426:android:581717f6df30f4e91c28c3",
+        "android_client_info": {
+          "package_name": "com.example.workforce_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1SmMYLyRsdouIqHyjEcVWyaoKp0Qw_fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

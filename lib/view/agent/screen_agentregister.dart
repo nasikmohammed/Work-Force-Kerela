@@ -9,13 +9,13 @@ class ScreenAgentRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 206, 225, 204),
       body: Stack(children: [
         Padding(
           padding: const EdgeInsets.only(top: 300, left: 50),
           child: Icon(
             Icons.camera,
-            color: Color.fromARGB(255, 222, 216, 216),
+            color: Color.fromARGB(255, 165, 196, 162),
             size: 300,
           ),
         ),

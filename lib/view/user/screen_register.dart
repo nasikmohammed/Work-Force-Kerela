@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
@@ -34,18 +36,21 @@ class ScreenRegister extends StatelessWidget {
                   width: 160,
                   height: 100,
                   child: Center(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          "Place Your image",
-                          style: GoogleFonts.kanit(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        const Icon(Icons.add_box)
-                      ],
+                    child: Form(
+                      key: funprovider.formkeyregister,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            "Place Your image",
+                            style: GoogleFonts.kanit(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ),
+                          const Icon(Icons.add_box)
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -56,6 +61,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.firstnamecontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -70,6 +76,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.lastnamecontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -85,6 +92,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.countrycontroller,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {}, icon: Icon(Icons.arrow_drop_down)),
@@ -102,6 +110,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.addresscontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -117,6 +126,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.citycontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -131,6 +141,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.emailidcontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -145,6 +156,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.aadhaarcontroller,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -159,6 +171,7 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
+                  controller: funprovider.meterialstatuscontroller,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {}, icon: Icon(Icons.arrow_drop_down)),
@@ -177,10 +190,14 @@ class ScreenRegister extends StatelessWidget {
                       backgroundColor: Colors.blue[400],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenBottomNav(),
-                    ));
+                  onPressed: () async {
+                    if (funprovider.formkeyregister.currentState!.validate()) {
+                      await funprovider.signup(context);
+                      print("hi");
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ScreenLogin(),
+                      ));
+                    }
                   },
                   child: Text(
                     "Register Now",

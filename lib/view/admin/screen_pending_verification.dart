@@ -15,21 +15,21 @@ class ScreenPendingVerifications extends StatelessWidget {
       body: Row(
         children: [
           workprovider.admindrawer(context),
-          Container(
+          SizedBox(
             width: 936,
             height: 800,
             child: ListView.separated(
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   height: 300,
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           SizedBox(
@@ -39,7 +39,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                                 backgroundImage:
                                     AssetImage(workprovider.kanew)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
@@ -49,12 +49,12 @@ class ScreenPendingVerifications extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Text(
@@ -94,7 +94,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 60,
                                   ),
                                   Text(
@@ -115,7 +115,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 150,
                           ),
                           Text(
@@ -140,7 +140,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 60,
                                   ),
                                   Text(
@@ -161,7 +161,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 150,
                           ),
                           Text(
@@ -180,12 +180,12 @@ class ScreenPendingVerifications extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 150,
                           ),
                           SizedBox(
@@ -196,12 +196,12 @@ class ScreenPendingVerifications extends StatelessWidget {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(5)),
                                     backgroundColor:
-                                        Color.fromARGB(255, 42, 56, 133)),
+                                        const Color.fromARGB(255, 42, 56, 133)),
                                 onPressed: () {},
                                 child: Text("Accept",
                                     style: GoogleFonts.tajawal(fontSize: 15))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 25,
                           ),
                           SizedBox(
@@ -223,7 +223,7 @@ class ScreenPendingVerifications extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return Divider(
+                return const Divider(
                   endIndent: 25,
                   indent: 25,
                   color: Colors.black,

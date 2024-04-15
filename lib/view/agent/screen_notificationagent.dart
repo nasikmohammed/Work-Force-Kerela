@@ -12,9 +12,9 @@ class ScreenNotificationAgent extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 206, 225, 204),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Color.fromARGB(255, 206, 225, 204),
         elevation: 0,
         centerTitle: true,
         title: Text(

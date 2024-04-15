@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_signup.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenLogin extends StatelessWidget {
   const ScreenLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       body: SafeArea(
@@ -58,7 +61,11 @@ class ScreenLogin extends StatelessWidget {
                     backgroundColor: const Color.fromARGB(255, 245, 255, 158),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                onPressed: () {},
+                onPressed: () async {
+                 
+                  await funprovider.signin();
+                  
+                },
                 child: Text(
                   "Log in",
                   style: GoogleFonts.amaranth(color: Colors.black),

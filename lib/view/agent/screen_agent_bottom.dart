@@ -32,7 +32,7 @@ class _ScreenAgentBottomState extends State<ScreenAgentBottom> {
               workprovider.intexnumber = value;
             });
           },
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.message_rounded), label: "Chat"),
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),

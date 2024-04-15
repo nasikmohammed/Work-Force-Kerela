@@ -12,9 +12,9 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 211, 228, 209),
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 238, 234, 234),
+          backgroundColor: Color.fromARGB(255, 211, 228, 209),
           elevation: 0,
           title: workprovider.isselected
               ? Text(
@@ -42,7 +42,7 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
           ),
           Text(
             "MC HOUSE BUILDING",
-            style: GoogleFonts.merienda(fontSize: 15),
+            style: GoogleFonts.hind(fontSize: 15),
           ),
           const SizedBox(
             height: 10,
@@ -57,8 +57,8 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
+              left: 20,
+              right: 20,
             ),
             child: Container(
               width: 400,
@@ -68,7 +68,7 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [BoxShadow(blurRadius: 1)]),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 25, right: 25),
                 child: SingleChildScrollView(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,12 +78,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Agency Name",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -91,12 +91,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Address",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -104,12 +104,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Company Name",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -117,12 +117,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Contact Number",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -130,12 +130,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "State",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -143,28 +143,25 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "City",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
-                        ),
-                        const SizedBox(
-                          height: 10,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
                           "Email ID",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -172,12 +169,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Password",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -185,12 +182,12 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         Text(
                           "Company Logo",
-                          style: GoogleFonts.merienda(fontSize: 17),
+                          style: GoogleFonts.hind(fontSize: 17),
                         ),
                         TextFormField(
                           readOnly: true,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(15),
+                              contentPadding: EdgeInsets.all(5),
                               border: OutlineInputBorder()),
                         ),
                         const SizedBox(
@@ -198,7 +195,7 @@ class ScreenUpdateProfileAgent extends StatelessWidget {
                         ),
                         workprovider.isselected
                             ? Padding(
-                                padding: const EdgeInsets.only(left: 150),
+                                padding: const EdgeInsets.only(left: 110),
                                 child: OutlinedButton(
                                     style: OutlinedButton.styleFrom(
                                         backgroundColor:

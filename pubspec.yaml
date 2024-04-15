@@ -45,6 +45,8 @@ dependencies:
   percent_indicator: ^4.2.3
   google_sign_in: ^6.1.6
   image_picker: ^1.0.4
+  firebase_auth: ^4.16.0
+  firebase_core: ^2.24.2
  
  
 
@@ -87,6 +89,12 @@ flutter:
       - assets\cn.jpeg
       - assets\kanew.jpg
       - assets\debruyne.jpg
+      - assets\handshake.jpeg
+      - assets\homemanager.jpeg
+      - assets\flat4.jpeg
+      - assets\flat3.jpeg
+      - assets\flat2.jpeg
+      - assets\flat1.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

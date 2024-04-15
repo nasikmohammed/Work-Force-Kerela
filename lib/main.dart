@@ -19,6 +19,7 @@ import 'package:workforce_project/view/agent/screen_settingsagent.dart';
 import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
 import 'package:workforce_project/view/agent/screen_upsaagent.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
 import 'package:workforce_project/view/manager/screen_manager_change_password.dart';
 import 'package:workforce_project/view/manager/screen_manager_messages.dart';
@@ -61,8 +62,14 @@ import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -100,6 +107,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenAgentBottom()));
+            home: ScreenSignOrLogin()));
   }
 }
