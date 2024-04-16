@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenUserPersonalInfo extends StatelessWidget {
@@ -12,6 +13,8 @@ class ScreenUserPersonalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       appBar: AppBar(
@@ -87,6 +90,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.usernamepcontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -103,6 +107,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.useraddresscontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -119,6 +124,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.usercontactnumbercontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -135,6 +141,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.userserstatecontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -151,6 +158,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.usercitycontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -167,6 +175,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.useremailcontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -186,6 +195,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.userpasswordcontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -202,6 +212,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.userpasswordcontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),
@@ -218,6 +229,7 @@ class ScreenUserPersonalInfo extends StatelessWidget {
                           height: 10,
                         ),
                         TextFormField(
+                          controller: funprovider.usercompanylogocontroller,
                           readOnly: true,
                           decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10),

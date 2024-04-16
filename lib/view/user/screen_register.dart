@@ -1,8 +1,10 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
+import 'package:workforce_project/view/user/screen_otp.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
@@ -192,10 +194,10 @@ class ScreenRegister extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () async {
                     if (funprovider.formkeyregister.currentState!.validate()) {
-                      await funprovider.signup(context);
-                      print("hi");
+                      await funprovider.emailotp(context);
+
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => ScreenLogin(),
+                        builder: (context) => ScreenOtp(),
                       ));
                     }
                   },

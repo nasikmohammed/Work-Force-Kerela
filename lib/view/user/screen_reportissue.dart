@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenReportIssue extends StatelessWidget {
   const ScreenReportIssue({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 247, 255, 222),
@@ -30,6 +33,7 @@ class ScreenReportIssue extends StatelessWidget {
             Container(
               decoration: BoxDecoration(color: Colors.white),
               child: TextField(
+                  controller: funprovider.reportproblemcontroller,
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(50),
                       hintText:

@@ -29,6 +29,7 @@ class ScreenLogin extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(color: Colors.white),
               child: TextFormField(
+                controller: funprovider.loginusernamecontroller,
                 decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -44,6 +45,7 @@ class ScreenLogin extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(color: Colors.white),
               child: TextFormField(
+                controller: funprovider.loginpasswordcontroller,
                 decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -68,7 +70,7 @@ class ScreenLogin extends StatelessWidget {
                 },
                 child: Text(
                   "Log in",
-                  style: GoogleFonts.amaranth(color: Colors.black),
+                  style: GoogleFonts.amaranth( color: Colors.black),
                 )),
             TextButton(
               child: Text(
