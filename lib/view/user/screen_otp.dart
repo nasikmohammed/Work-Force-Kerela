@@ -3,12 +3,18 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_aboutus.dart';
+import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
+import '../../model/usermodel.dart';
+import '../../viewmodel/firestore.dart';
+
 class ScreenOtp extends StatelessWidget {
-  const ScreenOtp({super.key});
+  ScreenOtp({super.key});
+  final firestore = FirestoreService();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +29,20 @@ class ScreenOtp extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 funprovider.verifyOTP(context);
+                firestore.addUser(UserModel(
+                    firstname: funprovider.firstnamecontroller.text,
+                    lastname: funprovider.lastnamecontroller.text,
+                    country: funprovider.countrycontroller.text,
+                    address: funprovider.addresscontroller.text,
+                    city: funprovider.citycontroller.text,
+                    email: funprovider.emailidcontroller.text,
+                    aadharnumber: funprovider.aadhaarcontroller.text,
+                    martialstatus: funprovider.meterialstatuscontroller.text));
+
+                print("giobgbgibgoigi");
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenUserPersonalInfo(),
+                ));
               },
               child: Text("Sumbit")),
         ],

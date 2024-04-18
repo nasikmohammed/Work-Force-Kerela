@@ -8,8 +8,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/usermodel.dart';
 
 class FunProvider extends ChangeNotifier {
+  UserModel usermodelobj = UserModel();
   FirebaseAuth auth = FirebaseAuth.instance;
   EmailOTP myAuth = EmailOTP();
   final formkey = GlobalKey<FormState>();
@@ -50,7 +52,7 @@ class FunProvider extends ChangeNotifier {
   final useremailcontroller = TextEditingController();
   final userpasswordcontroller = TextEditingController();
   final userwebsitecontroller = TextEditingController();
-    final usercompanylogocontroller = TextEditingController();
+  final usercompanylogocontroller = TextEditingController();
 
   signup(context) async {
     try {

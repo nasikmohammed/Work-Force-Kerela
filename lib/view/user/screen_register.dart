@@ -3,15 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_otp.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
+import 'package:workforce_project/viewmodel/firestore.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenRegister extends StatelessWidget {
-  const ScreenRegister({super.key});
-
+  ScreenRegister({super.key});
+  final firestore = FirestoreService();
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
@@ -179,7 +181,7 @@ class ScreenRegister extends StatelessWidget {
                           onPressed: () {}, icon: Icon(Icons.arrow_drop_down)),
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
-                      hintText: "Material Status",
+                      hintText: "Martial Status",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
@@ -193,6 +195,17 @@ class ScreenRegister extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () async {
+                    UserModel pbj = UserModel(
+                        firstname: funprovider.firstnamecontroller.text,
+                        lastname: funprovider.lastnamecontroller.text,
+                        country: funprovider.countrycontroller.text,
+                        address: funprovider.addresscontroller.text,
+                        city: funprovider.citycontroller.text,
+                        email: funprovider.emailidcontroller.text,
+                        aadharnumber: funprovider.aadhaarcontroller.text,
+                        martialstatus:
+                            funprovider.meterialstatuscontroller.text);
+                    firestore.addUser(pbj);
                     if (funprovider.formkeyregister.currentState!.validate()) {
                       await funprovider.emailotp(context);
 
