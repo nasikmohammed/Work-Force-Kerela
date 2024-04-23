@@ -49,8 +49,12 @@ class WorkProvider extends ChangeNotifier {
     "Ongoing investigations"
   ];
   String selectedoption = "Carpenter";
+  String selectedmartial = "Married";
+
   List department = ["Carpenter", "Electrician", "Construction"];
+  List martial = ["Married", "Un Married", "other"];
   bool isselected = false;
+
   //available workers
   workassigndropdown(context) {
     return showDialog(
@@ -73,6 +77,36 @@ class WorkProvider extends ChangeNotifier {
                 }).toList(),
                 onChanged: (value) {
                   selectedoption = value!;
+                },
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  martialdropdown(context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Padding(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+            ),
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.white,
+              child: DropdownButtonFormField(
+                value: selectedmartial,
+                items: martial.map<DropdownMenuItem>((e) {
+                  return DropdownMenuItem(value: e, child: Text(e));
+                }).toList(),
+                onChanged: (value) {
+                  selectedmartial = value!;
                 },
               ),
             ),

@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
+import 'package:workforce_project/model/usermodel.dart';
+import 'package:workforce_project/viewmodel/agentfirestore.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 
 class ScreenAgentRegister extends StatelessWidget {
   const ScreenAgentRegister({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AgenteService agentfirestore = AgenteService();
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 206, 225, 204),
       body: Stack(children: [
@@ -32,119 +39,141 @@ class ScreenAgentRegister extends StatelessWidget {
                     style: GoogleFonts.permanentMarker(fontSize: 19),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text("Agency Name"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agencynamecontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Address"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentaddresscontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Company Name"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentcompanynamecontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Contact Number"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentcontactnumbercontrroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("State"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentstatecontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("City"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentcitycontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Email-ID"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentemailecontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Password"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentpasswordcontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Confirm Password"),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
+                    controller: funprovider.agentconfirmpasswordcontroller,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text("Website"),
-                SizedBox(
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                    controller: funprovider.agentwebsitecontroller,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)))),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text("Company Logo"),
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -152,19 +181,7 @@ class ScreenAgentRegister extends StatelessWidget {
                         contentPadding: EdgeInsets.all(10),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Company Logo"),
-                SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)))),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Center(
@@ -172,7 +189,27 @@ class ScreenAgentRegister extends StatelessWidget {
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.blue[400],
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          AgentModel agentobj = AgentModel(
+                            agentname: funprovider.agencynamecontroller.text,
+                            agentaddress:
+                                funprovider.agentaddresscontroller.text,
+                            agentcompanyname:
+                                funprovider.agentcompanynamecontroller.text,
+                            agentcontactnumber:
+                                funprovider.agentcontactnumbercontrroller.text,
+                            agentstate: funprovider.agentstatecontroller.text,
+                            agentcity: funprovider.agentcitycontroller.text,
+                            agentemail: funprovider.agentemailecontroller.text,
+                            agentpassword:
+                                funprovider.agentpasswordcontroller.text,
+                            agentconfirmpassword:
+                                funprovider.confirmpasswordcontroller.text,
+                            agentwebsite:
+                                funprovider.agentwebsitecontroller.text,
+                          );
+                          agentfirestore.addUser(agentobj);
+                        },
                         child: Text("Register",
                             style: GoogleFonts.amaranth(
                               color: Colors.white,

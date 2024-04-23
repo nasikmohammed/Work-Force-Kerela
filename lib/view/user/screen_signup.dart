@@ -61,7 +61,7 @@ class ScreenSignup extends StatelessWidget {
                   decoration: InputDecoration(
                       contentPadding:
                           EdgeInsets.only(left: 30, right: 30, top: 30),
-                      hintText: "Usename",
+                      hintText: "Username",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       )),

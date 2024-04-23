@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/usermodel.dart';
+import 'package:country_picker/country_picker.dart';
 
 class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
@@ -18,7 +19,7 @@ class FunProvider extends ChangeNotifier {
   final formkeyregister = GlobalKey<FormState>();
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
+  final RegExp aadharpattern = RegExp('[a-zA-Z0-9./-_]{2,256}@[a-zA-Z]{2,64}');
   //          SCREEN REGISTER
   //screen signup
 
@@ -53,6 +54,34 @@ class FunProvider extends ChangeNotifier {
   final userpasswordcontroller = TextEditingController();
   final userwebsitecontroller = TextEditingController();
   final usercompanylogocontroller = TextEditingController();
+
+//Agent Controller
+  final agencynamecontroller = TextEditingController();
+  final agentaddresscontroller = TextEditingController();
+  final agentcompanynamecontroller = TextEditingController();
+  final agentcontactnumbercontrroller = TextEditingController();
+  final agentstatecontroller = TextEditingController();
+  final agentcitycontroller = TextEditingController();
+  final agentemailecontroller = TextEditingController();
+  final agentpasswordcontroller = TextEditingController();
+  final agentconfirmpasswordcontroller = TextEditingController();
+  final agentwebsitecontroller = TextEditingController();
+  //managerController
+  final managernamecontroller = TextEditingController();
+  final manageraddresscontroller = TextEditingController();
+  final managercontactnumbercontroller = TextEditingController();
+  final managerstatecontroller = TextEditingController();
+  final managercitycontroller = TextEditingController();
+  final manageremailcontroller = TextEditingController();
+  final managerpasswordcontroller = TextEditingController();
+  //police
+  final policenamecontroller = TextEditingController();
+  final policeaddresscontroller = TextEditingController();
+  final policecontactnumbercontroller = TextEditingController();
+  final policestatecontroller = TextEditingController();
+  final policecitycontroller = TextEditingController();
+  final policeemailcontroller = TextEditingController();
+  final policepasswordcontroller = TextEditingController();
 
   signup(context) async {
     try {
@@ -132,6 +161,7 @@ class FunProvider extends ChangeNotifier {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+//screen register
   File? images;
   imagePickforregister() async {
     final pickedImage =
@@ -139,5 +169,16 @@ class FunProvider extends ChangeNotifier {
     if (pickedImage != null) {
       images = File(pickedImage.path);
     }
+  }
+//screen register
+
+  countrypicker(context) async {
+    return showCountryPicker(
+      context: context,
+      showPhoneCode: true,
+      onSelect: (Country country) {
+        print('Select country: ${country.displayName}');
+      },
+    );
   }
 }

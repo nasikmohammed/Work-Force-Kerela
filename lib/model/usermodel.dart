@@ -9,16 +9,17 @@ class UserModel {
   String? aadharnumber;
   String? city;
 
-  UserModel(
-      {this.firstname,
-      this.email,
-      this.lastname,
-      this.address,
-      this.city,
-      this.aadharnumber,
-      this.martialstatus,
-      this.country,
-      this.id});
+  UserModel({
+    this.firstname,
+    this.email,
+    this.lastname,
+    this.address,
+    this.city,
+    this.aadharnumber,
+    this.martialstatus,
+    this.country,
+    this.id,
+  });
 
   Map<String, dynamic> toJson(docId) => {
         "firstname": firstname,
@@ -44,5 +45,4 @@ class UserModel {
         martialstatus: json["martialstatus"],
         id: json["id"]);
   }
-
 }

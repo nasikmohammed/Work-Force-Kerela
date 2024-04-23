@@ -10,7 +10,7 @@ import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 import '../../model/usermodel.dart';
-import '../../viewmodel/firestore.dart';
+import '../../viewmodel/userfirestore.dart';
 
 class ScreenOtp extends StatelessWidget {
   ScreenOtp({super.key});
