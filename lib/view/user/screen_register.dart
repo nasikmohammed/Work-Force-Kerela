@@ -212,6 +212,7 @@ class ScreenRegister extends StatelessWidget {
                     }
                   },
                   controller: funprovider.aadhaarcontroller,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.only(left: 30, right: 30, top: 30),
@@ -222,8 +223,7 @@ class ScreenRegister extends StatelessWidget {
               ),
               const SizedBox(
                 height: 15,
-              ),
-              Container(
+              ),          Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
                   controller: funprovider.meterialstatuscontroller,
@@ -251,16 +251,11 @@ class ScreenRegister extends StatelessWidget {
                   onPressed: () async {
                     if (funprovider.formkeyregister.currentState!.validate()) {
                       await funprovider.emailotp(context).then((value) {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenOtp(),
-                    ));
-
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => ScreenOtp(),
+                        ));
                       });
-
-                    
                     }
-                   
-                  
                   },
                   child: Text(
                     "Register Now",

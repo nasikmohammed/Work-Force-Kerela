@@ -93,6 +93,7 @@ class FunProvider extends ChangeNotifier {
           .then((value) {
         firestore.addUser(
             UserModel(
+                contactnumber: usercontactnumbercontroller.text,
                 firstname: firstnamecontroller.text,
                 lastname: lastnamecontroller.text,
                 country: countrycontroller.text,

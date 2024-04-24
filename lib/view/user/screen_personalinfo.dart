@@ -25,7 +25,8 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
   @override
   void initState() {
     FirestoreService firestore = FirestoreService();
-    firestore.getSingleUserData(context,FirebaseAuth.instance.currentUser!.uid);
+    firestore.getSingleUserData(
+        context, FirebaseAuth.instance.currentUser!.uid);
     super.initState();
   }
 
@@ -59,224 +60,245 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                     color: Colors.black,
                   ))
             ]),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundImage: AssetImage(workprovider.person),
-              ),
-              Text(
-                 firestore.singleuserData!.firstname ??
-                "SANDEEP",
-                style: GoogleFonts.nunitoSans(fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 330),
-                child: IconButton(
-                    onPressed: () {
-                      workprovider.selectAvailable();
-                    },
-                    icon: Icon(Icons.swipe_up_rounded)),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                ),
-                child: Container(
-                  width: 400,
-                  height: 600,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 246, 244, 244),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [BoxShadow(blurRadius: 1)]),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: SingleChildScrollView(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Name",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.usernamepcontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Address",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.useraddresscontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Contact Number",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller:
-                                  funprovider.usercontactnumbercontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "State",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.userserstatecontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "City",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.usercitycontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Email ID",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.useremailcontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Password",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.userpasswordcontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Website",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.userpasswordcontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              "Company Logo",
-                              style: GoogleFonts.ubuntu(fontSize: 17),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: funprovider.usercompanylogocontroller,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  border: OutlineInputBorder()),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            workprovider.isselected
-                                ? Padding(
-                                    padding: const EdgeInsets.only(left: 120),
-                                    child: OutlinedButton(
-                                        style: OutlinedButton.styleFrom(
-                                            backgroundColor:
-                                                const Color.fromARGB(
-                                                    255, 57, 73, 163),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10))),
-                                        onPressed: () {},
-                                        child: Text(
-                                          "Update",
-                                          style: GoogleFonts.amaranth(
-                                              color: Colors.white),
-                                        )),
-                                  )
-                                : const SizedBox()
-                          ]),
-                    ),
+        body: FutureBuilder(
+          future: firestore.getSingleUserData(
+              // FirebaseAuth.instance.currentUser!.uid
+              context,
+              FirebaseAuth.instance.currentUser!.uid),
+          builder: (context, snapshot) {
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(workprovider.person),
                   ),
-                ),
-              )
-            ],
-          ),
+                  Text(
+                    firestore.singleuserData!.firstname ?? "SANDEEP",
+                    style: GoogleFonts.nunitoSans(fontSize: 15),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 330),
+                    child: IconButton(
+                        onPressed: () {
+                          workprovider.selectAvailable();
+                        },
+                        icon: Icon(Icons.swipe_up_rounded)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: Container(
+                      width: 400,
+                      height: 600,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 246, 244, 244),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [BoxShadow(blurRadius: 1)]),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: SingleChildScrollView(
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Name",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller: funprovider.usernamepcontroller,
+                                  decoration: InputDecoration(
+                                      hintText:
+                                          firestore.singleuserData!.firstname,
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Address",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller: funprovider.useraddresscontroller,
+                                  decoration: InputDecoration(
+                                      hintText:
+                                          firestore.singleuserData!.address,
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Contact Number",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller:
+                                      funprovider.usercontactnumbercontroller,
+                                  decoration: InputDecoration(
+                                      hintText: firestore
+                                          .singleuserData!.contactnumber,
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "State",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller:
+                                      funprovider.userserstatecontroller,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "City",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller: funprovider.usercitycontroller,
+                                  decoration: InputDecoration(
+                                      hintText: firestore.singleuserData!.city,
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Email ID",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller: funprovider.useremailcontroller,
+                                  decoration: InputDecoration(
+                                      hintText: firestore.singleuserData!.email,
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Password",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller:
+                                      funprovider.userpasswordcontroller,
+                                  decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Website",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller:
+                                      funprovider.userpasswordcontroller,
+                                  decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Text(
+                                  "Company Logo",
+                                  style: GoogleFonts.ubuntu(fontSize: 17),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller:
+                                      funprovider.usercompanylogocontroller,
+                                  decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.all(10),
+                                      border: OutlineInputBorder()),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                workprovider.isselected
+                                    ? Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 120),
+                                        child: OutlinedButton(
+                                            style: OutlinedButton.styleFrom(
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 57, 73, 163),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10))),
+                                            onPressed: () {},
+                                            child: Text(
+                                              "Update",
+                                              style: GoogleFonts.amaranth(
+                                                  color: Colors.white),
+                                            )),
+                                      )
+                                    : const SizedBox()
+                              ]),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ));
   }
 }
