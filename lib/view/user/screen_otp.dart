@@ -29,15 +29,7 @@ class ScreenOtp extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 funprovider.verifyOTP(context);
-                firestore.addUser(UserModel(
-                    firstname: funprovider.firstnamecontroller.text,
-                    lastname: funprovider.lastnamecontroller.text,
-                    country: funprovider.countrycontroller.text,
-                    address: funprovider.addresscontroller.text,
-                    city: funprovider.citycontroller.text,
-                    email: funprovider.emailidcontroller.text,
-                    aadharnumber: funprovider.aadhaarcontroller.text,
-                    martialstatus: funprovider.meterialstatuscontroller.text));
+               
 
                 print("giobgbgibgoigi");
                 Navigator.of(context).pushReplacement(MaterialPageRoute(

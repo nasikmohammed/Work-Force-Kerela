@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:workforce_project/viewmodel/userfirestore.dart';
 
 class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
@@ -20,6 +21,7 @@ class FunProvider extends ChangeNotifier {
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
   final RegExp aadharpattern = RegExp('[a-zA-Z0-9./-_]{2,256}@[a-zA-Z]{2,64}');
+  FirestoreService firestore = FirestoreService();
   //          SCREEN REGISTER
   //screen signup
 
@@ -83,10 +85,24 @@ class FunProvider extends ChangeNotifier {
   final policeemailcontroller = TextEditingController();
   final policepasswordcontroller = TextEditingController();
 
-  signup(context) async {
+  Future signup(context) async {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: emailidcontroller.text, password: passwordcontroller.text);
+      await auth
+          .createUserWithEmailAndPassword(
+              email: emailidcontroller.text, password: passwordcontroller.text)
+          .then((value) {
+        firestore.addUser(
+            UserModel(
+                firstname: firstnamecontroller.text,
+                lastname: lastnamecontroller.text,
+                country: countrycontroller.text,
+                address: addresscontroller.text,
+                city: citycontroller.text,
+                email: emailidcontroller.text,
+                aadharnumber: aadhaarcontroller.text,
+                martialstatus: meterialstatuscontroller.text),
+            value.user!.uid);
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
         return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -119,7 +135,7 @@ class FunProvider extends ChangeNotifier {
     });
   }
 
-  emailotp(context) async {
+  Future emailotp(context) async {
     myAuth.setConfig(
         appEmail: "Firebasehub@gmail.com",
         appName: "OTP VERIFICATION",

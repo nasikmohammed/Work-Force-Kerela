@@ -250,23 +250,17 @@ class ScreenRegister extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () async {
                     if (funprovider.formkeyregister.currentState!.validate()) {
-                      await funprovider.emailotp(context);
-                    }
-                    UserModel obj = UserModel(
-                        firstname: funprovider.firstnamecontroller.text,
-                        lastname: funprovider.lastnamecontroller.text,
-                        country: funprovider.countrycontroller.text,
-                        address: funprovider.addresscontroller.text,
-                        city: funprovider.citycontroller.text,
-                        email: funprovider.emailidcontroller.text,
-                        aadharnumber: funprovider.aadhaarcontroller.text,
-                        martialstatus:
-                            funprovider.meterialstatuscontroller.text);
-                    firestore.addUser(obj);
-
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      await funprovider.emailotp(context).then((value) {
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => ScreenOtp(),
                     ));
+
+                      });
+
+                    
+                    }
+                   
+                  
                   },
                   child: Text(
                     "Register Now",
