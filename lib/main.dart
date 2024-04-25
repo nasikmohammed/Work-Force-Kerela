@@ -58,6 +58,7 @@ import 'package:workforce_project/view/user/screen_selectidentity.dart';
 import 'package:workforce_project/view/user/screen_signorlogin.dart';
 import 'package:workforce_project/view/user/screen_signup.dart';
 import 'package:workforce_project/view/police/screen_workers.dart';
+import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
@@ -107,6 +108,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenSignup()));
+            home: ScreenUserLogin()));
   }
 }

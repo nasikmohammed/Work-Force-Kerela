@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenAdminLogin extends StatelessWidget {
@@ -13,6 +14,10 @@ class ScreenAdminLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
+
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -20,8 +25,8 @@ class ScreenAdminLogin extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 700),
             child: SizedBox(
-              width: 500,
-              height: 800,
+              width: width,
+              height: height,
               child: Image.asset(workprovider.adminlogin),
             ),
           ),
@@ -52,6 +57,7 @@ class ScreenAdminLogin extends StatelessWidget {
                       color: Colors.yellow[100],
                       border: Border.all(color: Colors.black)),
                   child: TextField(
+                    controller: funprovider.adminemailcontroller,
                     decoration: InputDecoration(
                         hintText: "E-mail",
                         hintStyle: GoogleFonts.sourceSans3(
@@ -73,6 +79,7 @@ class ScreenAdminLogin extends StatelessWidget {
                       color: Colors.yellow[100],
                       border: Border.all(color: Colors.black)),
                   child: TextField(
+                    controller: funprovider.adminpasswordcontroller,
                     decoration: InputDecoration(
                         hintText: "Password",
                         hintStyle: GoogleFonts.sourceSans3(
@@ -114,9 +121,7 @@ class ScreenAdminLogin extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 23, 40, 137)),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => ScreenRegisterAnEmployee(),
-                        ));
+                        funprovider.checkadminemail(context);
                       },
                       child: Text(
                         "LOGIN",

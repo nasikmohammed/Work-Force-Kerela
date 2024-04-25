@@ -1,52 +1,52 @@
 class AgentModel {
   // agent
-  String? agentname;
+  String? agentfirstname;
+  String? agentlastname;
+  String? agentcountry;
   String? agentaddress;
-  String? agentcompanyname;
-  String? agentcontactnumber;
-  String? agentstate;
+
   String? agentcity;
   String? agentemail;
-  String? agentpassword;
-  String? agentconfirmpassword;
-  String? agentwebsite;
+  String? aadharnumber;
+  String? martial;
+  String? password;
+
   AgentModel(
-      { //agent
-      this.agentname,
+      {
+      //agent
+      this.agentfirstname,
+      this.agentlastname,
+      this.agentcountry,
       this.agentaddress,
-      this.agentcompanyname,
-      this.agentcontactnumber,
-      this.agentstate,
       this.agentcity,
       this.agentemail,
-      this.agentpassword,
-      this.agentconfirmpassword,
-      this.agentwebsite});
+      this.aadharnumber,
+      this.martial,
+      this.password});
   Map<String, dynamic> toJson(docId) => {
         //agent
-        "agentname": agentname,
+        "agentfirstname": agentfirstname,
         "agentaddress": agentaddress,
-        "agentcompanyname": agentcompanyname,
-        "agentcontactnumber": agentcontactnumber,
-        "agentstate": agentstate,
+        "agentcountry": agentcountry,
+        "agentlastname": agentlastname,
+
         "agentcity": agentcity,
         "agentemail": agentemail,
-        "agentpassword": agentpassword,
-        "agentconfirmpassword": agentconfirmpassword,
-        "agentwebsite": agentconfirmpassword,
+        "aadharnumber": aadharnumber,
+        "martial": martial,
+        "password": password,
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(
-      agentname: json["agentname"],
+      agentfirstname: json["agentfirstname"],
       agentaddress: json["agentaddress"],
-      agentcompanyname: json["agentcompanyname"],
-      agentcontactnumber: json["agentcontactnumber"],
-      agentstate: json["agentstate"],
+      agentlastname: json["agentlastname"],
       agentcity: json["agentcity"],
       agentemail: json["agentemail"],
-      agentpassword: json["agentpassword"],
-      agentconfirmpassword: json["agentconfirmpassword"],
-      agentwebsite: json["agentwebsite"],
+      agentcountry: json["agentcountry"],
+      aadharnumber: json["aadharnumber"],
+      martial: json["martial"],
+      password: json["password"],
     );
   }
 }

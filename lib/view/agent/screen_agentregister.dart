@@ -190,25 +190,7 @@ class ScreenAgentRegister extends StatelessWidget {
                           backgroundColor: Colors.blue[400],
                         ),
                         onPressed: () {
-                          AgentModel agentobj = AgentModel(
-                            agentname: funprovider.agencynamecontroller.text,
-                            agentaddress:
-                                funprovider.agentaddresscontroller.text,
-                            agentcompanyname:
-                                funprovider.agentcompanynamecontroller.text,
-                            agentcontactnumber:
-                                funprovider.agentcontactnumbercontrroller.text,
-                            agentstate: funprovider.agentstatecontroller.text,
-                            agentcity: funprovider.agentcitycontroller.text,
-                            agentemail: funprovider.agentemailecontroller.text,
-                            agentpassword:
-                                funprovider.agentpasswordcontroller.text,
-                            agentconfirmpassword:
-                                funprovider.confirmpasswordcontroller.text,
-                            agentwebsite:
-                                funprovider.agentwebsitecontroller.text,
-                          );
-                          agentfirestore.addUser(agentobj);
+                          
                         },
                         child: Text("Register",
                             style: GoogleFonts.amaranth(

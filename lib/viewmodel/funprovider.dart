@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/userfirestore.dart';
 
 class FunProvider extends ChangeNotifier {
@@ -17,10 +18,12 @@ class FunProvider extends ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
   EmailOTP myAuth = EmailOTP();
   final formkey = GlobalKey<FormState>();
+  final adminloginkey = GlobalKey<FormState>();
   final formkeyregister = GlobalKey<FormState>();
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
   final RegExp aadharpattern = RegExp('[a-zA-Z0-9./-_]{2,256}@[a-zA-Z]{2,64}');
+  final adminuid = "RJXMfFwvxgTU5TfW4uHqB5kwcak2";
   FirestoreService firestore = FirestoreService();
   //          SCREEN REGISTER
   //screen signup
@@ -68,6 +71,17 @@ class FunProvider extends ChangeNotifier {
   final agentpasswordcontroller = TextEditingController();
   final agentconfirmpasswordcontroller = TextEditingController();
   final agentwebsitecontroller = TextEditingController();
+  //admin(Register As an Employee)
+  final agentrgfirstname = TextEditingController();
+  final agentrglastname = TextEditingController();
+  final agentrgcountry = TextEditingController();
+  final agentrgaddress = TextEditingController();
+  final agentrgcity = TextEditingController();
+  final agentrgemail = TextEditingController();
+  final agentrgaadhaarnumber = TextEditingController();
+  final agentrgmartialstatus = TextEditingController();
+  final agentrgpassword = TextEditingController();
+
   //managerController
   final managernamecontroller = TextEditingController();
   final manageraddresscontroller = TextEditingController();
@@ -84,6 +98,9 @@ class FunProvider extends ChangeNotifier {
   final policecitycontroller = TextEditingController();
   final policeemailcontroller = TextEditingController();
   final policepasswordcontroller = TextEditingController();
+  //admin
+  final adminemailcontroller = TextEditingController();
+  final adminpasswordcontroller = TextEditingController();
 
   Future signup(context) async {
     try {
@@ -197,5 +214,33 @@ class FunProvider extends ChangeNotifier {
         print('Select country: ${country.displayName}');
       },
     );
+  }
+
+  //admin login function
+  checkadminemail(context) {
+    print(
+        "checcccccccccccccccccccccccccccccccccccccccccccccccckkkkkkkkkkkkkkkk");
+    auth
+        .signInWithEmailAndPassword(
+            email: adminemailcontroller.text,
+            password: adminpasswordcontroller.text)
+        .then((credential) {
+      if (credential.user!.uid == adminuid) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => ScreenRegisterAnEmployee(),
+            ),
+            (route) => false);
+        print("checkccckeewdeweeweweweweee");
+      } else {
+        print("else printsssssssssssssssssssssssssssssssssss");
+        auth.signOut();
+        return ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Email and Password is Doesn't match")));
+      }
+    }).onError((error, stackTrace) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Email and Password is Doesn't Match")));
+    });
   }
 }

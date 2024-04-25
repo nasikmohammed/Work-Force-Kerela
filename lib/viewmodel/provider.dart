@@ -36,6 +36,7 @@ class WorkProvider extends ChangeNotifier {
   String debruyne = "assets/debruyne.jpg";
   String handshake = "assets/handshake.jpeg";
   String homemanager = "assets/homemanager.jpeg";
+  String loginphoto = "assets/loginphoto.jpeg";
   List flats = <String>[
     "assets/flat4.jpeg",
     "assets/flat3.jpeg",
