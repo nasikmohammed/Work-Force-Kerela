@@ -19,7 +19,7 @@ class _ScreenHomeAgentState extends State<ScreenHomeAgent> {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
       drawer: Padding(
-          padding: const EdgeInsets.only(top: 90, bottom: 400, right: 170),
+          padding: const EdgeInsets.only(top: 90, bottom: 200, right: 170),
           child: workprovider.agentdrawer(context)),
       backgroundColor: Color.fromARGB(255, 206, 225, 204),
       appBar: AppBar(

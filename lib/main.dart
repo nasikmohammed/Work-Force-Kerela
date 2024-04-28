@@ -10,14 +10,15 @@ import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
 import 'package:workforce_project/view/admin/screen_verified_registrations.dart';
 import 'package:workforce_project/view/agent/screen_aboutusagent.dart';
+import 'package:workforce_project/view/agent/screen_add_manager.dart';
+import 'package:workforce_project/view/agent/screen_add_project.dart';
+import 'package:workforce_project/view/agent/screen_add_workers.dart';
 import 'package:workforce_project/view/agent/screen_agent_bottom.dart';
 import 'package:workforce_project/view/agent/screen_changepasswordagent.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
-import 'package:workforce_project/view/agent/screen_settingsagent.dart';
 import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
-import 'package:workforce_project/view/agent/screen_upsaagent.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
@@ -55,7 +56,6 @@ import 'package:workforce_project/view/user/screen_register.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screen_selectidentity.dart';
-import 'package:workforce_project/view/user/screen_signorlogin.dart';
 import 'package:workforce_project/view/user/screen_signup.dart';
 import 'package:workforce_project/view/police/screen_workers.dart';
 import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
@@ -108,6 +108,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenUserLogin()));
+            home: ScreenAddWorker()));
   }
 }

@@ -81,6 +81,14 @@ class FunProvider extends ChangeNotifier {
   final agentrgaadhaarnumber = TextEditingController();
   final agentrgmartialstatus = TextEditingController();
   final agentrgpassword = TextEditingController();
+  //AGENT Add Project
+  final agentaddprojectname = TextEditingController();
+  final agentaddplace = TextEditingController();
+  final agentaddstartdate = TextEditingController();
+  final agentaddenddate = TextEditingController();
+  final agentaddnoworers = TextEditingController();
+  final agentaddbudget = TextEditingController();
+  final agentaddmanager = TextEditingController();
 
   //managerController
   final managernamecontroller = TextEditingController();

@@ -9,10 +9,10 @@ import 'package:workforce_project/view/admin/screen_human_resouce.dart';
 import 'package:workforce_project/view/admin/screen_notifications.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
+import 'package:workforce_project/view/agent/screen_add_project.dart';
 import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
 import 'package:workforce_project/view/agent/screen_availableworkers.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
-import 'package:workforce_project/view/agent/screen_upsaagent.dart';
 import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
@@ -259,7 +259,7 @@ class WorkProvider extends ChangeNotifier {
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 50),
+                const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 60),
             child: OutlinedButton(
                 style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.black,
@@ -267,7 +267,7 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentProfile(),
+                    builder: (context) => ScreenAgentAvailableWorkers(),
                   ));
                 },
                 child: Row(
@@ -293,7 +293,7 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableWorkers(),
+                    builder: (context) => ScreenAgentAddProject(),
                   ));
                 },
                 child: Row(
@@ -303,7 +303,7 @@ class WorkProvider extends ChangeNotifier {
                       color: Colors.white,
                     ),
                     Text(
-                      "Employees in hand",
+                      "Add Projects",
                       style:
                           GoogleFonts.corben(color: Colors.white, fontSize: 12),
                     ),
@@ -329,7 +329,7 @@ class WorkProvider extends ChangeNotifier {
                       color: Colors.white,
                     ),
                     Text(
-                      "Managers in hand",
+                      "Managers",
                       style:
                           GoogleFonts.corben(color: Colors.white, fontSize: 12),
                     ),
@@ -383,6 +383,105 @@ class WorkProvider extends ChangeNotifier {
                     ),
                   ],
                 )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenAgentAvailableManagers(),
+                  ));
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Add Workers",
+                      style:
+                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenAgentAvailableManagers(),
+                  ));
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Add managers",
+                      style:
+                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenAgentAvailableManagers(),
+                  ));
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "About",
+                      style:
+                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          const SizedBox(
+            height: 45,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 50,
+              ),
+              Icon(
+                Icons.arrow_right,
+                color: Colors.white,
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Logout",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ))
+            ],
           )
         ],
       ),
