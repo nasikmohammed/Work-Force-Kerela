@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/project_store.dart';
 
 import '../../model/agentmodel.dart';
 import '../../viewmodel/agentfirestore.dart';
@@ -14,7 +18,7 @@ class ScreenAgentAddProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
-    AgenteService agentobbj = AgenteService();
+    ProjectStore projectobj = ProjectStore();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -170,7 +174,7 @@ class ScreenAgentAddProject extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
-                      AgentModel agentobj = AgentModel(
+                      ProjectDetailsModel agentobj = ProjectDetailsModel(
                         agentaddprojectname:
                             funprovider.agentaddprojectname.text,
                         agentaddplace: funprovider.agentaddplace.text,
@@ -180,8 +184,9 @@ class ScreenAgentAddProject extends StatelessWidget {
                         agentaddbudget: funprovider.agentaddbudget.text,
                         agentaddmanager: funprovider.agentaddmanager.text,
                       );
-                      agentobbj.addUser(agentobj);
-                      print("dkmeregkrgrgkr");
+                      projectobj.addprojectdetails(
+                        agentobj,
+                      );
                     },
                     child: Text(
                       " Update",

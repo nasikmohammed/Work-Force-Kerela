@@ -1,5 +1,6 @@
 class AgentModel {
   // agent
+
   String? agentfirstname;
   String? agentlastname;
   String? agentcountry;
@@ -10,37 +11,25 @@ class AgentModel {
   String? aadharnumber;
   String? martial;
   String? password;
-  //addproject
-  String? agentaddprojectname;
-  String? agentaddplace;
-  String? agentaddstartdate;
-  String? agentaddenddate;
-  String? agentaddnoworers;
-  String? agentaddbudget;
-  String? agentaddmanager;
+  String? id;
 
-  AgentModel(
-      {
-      //agent
-      this.agentfirstname,
-      this.agentlastname,
-      this.agentcountry,
-      this.agentaddress,
-      this.agentcity,
-      this.agentemail,
-      this.aadharnumber,
-      this.martial,
-      this.password,
-      //addproject
-      this.agentaddprojectname,
-      this.agentaddplace,
-      this.agentaddstartdate,
-      this.agentaddenddate,
-      this.agentaddnoworers,
-      this.agentaddbudget,
-      this.agentaddmanager});
+  AgentModel({
+    //agent
+
+    this.agentfirstname,
+    this.agentlastname,
+    this.agentcountry,
+    this.agentaddress,
+    this.agentcity,
+    this.agentemail,
+    this.aadharnumber,
+    this.martial,
+    this.password,
+    this.id,
+  });
   Map<String, dynamic> toJson(docId) => {
         //agent
+
         "agentfirstname": agentfirstname,
         "agentaddress": agentaddress,
         "agentcountry": agentcountry,
@@ -51,14 +40,7 @@ class AgentModel {
         "aadharnumber": aadharnumber,
         "martial": martial,
         "password": password,
-        //agentaddprojrct
-        "agentaddprojectname": agentaddprojectname,
-        "agentaddplace": agentaddplace,
-        "agentaddstartdate": agentaddstartdate,
-        "agentaddenddate": agentaddenddate,
-        "agentaddnoworers": agentaddnoworers,
-        "agentaddbudget": agentaddbudget,
-        "agentaddmanager": agentaddmanager
+        "id": docId,
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(
@@ -71,13 +53,7 @@ class AgentModel {
       aadharnumber: json["aadharnumber"],
       martial: json["martial"],
       password: json["password"],
-      agentaddprojectname: json["agentaddprojectname"],
-      agentaddplace: json["agentaddplace"],
-      agentaddstartdate: json["agentaddstartdate"],
-      agentaddenddate: json["agentaddenddate"],
-      agentaddnoworers: json["agentaddnoworers"],
-      agentaddbudget: json["agentaddbudget"],
-      agentaddmanager: json["agentaddmanager"],
+      id: json["id"],
     );
   }
 }

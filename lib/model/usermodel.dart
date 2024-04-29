@@ -1,5 +1,4 @@
 class UserModel {
-  String? id;
   String? firstname;
   String? email;
   String? lastname;
@@ -9,7 +8,7 @@ class UserModel {
   String? aadharnumber;
   String? city;
   String? contactnumber;
-
+  String? id;
   UserModel({
     this.firstname,
     this.email,
@@ -27,13 +26,13 @@ class UserModel {
         "firstname": firstname,
         "lastname": lastname,
         "country": country,
-        "id": docId,
         "address": address,
         "city": city,
         "email": email,
         "aahaarnumber": aadharnumber,
         "martialstatus": martialstatus,
-        "contactnumber": contactnumber
+        "contactnumber": contactnumber,
+        "id": docId,
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) {

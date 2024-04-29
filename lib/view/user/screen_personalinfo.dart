@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,51 +24,42 @@ class ScreenUserPersonalInfo extends StatefulWidget {
 
 class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
   FirestoreService firestore = FirestoreService();
-  @override
-  void initState() {
-    FirestoreService firestore = FirestoreService();
-    firestore.getSingleUserData(
-        context, FirebaseAuth.instance.currentUser!.uid);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
 
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 247, 255, 222),
-        appBar: AppBar(
+    return FutureBuilder(
+      future: firestore.getSingleUserData(
+          context, FirebaseAuth.instance.currentUser!.uid),
+      builder: (context, snapshot) {
+        return Scaffold(
             backgroundColor: const Color.fromARGB(255, 247, 255, 222),
-            elevation: 0,
-            title: workprovider.isselected
-                ? Text(
-                    "Update Profile",
-                    style: GoogleFonts.nunitoSans(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  )
-                : Text(
-                    "Personal information",
-                    style: GoogleFonts.nunitoSans(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-            centerTitle: true,
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.error,
-                    color: Colors.black,
-                  ))
-            ]),
-        body: FutureBuilder(
-          future: firestore.getSingleUserData(
-              // FirebaseAuth.instance.currentUser!.uid
-              context,
-              FirebaseAuth.instance.currentUser!.uid),
-          builder: (context, snapshot) {
-            return SingleChildScrollView(
+            appBar: AppBar(
+                backgroundColor: const Color.fromARGB(255, 247, 255, 222),
+                elevation: 0,
+                title: workprovider.isselected
+                    ? Text(
+                        "Update Profile",
+                        style: GoogleFonts.nunitoSans(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )
+                    : Text(
+                        "Personal information",
+                        style: GoogleFonts.nunitoSans(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                centerTitle: true,
+                actions: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.error,
+                        color: Colors.black,
+                      ))
+                ]),
+            body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -74,7 +67,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                     backgroundImage: AssetImage(workprovider.person),
                   ),
                   Text(
-                    firestore.singleuserData!.firstname ?? "SANDEEP",
+                    funprovider.usermodelobj.firstname ?? "SANDEEP",
                     style: GoogleFonts.nunitoSans(fontSize: 15),
                   ),
                   const SizedBox(
@@ -84,6 +77,10 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                     padding: const EdgeInsets.only(left: 330),
                     child: IconButton(
                         onPressed: () {
+                          log("userid  ===================================${FirebaseAuth.instance.currentUser!.uid}=========");
+
+                          print(
+                              'userid  ===================================${FirebaseAuth.instance.currentUser!.uid}========================================');
                           workprovider.selectAvailable();
                         },
                         icon: Icon(Icons.swipe_up_rounded)),
@@ -138,7 +135,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                                   controller: funprovider.useraddresscontroller,
                                   decoration: InputDecoration(
                                       hintText:
-                                          firestore.singleuserData!.address,
+                                          funprovider.usermodelobj.address,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -156,8 +153,8 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                                   controller:
                                       funprovider.usercontactnumbercontroller,
                                   decoration: InputDecoration(
-                                      hintText: firestore
-                                          .singleuserData!.contactnumber,
+                                      hintText: funprovider
+                                          .usermodelobj.contactnumber,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -191,7 +188,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                                 TextFormField(
                                   controller: funprovider.usercitycontroller,
                                   decoration: InputDecoration(
-                                      hintText: firestore.singleuserData!.city,
+                                      hintText: funprovider.usermodelobj.city,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -208,7 +205,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                                 TextFormField(
                                   controller: funprovider.useremailcontroller,
                                   decoration: InputDecoration(
-                                      hintText: firestore.singleuserData!.email,
+                                      hintText: funprovider.usermodelobj.email,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -297,8 +294,8 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                   )
                 ],
               ),
-            );
-          },
-        ));
+            ));
+      },
+    );
   }
 }

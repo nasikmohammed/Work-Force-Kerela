@@ -4,14 +4,23 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
 import 'package:workforce_project/viewmodel/agentfirestore.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 import '../../model/agentmodel.dart';
 
-class ScreenRegisterAnEmployee extends StatelessWidget {
-  const ScreenRegisterAnEmployee({super.key});
+class ScreenRegisterAnEmployee extends StatefulWidget {
+  ScreenRegisterAnEmployee({super.key});
+
+  @override
+  State<ScreenRegisterAnEmployee> createState() =>
+      _ScreenRegisterAnEmployeeState();
+}
+
+class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
+  bool islosding = false;
 
   @override
   Widget build(BuildContext context) {
@@ -249,42 +258,66 @@ class ScreenRegisterAnEmployee extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10))),
                           ),
                         ),
-                const        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         SizedBox(
                           height: 40,
                           width: 130,
-                          child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  backgroundColor: Colors.blue[400],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              onPressed: () {
-                                AgentModel agentobj = AgentModel(
-                                    agentfirstname:
-                                        funprovider.agentrgfirstname.text,
-                                    agentlastname:
-                                        funprovider.agentrglastname.text,
-                                    agentcountry:
-                                        funprovider.agentrgcountry.text,
-                                    agentaddress:
-                                        funprovider.agentrgaddress.text,
-                                    agentcity: funprovider.agentrgcity.text,
-                                    agentemail: funprovider.agentrgemail.text,
-                                    aadharnumber:
-                                        funprovider.agentrgaadhaarnumber.text,
-                                    martial:
-                                        funprovider.agentrgmartialstatus.text,
-                                    password: funprovider.agentrgpassword.text,
-                                   );
-                                agentobbj.addUser(agentobj);
-                              },
-                              child: Text(
-                                "Register Now",
-                                style:
-                                    GoogleFonts.amaranth(color: Colors.black),
-                              )),
+                          child:
+                              // islosding
+                              // ? Center(
+                              //     child: CircularProgressIndicator(),
+                              //   )
+                              // :
+                              OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      backgroundColor: Colors.blue[400],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10))),
+                                  onPressed: () {
+                                    setState(() {
+                                      islosding = true;
+                                    });
+                                    agentobbj.addUser(
+                                      AgentModel(
+                                        agentfirstname:
+                                            funprovider.agentrgfirstname.text,
+                                        agentlastname:
+                                            funprovider.agentrglastname.text,
+                                        agentcountry:
+                                            funprovider.agentrgcountry.text,
+                                        agentaddress:
+                                            funprovider.agentrgaddress.text,
+                                        agentcity: funprovider.agentrgcity.text,
+                                        agentemail:
+                                            funprovider.agentrgemail.text,
+                                        aadharnumber: funprovider
+                                            .agentrgaadhaarnumber.text,
+                                        martial: funprovider
+                                            .agentrgmartialstatus.text,
+                                        password:
+                                            funprovider.agentrgpassword.text,
+                                      ),
+
+                                      //  FirebaseAuth.instance.currentUser!.uid
+                                    );
+                                    // setState(() {
+                                    //islosding = false;
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(
+                                      builder: (context) {
+                                        return ScreenUpdateProfileAgent();
+                                      },
+                                    ));
+                                    // });
+                                  },
+                                  child: Text(
+                                    "Register Now",
+                                    style: GoogleFonts.amaranth(
+                                        color: Colors.black),
+                                  )),
                         ),
                       ]),
                 ),

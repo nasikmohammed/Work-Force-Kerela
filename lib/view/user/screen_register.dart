@@ -223,7 +223,8 @@ class ScreenRegister extends StatelessWidget {
               ),
               const SizedBox(
                 height: 15,
-              ),          Container(
+              ),
+              Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
                   controller: funprovider.meterialstatuscontroller,

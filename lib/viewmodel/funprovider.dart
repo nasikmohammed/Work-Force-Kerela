@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
@@ -15,6 +16,7 @@ import 'package:workforce_project/viewmodel/userfirestore.dart';
 
 class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
+  AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
   EmailOTP myAuth = EmailOTP();
   final formkey = GlobalKey<FormState>();

@@ -29,9 +29,7 @@ class ScreenOtp extends StatelessWidget {
           ElevatedButton(
               onPressed: () {
                 funprovider.verifyOTP(context);
-               
 
-                print("giobgbgibgoigi");
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => ScreenUserPersonalInfo(),
                 ));
