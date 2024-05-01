@@ -1,35 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
-import 'package:workforce_project/model/agentmodel.dart';
 
-import '../model/usermodel.dart';
-import 'funprovider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
 
 class AgenteService {
   final db = FirebaseFirestore.instance;
-  final CollectionReference agentcollection =
+  final CollectionReference agent =
       FirebaseFirestore.instance.collection("AGENT");
-  Future addUser(AgentModel agentModel, ) async {
+  Future addUser(
+    AgentModel agentModel) async {
     final doc = db.collection("AGENT").doc();
-
-    doc.set(agentModel.toJson(doc.id));
+  doc.set(agentModel.toJson(doc.id));
   }
 
-  AgentModel? singleuseragentData;
-  Future getSingleUserDataagent(context, docId) async {
-    print("singleuseragentdata");
-    var funpprovider = Provider.of<FunProvider>(context);
-    DocumentSnapshot<Map<String, dynamic>> docSnapshot =
-        await db.collection("AGENT").doc(docId).get();
-    if (docSnapshot.exists) {
-      print(docSnapshot);
+  // AgentModel? singleagentuserData;
 
-      singleuseragentData = AgentModel.fromJson(docSnapshot.data()!);
-      funpprovider.agentmodelobj = singleuseragentData!;
-    }
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    print(funpprovider.agentmodelobj.agentcity);
-    print(
-        "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-  }
+  // Future getSingleUserData(
+  //   context,
+  // ) async {
+  //   var funprovider = Provider.of<FunProvider>(context);
+  //   DocumentSnapshot<Map<String, dynamic>> docSnapshot =
+  //       await db.collection("AGENT").doc().get();
+  //   if (docSnapshot.exists) {
+  //     singleagentuserData = AgentModel.fromJson(docSnapshot.data()!);
+  //     funprovider.agentmodelobj = singleagentuserData!;
+  //   }
+
+  //   print(
+  //       "AGENT firebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbase");
+
+  //   print(funprovider.agentmodelobj.agentfirstname);
+  //   print(
+  //       "AGENT firebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbase");
+  // }
 }

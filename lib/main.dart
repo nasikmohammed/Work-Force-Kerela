@@ -61,6 +61,7 @@ import 'package:workforce_project/view/police/screen_workers.dart';
 import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
+import 'package:workforce_project/viewmodel/agentfirestore.dart';
 import 'package:workforce_project/viewmodel/funprovider.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -91,7 +92,7 @@ class MyApp extends StatelessWidget {
             create: (context) {
               return FunProvider();
             },
-          )
+          ),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -108,6 +109,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenUserPersonalInfo()));
+            home: ScreenProjectDetails()));
   }
 }

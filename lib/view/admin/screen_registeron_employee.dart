@@ -281,28 +281,30 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                       islosding = true;
                                     });
                                     agentobbj.addUser(
-                                      AgentModel(
-                                        agentfirstname:
-                                            funprovider.agentrgfirstname.text,
-                                        agentlastname:
-                                            funprovider.agentrglastname.text,
-                                        agentcountry:
-                                            funprovider.agentrgcountry.text,
-                                        agentaddress:
-                                            funprovider.agentrgaddress.text,
-                                        agentcity: funprovider.agentrgcity.text,
-                                        agentemail:
-                                            funprovider.agentrgemail.text,
-                                        aadharnumber: funprovider
-                                            .agentrgaadhaarnumber.text,
-                                        martial: funprovider
-                                            .agentrgmartialstatus.text,
-                                        password:
-                                            funprovider.agentrgpassword.text,
-                                      ),
+                                        AgentModel(
+                                          agentfirstname:
+                                              funprovider.agentrgfirstname.text,
+                                          agentlastname:
+                                              funprovider.agentrglastname.text,
+                                          agentcountry:
+                                              funprovider.agentrgcountry.text,
+                                          agentaddress:
+                                              funprovider.agentrgaddress.text,
+                                          agentcity:
+                                              funprovider.agentrgcity.text,
+                                          agentemail:
+                                              funprovider.agentrgemail.text,
+                                          aadharnumber: funprovider
+                                              .agentrgaadhaarnumber.text,
+                                          martial: funprovider
+                                              .agentrgmartialstatus.text,
+                                          password:
+                                              funprovider.agentrgpassword.text,
+                                        ),
+                                      
 
-                                      //  FirebaseAuth.instance.currentUser!.uid
-                                    );
+                                        //  FirebaseAuth.instance.currentUser!.uid
+                                        );
                                     // setState(() {
                                     //islosding = false;
                                     Navigator.of(context)

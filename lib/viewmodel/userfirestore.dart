@@ -17,17 +17,20 @@ class FirestoreService {
   UserModel? singleuserData;
 
   Future getSingleUserData(context, docId) async {
-    print("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+    
     var funprovider = Provider.of<FunProvider>(context);
     DocumentSnapshot<Map<String, dynamic>> docSnapshot =
         await db.collection("USER").doc(docId).get();
     if (docSnapshot.exists) {
       print(docSnapshot);
-      print("object");
-
       singleuserData = UserModel.fromJson(docSnapshot.data()!);
       funprovider.usermodelobj = singleuserData!;
     }
+    print(
+        "user firebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbase");
+
     print(funprovider.usermodelobj.firstname);
+    print(
+        "user firebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbase");
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -7,123 +8,135 @@ import 'package:workforce_project/view/manager/screen_project_details.dart';
 import 'package:workforce_project/viewmodel/provider.dart';
 
 class ScreenYourProjects extends StatelessWidget {
-  const ScreenYourProjects({super.key});
+  ScreenYourProjects({super.key});
+
+  final CollectionReference project =
+      FirebaseFirestore.instance.collection("PROJECT");
 
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          "Your projects",
-          style: GoogleFonts.amaranth(color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.question_mark_outlined,
-                color: Colors.black,
-              ))
-        ],
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 300,
-                  height: 190,
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Column(
+    return StreamBuilder(
+      stream: project.snapshots(),
+      builder: (context, snapshot) {
+        var projectname = snapshot.data!.docs.first['agentaddprojectname'];
+        var projectplace = snapshot.data!.docs.first['agentaddplace'];
+        var projectdeaddate = snapshot.data!.docs.first['agentaddenddate'];
+        return Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Text(
+              "Your projects",
+              style: GoogleFonts.amaranth(color: Colors.black),
+            ),
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.question_mark_outlined,
+                    color: Colors.black,
+                  ))
+            ],
+            centerTitle: true,
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 300,
+                      height: 190,
+                      child: Row(
                         children: [
                           const SizedBox(
-                            height: 20,
+                            width: 10,
                           ),
-                          SizedBox(
-                              width: 150,
-                              child: Image.asset(workprovider.house)),
-                          Row(
+                          Column(
                             children: [
-                              Text(
-                                "Bridge",
-                                style: GoogleFonts.mukta(),
+                              const SizedBox(
+                                height: 20,
                               ),
-                              Text(
-                                "(Angadipuram)",
-                                style: GoogleFonts.mukta(color: Colors.grey),
-                              ),
+                              SizedBox(
+                                  width: 150,
+                                  child: Image.asset(workprovider.house)),
+                              Row(
+                                children: [
+                                  Text(
+                                    projectname,
+                                    style: GoogleFonts.mukta(),
+                                  ),
+                                  Text(
+                                    "(${projectplace})",
+                                    style:
+                                        GoogleFonts.mukta(color: Colors.grey),
+                                  ),
+                                ],
+                              )
                             ],
+                          ),
+                          const SizedBox(
+                            width: 40,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 25),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "This project in progress",
+                                  style: GoogleFonts.mukta(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Deadlock :   ${projectdeaddate}',
+                                      style: GoogleFonts.mukta(),
+                                    ),
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(Icons.keyboard_control))
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          backgroundColor: Colors.indigo),
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pushReplacement(MaterialPageRoute(
+                                          builder: (context) =>
+                                              ScreenProjectDetails(),
+                                        ));
+                                      },
+                                      child: Text(
+                                        "View Details",
+                                        style: GoogleFonts.mukta(),
+                                      )),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),
-                      const SizedBox(
-                        width: 40,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 25),
-                        child: Column(
-                          children: [
-                            Text(
-                              "This project in progress",
-                              style: GoogleFonts.mukta(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Deadlock-01/02/2025",
-                                  style: GoogleFonts.mukta(),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.keyboard_control))
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              height: 30,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      backgroundColor: Colors.indigo),
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushReplacement(MaterialPageRoute(
-                                      builder: (context) =>
-                                          ScreenProjectDetails(),
-                                    ));
-                                  },
-                                  child: Text(
-                                    "View Details",
-                                    style: GoogleFonts.mukta(),
-                                  )),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
