@@ -23,22 +23,26 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
       FirebaseFirestore.instance.collection("AGENT");
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     final workprovider = Provider.of<WorkProvider>(context);
 
     return StreamBuilder(
       stream: agent.snapshots(),
       builder: (context, snapshot) {
-        var agentfirstname = snapshot.data!.docs.first['agentfirstname'];
+        var agentfirstname = snapshot.data!.docs.first['agencyname'];
         var agentaddress = snapshot.data!.docs.first['agentaddress'];
         var agentcity = snapshot.data!.docs.first['agentcity'];
+        var agentcontactnumber = snapshot.data!.docs.first['contactnumber'];
+        var agentstate = snapshot.data!.docs.first['agentstate'];
 
         var agentemail = snapshot.data!.docs.first['agentemail'];
         var agentrgpassword = snapshot.data!.docs.first['password'];
 
         return Scaffold(
-          backgroundColor: const Color.fromARGB(255, 211, 228, 209),
+          backgroundColor: Colors.white,
           appBar: AppBar(
-              backgroundColor: const Color.fromARGB(255, 211, 228, 209),
+              backgroundColor: Colors.white,
               elevation: 0,
               title: Text(
                 "Profile",
@@ -68,12 +72,14 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 330),
-                  child: IconButton(
-                      onPressed: () {
-                        workprovider.selectAvailable();
-                      },
-                      icon: Icon(Icons.edit_square)),
+                  padding: const EdgeInsets.only(left: 280),
+                  child: TextButton.icon(
+                      label: Text("Edit"),
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.edit,
+                        size: 15,
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -81,12 +87,12 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                     right: 20,
                   ),
                   child: Container(
-                    width: 400,
-                    height: 600,
+                    width: width,
+                    height: height,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 246, 244, 244),
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [BoxShadow(blurRadius: 1)]),
+                      color: const Color.fromARGB(255, 246, 244, 244),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 25, right: 25),
                       child: SingleChildScrollView(
@@ -125,25 +131,13 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                                 height: 10,
                               ),
                               Text(
-                                "Company Name",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
                                 "Contact Number",
                                 style: GoogleFonts.hind(fontSize: 17),
                               ),
                               TextFormField(
                                 readOnly: true,
                                 decoration: InputDecoration(
+                                    hintText: agentcontactnumber,
                                     contentPadding: EdgeInsets.all(5),
                                     border: OutlineInputBorder()),
                               ),
@@ -157,6 +151,7 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                               TextFormField(
                                 readOnly: true,
                                 decoration: InputDecoration(
+                                    hintText: agentstate,
                                     contentPadding: EdgeInsets.all(5),
                                     border: OutlineInputBorder()),
                               ),
@@ -198,20 +193,7 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                                 readOnly: true,
                                 decoration: InputDecoration(
                                     hintText: agentrgpassword,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Company Logo",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(5),
+                                    contentPadding: const EdgeInsets.all(5),
                                     border: OutlineInputBorder()),
                               ),
                               const SizedBox(
@@ -222,7 +204,7 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                                       padding: const EdgeInsets.only(left: 110),
                                       child: OutlinedButton(
                                           style: OutlinedButton.styleFrom(
-                                              backgroundColor: Color.fromARGB(
+                                              backgroundColor:const Color.fromARGB(
                                                   255, 57, 73, 163),
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:

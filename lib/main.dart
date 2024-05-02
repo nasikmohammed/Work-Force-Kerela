@@ -109,6 +109,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenProjectDetails()));
+            home: ScreenRegisterAnEmployee()));
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -24,6 +26,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
 
   @override
   Widget build(BuildContext context) {
+     File? images;
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
     AgenteService agentobbj = AgenteService();
@@ -44,11 +47,11 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         InkWell(
                           onTap: () {
-                            print("image picker clicked");
+                            funprovider.imagePickforregister();
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -84,9 +87,9 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                               color: Color.fromARGB(255, 45, 44, 44),
                               borderRadius: BorderRadius.circular(10)),
                           child: TextFormField(
-                            controller: funprovider.agentrgfirstname,
+                            controller: funprovider.agencyname,
                             decoration: InputDecoration(
-                                hintText: "  First Name",
+                                hintText: "Agency Name",
                                 contentPadding: EdgeInsets.all(5),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
@@ -94,51 +97,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Color.fromARGB(255, 45, 44, 44),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextFormField(
-                            controller: funprovider.agentrglastname,
-                            decoration: InputDecoration(
-                                hintText: "  Last Name",
-                                contentPadding: EdgeInsets.all(5),
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Color.fromARGB(255, 45, 44, 44),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextFormField(
-                            controller: funprovider.agentrgcountry,
-                            decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.arrow_drop_down,
-                                      color: Colors.white,
-                                    )),
-                                hintText: "  Country",
-                                contentPadding: EdgeInsets.all(5),
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
+                          height: 18,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -148,7 +107,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           child: TextFormField(
                             controller: funprovider.agentrgaddress,
                             decoration: InputDecoration(
-                                hintText: "  Address",
+                                hintText: "Address",
                                 contentPadding: EdgeInsets.all(5),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
@@ -157,7 +116,44 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 18,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              color: Color.fromARGB(255, 45, 44, 44),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextFormField(
+                            controller: funprovider.agentcontactnumber,
+                            decoration: InputDecoration(
+                                hintText: "  Contact Number",
+                                contentPadding: EdgeInsets.all(5),
+                                hintStyle: TextStyle(color: Colors.white),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              color: Color.fromARGB(255, 45, 44, 44),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextFormField(
+                            controller: funprovider.agentrgstate,
+                            decoration: InputDecoration(
+                                hintText: "  State",
+                                contentPadding: EdgeInsets.all(5),
+                                hintStyle: TextStyle(color: Colors.white),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 18,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -167,7 +163,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           child: TextFormField(
                             controller: funprovider.agentrgcity,
                             decoration: InputDecoration(
-                                hintText: "  City",
+                                hintText: "City",
                                 contentPadding: EdgeInsets.all(5),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
@@ -175,7 +171,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 18,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -185,7 +181,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           child: TextFormField(
                             controller: funprovider.agentrgemail,
                             decoration: InputDecoration(
-                                hintText: "  E-Mail",
+                                hintText: "Email",
                                 contentPadding: EdgeInsets.all(5),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
@@ -193,49 +189,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Color.fromARGB(255, 45, 44, 44),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextFormField(
-                            controller: funprovider.agentrgaadhaarnumber,
-                            decoration: InputDecoration(
-                                hintText: "  Adhaar Number",
-                                contentPadding: EdgeInsets.all(5),
-                                hintStyle: TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Color.fromARGB(255, 45, 44, 44),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextFormField(
-                            controller: funprovider.agentrgmartialstatus,
-                            decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.arrow_drop_down,
-                                      color: Colors.white,
-                                    )),
-                                hintText: "  Material Status",
-                                contentPadding: EdgeInsets.all(5),
-                                hintStyle: const TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
+                          height: 18,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -245,12 +199,6 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           child: TextFormField(
                             controller: funprovider.agentrgpassword,
                             decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.arrow_drop_down,
-                                      color: Colors.white,
-                                    )),
                                 hintText: "Password",
                                 contentPadding: EdgeInsets.all(5),
                                 hintStyle: const TextStyle(color: Colors.white),
@@ -259,7 +207,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                           ),
                         ),
                         const SizedBox(
-                          height: 5,
+                          height: 30,
                         ),
                         SizedBox(
                           height: 40,
@@ -281,30 +229,23 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                       islosding = true;
                                     });
                                     agentobbj.addUser(
-                                        AgentModel(
-                                          agentfirstname:
-                                              funprovider.agentrgfirstname.text,
-                                          agentlastname:
-                                              funprovider.agentrglastname.text,
-                                          agentcountry:
-                                              funprovider.agentrgcountry.text,
-                                          agentaddress:
-                                              funprovider.agentrgaddress.text,
-                                          agentcity:
-                                              funprovider.agentrgcity.text,
-                                          agentemail:
-                                              funprovider.agentrgemail.text,
-                                          aadharnumber: funprovider
-                                              .agentrgaadhaarnumber.text,
-                                          martial: funprovider
-                                              .agentrgmartialstatus.text,
-                                          password:
-                                              funprovider.agentrgpassword.text,
-                                        ),
-                                      
+                                      AgentModel(
+                                        agencyname: funprovider.agencyname.text,
+                                        contactnumber:
+                                            funprovider.agentcontactnumber.text,
+                                        agentaddress:
+                                            funprovider.agentrgaddress.text,
+                                        agentcity: funprovider.agentrgcity.text,
+                                        agentemail:
+                                            funprovider.agentrgemail.text,
+                                        agentstate:
+                                            funprovider.agentrgstate.text,
+                                        password:
+                                            funprovider.agentrgpassword.text,
+                                      ),
 
-                                        //  FirebaseAuth.instance.currentUser!.uid
-                                        );
+                                      //  FirebaseAuth.instance.currentUser!.uid
+                                    );
                                     // setState(() {
                                     //islosding = false;
                                     Navigator.of(context)

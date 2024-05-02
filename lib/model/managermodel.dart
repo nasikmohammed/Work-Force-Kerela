@@ -1,37 +1,39 @@
 class ManagerModel {
   String? managername;
-  String? manageraddress;
-  String? managercontactnumber;
-  String? managerstate;
-  String? managercity;
+  String? managerplace;
+
+  String? managerage;
+  String? manageridnumber;
+  String? managerid;
   String? manageremail;
+
   String? managerpassword;
   ManagerModel(
       {this.managername,
-      this.manageraddress,
-      this.managercontactnumber,
-      this.managerstate,
-      this.managercity,
+      this.managerplace,
+      this.managerage,
+      this.manageridnumber,
       this.manageremail,
-      this.managerpassword});
+      this.managerpassword,
+      this.managerid});
   Map<String, dynamic> toJson(docId) => {
         "managername": managername,
-        "manageraddress": manageraddress,
-        "managercontactnumber": managercontactnumber,
-        "managerstate": managerstate,
-        "managercity": managercity,
+        "managerplace": managerplace,
+        "managerage": managerage,
+        "manageridnumber": manageridnumber,
         "manageremail": manageremail,
         "managerpassword": managerpassword,
+        "managerid": managerid,
       };
   factory ManagerModel.fromJson(Map<String, dynamic> json) {
     return ManagerModel(
       managername: json["managername"],
-      manageraddress: json["manageraddress"],
-      managercontactnumber: json["managercontactnumber"],
-      managerstate: json["managerstate"],
-      managercity: json["managercity"], 
+      managerplace: json["managerplace"],
+      managerage: json["managerage"],
+      manageridnumber: json["manageridnumber"],
       manageremail: json["manageremail"],
       managerpassword: json["managerpassword"],
+      managerid: json["managerid"],
     );
   }
 }

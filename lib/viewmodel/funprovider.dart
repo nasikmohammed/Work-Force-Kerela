@@ -13,6 +13,7 @@ import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/userfirestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
@@ -74,14 +75,14 @@ class FunProvider extends ChangeNotifier {
   final agentconfirmpasswordcontroller = TextEditingController();
   final agentwebsitecontroller = TextEditingController();
   //admin(Register As an Employee)
-  final agentrgfirstname = TextEditingController();
-  final agentrglastname = TextEditingController();
-  final agentrgcountry = TextEditingController();
+  final agencyname = TextEditingController();
+  final agentcontactnumber = TextEditingController();
+  final agentrgstate = TextEditingController();
   final agentrgaddress = TextEditingController();
   final agentrgcity = TextEditingController();
   final agentrgemail = TextEditingController();
-  final agentrgaadhaarnumber = TextEditingController();
-  final agentrgmartialstatus = TextEditingController();
+
+  final agentcompanyname = TextEditingController();
   final agentrgpassword = TextEditingController();
   //AGENT Add Project
   final agentaddprojectname = TextEditingController();
@@ -91,6 +92,14 @@ class FunProvider extends ChangeNotifier {
   final agentaddnoworers = TextEditingController();
   final agentaddbudget = TextEditingController();
   final agentaddmanager = TextEditingController();
+  //Agent AddManager
+  final agentmanagername = TextEditingController();
+  final agentmanagerplace = TextEditingController();
+  final agentmanagerage = TextEditingController();
+  final agentmanagerIdnumber = TextEditingController();
+  final agentmanageremail = TextEditingController();
+  final agentmanagerid = TextEditingController();
+  final agentmanagerpassword = TextEditingController();
 
   //managerController
   final managernamecontroller = TextEditingController();
@@ -207,13 +216,18 @@ class FunProvider extends ChangeNotifier {
 
 //screen register
   File? images;
+  String uploadurl = "";
   imagePickforregister() async {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       images = File(pickedImage.path);
+      Reference storageurl = FirebaseStorage.instance.ref().child(images!.path);
+
+      UploadTask uploadimages = storageurl.putFile(images!);
     }
   }
+
 //screen register
 
   countrypicker(context) async {

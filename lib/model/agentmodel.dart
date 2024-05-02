@@ -1,57 +1,52 @@
 class AgentModel {
   // agent
 
-  String? agentfirstname;
-  String? agentlastname;
-  String? agentcountry;
+  String? agencyname;
+
+  String? agentstate;
   String? agentaddress;
 
   String? agentcity;
   String? agentemail;
-  String? aadharnumber;
-  String? martial;
+  String? contactnumber;
+
   String? password;
   String? id;
 
   AgentModel({
     //agent
 
-    this.agentfirstname,
-    this.agentlastname,
-    this.agentcountry,
+    this.agencyname,
+    this.agentstate,
     this.agentaddress,
     this.agentcity,
     this.agentemail,
-    this.aadharnumber,
-    this.martial,
+    this.contactnumber,
     this.password,
     this.id,
   });
   Map<String, dynamic> toJson(docId) => {
         //agent
 
-        "agentfirstname": agentfirstname,
+        "agencyname": agencyname,
         "agentaddress": agentaddress,
-        "agentcountry": agentcountry,
-        "agentlastname": agentlastname,
+        "agentstate": agentstate,
 
         "agentcity": agentcity,
         "agentemail": agentemail,
-        "aadharnumber": aadharnumber,
-        "martial": martial,
+        "contactnumber": contactnumber,
+
         "password": password,
         "id": docId,
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(
-      agentfirstname: json["agentfirstname"],
+      agencyname: json["agencyname"],
       agentaddress: json["agentaddress"],
-      agentlastname: json["agentlastname"],
       agentcity: json["agentcity"],
       agentemail: json["agentemail"],
-      agentcountry: json["agentcountry"],
-      aadharnumber: json["aadharnumber"],
-      martial: json["martial"],
+      agentstate: json["agentstate"],
+      contactnumber: json["contactnumber"],
       password: json["password"],
       id: json["id"],
     );
