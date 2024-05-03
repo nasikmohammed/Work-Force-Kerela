@@ -7,7 +7,7 @@ import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_changepassword.dart';
 import 'package:workforce_project/view/police/screen_settings.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUpdtPswdSttngAbt extends StatelessWidget {
   const ScreenUpdtPswdSttngAbt({super.key});

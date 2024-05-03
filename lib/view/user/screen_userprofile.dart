@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_selectidentity.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUserProfile extends StatelessWidget {
   const ScreenUserProfile({super.key});

@@ -7,7 +7,7 @@ import 'package:workforce_project/view/police/screen_agencies.dart';
 import 'package:workforce_project/view/police/screen_complaints.dart';
 import 'package:workforce_project/view/police/screen_managers.dart';
 import 'package:workforce_project/view/police/screen_workers.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenCompamw extends StatelessWidget {
   const ScreenCompamw({super.key});

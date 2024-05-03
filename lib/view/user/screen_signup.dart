@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_register.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenSignup extends StatelessWidget {
   const ScreenSignup({super.key});

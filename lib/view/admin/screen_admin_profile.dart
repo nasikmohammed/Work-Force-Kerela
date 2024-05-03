@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get_state_manager/src/simple/get_widget_cache.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAdminProfile extends StatelessWidget {
   const ScreenAdminProfile({super.key});

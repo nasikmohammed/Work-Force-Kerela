@@ -7,7 +7,7 @@ import 'package:workforce_project/view/agent/screen_availableworkers.dart';
 import 'package:workforce_project/view/police/screen_closedcomplaints.dart';
 import 'package:workforce_project/view/police/screen_newcomplaints.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenComplaints extends StatelessWidget {
   const ScreenComplaints({super.key});

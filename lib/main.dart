@@ -61,9 +61,9 @@ import 'package:workforce_project/view/police/screen_workers.dart';
 import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
-import 'package:workforce_project/viewmodel/agentfirestore.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/agent_store.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -109,6 +109,6 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenRegisterAnEmployee()));
+            home: ScreenWorkers()));
   }
 }

@@ -6,11 +6,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/projectmodel.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/project_store.dart';
 
 import '../../model/agentmodel.dart';
-import '../../viewmodel/agentfirestore.dart';
+import '../../viewmodel/agent_store.dart';
 
 class ScreenAgentAddProject extends StatelessWidget {
   const ScreenAgentAddProject({super.key});

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/admin/screen_pending_verification.dart';
 import 'package:workforce_project/view/admin/screen_verified_registrations.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAdminVerification extends StatelessWidget {
   const ScreenAdminVerification({super.key});

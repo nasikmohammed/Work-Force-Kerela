@@ -5,9 +5,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/viewmodel/agentfirestore.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/agent_store.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUpdateProfileAgent extends StatefulWidget {
   const ScreenUpdateProfileAgent({super.key});

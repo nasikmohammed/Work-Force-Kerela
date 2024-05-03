@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenBottomNav extends StatefulWidget {
   const ScreenBottomNav({super.key});

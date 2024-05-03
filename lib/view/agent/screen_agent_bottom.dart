@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_messages.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentBottom extends StatefulWidget {
   const ScreenAgentBottom({super.key});

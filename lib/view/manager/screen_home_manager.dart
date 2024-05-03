@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_manager_reportproblems.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenHomeManager extends StatelessWidget {
   const ScreenHomeManager({super.key});

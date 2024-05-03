@@ -12,19 +12,21 @@ class AgentModel {
 
   String? password;
   String? id;
+  String? image;
 
-  AgentModel({
-    //agent
+  AgentModel(
+      {
+      //agent
 
-    this.agencyname,
-    this.agentstate,
-    this.agentaddress,
-    this.agentcity,
-    this.agentemail,
-    this.contactnumber,
-    this.password,
-    this.id,
-  });
+      this.agencyname,
+      this.agentstate,
+      this.agentaddress,
+      this.agentcity,
+      this.agentemail,
+      this.contactnumber,
+      this.password,
+      this.id,
+      this.image});
   Map<String, dynamic> toJson(docId) => {
         //agent
 
@@ -38,6 +40,7 @@ class AgentModel {
 
         "password": password,
         "id": docId,
+        "image": image
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(
@@ -49,6 +52,7 @@ class AgentModel {
       contactnumber: json["contactnumber"],
       password: json["password"],
       id: json["id"],
+      image: json["image"],
     );
   }
 }

@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:workforce_project/model/workersmodel.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/workers_store.dart';
 
 class ScreenAddWorker extends StatelessWidget {
   const ScreenAddWorker({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WorkersStore workersobj = WorkersStore();
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -37,6 +43,8 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                controller: funprovider.workername,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -53,6 +61,7 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                controller: funprovider.workerplace,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -68,7 +77,10 @@ class ScreenAddWorker extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              TextFormField(                decoration: InputDecoration(
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: funprovider.workerage,
+                decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
               ),
@@ -84,6 +96,7 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                controller: funprovider.workeridnumber,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -100,7 +113,8 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
-                keyboardType: TextInputType.number,
+                controller: funprovider.workeremail,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -117,6 +131,7 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                controller: funprovider.workerid,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -134,7 +149,9 @@ class ScreenAddWorker extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
-          
+                obscureText: true,
+                controller: funprovider.workerpassword,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -142,7 +159,6 @@ class ScreenAddWorker extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              
               ElevatedButton(
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.white),
@@ -157,7 +173,15 @@ class ScreenAddWorker extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
-                    
+                      workersobj.addWorkers(WorkersModel(
+                        workersname: funprovider.workername.text,
+                        workersplace: funprovider.workerplace.text,
+                        workersage: funprovider.workerage.text,
+                        workersidnumber: funprovider.workeridnumber.text,
+                        workersemail: funprovider.workeremail.text,
+                        workersid: funprovider.workerid.text,
+                        workerspassword: funprovider.workerpassword.text,
+                      ));
                     },
                     child: Text(
                       " Update",

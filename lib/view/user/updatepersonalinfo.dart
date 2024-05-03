@@ -7,10 +7,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-import '../../viewmodel/funprovider.dart';
-import '../../viewmodel/userfirestore.dart';
+import '../../viewmodel/function_provider.dart';
+import '../../viewmodel/user_store.dart';
 
 class ScreenUpdatePersonalInfo extends StatelessWidget {
   ScreenUpdatePersonalInfo({super.key});

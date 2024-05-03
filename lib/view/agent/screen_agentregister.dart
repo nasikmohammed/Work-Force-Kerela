@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
-import 'package:workforce_project/viewmodel/agentfirestore.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/agent_store.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenAgentRegister extends StatelessWidget {
   const ScreenAgentRegister({super.key});

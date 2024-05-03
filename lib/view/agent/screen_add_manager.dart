@@ -4,9 +4,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/managermodel.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
-import '../../viewmodel/managerstore.dart';
+import '../../viewmodel/manager_store.dart';
 
 class ScreenAddManager extends StatelessWidget {
   const ScreenAddManager({super.key});
@@ -78,6 +78,7 @@ class ScreenAddManager extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                keyboardType: TextInputType.number,
                 controller: funprovider.agentmanagerage,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -113,7 +114,7 @@ class ScreenAddManager extends StatelessWidget {
               ),
               TextFormField(
                 controller: funprovider.agentmanageremail,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -148,6 +149,7 @@ class ScreenAddManager extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                obscureText: true,
                 controller: funprovider.agentmanagerpassword,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -174,12 +176,12 @@ class ScreenAddManager extends StatelessWidget {
                           managername: funprovider.agentmanagername.text,
                           managerplace: funprovider.agentmanagerplace.text,
                           managerage: funprovider.agentmanagerage.text,
-                          manageridnumber: funprovider.agentmanagerIdnumber.text,
+                          manageridnumber:
+                              funprovider.agentmanagerIdnumber.text,
                           manageremail: funprovider.agentmanageremail.text,
                           managerid: funprovider.agentmanagerid.text,
-                          managerpassword: funprovider.agentmanagerpassword.text
-
-                          ));
+                          managerpassword:
+                              funprovider.agentmanagerpassword.text));
                     },
                     child: Text(
                       " Update",

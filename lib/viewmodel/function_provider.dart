@@ -12,7 +12,7 @@ import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
-import 'package:workforce_project/viewmodel/userfirestore.dart';
+import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FunProvider extends ChangeNotifier {
@@ -100,6 +100,14 @@ class FunProvider extends ChangeNotifier {
   final agentmanageremail = TextEditingController();
   final agentmanagerid = TextEditingController();
   final agentmanagerpassword = TextEditingController();
+  //Agent Add Workers
+  final workername = TextEditingController();
+  final workerplace = TextEditingController();
+  final workerage = TextEditingController();
+  final workeridnumber = TextEditingController();
+  final workeremail = TextEditingController();
+  final workerid = TextEditingController();
+  final workerpassword = TextEditingController();
 
   //managerController
   final managernamecontroller = TextEditingController();
@@ -109,6 +117,7 @@ class FunProvider extends ChangeNotifier {
   final managercitycontroller = TextEditingController();
   final manageremailcontroller = TextEditingController();
   final managerpasswordcontroller = TextEditingController();
+
   //police
   final policenamecontroller = TextEditingController();
   final policeaddresscontroller = TextEditingController();
@@ -218,13 +227,16 @@ class FunProvider extends ChangeNotifier {
   File? images;
   String uploadurl = "";
   imagePickforregister() async {
-    final pickedImage =
+    XFile? pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       images = File(pickedImage.path);
       Reference storageurl = FirebaseStorage.instance.ref().child(images!.path);
+      print(storageurl);
 
       UploadTask uploadimages = storageurl.putFile(images!);
+      uploadurl =
+          await uploadimages.then((result) => result.ref.getDownloadURL());
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 import '../model/usermodel.dart';
 

@@ -9,10 +9,10 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/updatepersonalinfo.dart';
-import 'package:workforce_project/viewmodel/userfirestore.dart';
+import 'package:workforce_project/viewmodel/user_store.dart';
 
-import 'package:workforce_project/viewmodel/funprovider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 import '../../model/usermodel.dart';
 

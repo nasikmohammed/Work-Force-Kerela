@@ -8,9 +8,9 @@ import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_otp.dart';
 import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
-import 'package:workforce_project/viewmodel/userfirestore.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/user_store.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenRegister extends StatelessWidget {
   ScreenRegister({super.key});

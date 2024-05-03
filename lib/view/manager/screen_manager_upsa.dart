@@ -8,7 +8,7 @@ import 'package:workforce_project/view/manager/screen_manager_change_password.da
 import 'package:workforce_project/view/manager/screen_manager_profile.dart';
 import 'package:workforce_project/view/manager/screen_manager_settings.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenManagerUpsa extends StatelessWidget {
   const ScreenManagerUpsa({super.key});

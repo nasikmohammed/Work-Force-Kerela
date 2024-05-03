@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../viewmodel/provider.dart';
+import '../../viewmodel/ui_work_provider.dart';
 
 class ScreenManagerLogin extends StatelessWidget {
   const ScreenManagerLogin({super.key});

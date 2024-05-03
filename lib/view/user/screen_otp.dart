@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
-import 'package:workforce_project/viewmodel/funprovider.dart';
-import 'package:workforce_project/viewmodel/provider.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 import '../../model/usermodel.dart';
-import '../../viewmodel/userfirestore.dart';
+import '../../viewmodel/user_store.dart';
 
 class ScreenOtp extends StatelessWidget {
   ScreenOtp({super.key});
