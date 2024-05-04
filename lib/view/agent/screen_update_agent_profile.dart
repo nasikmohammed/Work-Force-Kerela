@@ -1,26 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
-import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenUpdateProfileAgent extends StatefulWidget {
-  const ScreenUpdateProfileAgent({super.key});
+class ScreenUpdateAgentProfile extends StatelessWidget {
+  ScreenUpdateAgentProfile({super.key});
 
-  @override
-  State<ScreenUpdateProfileAgent> createState() =>
-      _ScreenUpdateProfileAgentState();
-}
-
-class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
   AgenteService agentstore = AgenteService();
+
   final CollectionReference agent =
       FirebaseFirestore.instance.collection("AGENT");
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -70,16 +63,6 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                 ),
                 const SizedBox(
                   height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 280),
-                  child: TextButton.icon(
-                      label: Text("Edit"),
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.edit,
-                        size: 15,
-                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -204,8 +187,9 @@ class _ScreenUpdateProfileAgentState extends State<ScreenUpdateProfileAgent> {
                                       padding: const EdgeInsets.only(left: 110),
                                       child: OutlinedButton(
                                           style: OutlinedButton.styleFrom(
-                                              backgroundColor:const Color.fromARGB(
-                                                  255, 57, 73, 163),
+                                              backgroundColor:
+                                                  const Color.fromARGB(
+                                                      255, 57, 73, 163),
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(

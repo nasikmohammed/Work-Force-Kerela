@@ -30,7 +30,7 @@ class ScreenAddManager extends StatelessWidget {
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.error))]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 25, right: 25),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

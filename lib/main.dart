@@ -18,7 +18,7 @@ import 'package:workforce_project/view/agent/screen_changepasswordagent.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
-import 'package:workforce_project/view/agent/screen_updateprofileagent.dart';
+import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
@@ -38,7 +38,7 @@ import 'package:workforce_project/view/police/screen_agencies.dart';
 import 'package:workforce_project/view/agent/screen_agentregister.dart';
 import 'package:workforce_project/view/police/screen_alert.dart';
 import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
-import 'package:workforce_project/view/agent/screen_availableworkers.dart';
+import 'package:workforce_project/view/manager/screen_availableworkers.dart';
 import 'package:workforce_project/view/police/screen_changepassword.dart';
 import 'package:workforce_project/view/police/screen_closedcomplaints.dart';
 import 'package:workforce_project/view/police/screen_managers.dart';
@@ -98,17 +98,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
-              // This is the theme of your application.
-              //
-              // Try running your application with "flutter run". You'll see the
-              // application has a blue toolbar. Then, without quitting the app, try
-              // changing the primarySwatch below to Colors.green and then invoke
-              // "hot reload" (press "r" in the console where you ran "flutter run",
-              // or simply save your changes to "hot reload" in a Flutter IDE).
-              // Notice that the counter didn't reset back to zero; the application
-              // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            home: ScreenWorkers()));
+            home: ScreenAgentProfile()));
   }
 }

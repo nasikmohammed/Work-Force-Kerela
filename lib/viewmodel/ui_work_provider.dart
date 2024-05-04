@@ -11,7 +11,7 @@ import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
 import 'package:workforce_project/view/agent/screen_add_project.dart';
 import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
-import 'package:workforce_project/view/agent/screen_availableworkers.dart';
+import 'package:workforce_project/view/manager/screen_availableworkers.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
 import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
