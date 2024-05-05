@@ -109,6 +109,18 @@ class FunProvider extends ChangeNotifier {
   final workerid = TextEditingController();
   final workerpassword = TextEditingController();
 
+  //update agent profile
+ 
+     var agentupdatename = TextEditingController();
+  final agentupdateaddress = TextEditingController();
+  final agentupdatecity = TextEditingController();
+  final agentupdatestate = TextEditingController();
+  final agentupdatecontactnumber = TextEditingController();
+  final agentupdateemail = TextEditingController();
+  final agentupdatepassword = TextEditingController();
+
+
+
   //managerController
   final managernamecontroller = TextEditingController();
   final manageraddresscontroller = TextEditingController();

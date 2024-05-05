@@ -17,7 +17,6 @@ class FirestoreService {
   UserModel? singleuserData;
 
   Future getSingleUserData(context, docId) async {
-    
     var funprovider = Provider.of<FunProvider>(context);
     DocumentSnapshot<Map<String, dynamic>> docSnapshot =
         await db.collection("USER").doc(docId).get();

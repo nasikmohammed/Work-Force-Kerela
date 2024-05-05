@@ -255,6 +255,7 @@ class WorkProvider extends ChangeNotifier {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
+      backgroundColor: Color.fromARGB(255, 9, 17, 61),
       child: Column(
         children: [
           Padding(
@@ -485,7 +486,6 @@ class WorkProvider extends ChangeNotifier {
           )
         ],
       ),
-      backgroundColor: Color.fromARGB(255, 9, 17, 61),
     );
   }
 

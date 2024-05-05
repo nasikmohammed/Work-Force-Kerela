@@ -71,7 +71,7 @@ class ScreenAgentProfile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 280),
                   child: TextButton.icon(
-                      label:const Text("Update"),
+                      label: const Text("Update"),
                       onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) {
@@ -79,7 +79,7 @@ class ScreenAgentProfile extends StatelessWidget {
                           },
                         ));
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit,
                         size: 15,
                       )),
@@ -166,6 +166,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 style: GoogleFonts.hind(fontSize: 17),
                               ),
                               TextFormField(
+                                readOnly: true,
                                 decoration: InputDecoration(
                                     hintText: agentcity,
                                     contentPadding: EdgeInsets.all(5),
