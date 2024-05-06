@@ -51,7 +51,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                     backgroundImage: AssetImage(workprovider.person),
                   ),
                   Text(
-                    funprovider.usermodelobj.firstname ?? "SANDEEP",
+                    "",
                     style: GoogleFonts.nunitoSans(fontSize: 15),
                   ),
                   const SizedBox(
@@ -98,10 +98,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller: funprovider.usernamepcontroller,
                                   decoration: InputDecoration(
-                                      hintText:
-                                          firestore.singleuserData!.firstname,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -116,10 +113,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller: funprovider.useraddresscontroller,
                                   decoration: InputDecoration(
-                                      hintText:
-                                          funprovider.usermodelobj.address,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -134,11 +128,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller:
-                                      funprovider.usercontactnumbercontroller,
                                   decoration: InputDecoration(
-                                      hintText: funprovider
-                                          .usermodelobj.contactnumber,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -153,8 +143,6 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller:
-                                      funprovider.userserstatecontroller,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
@@ -170,9 +158,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller: funprovider.usercitycontroller,
                                   decoration: InputDecoration(
-                                      hintText: funprovider.usermodelobj.city,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -187,9 +173,7 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller: funprovider.useremailcontroller,
                                   decoration: InputDecoration(
-                                      hintText: funprovider.usermodelobj.email,
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
                                 ),
@@ -207,42 +191,6 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller:
-                                      funprovider.userpasswordcontroller,
-                                  decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.all(10),
-                                      border: OutlineInputBorder()),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Website",
-                                  style: GoogleFonts.ubuntu(fontSize: 17),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormField(
-                                  controller:
-                                      funprovider.userpasswordcontroller,
-                                  decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.all(10),
-                                      border: OutlineInputBorder()),
-                                ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                Text(
-                                  "Company Logo",
-                                  style: GoogleFonts.ubuntu(fontSize: 17),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextFormField(
-                                  controller:
-                                      funprovider.usercompanylogocontroller,
                                   decoration: const InputDecoration(
                                       contentPadding: EdgeInsets.all(10),
                                       border: OutlineInputBorder()),
@@ -254,7 +202,14 @@ class ScreenUpdatePersonalInfo extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          backgroundColor: Colors.indigo),
+                      onPressed: () {},
+                      child: Text("Update"))
                 ],
               ),
             ));

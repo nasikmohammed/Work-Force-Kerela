@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
+import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenSelectIdentity extends StatelessWidget {
@@ -15,6 +16,18 @@ class ScreenSelectIdentity extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenReportProblems();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.keyboard_arrow_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: const Color.fromARGB(255, 247, 255, 222),
         title: Text(
           "Select your identity",
@@ -25,7 +38,7 @@ class ScreenSelectIdentity extends StatelessWidget {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.only(top: 100, left: 10, right: 10),
         child: Column(
           children: [
             Container(

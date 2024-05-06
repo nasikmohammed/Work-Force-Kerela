@@ -15,9 +15,15 @@ import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
 import 'package:workforce_project/view/manager/screen_availableworkers.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
 import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
+import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
 import 'package:workforce_project/view/police/screen_upsa.dart';
+import 'package:workforce_project/view/user/screen_personalinfo.dart';
+import 'package:workforce_project/view/user/screen_report_list.dart';
+import 'package:workforce_project/view/user/screen_reportissue.dart';
+import 'package:workforce_project/view/user/screen_selectidentity.dart';
+import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 
@@ -500,7 +506,7 @@ class WorkProvider extends ChangeNotifier {
 
   policehomedrawer(context) {
     return Drawer(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
@@ -559,7 +565,7 @@ class WorkProvider extends ChangeNotifier {
   int intexnumber = 0;
   managerdrawer(context) {
     return Drawer(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
       child: Column(children: [
@@ -635,7 +641,7 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenUserProfile(),
+                    builder: (context) => ScreenUserPersonalInfo(),
                   ));
                 },
                 child: Row(
@@ -661,12 +667,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAddProject(),
+                    builder: (context) => ScreenSelectIdentity(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -687,12 +693,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableManagers(),
+                    builder: (context) => ScreenUserNotifications(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -713,12 +719,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenOngoingProjectAgent(),
+                    builder: (context) => ScreenReportIssue(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -737,10 +743,14 @@ class WorkProvider extends ChangeNotifier {
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenUserReportList(),
+                  ));
+                },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -761,12 +771,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableManagers(),
+                    builder: (context) => ScreenAboutUs(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -783,10 +793,10 @@ class WorkProvider extends ChangeNotifier {
           ),
           Row(
             children: [
-              SizedBox(
+            const  SizedBox(
                 width: 50,
               ),
-              Icon(
+            const  Icon(
                 Icons.arrow_right,
                 color: Colors.white,
               ),

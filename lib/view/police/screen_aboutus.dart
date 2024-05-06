@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/user/screen_repotproblems.dart';
 
 class ScreenAboutUs extends StatelessWidget {
   const ScreenAboutUs({super.key});
@@ -9,9 +10,21 @@ class ScreenAboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenReportProblems();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.keyboard_arrow_left_outlined,
+              color: Colors.black,
+            )),
+        backgroundColor: const Color.fromARGB(255, 247, 255, 222),
         title: Text(
           "About us",
           style: GoogleFonts.quicksand(color: Colors.black),
@@ -26,13 +39,13 @@ class ScreenAboutUs extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: 500,
-              height: 760,
+              height: 680,
               decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 3)],
+                  boxShadow: [BoxShadow(blurRadius: 1)],
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   '''Thank you for considering [Company Name] for your career path. We're excited about the opportunity to learn more about you through your registration application.
                   

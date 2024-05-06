@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/user_report_model.dart';
+import 'package:workforce_project/view/user/screen_repotproblems.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/user_report_service.dart';
@@ -18,6 +19,18 @@ class ScreenReportIssue extends StatelessWidget {
     final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenReportProblems();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.keyboard_arrow_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: const Color.fromARGB(255, 247, 255, 222),
         elevation: 0,
         title: Text(
