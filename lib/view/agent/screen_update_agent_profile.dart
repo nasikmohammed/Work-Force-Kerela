@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
@@ -19,12 +20,36 @@ class ScreenUpdateAgentProfile extends StatefulWidget {
 
 class _ScreenUpdateAgentProfileState extends State<ScreenUpdateAgentProfile> {
   AgenteService agentstore = AgenteService();
+  AgentModel agentobj = AgentModel();
+  bool _edit = false;
 
-  final CollectionReference agent =
-      FirebaseFirestore.instance.collection("AGENT");
+  loaddata() {
+    final CollectionReference agent =
+        FirebaseFirestore.instance.collection("AGENT");
+
+    final funprovider = Provider.of<FunProvider>(context, listen: false);
+    agentobj.agencyname = funprovider.agentupdatename.text;
+    agentobj.agentaddress = funprovider.agentupdateaddress.text;
+    agentobj.agentcity = funprovider.agentupdatecity.text;
+    agentobj.agentemail = funprovider.agentupdateemail.text;
+    agentobj.agentstate = funprovider.agentupdatestate.text;
+    agentobj.contactnumber = funprovider.agentupdatecontactnumber.text;
+    agentobj.password = funprovider.agentupdatepassword.text;
+  }
+
+  @override
+  void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      loaddata();
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final CollectionReference agent =
+        FirebaseFirestore.instance.collection("AGENT");
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
 
@@ -59,7 +84,7 @@ class _ScreenUpdateAgentProfileState extends State<ScreenUpdateAgentProfile> {
                     ))
               ]),
           body: StreamBuilder(
-            stream: agent.snapshots(), 
+            stream: agent.snapshots(),
             builder: (context, snapshot) {
               return SingleChildScrollView(
                 child: Column(
@@ -101,7 +126,6 @@ class _ScreenUpdateAgentProfileState extends State<ScreenUpdateAgentProfile> {
                                     style: GoogleFonts.hind(fontSize: 17),
                                   ),
                                   TextFormField(
-                                    controller: funprovider.agentupdatename,
                                     decoration: InputDecoration(
                                         contentPadding: EdgeInsets.all(5),
                                         border: OutlineInputBorder()),
@@ -188,27 +212,23 @@ class _ScreenUpdateAgentProfileState extends State<ScreenUpdateAgentProfile> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  workprovider.isselected
-                                      ? Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 110),
-                                          child: OutlinedButton(
-                                              style: OutlinedButton.styleFrom(
-                                                  backgroundColor:
-                                                      const Color.fromARGB(
-                                                          255, 57, 73, 163),
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10))),
-                                              onPressed: () {},
-                                              child: Text(
-                                                "Update",
-                                                style: GoogleFonts.amaranth(
-                                                    color: Colors.white),
-                                              )),
-                                        )
-                                      : const SizedBox()
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 110),
+                                    child: OutlinedButton(
+                                        style: OutlinedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 57, 73, 163),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Update",
+                                          style: GoogleFonts.amaranth(
+                                              color: Colors.white),
+                                        )),
+                                  )
                                 ]),
                           ),
                         ),

@@ -50,8 +50,10 @@ class FunProvider extends ChangeNotifier {
   //screen login
   final loginusernamecontroller = TextEditingController();
   final loginpasswordcontroller = TextEditingController();
-  //screen report problems
+  //screen Userreport problems
   final reportproblemcontroller = TextEditingController();
+  //screen Managerreport problems
+  final managerreportproblemcontroller = TextEditingController();
   //screenpersonalinformation
   final usernamepcontroller = TextEditingController();
   final useraddresscontroller = TextEditingController();

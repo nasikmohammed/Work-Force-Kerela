@@ -26,15 +26,15 @@ class ScreenAgentProfile extends StatelessWidget {
 
     return StreamBuilder(
       stream: agent.snapshots(),
-      builder: (context, AsyncSnapshot snapshot) {
-        var agentfirstname = snapshot.data.docs.first['agencyname'];
-        var agentaddress = snapshot.data.docs.first['agentaddress'];
-        var agentcity = snapshot.data.docs.first['agentcity'];
+      builder: (context, snapshot) {
+        var agentfirstname = snapshot.data!.docs.first['agencyname'];
+        var agentaddress = snapshot.data!.docs.first['agentaddress'];
+        var agentcity = snapshot.data!.docs.first['agentcity'];
         var agentcontactnumber = snapshot.data!.docs.first['contactnumber'];
-        var agentstate = snapshot.data.docs.first['agentstate'];
+        var agentstate = snapshot.data!.docs.first['agentstate'];
 
-        var agentemail = snapshot.data.docs.first['agentemail'];
-        var agentrgpassword = snapshot.data.docs.first['password'];
+        var agentemail = snapshot.data!.docs.first['agentemail'];
+        var agentrgpassword = snapshot.data!.docs.first['password'];
 
         return Scaffold(
           backgroundColor: Colors.white,

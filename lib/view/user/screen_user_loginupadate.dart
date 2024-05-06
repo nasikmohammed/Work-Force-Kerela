@@ -3,6 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_agent_bottom.dart';
+import 'package:workforce_project/view/user/screen_repotproblems.dart';
+import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUserLogin extends StatelessWidget {
@@ -44,7 +47,16 @@ class ScreenUserLogin extends StatelessWidget {
                       hintStyle: GoogleFonts.sarabun(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
-                )
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenReportProblems();
+                        },
+                      ));
+                    },
+                    child: Text("Login"))
               ],
             ),
           ),

@@ -16,12 +16,11 @@ class ScreenReportProblems extends StatefulWidget {
 }
 
 class _ScreenReportProblemsState extends State<ScreenReportProblems> {
-
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-    
+      drawer: workprovider.userdrawer(context),
       body: Stack(
         children: [
           Container(
@@ -31,6 +30,19 @@ class _ScreenReportProblemsState extends State<ScreenReportProblems> {
                 workprovider.construction2,
                 fit: BoxFit.fitHeight,
               )),
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Builder(builder: (context) {
+              return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                  ));
+            }),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 70, top: 710),
             child: ElevatedButton(
@@ -62,7 +74,6 @@ class _ScreenReportProblemsState extends State<ScreenReportProblems> {
                   ),
                 )),
           ),
-          
         ],
       ),
     );

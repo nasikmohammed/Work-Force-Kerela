@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/view/admin/screen_admin_profile.dart';
 import 'package:workforce_project/view/admin/screen_adminlogin.dart';
 import 'package:workforce_project/view/admin/screen_feedback_reports.dart';
 import 'package:workforce_project/view/admin/screen_human_resouce.dart';
@@ -19,6 +18,7 @@ import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
 import 'package:workforce_project/view/agent/screen_agent_profile.dart';
+import 'package:workforce_project/view/agent/screen_update_agent_profile.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
@@ -100,6 +100,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: ScreenAgentProfile()));
+            home: ScreenUserLogin()));
   }
 }
