@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentAvailableManagers extends StatelessWidget {
@@ -15,10 +16,22 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeAgent();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left,
+              color: Colors.black,
+            )),
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         title: Text(
           "Work force kerala",
           style: GoogleFonts.nunitoSans(
@@ -28,7 +41,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
       ),
       body: StreamBuilder(
         stream: manager.snapshots(),
-        builder: (context,  snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Column(children: [
               ListTile(
@@ -40,36 +53,6 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                   style: GoogleFonts.andika(),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                      height: 30,
-                      child: OutlinedButton(
-                          onPressed: () {
-                            workprovider.selectAvailable();
-                          },
-                          child: Text("Select",
-                              style: GoogleFonts.amaranth(
-                                color: Colors.black,
-                              )))),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  SizedBox(
-                      height: 30,
-                      width: 88,
-                      child: OutlinedButton(
-                          onPressed: () {},
-                          child: Text("SelectAll",
-                              style: GoogleFonts.amaranth(
-                                color: Colors.black,
-                              )))),
-                  const SizedBox(
-                    width: 30,
-                  )
-                ],
-              ),
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Container(
@@ -77,7 +60,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                   height: 668,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      boxShadow: const [BoxShadow(blurRadius: 3)],
+                      boxShadow: const [BoxShadow(blurRadius: 1)],
                       borderRadius: BorderRadius.circular(20)),
                   child: Column(
                     children: [
@@ -85,9 +68,10 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                         height: 20,
                       ),
                       Text(
-                        "Available Managers",
-                        style: GoogleFonts.concertOne(
-                            fontSize: 17, fontWeight: FontWeight.bold),
+                        " Managers",
+                        style: GoogleFonts.balthazar(
+                          fontSize: 20,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -95,7 +79,6 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                       Expanded(
                         child: ListView.builder(
                           itemBuilder: (context, index) {
-                            
                             final DocumentSnapshot managersnap =
                                 snapshot.data!.docs[index];
 
@@ -110,7 +93,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                                 style: GoogleFonts.libreFranklin(),
                               ),
                               trailing: SizedBox(
-                                width: 110,
+                                width: 90,
                                 child: Row(
                                   children: [
                                     SizedBox(
@@ -127,15 +110,6 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                                                 color: Colors.white),
                                           )),
                                     ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    workprovider.isselected
-                                        ? RoundCheckBox(
-                                            size: 20,
-                                            onTap: (p0) {},
-                                          )
-                                        : const SizedBox()
                                   ],
                                 ),
                               ),

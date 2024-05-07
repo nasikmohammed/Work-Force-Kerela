@@ -139,6 +139,9 @@ class ScreenHomeManager extends StatelessWidget {
                       return Container(
                         width: 200,
                         height: 10,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(15)),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
@@ -146,13 +149,10 @@ class ScreenHomeManager extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(15)),
                       );
                     },
                     separatorBuilder: (context, index) =>
-                        Divider(endIndent: 10),
+                      const  Divider(endIndent: 10),
                   ),
                 ),
               ),

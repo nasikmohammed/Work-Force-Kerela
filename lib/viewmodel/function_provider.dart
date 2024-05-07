@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:email_otp/email_otp.dart';
 import 'package:flutter/cupertino.dart';
@@ -112,16 +113,14 @@ class FunProvider extends ChangeNotifier {
   final workerpassword = TextEditingController();
 
   //update agent profile
- 
-     var agentupdatename = TextEditingController();
+
+  var agentupdatename = TextEditingController();
   final agentupdateaddress = TextEditingController();
   final agentupdatecity = TextEditingController();
   final agentupdatestate = TextEditingController();
   final agentupdatecontactnumber = TextEditingController();
   final agentupdateemail = TextEditingController();
   final agentupdatepassword = TextEditingController();
-
-
 
   //managerController
   final managernamecontroller = TextEditingController();
@@ -238,21 +237,34 @@ class FunProvider extends ChangeNotifier {
   }
 
 //screen register
-  File? images;
-  String uploadurl = "";
-  imagePickforregister() async {
-    XFile? pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      images = File(pickedImage.path);
-      Reference storageurl = FirebaseStorage.instance.ref().child(images!.path);
-      print(storageurl);
+  // Uint8List? _image;
+  // File? images;
+  // String uploadurl = "";
+  // imagePick2(ImageSource source) async {
+  //   final ImagePicker _imagepicker = ImagePicker();
+  //   XFile? _file = await _imagepicker.pickImage(source: source);
+  //   if (_file != null) {
+  //     return await _file.readAsBytes();
+  //   }
+  //   print("No iMagevselected");
+  //   // XFile? pickedImage =
+  //   //     await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   // if (pickedImage != null) {
+  //   //   images = File(pickedImage.path);
+  //   //   Reference storageurl = FirebaseStorage.instance.ref().child(images!.path);
+  //   //   print(storageurl);
 
-      UploadTask uploadimages = storageurl.putFile(images!);
-      uploadurl =
-          await uploadimages.then((result) => result.ref.getDownloadURL());
-    }
-  }
+  //   //   UploadTask uploadimages = storageurl.putFile(images!);
+  //   //   uploadurl =
+  //   //       await uploadimages.then((result) => result.ref.getDownloadURL());
+  //   // }
+  // }
+
+  // void selectimage() async {
+  //   Uint8List img = await imagePick2(ImageSource.gallery);
+  //   _image = img;
+
+  // }
 
 //screen register
 
@@ -292,5 +304,39 @@ class FunProvider extends ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Email and Password is Doesn't Match")));
     });
+  } //////////////////////////////////////////////////////////////////////////////////////
+
+  imagePick(ImageSource source) async {
+    final ImagePicker _imagepicker = ImagePicker();
+    XFile? _file = await _imagepicker.pickImage(source: source);
+    if (_file != null) {
+      return await _file.readAsBytes();
+    }
+    print("No iMagevselected");
+  }
+
+  // void selectimages() async {
+  //   Uint8List img = await imagePick(ImageSource.gallery);
+
+  //     _image = img;
+
+  //   }
+  Uint8List? _image;
+
+  imagePickfromgallery(ImageSource source) async {
+    final ImagePicker _imagepicker = ImagePicker();
+    XFile? _file = await _imagepicker.pickImage(source: source);
+    if (_file != null) {
+      return await _file.readAsBytes();
+    }
+    print("No iMagevselected");
+  }
+
+  void selectimage() async {
+    notifyListeners();
+    Uint8List img = await imagePickfromgallery(ImageSource.gallery);
+
+    _image = img;
+    notifyListeners();
   }
 }

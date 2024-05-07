@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_update_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
@@ -39,6 +40,18 @@ class ScreenAgentProfile extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenHomeAgent();
+                      },
+                    ));
+                  },
+                  icon: const Icon(
+                    Icons.arrow_circle_left,
+                    color: Colors.black,
+                  )),
               backgroundColor: Colors.white,
               elevation: 0,
               title: Text(

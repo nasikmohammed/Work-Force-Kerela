@@ -10,12 +10,21 @@ import 'package:workforce_project/view/admin/screen_human_resouce.dart';
 import 'package:workforce_project/view/admin/screen_notifications.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
+import 'package:workforce_project/view/agent/screen_aboutusagent.dart';
+import 'package:workforce_project/view/agent/screen_add_manager.dart';
 import 'package:workforce_project/view/agent/screen_add_project.dart';
+import 'package:workforce_project/view/agent/screen_add_workers.dart';
+import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
+import 'package:workforce_project/view/agent/screen_notificationagent.dart';
 import 'package:workforce_project/view/manager/screen_availableworkers.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
+import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
+import 'package:workforce_project/view/manager/screen_manager_profile.dart';
 import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
+import 'package:workforce_project/view/manager/screen_managernotifications.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
+import 'package:workforce_project/view/police/screen_notification.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
 import 'package:workforce_project/view/police/screen_upsa.dart';
@@ -277,12 +286,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableWorkers(),
+                    builder: (context) => ScreenAgentProfile(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -308,7 +317,7 @@ class WorkProvider extends ChangeNotifier {
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -334,7 +343,7 @@ class WorkProvider extends ChangeNotifier {
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -360,7 +369,7 @@ class WorkProvider extends ChangeNotifier {
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -379,10 +388,16 @@ class WorkProvider extends ChangeNotifier {
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenNotificationAgent();
+                    },
+                  ));
+                },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -403,12 +418,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableManagers(),
+                    builder: (context) => ScreenAddWorker(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -429,12 +444,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableManagers(),
+                    builder: (context) => ScreenAddManager(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -455,12 +470,12 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableManagers(),
+                    builder: (context) => ScreenAgentAboutUs(),
                   ));
                 },
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.arrow_right,
                       color: Colors.white,
                     ),
@@ -477,10 +492,10 @@ class WorkProvider extends ChangeNotifier {
           ),
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
-              Icon(
+              const Icon(
                 Icons.arrow_right,
                 color: Colors.white,
               ),
@@ -571,15 +586,15 @@ class WorkProvider extends ChangeNotifier {
       child: Column(children: [
         Padding(
           padding:
-              const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 50),
+              const EdgeInsets.only(left: 15, right: 15, bottom: 3, top: 90),
           child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenManagerUpsa()));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => ScreenManagerProfile()));
               },
               child: Row(
                 children: [
@@ -596,13 +611,16 @@ class WorkProvider extends ChangeNotifier {
               )),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+          padding: EdgeInsets.only(left: 15, right: 15, top: 2),
           child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenAgentAvailableWorkers()));
+              },
               child: Row(
                 children: [
                   const Icon(
@@ -610,13 +628,90 @@ class WorkProvider extends ChangeNotifier {
                     color: Colors.white,
                   ),
                   Text(
-                    "Notification",
+                    "Work Assign",
                     style:
                         GoogleFonts.corben(color: Colors.white, fontSize: 12),
                   ),
                 ],
               )),
-        )
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 15, right: 15, top: 2),
+          child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => ScreenManagerNotifications(),
+                ));
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Notifications",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
+          child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenManagerAboutUs()));
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "About ",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              )),
+        ),
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 15, right: 15, bottom: 3, top: 2),
+          child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
+              onPressed: () {
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => ()));
+              },
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_right,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Logout",
+                    style:
+                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              )),
+        ),
       ]),
     );
   } /////////////////////////////////////
@@ -793,10 +888,10 @@ class WorkProvider extends ChangeNotifier {
           ),
           Row(
             children: [
-            const  SizedBox(
+              const SizedBox(
                 width: 50,
               ),
-            const  Icon(
+              const Icon(
                 Icons.arrow_right,
                 color: Colors.white,
               ),

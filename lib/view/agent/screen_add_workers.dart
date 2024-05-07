@@ -1,14 +1,42 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/workersmodel.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/workers_store.dart';
 
-class ScreenAddWorker extends StatelessWidget {
+class ScreenAddWorker extends StatefulWidget {
   const ScreenAddWorker({super.key});
+
+  @override
+  State<ScreenAddWorker> createState() => _ScreenAddWorkerState();
+}
+
+class _ScreenAddWorkerState extends State<ScreenAddWorker> {
+  Uint8List? _image;
+  imagePickforworkers(ImageSource source) async {
+    final ImagePicker _imagepicker = ImagePicker();
+    XFile? _file = await _imagepicker.pickImage(source: source);
+    if (_file != null) {
+      return await _file.readAsBytes();
+    } else {
+      print("No iMage selected");
+    }
+  }
+
+  void selectimageforworkers() async {
+    Uint8List img = await imagePickforworkers(ImageSource.gallery);
+
+    setState(() {
+      _image = img;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +45,18 @@ class ScreenAddWorker extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) {
+                    return ScreenHomeAgent();
+                  },
+                ));
+              },
+              icon: const Icon(
+                Icons.arrow_circle_left,
+                color: Colors.black,
+              )),
           backgroundColor: Colors.white,
           title: Text(
             "Add Workers",
@@ -159,14 +199,29 @@ class ScreenAddWorker extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
-                  onPressed: () {},
-                  child: Text(
-                    "Add Image",
-                    style: GoogleFonts.manrope(color: Colors.black),
-                  )),
+              Row(
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white),
+                      onPressed: () {
+                        selectimageforworkers();
+                      },
+                      child: Text(
+                        "Add Image",
+                        style: GoogleFonts.manrope(color: Colors.black),
+                      )),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  _image != null
+                      ? CircleAvatar(
+                          radius: 20,
+                          backgroundImage: MemoryImage(_image!),
+                        )
+                      : CircleAvatar(),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 130),
                 child: ElevatedButton(

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenNotificationAgent extends StatelessWidget {
@@ -12,9 +13,21 @@ class ScreenNotificationAgent extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 206, 225, 204),
+      backgroundColor: Color.fromARGB(255, 236, 241, 235),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 206, 225, 204),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeAgent();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left,
+              color: Colors.black,
+            )),
+        backgroundColor: Color.fromARGB(255, 236, 241, 235),
         elevation: 0,
         centerTitle: true,
         title: Text(
@@ -26,7 +39,9 @@ class ScreenNotificationAgent extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              border: Border.all(color: Colors.black),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15)),
           child: Column(
             children: [
               Expanded(

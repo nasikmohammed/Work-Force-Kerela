@@ -50,7 +50,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                     ),
                     InkWell(
                       onTap: () {
-                        funprovider.imagePickforregister();
+                        //   funprovider.imageP();
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -241,7 +241,6 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                     agentemail: funprovider.agentrgemail.text,
                                     agentstate: funprovider.agentrgstate.text,
                                     password: funprovider.agentrgpassword.text,
-                                    image: funprovider.uploadurl,
                                   ),
 
                                   //  FirebaseAuth.instance.currentUser!.uid

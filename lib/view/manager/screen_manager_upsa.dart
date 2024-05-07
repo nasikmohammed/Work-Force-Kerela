@@ -56,8 +56,8 @@ class ScreenManagerUpsa extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenManagerProfile()));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => ScreenManagerProfile()));
               },
               child: Container(
                 width: 200,

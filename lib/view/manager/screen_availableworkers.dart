@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentAvailableWorkers extends StatelessWidget {
@@ -16,10 +17,22 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        backgroundColor: Color.fromARGB(255, 255, 254, 254),
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) {
+                    return ScreenHomeManager();
+                  },
+                ));
+              },
+              icon: const Icon(
+                Icons.arrow_circle_left_outlined,
+                color: Colors.black,
+              )),
           elevation: 0,
-          backgroundColor: Color.fromARGB(255, 238, 234, 234),
+          backgroundColor: Color.fromARGB(255, 255, 251, 251),
           title: Text(
             "Work force kerala",
             style: GoogleFonts.nunitoSans(
@@ -52,16 +65,6 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(
-                          height: 30,
-                          child: OutlinedButton(
-                              onPressed: () {
-                                workprovider.selectAvailable();
-                              },
-                              child: Text("Select",
-                                  style: GoogleFonts.amaranth(
-                                    color: Colors.black,
-                                  )))),
                       const SizedBox(
                         width: 10,
                       ),
@@ -69,6 +72,9 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
                           height: 30,
                           width: 88,
                           child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  shape: BeveledRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5))),
                               onPressed: () {},
                               child: Text("SelectAll",
                                   style: GoogleFonts.amaranth(
@@ -86,7 +92,7 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
                       height: 668,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: const [BoxShadow(blurRadius: 2)],
+                          boxShadow: const [BoxShadow(blurRadius: 1)],
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         children: [

@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/manager_report_model.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/manager_report_service.dart';
 
@@ -54,11 +55,17 @@ class ScreenManagerReportProblems extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
-                  managerReportServicer.addManagerreports(
-                    ManagerReportModel(
-                        reportManagerissues:
-                            funprovider.managerreportproblemcontroller.text),
-                  );
+                  managerReportServicer
+                      .addManagerreports(ManagerReportModel(
+                          reportManagerissues:
+                              funprovider.managerreportproblemcontroller.text))
+                      .then((value) {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenHomeManager();
+                      },
+                    ));
+                  });
                 },
                 child: Text(
                   "Report the issue",

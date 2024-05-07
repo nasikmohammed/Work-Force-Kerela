@@ -23,6 +23,7 @@ import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
 import 'package:workforce_project/view/manager/screen_manager_change_password.dart';
+import 'package:workforce_project/view/manager/screen_manager_login.dart';
 import 'package:workforce_project/view/manager/screen_manager_messages.dart';
 import 'package:workforce_project/view/manager/screen_manager_profile.dart';
 import 'package:workforce_project/view/manager/screen_manager_reportproblems.dart';
@@ -100,6 +101,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: ScreenReportProblems()));
+            home: ScreenAddManager()));
   }
 }

@@ -34,7 +34,7 @@ class ScreenRegister extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  funprovider.imagePickforregister();
+               //   funprovider.imagePickforregister();
                 },
                 child: Container(
                   decoration: BoxDecoration(

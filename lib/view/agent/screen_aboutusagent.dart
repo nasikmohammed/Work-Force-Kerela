@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 
 class ScreenAgentAboutUs extends StatelessWidget {
   const ScreenAgentAboutUs({super.key});
@@ -9,9 +10,22 @@ class ScreenAgentAboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 254, 251, 251),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) {
+                return ScreenHomeAgent();
+              },
+            ));
+          },
+          icon: const Icon(
+            Icons.arrow_circle_left,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 254, 251, 251),
         title: Text(
           "About us",
           style: GoogleFonts.nunitoSans(color: Colors.black),
@@ -28,7 +42,7 @@ class ScreenAgentAboutUs extends StatelessWidget {
               width: 500,
               height: 760,
               decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 3)],
+                  boxShadow: [BoxShadow(blurRadius: 1)],
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(

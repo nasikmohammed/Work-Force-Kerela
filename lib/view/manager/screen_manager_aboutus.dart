@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 
 class ScreenManagerAboutUs extends StatelessWidget {
   const ScreenManagerAboutUs({super.key});
@@ -11,6 +12,18 @@ class ScreenManagerAboutUs extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeManager();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.white,
         title: Text(
           "About us",
@@ -26,13 +39,13 @@ class ScreenManagerAboutUs extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: 500,
-              height: 760,
+              height: 650,
               decoration: BoxDecoration(
                   boxShadow: [BoxShadow(blurRadius: 3)],
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   '''Thank you for considering [Company Name] for your career path. We're excited about the opportunity to learn more about you through your registration application.
                   

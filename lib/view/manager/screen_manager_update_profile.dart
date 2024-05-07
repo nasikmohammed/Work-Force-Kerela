@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/view/manager/screen_manager_update_profile.dart';
+import 'package:workforce_project/view/manager/screen_manager_profile.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenManagerProfile extends StatelessWidget {
-  ScreenManagerProfile({super.key});
+class ScreenManagerUpdateProfile extends StatelessWidget {
+  ScreenManagerUpdateProfile({super.key});
   final CollectionReference manager =
       FirebaseFirestore.instance.collection("MANAGER");
 
@@ -30,12 +29,21 @@ class ScreenManagerProfile extends StatelessWidget {
           backgroundColor: Colors.white,
           appBar: AppBar(
               leading: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_circle_left_outlined)),
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) {
+                    //     return ScreenManagerProfile();
+                    //   },
+                    // ));
+                  },
+                  icon:const Icon(
+                    Icons.arrow_circle_left_outlined,
+                    color: Colors.black,
+                  )),
               backgroundColor: Colors.white,
               elevation: 0,
               title: Text(
-                "Profile",
+                "Update Profile",
                 style: GoogleFonts.cambay(color: Colors.black),
               ),
               centerTitle: true,
@@ -62,15 +70,8 @@ class ScreenManagerProfile extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 330),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) {
-                          return ScreenManagerUpdateProfile();
-                        },
-                      ));
-                    },
-                    icon: Icon(Icons.edit_square)),
+                child:
+                    IconButton(onPressed: () {}, icon: Icon(Icons.edit_square)),
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -187,6 +188,8 @@ class ScreenManagerProfile extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
+                            OutlinedButton(
+                                onPressed: () {}, child: Text("Update"))
                           ]),
                     ),
                   ),

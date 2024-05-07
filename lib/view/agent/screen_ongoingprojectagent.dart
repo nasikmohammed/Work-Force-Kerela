@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenOngoingProjectAgent extends StatelessWidget {
@@ -12,9 +13,21 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 238, 234, 234),
+      backgroundColor: Color.fromARGB(255, 255, 248, 248),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 238, 234, 234),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeAgent();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left,
+              color: Colors.black,
+            )),
+        backgroundColor: Color.fromARGB(255, 255, 248, 248),
         elevation: 0,
         title: Text(
           "Work force kerelaa",
@@ -53,7 +66,7 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Container(
               decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 2)],
+                  boxShadow: [BoxShadow(blurRadius: 1)],
                   color: Color.fromARGB(255, 239, 240, 239),
                   borderRadius: BorderRadius.circular(15)),
               width: 400,
@@ -76,7 +89,7 @@ class ScreenOngoingProjectAgent extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  Image.asset(workprovider.mc),
+                                  Image.asset(workprovider.construction2),
                                   Text(
                                       "Cunstruction work of super market isin progress",
                                       style: GoogleFonts.alata(
