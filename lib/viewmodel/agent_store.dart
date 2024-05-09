@@ -53,27 +53,32 @@ class AgenteService {
 //       throw (e);
 //     }
 //   }
-  updateAgent(AgentModel agentModel) async {
-    try {
-      final agentmap = agentModel.toJson();
-      await FirebaseFirestore.instance
-          .collection("AGENT")
-          .doc(agentModel.id)
-          .update(agentmap);
-    } on FirebaseException catch (e) {
-      print(e.toString());
-    }
-  }
+//Update in CRUD
+  // updateAgent(AgentModel agentModel) async {
+  //   try {
+  //     final agentmap = agentModel.toJson();
+  //     await FirebaseFirestore.instance
+  //         .collection("AGENT")
+  //         .doc(agentModel.id)
+  //         .update(agentmap);
+  //   } on FirebaseException catch (e) {
+  //     print(e.toString());
+  //   }
 
-  deleteagentdata(String? id) async {
-    try {
-      await FirebaseFirestore.instance.collection("AGENT").doc(id).delete();
-    } on FirebaseException catch (e) {
-      print(e.toString());
-    }
-  }
+  // }
+//Delete in CRUD
+  // deleteagentdata(String? id) async {
+  //   try {
+  //     await FirebaseFirestore.instance
+  //         .collection("AGENT")
+  //         .doc(agent.id)
+  //         .delete();
+  //   } on FirebaseException catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 
-  Future<Stream<QuerySnapshot>> getsingleagentdata() async {
-    return await FirebaseFirestore.instance.collection("AGENT").snapshots();
-  }
+  // Future<Stream<QuerySnapshot>> getsingleagentdata() async {
+  //   return await FirebaseFirestore.instance.collection("AGENT").snapshots();
+  // }
 }

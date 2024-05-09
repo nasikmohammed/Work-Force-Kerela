@@ -501,9 +501,7 @@ class WorkProvider extends ChangeNotifier {
               ),
               TextButton(
                   onPressed: () {
-                    print("vfodfodfdffdfd");
-                    _agenteService.deleteagentdata(_agenteService.agent.id);
-                    print("");
+                  
                   },
                   child: Text(
                     "Logout",
