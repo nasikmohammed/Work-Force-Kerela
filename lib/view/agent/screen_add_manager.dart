@@ -245,17 +245,22 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
-                      managermodel.addManager(ManagerModel(
-                          managername: funprovider.agentmanagername.text,
-                          managerplace: funprovider.agentmanagerplace.text,
-                          managerage: funprovider.agentmanagerage.text,
-                          manageridnumber:
-                              funprovider.agentmanagerIdnumber.text,
-                          manageremail: funprovider.agentmanageremail.text,
-                          managerid: funprovider.agentmanagerid.text,
-                          managerpassword:
-                              funprovider.agentmanagerpassword.text,
-                          image: _uploadurl));
+                      print("functioncalled");
+                      managermodel
+                          .addManager(ManagerModel(
+                              managername: funprovider.agentmanagername.text,
+                              managerplace: funprovider.agentmanagerplace.text,
+                              managerage: funprovider.agentmanagerage.text,
+                              manageridnumber:
+                                  funprovider.agentmanagerIdnumber.text,
+                              manageremail: funprovider.agentmanageremail.text,
+                              managerid: funprovider.agentmanagerid.text,
+                              managerpassword:
+                                  funprovider.agentmanagerpassword.text,
+                              image: _uploadurl))
+                          .then((value) async {
+                        await funprovider.emailsend();
+                      });
                     },
                     child: Text(
                       " Update",

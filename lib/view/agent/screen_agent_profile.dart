@@ -1,14 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_update_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
-import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentProfile extends StatelessWidget {
@@ -21,8 +19,6 @@ class ScreenAgentProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     final workprovider = Provider.of<WorkProvider>(context);
 
     return StreamBuilder(
@@ -44,7 +40,7 @@ class ScreenAgentProfile extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) {
-                        return ScreenHomeAgent();
+                        return const ScreenHomeAgent();
                       },
                     ));
                   },
@@ -58,7 +54,6 @@ class ScreenAgentProfile extends StatelessWidget {
                 "Profile",
                 style: GoogleFonts.nunitoSans(color: Colors.black),
               ),
-              centerTitle: true,
               actions: [
                 IconButton(
                     onPressed: () {},
@@ -67,182 +62,170 @@ class ScreenAgentProfile extends StatelessWidget {
                       color: Colors.black,
                     ))
               ]),
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage(workprovider.mc),
-                ),
-                Text(
-                  agentfirstname,
-                  style: GoogleFonts.hind(fontSize: 15),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 280),
-                  child: TextButton.icon(
-                      label: const Text("Update"),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) {
-                            return ScreenUpdateAgentProfile();
-                          },
-                        ));
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage(workprovider.mc),
+              ),
+              Text(
+                agentfirstname,
+                style:
+                    GoogleFonts.hind(fontSize: 19, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 200),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 247, 245, 245)),
+                  child: Text(
+                    "Edit Profile",
+                    style: GoogleFonts.karla(color: Colors.black),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenUpdateAgentProfile();
                       },
-                      icon: const Icon(
-                        Icons.edit,
-                        size: 15,
-                      )),
+                    ));
+                  },
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                child: Container(
+                  height: 630,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 246, 244, 244),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Container(
-                    width: width,
-                    height: height,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 246, 244, 244),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 25, right: 25),
-                      child: SingleChildScrollView(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(
-                                height: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 25, right: 25),
+                    child: SingleChildScrollView(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Agency Name",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentfirstname,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              Text(
-                                "Agency Name",
-                                style: GoogleFonts.hind(fontSize: 17),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Address",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentaddress,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentfirstname,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Contact Number",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentcontactnumber,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              const SizedBox(
-                                height: 10,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "State",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentstate,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              Text(
-                                "Address",
-                                style: GoogleFonts.hind(fontSize: 17),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "City",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentcity,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentaddress,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Email ID",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentemail,
+                              readOnly: true,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              const SizedBox(
-                                height: 10,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Password",
+                              style: GoogleFonts.hind(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                            ),
+                            TextFormField(
+                              initialValue: agentrgpassword,
+                              readOnly: true,
+                              obscureText: false,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.all(5),
                               ),
-                              Text(
-                                "Contact Number",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentcontactnumber,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "State",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentstate,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "City",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentcity,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Email ID",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentemail,
-                                    contentPadding: EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Password",
-                                style: GoogleFonts.hind(fontSize: 17),
-                              ),
-                              TextFormField(
-                                readOnly: true,
-                                decoration: InputDecoration(
-                                    hintText: agentrgpassword,
-                                    contentPadding: const EdgeInsets.all(5),
-                                    border: OutlineInputBorder()),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              workprovider.isselected
-                                  ? Padding(
-                                      padding: const EdgeInsets.only(left: 110),
-                                      child: OutlinedButton(
-                                          style: OutlinedButton.styleFrom(
-                                              backgroundColor:
-                                                  const Color.fromARGB(
-                                                      255, 57, 73, 163),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10))),
-                                          onPressed: () {},
-                                          child: Text(
-                                            "Update",
-                                            style: GoogleFonts.amaranth(
-                                                color: Colors.white),
-                                          )),
-                                    )
-                                  : const SizedBox()
-                            ]),
-                      ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ]),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         );
       },

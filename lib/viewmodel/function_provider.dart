@@ -15,6 +15,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
@@ -306,37 +307,44 @@ class FunProvider extends ChangeNotifier {
     });
   } //////////////////////////////////////////////////////////////////////////////////////
 
-  imagePick(ImageSource source) async {
-    final ImagePicker _imagepicker = ImagePicker();
-    XFile? _file = await _imagepicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
-    }
-    print("No iMagevselected");
-  }
-
-  // void selectimages() async {
-  //   Uint8List img = await imagePick(ImageSource.gallery);
-
-  //     _image = img;
-
+  // imagePick(ImageSource source) async {
+  //   final ImagePicker _imagepicker = ImagePicker();
+  //   XFile? _file = await _imagepicker.pickImage(source: source);
+  //   if (_file != null) {
+  //     return await _file.readAsBytes();
   //   }
-  Uint8List? _image;
+  //   print("No iMagevselected");
+  // }
 
-  imagePickfromgallery(ImageSource source) async {
-    final ImagePicker _imagepicker = ImagePicker();
-    XFile? _file = await _imagepicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
-    }
-    print("No iMagevselected");
-  }
+  // Uint8List? _image;
 
-  void selectimage() async {
-    notifyListeners();
-    Uint8List img = await imagePickfromgallery(ImageSource.gallery);
+  // imagePickfromgallery(ImageSource source) async {
+  //   final ImagePicker _imagepicker = ImagePicker();
+  //   XFile? _file = await _imagepicker.pickImage(source: source);
+  //   if (_file != null) {
+  //     return await _file.readAsBytes();
+  //   }
+  //   print("No iMagevselected");
+  // }
 
-    _image = img;
-    notifyListeners();
+  // void selectimage() async {
+  //   notifyListeners();
+  //   Uint8List img = await imagePickfromgallery(ImageSource.gallery);
+
+  //   _image = img;
+  //   notifyListeners();
+  // }
+  emailsend() async {
+    print("email.send");
+    final Email email = Email(
+      body: agentmanageremail.text,
+      subject: agentmanagerpassword.text,
+      cc: ['cc@example.com'],
+      bcc: ['bcc@example.com'],
+      attachmentPaths: ['/path/to/attachment.zip'],
+      isHTML: false,
+    );
+
+    await FlutterEmailSender.send(email);
   }
 }

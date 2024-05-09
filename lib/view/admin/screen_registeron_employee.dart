@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+import 'package:workforce_project/view/admin/screen_verifications.dart';
 import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
@@ -230,7 +231,8 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                 setState(() {
                                   islosding = true;
                                 });
-                                agentobbj.addUser(
+                                agentobbj
+                                    .addUser(
                                   AgentModel(
                                     agencyname: funprovider.agencyname.text,
                                     contactnumber:
@@ -244,15 +246,32 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                   ),
 
                                   //  FirebaseAuth.instance.currentUser!.uid
-                                );
+                                )
+                                    .then((value) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 600, right: 300),
+                                        child: AlertDialog(
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 20, 32, 99),
+                                          actions: [
+                                            Text(
+                                              "   Registered Successfully        ",
+                                              style: GoogleFonts.anekDevanagari(
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                });
                                 // setState(() {
                                 //islosding = false;
-                                Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                  builder: (context) {
-                                    return ScreenAgentProfile();
-                                  },
-                                ));
+
                                 // });
                               },
                               child: Text(
