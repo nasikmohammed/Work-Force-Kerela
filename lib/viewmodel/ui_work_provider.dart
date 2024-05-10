@@ -500,9 +500,7 @@ class WorkProvider extends ChangeNotifier {
                 color: Colors.white,
               ),
               TextButton(
-                  onPressed: () {
-                  
-                  },
+                  onPressed: () {},
                   child: Text(
                     "Logout",
                     style:
@@ -591,8 +589,8 @@ class WorkProvider extends ChangeNotifier {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
               onPressed: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => ScreenManagerProfile()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenManagerProfile()));
               },
               child: Row(
                 children: [

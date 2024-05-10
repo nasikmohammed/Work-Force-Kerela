@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
+import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenProjectDetails extends StatelessWidget {
@@ -25,6 +27,18 @@ class ScreenProjectDetails extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenYourProjects();
+                    },
+                  ));
+                },
+                icon: const Icon(
+                  Icons.arrow_circle_left_outlined,
+                  color: Colors.black,
+                )),
             backgroundColor: Colors.white,
             title: Text(
               "Project Details",

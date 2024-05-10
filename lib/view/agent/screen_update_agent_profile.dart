@@ -66,17 +66,19 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 40,
+                ),
                 CircleAvatar(
+                  radius: 40,
                   backgroundImage: AssetImage(workprovider.mc),
                 ),
-                Text(
-                  agentfirstname,
-                  style: GoogleFonts.hind(
-                      fontSize: 19, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Edit Picture",
+                      style: GoogleFonts.overpass(),
+                    )),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 20,
@@ -85,7 +87,6 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                   child: Container(
                     height: 700,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 246, 244, 244),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(

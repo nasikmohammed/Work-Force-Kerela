@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_update_profile.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
@@ -19,19 +20,28 @@ class ScreenManagerProfile extends StatelessWidget {
       stream: manager.snapshots(),
       builder: (context, snapshot) {
         var managername = snapshot.data!.docs.first['managername'];
-        var manageraddress = snapshot.data!.docs.first['managername'];
-        var managercontactnumber = snapshot.data!.docs.first['managername'];
-        var managerstate = snapshot.data!.docs.first['managername'];
-        var managercity = snapshot.data!.docs.first['managername'];
-        var manageremail = snapshot.data!.docs.first['managername'];
-        var managerpassword = snapshot.data!.docs.first['managername'];
+        var managerplace = snapshot.data!.docs.first['managerplace'];
+        var managerage = snapshot.data!.docs.first['managerage'];
+        var manageridnumber = snapshot.data!.docs.first['manageridnumber'];
+        var managerid = snapshot.data!.docs.first['managerid'];
+        var manageremail = snapshot.data!.docs.first['manageremail'];
+        var managerpassword = snapshot.data!.docs.first['managerpassword'];
 
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
               leading: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_circle_left_outlined)),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenHomeManager();
+                      },
+                    ));
+                  },
+                  icon: const Icon(
+                    Icons.arrow_circle_left_outlined,
+                    color: Colors.black,
+                  )),
               backgroundColor: Colors.white,
               elevation: 0,
               title: Text(
@@ -51,41 +61,36 @@ class ScreenManagerProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
+                radius: 80,
                 backgroundImage: AssetImage(workprovider.debruyne),
               ),
-              Text(
-                "Anand Varma",
-                style: GoogleFonts.cambay(fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 330),
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) {
-                          return ScreenManagerUpdateProfile();
-                        },
-                      ));
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 207, 203, 203),
+                  elevation: 2,
+                ),
+                child: Text(
+                  "Update Profile",
+                  style: GoogleFonts.exo2(color: Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenManagerUpdateProfile();
                     },
-                    icon: Icon(Icons.edit_square)),
+                  ));
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
+                  left: 20,
+                  right: 20,
                 ),
                 child: Container(
                   width: 400,
-                  height: 600,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 249, 246, 246),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [BoxShadow(blurRadius: 1)]),
+                  height: 500,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(20),
                     child: SingleChildScrollView(
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,97 +100,85 @@ class ScreenManagerProfile extends StatelessWidget {
                             ),
                             Text(
                               "Name",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
+                            Text(
+                              managername,
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               "Place",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
-                            ),
+                            Text(managerplace),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               " Age",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
-                            ),
+                            Text(managerage),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               "ID Number",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
-                            ),
+                            Text(manageridnumber),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               "Email",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
-                            ),
+                            Text(manageremail),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               " ID",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
+                            Text(managerid),
+                            const SizedBox(
+                              height: 15,
                             ),
                             const SizedBox(
-                              height: 10,
-                            ),
-                            const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Text(
                               "Password",
-                              style: GoogleFonts.cambay(fontSize: 17),
+                              style: GoogleFonts.cambay(
+                                  color: Colors.indigo,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            TextFormField(
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.all(15),
-                                  border: OutlineInputBorder()),
-                            ),
+                            Text(managerpassword),
                             const SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                           ]),
                     ),

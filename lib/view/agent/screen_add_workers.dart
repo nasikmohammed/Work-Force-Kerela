@@ -219,7 +219,7 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                           radius: 20,
                           backgroundImage: MemoryImage(_image!),
                         )
-                      : CircleAvatar(),
+                      : const SizedBox()
                 ],
               ),
               Padding(

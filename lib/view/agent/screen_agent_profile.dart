@@ -52,7 +52,7 @@ class ScreenAgentProfile extends StatelessWidget {
               elevation: 0,
               title: Text(
                 "Profile",
-                style: GoogleFonts.nunitoSans(color: Colors.black),
+                style: GoogleFonts.overpass(color: Colors.black),
               ),
               actions: [
                 IconButton(
@@ -62,25 +62,28 @@ class ScreenAgentProfile extends StatelessWidget {
                       color: Colors.black,
                     ))
               ]),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundImage: AssetImage(workprovider.mc),
-              ),
-              Text(
-                agentfirstname,
-                style:
-                    GoogleFonts.hind(fontSize: 19, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 200),
-                child: ElevatedButton(
+          body: Padding(
+            padding: const EdgeInsets.only(left: 100, top: 80),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage(workprovider.mc),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  agentfirstname,
+                  style: GoogleFonts.hind(
+                      fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 247, 245, 245)),
+                      backgroundColor: Color.fromARGB(255, 223, 220, 220)),
                   child: Text(
                     "Edit Profile",
                     style: GoogleFonts.karla(color: Colors.black),
@@ -93,139 +96,100 @@ class ScreenAgentProfile extends StatelessWidget {
                     ));
                   },
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                ),
-                child: Container(
-                  height: 630,
+                Container(
+                  height: 470,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 246, 244, 244),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 25, right: 25),
-                    child: SingleChildScrollView(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Agency Name",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentfirstname,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Address",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentaddress,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Contact Number",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentcontactnumber,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "State",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentstate,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "City",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentcity,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Email ID",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentemail,
-                              readOnly: true,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Password",
-                              style: GoogleFonts.hind(
-                                  fontSize: 17, fontWeight: FontWeight.bold),
-                            ),
-                            TextFormField(
-                              initialValue: agentrgpassword,
-                              readOnly: true,
-                              obscureText: false,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ]),
-                    ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Agency Name",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentfirstname),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Address",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentaddress),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Contact Number",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentcontactnumber),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "State",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentstate),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "City",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentcity),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Email ID",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentemail),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Password",
+                            style: GoogleFonts.hind(
+                                color: const Color.fromARGB(255, 37, 55, 160),
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(agentrgpassword),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ]),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         );
       },

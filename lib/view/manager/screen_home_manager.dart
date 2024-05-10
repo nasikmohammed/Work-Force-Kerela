@@ -21,7 +21,7 @@ class ScreenHomeManager extends StatelessWidget {
           elevation: 0,
           title: Text(
             "Workforce kerela",
-            style: GoogleFonts.numans(color: Colors.black),
+            style: GoogleFonts.overpass(color: Colors.black),
           ),
           centerTitle: true,
           leading: Builder(builder: (context) {

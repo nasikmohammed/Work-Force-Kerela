@@ -220,14 +220,14 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                           radius: 20,
                           backgroundImage: MemoryImage(_image!),
                         )
-                      : CircleAvatar(),
+                      : const SizedBox()
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 130),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 13, 42, 91)),
+                        backgroundColor: const Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
                       ProjectDetailsModel agentobj = ProjectDetailsModel(
                         agentaddprojectname:

@@ -236,7 +236,7 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                           radius: 20,
                           backgroundImage: MemoryImage(_image!),
                         )
-                      : CircleAvatar(),
+                      : const SizedBox()
                 ],
               ),
               Padding(

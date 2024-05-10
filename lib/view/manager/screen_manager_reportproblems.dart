@@ -19,11 +19,23 @@ class ScreenManagerReportProblems extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeManager();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
           "Report yor problems",
-          style: GoogleFonts.merriweather(
+          style: GoogleFonts.overpass(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
