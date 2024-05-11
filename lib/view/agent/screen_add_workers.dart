@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -37,6 +39,8 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
       _image = img;
     });
   }
+
+  String imageUrl = "";
 
   @override
   Widget build(BuildContext context) {
@@ -204,8 +208,27 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
-                      onPressed: () {
-                        selectimageforworkers();
+                      onPressed: () async {
+                        //selectimageforworkers();
+                        ImagePicker imagePicker = ImagePicker();
+                        XFile? file = await imagePicker.pickImage(
+                            source: ImageSource.gallery);
+                        print(".................${file?.path}");
+                        if (file == null) return;
+                        String uniquefilename =
+                            DateTime.now().millisecondsSinceEpoch.toString();
+                        Reference referencRoot = FirebaseStorage.instance.ref();
+                        Reference referencedirimage =
+                            referencRoot.child("images");
+                        Reference referencetoimageupload =
+                            referencedirimage.child(uniquefilename);
+                        try {
+                          await referencetoimageupload.putFile(File(file.path));
+                          imageUrl =
+                              await referencetoimageupload.getDownloadURL();
+                        } catch (error) {
+                          print(error); 
+                        }
                       },
                       child: Text(
                         "Add Image",
