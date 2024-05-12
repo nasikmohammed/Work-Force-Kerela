@@ -21,26 +21,7 @@ class ScreenAddWorker extends StatefulWidget {
 }
 
 class _ScreenAddWorkerState extends State<ScreenAddWorker> {
-  Uint8List? _image;
-  imagePickforworkers(ImageSource source) async {
-    final ImagePicker _imagepicker = ImagePicker();
-    XFile? _file = await _imagepicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
-    } else {
-      print("No iMage selected");
-    }
-  }
 
-  void selectimageforworkers() async {
-    Uint8List img = await imagePickforworkers(ImageSource.gallery);
-
-    setState(() {
-      _image = img;
-    });
-  }
-
-  String imageUrl = "";
 
   @override
   Widget build(BuildContext context) {
@@ -209,26 +190,7 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
                       onPressed: () async {
-                        //selectimageforworkers();
-                        ImagePicker imagePicker = ImagePicker();
-                        XFile? file = await imagePicker.pickImage(
-                            source: ImageSource.gallery);
-                        print(".................${file?.path}");
-                        if (file == null) return;
-                        String uniquefilename =
-                            DateTime.now().millisecondsSinceEpoch.toString();
-                        Reference referencRoot = FirebaseStorage.instance.ref();
-                        Reference referencedirimage =
-                            referencRoot.child("images");
-                        Reference referencetoimageupload =
-                            referencedirimage.child(uniquefilename);
-                        try {
-                          await referencetoimageupload.putFile(File(file.path));
-                          imageUrl =
-                              await referencetoimageupload.getDownloadURL();
-                        } catch (error) {
-                          print(error); 
-                        }
+                        funprovider.pickimagefromgallery();
                       },
                       child: Text(
                         "Add Image",
@@ -237,12 +199,6 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                   const SizedBox(
                     width: 20,
                   ),
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 20,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : const SizedBox()
                 ],
               ),
               Padding(
@@ -252,14 +208,14 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                         backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
                       workersobj.addWorkers(WorkersModel(
-                        workersname: funprovider.workername.text,
-                        workersplace: funprovider.workerplace.text,
-                        workersage: funprovider.workerage.text,
-                        workersidnumber: funprovider.workeridnumber.text,
-                        workersemail: funprovider.workeremail.text,
-                        workersid: funprovider.workerid.text,
-                        workerspassword: funprovider.workerpassword.text,
-                      ));
+                          workersname: funprovider.workername.text,
+                          workersplace: funprovider.workerplace.text,
+                          workersage: funprovider.workerage.text,
+                          workersidnumber: funprovider.workeridnumber.text,
+                          workersemail: funprovider.workeremail.text,
+                          workersid: funprovider.workerid.text,
+                          workerspassword: funprovider.workerpassword.text,
+                          workerimage:funprovider.imageurl));
                     },
                     child: Text(
                       " Update",

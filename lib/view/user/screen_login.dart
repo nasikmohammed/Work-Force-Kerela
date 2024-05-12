@@ -65,7 +65,7 @@ class ScreenLogin extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () async {
                  
-                  await funprovider.signin();
+                 // await funprovider.signin();
                   
                 },
                 child: Text(

@@ -18,6 +18,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class FunProvider extends ChangeNotifier {
+   String? imageurl;
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -27,7 +28,7 @@ class FunProvider extends ChangeNotifier {
   final formkeyregister = GlobalKey<FormState>();
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-  final RegExp aadharpattern = RegExp('[a-zA-Z0-9./-_]{2,256}@[a-zA-Z]{2,64}');
+ 
   final adminuid = "RJXMfFwvxgTU5TfW4uHqB5kwcak2";
   FirestoreService firestore = FirestoreService();
   //          SCREEN REGISTER
@@ -58,14 +59,13 @@ class FunProvider extends ChangeNotifier {
   final managerreportproblemcontroller = TextEditingController();
   //screenpersonalinformation
   final usernamepcontroller = TextEditingController();
-  final useraddresscontroller = TextEditingController();
-  final usercontactnumbercontroller = TextEditingController();
-  final userserstatecontroller = TextEditingController();
-  final usercitycontroller = TextEditingController();
+  final userplacecontroller = TextEditingController();
+  final useragecontroller = TextEditingController();
+  final usersercontroller = TextEditingController();
+  final useridnumbercontroller = TextEditingController();
   final useremailcontroller = TextEditingController();
+  final useridcontroller = TextEditingController();
   final userpasswordcontroller = TextEditingController();
-  final userwebsitecontroller = TextEditingController();
-  final usercompanylogocontroller = TextEditingController();
 
 //Agent Controller
   final agencynamecontroller = TextEditingController();
@@ -144,98 +144,98 @@ class FunProvider extends ChangeNotifier {
   final adminemailcontroller = TextEditingController();
   final adminpasswordcontroller = TextEditingController();
 
-  Future signup(context) async {
-    try {
-      await auth
-          .createUserWithEmailAndPassword(
-              email: emailidcontroller.text, password: passwordcontroller.text)
-          .then((value) {
-        firestore.addUser(
-            UserModel(
-                contactnumber: usercontactnumbercontroller.text,
-                firstname: firstnamecontroller.text,
-                lastname: lastnamecontroller.text,
-                country: countrycontroller.text,
-                address: addresscontroller.text,
-                city: citycontroller.text,
-                email: emailidcontroller.text,
-                aadharnumber: aadhaarcontroller.text,
-                martialstatus: meterialstatuscontroller.text),
-            value.user!.uid);
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "email-already-in-use") {
-        return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          duration: Duration(seconds: 3),
-          backgroundColor: Color.fromARGB(255, 159, 58, 58),
-          content: Text("invalid  email"),
-          action: SnackBarAction(
-            label: "Undo",
-            textColor: Colors.white,
-            onPressed: () {},
-          ),
-        ));
-      }
-    }
-  }
+  // Future signup(context) async {
+  //   try {
+  //     await auth
+  //         .createUserWithEmailAndPassword(
+  //             email: emailidcontroller.text, password: passwordcontroller.text)
+  //         .then((value) {
+  //       firestore.addUser(
+  //           UserModel(
+  //               contactnumber: usercontactnumbercontroller.text,
+  //               firstname: firstnamecontroller.text,
+  //               lastname: lastnamecontroller.text,
+  //               country: countrycontroller.text,
+  //               address: addresscontroller.text,
+  //               city: citycontroller.text,
+  //               email: emailidcontroller.text,
+  //               aadharnumber: aadhaarcontroller.text,
+  //               martialstatus: meterialstatuscontroller.text),
+  //           value.user!.uid);
+  //     });
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == "email-already-in-use") {
+  //       return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //         duration: Duration(seconds: 3),
+  //         backgroundColor: Color.fromARGB(255, 159, 58, 58),
+  //         content: Text("invalid  email"),
+  //         action: SnackBarAction(
+  //           label: "Undo",
+  //           textColor: Colors.white,
+  //           onPressed: () {},
+  //         ),
+  //       ));
+  //     }
+  //   }
+  // }
 
-  verifyemail() async {
-    await auth.currentUser?.sendEmailVerification();
-  }
+  // verifyemail() async {
+  //   await auth.currentUser?.sendEmailVerification();
+  // }
 
-  signin() async {
-    await auth
-        .signInWithEmailAndPassword(
-            email: emailidcontroller.text, password: passwordcontroller.text)
-        .then((credentisl) {
-      if (credentisl.user!.emailVerified) {
-      } else {
-        credentisl.user!.sendEmailVerification();
-      }
-    });
-  }
+  // signin() async {
+  //   await auth
+  //       .signInWithEmailAndPassword(
+  //           email: emailidcontroller.text, password: passwordcontroller.text)
+  //       .then((credentisl) {
+  //     if (credentisl.user!.emailVerified) {
+  //     } else {
+  //       credentisl.user!.sendEmailVerification();
+  //     }
+  //   });
+  // }
 
-  Future emailotp(context) async {
-    myAuth.setConfig(
-        appEmail: "Firebasehub@gmail.com",
-        appName: "OTP VERIFICATION",
-        userEmail: emailidcontroller.text,
-        otpLength: 6,
-        otpType: OTPType.digitsOnly);
-    if (await myAuth.sendOTP() == true) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("OTP has been sent"),
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Oops, OTP send failed"),
-      ));
-    }
-  }
+  // Future emailotp(context) async {
+  //   myAuth.setConfig(
+  //       appEmail: "Firebasehub@gmail.com",
+  //       appName: "OTP VERIFICATION",
+  //       userEmail: emailidcontroller.text,
+  //       otpLength: 6,
+  //       otpType: OTPType.digitsOnly);
+  //   if (await myAuth.sendOTP() == true) {
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text("OTP has been sent"),
+  //     ));
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text("Oops, OTP send failed"),
+  //     ));
+  //   }
+  // }
 
-  verifyOTP(context) async {
-    if (await myAuth.verifyOTP(otp: otpcontroller.text) == true) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("OTP is verified"),
-      ));
-      await signup(context);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Invalid OTP"),
-      ));
-    }
-  } //          Screen USER signup (signup with google)
+  // verifyOTP(context) async {
+  //   if (await myAuth.verifyOTP(otp: otpcontroller.text) == true) {
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text("OTP is verified"),
+  //     ));
+  //     await signup(context);
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text("Invalid OTP"),
+  //     ));
+  //   }
+  // } //          Screen USER signup (signup with google)
 
-  Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+  // Future<UserCredential> signInWithGoogle() async {
+  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //   final GoogleSignInAuthentication? googleAuth =
+  //       await googleUser?.authentication;
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken,
+  //     idToken: googleAuth?.idToken,
+  //   );
+  //   return await FirebaseAuth.instance.signInWithCredential(credential);
+  // }
 
 //screen register
   // Uint8List? _image;
@@ -269,15 +269,15 @@ class FunProvider extends ChangeNotifier {
 
 //screen register
 
-  countrypicker(context) async {
-    return showCountryPicker(
-      context: context,
-      showPhoneCode: true,
-      onSelect: (Country country) {
-        print('Select country: ${country.displayName}');
-      },
-    );
-  }
+  // countrypicker(context) async {
+  //   return showCountryPicker(
+  //     context: context,
+  //     showPhoneCode: true,
+  //     onSelect: (Country country) {
+  //       print('Select country: ${country.displayName}');
+  //     },
+  //   );
+  // }
 
   //admin login function
   checkadminemail(context) {
@@ -346,5 +346,23 @@ class FunProvider extends ChangeNotifier {
     );
 
     await FlutterEmailSender.send(email);
+  }
+
+// screenAddworkers
+  pickimagefromgallery() async {
+    ImagePicker imagePicker = ImagePicker();
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print(".................${file?.path}");
+    if (file == null) return;
+    String uniquefilename = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference referencRoot = FirebaseStorage.instance.ref();
+    Reference referencedirimage = referencRoot.child("images");
+    Reference referencetoimageupload = referencedirimage.child(uniquefilename);
+    try {
+      await referencetoimageupload.putFile(File(file.path));
+      imageurl = await referencetoimageupload.getDownloadURL();
+    } catch (error) {
+      print(error);
+    }
   }
 }

@@ -24,25 +24,6 @@ class ScreenAgentAddProject extends StatefulWidget {
 }
 
 class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
-  Uint8List? _image;
-  imagePickforproject(ImageSource source) async {
-    final ImagePicker _imagepicker = ImagePicker();
-    XFile? _file = await _imagepicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
-    } else {
-      print("No iMage selected");
-    }
-  }
-
-  void selectimageforproject() async {
-    Uint8List img = await imagePickforproject(ImageSource.gallery);
-
-    setState(() {
-      _image = img;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
@@ -206,7 +187,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
                       onPressed: () {
-                        selectimageforproject();
+                        funprovider.pickimagefromgallery();
                       },
                       child: Text(
                         "Add Image",
@@ -215,12 +196,6 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                   const SizedBox(
                     width: 20,
                   ),
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 20,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : const SizedBox()
                 ],
               ),
               Padding(
@@ -238,6 +213,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                         agentaddnoworers: funprovider.agentaddnoworers.text,
                         agentaddbudget: funprovider.agentaddbudget.text,
                         agentaddmanager: funprovider.agentaddmanager.text,
+                        projectimage: funprovider.imageurl,
                       );
                       projectobj.addprojectdetails(
                         agentobj,

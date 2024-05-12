@@ -144,7 +144,7 @@ class ScreenSignup extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
-                    funprovider.signInWithGoogle();
+                    //funprovider.signInWithGoogle();
                   },
                   child: Text(
                     "Sign in with google",

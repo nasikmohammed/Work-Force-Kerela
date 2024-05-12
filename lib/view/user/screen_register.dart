@@ -118,7 +118,7 @@ class ScreenRegister extends StatelessWidget {
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {
-                            funprovider.countrypicker(context);
+                           // funprovider.countrypicker(context);
                           },
                           icon: Icon(Icons.arrow_drop_down)),
                       contentPadding:
@@ -203,14 +203,14 @@ class ScreenRegister extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
                 child: TextFormField(
-                  validator: (value) {
-                    if (funprovider.aadharpattern
-                        .hasMatch(funprovider.emailcontroller.text)) {
-                      return null;
-                    } else {
-                      return "Invalid aadhaar";
-                    }
-                  },
+                  // validator: (value) {
+                  //   if (funprovider.
+                  //       .(funprovider.emailcontroller.text)) {
+                  //     return null;
+                  //   } else {
+                  //     return "Invalid aadhaar";
+                  //   }
+                  // },
                   controller: funprovider.aadhaarcontroller,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -244,20 +244,22 @@ class ScreenRegister extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              OutlinedButton(
+              OutlinedButton(onPressed: () {
+                
+              },
                   style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.blue[400],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () async {
-                    if (funprovider.formkeyregister.currentState!.validate()) {
-                      await funprovider.emailotp(context).then((value) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => ScreenOtp(),
-                        ));
-                      });
-                    }
-                  },
+                  // onPressed: () async {
+                  //   if (funprovider.formkeyregister.currentState!.validate()) {
+                  //    // await funprovider.emailotp(context).then((value) {
+                  //       Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //         builder: (context) => ScreenOtp(),
+                  //       ));
+                  //     });
+                  //   }
+                  // },
                   child: Text(
                     "Register Now",
                     style: GoogleFonts.amaranth(color: Colors.black),

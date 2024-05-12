@@ -23,39 +23,6 @@ class ScreenAddManager extends StatefulWidget {
 }
 
 class _ScreenAddManagerState extends State<ScreenAddManager> {
-  Uint8List? _image;
-  String _uploadurl = "";
-
-  imagePickformanager(ImageSource source) async {
-    final ImagePicker _imagepicker = ImagePicker();
-    XFile? _file = await _imagepicker.pickImage(source: source);
-    if (_file != null) {
-      return await _file.readAsBytes();
-    } else {
-      print("No iMage selected");
-    }
-  }
-
-  void selectimage() async {
-    Uint8List img = await imagePickformanager(ImageSource.gallery);
-
-    setState(() {
-      _image = img;
-    });
-  }
-
-  Future<String> upload({required File file}) async {
-    try {
-      Reference storage = FirebaseStorage.instance.ref().child("profile");
-      UploadTask uploadTask = storage.putFile(file);
-      _uploadurl =
-          await uploadTask.then((result) => result.ref.getDownloadURL());
-    } catch (e) {
-      log(e.toString() as num);
-    }
-    return _uploadurl;
-  }
-
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
@@ -222,7 +189,7 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
                       onPressed: () {
-                        selectimage();
+                        funprovider.pickimagefromgallery();
                       },
                       child: Text(
                         "Add Image",
@@ -231,12 +198,6 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                   const SizedBox(
                     width: 20,
                   ),
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 20,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : const SizedBox()
                 ],
               ),
               Padding(
@@ -245,22 +206,18 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                     onPressed: () {
-                      print("functioncalled");
-                      managermodel
-                          .addManager(ManagerModel(
-                              managername: funprovider.agentmanagername.text,
-                              managerplace: funprovider.agentmanagerplace.text,
-                              managerage: funprovider.agentmanagerage.text,
-                              manageridnumber:
-                                  funprovider.agentmanagerIdnumber.text,
-                              manageremail: funprovider.agentmanageremail.text,
-                              managerid: funprovider.agentmanagerid.text,
-                              managerpassword:
-                                  funprovider.agentmanagerpassword.text,
-                              image: _uploadurl))
-                          .then((value) async {
-                        await funprovider.emailsend();
-                      });
+                      managermodel.addManager(ManagerModel(
+                          managername: funprovider.agentmanagername.text,
+                          managerplace: funprovider.agentmanagerplace.text,
+                          managerage: funprovider.agentmanagerage.text,
+                          manageridnumber:
+                              funprovider.agentmanagerIdnumber.text,
+                          manageremail: funprovider.agentmanageremail.text,
+                          managerid: funprovider.agentmanagerid.text,
+                          managerpassword:
+                              funprovider.agentmanagerpassword.text,
+                          managerimage: funprovider.imageurl));
+                     
                     },
                     child: Text(
                       " Update",

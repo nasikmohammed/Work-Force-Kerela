@@ -14,8 +14,7 @@ class ScreenManagerProfile extends StatelessWidget {
       FirebaseFirestore.instance.collection("MANAGER");
 
   @override
-  Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
+  Widget build(BuildContext context) { 
     return StreamBuilder(
       stream: manager.snapshots(),
       builder: (context, snapshot) {
@@ -26,6 +25,7 @@ class ScreenManagerProfile extends StatelessWidget {
         var managerid = snapshot.data!.docs.first['managerid'];
         var manageremail = snapshot.data!.docs.first['manageremail'];
         var managerpassword = snapshot.data!.docs.first['managerpassword'];
+        var managerphoto = snapshot.data!.docs.first['managerimage'];
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -62,7 +62,7 @@ class ScreenManagerProfile extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 80,
-                backgroundImage: AssetImage(workprovider.debruyne),
+                backgroundImage: AssetImage(managerphoto),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
