@@ -55,176 +55,255 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.error))]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25),
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 36),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Name",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentmanagername,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Place",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentmanagerplace,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Age",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                controller: funprovider.agentmanagerage,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "ID Number",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentmanagerIdnumber,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Email",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentmanageremail,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "ID",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentmanagerid,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Password",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: funprovider.agentmanagerpassword,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white),
-                      onPressed: () {
-                        funprovider.pickimagefromgallery();
-                      },
-                      child: Text(
-                        "Add Image",
-                        style: GoogleFonts.manrope(color: Colors.black),
-                      )),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 130),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 13, 42, 91)),
+          child: Form(
+            key: funprovider.formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Name",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentmanagername,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your name";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Place",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentmanagerplace,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Place";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Age",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter your age";
+                    } else {
+                      return null;
+                    }
+                  },
+                  // validator: (value) {
+                  //   int age = int.parse(value!);
+                  //   if (age <= 0 || age > 150) {
+                  //     return "Please enters a valid age";
+                  //   } else {
+                  //     return null;
+                  //   }
+                  // },
+                  controller: funprovider.agentmanagerage,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "ID Number",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentmanagerIdnumber,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your ID number";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Email",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentmanageremail,
+                  validator: (value) {
+                    if (funprovider.emailregexp
+                        .hasMatch(funprovider.agentmanageremail.text)) {
+                      return null;
+                    } else {
+                      return "Please enter valid Email";
+                    }
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "ID",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentmanagerid,
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your ID ";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Password",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  controller: funprovider.agentmanagerpassword,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Password";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.white),
                     onPressed: () {
-                      managermodel.addManager(ManagerModel(
-                          managername: funprovider.agentmanagername.text,
-                          managerplace: funprovider.agentmanagerplace.text,
-                          managerage: funprovider.agentmanagerage.text,
-                          manageridnumber:
-                              funprovider.agentmanagerIdnumber.text,
-                          manageremail: funprovider.agentmanageremail.text,
-                          managerid: funprovider.agentmanagerid.text,
-                          managerpassword:
-                              funprovider.agentmanagerpassword.text,
-                          managerimage: funprovider.imageurl));
-                     
+                      funprovider.pickimagefromgallery();
                     },
                     child: Text(
-                      " Update",
-                      style: GoogleFonts.manrope(),
+                      "Add Image",
+                      style: GoogleFonts.manrope(color: Colors.black),
                     )),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 130,
+                  ),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 13, 42, 91)),
+                      onPressed: () {
+                        if (funprovider.formkey.currentState!.validate()) {
+                          managermodel
+                              .addManager(ManagerModel(
+                                  managername:
+                                      funprovider.agentmanagername.text,
+                                  managerplace:
+                                      funprovider.agentmanagerplace.text,
+                                  managerage: funprovider.agentmanagerage.text,
+                                  manageridnumber:
+                                      funprovider.agentmanagerIdnumber.text,
+                                  manageremail:
+                                      funprovider.agentmanageremail.text,
+                                  managerid: funprovider.agentmanagerid.text,
+                                  managerpassword:
+                                      funprovider.agentmanagerpassword.text,
+                                  managerimage: funprovider.imageurl))
+                              .then((value) {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) {
+                                return ScreenHomeAgent();
+                              },
+                            ));
+                          });
+                        }
+                      },
+                      child: Text(
+                        " Update",
+                        style: GoogleFonts.manrope(),
+                      )),
+                ),
+                const SizedBox(
+                  height: 20,
+                )
+              ],
+            ),
           ),
         ),
       ),

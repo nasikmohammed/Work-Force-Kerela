@@ -18,7 +18,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class FunProvider extends ChangeNotifier {
-   String? imageurl;
+  String? imageurl = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -28,7 +28,7 @@ class FunProvider extends ChangeNotifier {
   final formkeyregister = GlobalKey<FormState>();
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
- 
+
   final adminuid = "RJXMfFwvxgTU5TfW4uHqB5kwcak2";
   FirestoreService firestore = FirestoreService();
   //          SCREEN REGISTER
