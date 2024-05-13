@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -23,10 +24,6 @@ class ScreenYourProjects extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         }
-        var projectname = snapshot.data!.docs.first['agentaddprojectname'];
-        var projectplace = snapshot.data!.docs.first['agentaddplace'];
-        var projectdeaddate = snapshot.data!.docs.first['agentaddenddate'];
-        var projectimages = snapshot.data!.docs.first['projectimage'];
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -57,6 +54,14 @@ class ScreenYourProjects extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
+                    var projectname =
+                        snapshot.data!.docs[index]['agentaddprojectname'];
+                    var projectplace =
+                        snapshot.data!.docs[index]['agentaddplace'];
+                    var projectdeaddate =
+                        snapshot.data!.docs[index]['agentaddenddate'];
+                    var projectimages =
+                        snapshot.data!.docs[index]['projectimage'];
                     return Container(
                       width: 300,
                       height: 190,
@@ -72,7 +77,17 @@ class ScreenYourProjects extends StatelessWidget {
                               ),
                               SizedBox(
                                   width: 150,
-                                  child: Image.network(projectimages)),
+                                  child: projectimages == ""
+                                      ? const Icon(
+                                          CupertinoIcons.person,
+                                          size: 100,
+                                        )
+                                      : SizedBox(
+                                          height: 130,
+                                          child: Image.network(
+                                            projectimages,
+                                          ),
+                                        )),
                               Row(
                                 children: [
                                   Text(

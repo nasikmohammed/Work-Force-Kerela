@@ -348,7 +348,7 @@ class FunProvider extends ChangeNotifier {
     await FlutterEmailSender.send(email);
   }
 
-// screenAddworkers
+// screenAddworkers//
   pickimagefromgallery() async {
     ImagePicker imagePicker = ImagePicker();
     SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");

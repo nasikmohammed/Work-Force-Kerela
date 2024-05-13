@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/project_store.dart';
 
@@ -284,7 +285,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
                               builder: (context) {
-                                return ScreenHomeAgent();
+                                return ScreenYourProjects();
                               },
                             ));
                           });
