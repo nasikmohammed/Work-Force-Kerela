@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/police/screen_camw.dart';
+import 'package:workforce_project/view/police/screen_complaints.dart';
 import 'package:workforce_project/view/police/screen_readnewcomplaints.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
@@ -15,6 +17,18 @@ class ScreenNewComplaints extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenComplaints();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
@@ -26,7 +40,7 @@ class ScreenNewComplaints extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon:const Icon(
                 Icons.error,
                 color: Colors.black,
               ))

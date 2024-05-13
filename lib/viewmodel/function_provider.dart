@@ -351,6 +351,7 @@ class FunProvider extends ChangeNotifier {
 // screenAddworkers
   pickimagefromgallery() async {
     ImagePicker imagePicker = ImagePicker();
+    SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
     XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
     print(".................${file?.path}");
     if (file == null) return;
@@ -359,7 +360,7 @@ class FunProvider extends ChangeNotifier {
     Reference referencedirimage = referencRoot.child("images");
     Reference referencetoimageupload = referencedirimage.child(uniquefilename);
     try {
-      await referencetoimageupload.putFile(File(file.path));
+      await referencetoimageupload.putFile(File(file.path),metadata);
       imageurl = await referencetoimageupload.getDownloadURL();
     } catch (error) {
       print(error);

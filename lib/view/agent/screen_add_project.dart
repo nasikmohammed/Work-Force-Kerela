@@ -55,176 +55,248 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.error))]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 40),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Project name",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddprojectname,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Place",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddplace,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Start Date",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddstartdate,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "End Date",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddenddate,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " No. of workers",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddnoworers,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Budget",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddbudget,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Manager",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.agentaddmanager,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
+          child: Form(
+            key: funprovider.formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Project name",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddprojectname,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Project Name ";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Place",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddplace,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Place";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Start Date",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddstartdate,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your project Start date";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "End Date",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddenddate,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your project End date";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " No. of workers",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddnoworers,
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter number of workers";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Budget",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddbudget,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Budget";
+                    } else {
+                      return null;
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Manager",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.agentaddmanager,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please Enter Project Manager";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white),
+                        onPressed: () {
+                          funprovider.pickimagefromgallery();
+                        },
+                        child: Text(
+                          "Add Image",
+                          style: GoogleFonts.manrope(color: Colors.black),
+                        )),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 130),
+                  child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white),
+                          backgroundColor:
+                              const Color.fromARGB(255, 13, 42, 91)),
                       onPressed: () {
-                        funprovider.pickimagefromgallery();
+                        if (funprovider.formkey.currentState!.validate()) {
+                          ProjectDetailsModel agentobj = ProjectDetailsModel(
+                            agentaddprojectname:
+                                funprovider.agentaddprojectname.text,
+                            agentaddplace: funprovider.agentaddplace.text,
+                            agentaddstartdate:
+                                funprovider.agentaddstartdate.text,
+                            agentaddenddate: funprovider.agentaddenddate.text,
+                            agentaddnoworers: funprovider.agentaddnoworers.text,
+                            agentaddbudget: funprovider.agentaddbudget.text,
+                            agentaddmanager: funprovider.agentaddmanager.text,
+                            projectimage: funprovider.imageurl,
+                          );
+                          projectobj
+                              .addprojectdetails(
+                            agentobj,
+                          )
+                              .then((value) {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) {
+                                return ScreenHomeAgent();
+                              },
+                            ));
+                          });
+                        }
                       },
                       child: Text(
-                        "Add Image",
-                        style: GoogleFonts.manrope(color: Colors.black),
+                        " Update",
+                        style: GoogleFonts.manrope(),
                       )),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 130),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 13, 42, 91)),
-                    onPressed: () {
-                      ProjectDetailsModel agentobj = ProjectDetailsModel(
-                        agentaddprojectname:
-                            funprovider.agentaddprojectname.text,
-                        agentaddplace: funprovider.agentaddplace.text,
-                        agentaddstartdate: funprovider.agentaddstartdate.text,
-                        agentaddenddate: funprovider.agentaddenddate.text,
-                        agentaddnoworers: funprovider.agentaddnoworers.text,
-                        agentaddbudget: funprovider.agentaddbudget.text,
-                        agentaddmanager: funprovider.agentaddmanager.text,
-                        projectimage: funprovider.imageurl,
-                      );
-                      projectobj.addprojectdetails(
-                        agentobj,
-                      );
-                    },
-                    child: Text(
-                      " Update",
-                      style: GoogleFonts.manrope(),
-                    )),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
+import 'package:workforce_project/view/police/screen_camw.dart';
 
 class ScreenAlert extends StatelessWidget {
   const ScreenAlert({super.key});
@@ -12,6 +13,15 @@ class ScreenAlert extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => ScreenCompamw()));
+            },
+            icon:const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(

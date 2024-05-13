@@ -21,8 +21,6 @@ class ScreenAddWorker extends StatefulWidget {
 }
 
 class _ScreenAddWorkerState extends State<ScreenAddWorker> {
-
-
   @override
   Widget build(BuildContext context) {
     WorkersStore workersobj = WorkersStore();
@@ -54,175 +52,248 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.error))]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 45),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Name",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.workername,
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Place",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.workerplace,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Age",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                controller: funprovider.workerage,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "ID Number",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.workeridnumber,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Email",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.workeremail,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "ID",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                controller: funprovider.workerid,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                " Password",
-                style: GoogleFonts.manrope(
-                    fontWeight: FontWeight.w500, fontSize: 15),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: funprovider.workerpassword,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
+          child: Form(
+            key: funprovider.formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Name",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.workername,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please Enter Worker Name";
+                    } else {
+                      return null;
+                    }
+                  },
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Place",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.workerplace,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please Enter Worker Place";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Age",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: funprovider.workerage,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter worker age";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "ID Number",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.workeridnumber,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your ID number";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Email",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.workeremail,
+                  validator: (value) {
+                    if (funprovider.emailregexp
+                        .hasMatch(funprovider.agentmanageremail.text)) {
+                      return null;
+                    } else {
+                      return "Please enter valid Email";
+                    }
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "ID",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: funprovider.workerid,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your ID ";
+                    } else {
+                      return null;
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  " Password",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.w500, fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  controller: funprovider.workerpassword,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter Your Password";
+                    } else {
+                      return null;
+                    }
+                  },
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white),
+                        onPressed: () async {
+                          funprovider.pickimagefromgallery();
+                        },
+                        child: Text(
+                          "Add Image",
+                          style: GoogleFonts.manrope(color: Colors.black),
+                        )),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 130),
+                  child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white),
-                      onPressed: () async {
-                        funprovider.pickimagefromgallery();
+                          backgroundColor: Color.fromARGB(255, 13, 42, 91)),
+                      onPressed: () {
+                        if (funprovider.formkey.currentState!.validate()) {
+                          workersobj
+                              .addWorkers(WorkersModel(
+                                  workersname: funprovider.workername.text,
+                                  workersplace: funprovider.workerplace.text,
+                                  workersage: funprovider.workerage.text,
+                                  workersidnumber:
+                                      funprovider.workeridnumber.text,
+                                  workersemail: funprovider.workeremail.text,
+                                  workersid: funprovider.workerid.text,
+                                  workerspassword:
+                                      funprovider.workerpassword.text,
+                                  workerimage: funprovider.imageurl))
+                              .then((value) {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) {
+                                return ScreenHomeAgent();
+                              },
+                            ));
+                          });
+                        }
                       },
                       child: Text(
-                        "Add Image",
-                        style: GoogleFonts.manrope(color: Colors.black),
+                        " Update",
+                        style: GoogleFonts.manrope(),
                       )),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 130),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 13, 42, 91)),
-                    onPressed: () {
-                      workersobj.addWorkers(WorkersModel(
-                          workersname: funprovider.workername.text,
-                          workersplace: funprovider.workerplace.text,
-                          workersage: funprovider.workerage.text,
-                          workersidnumber: funprovider.workeridnumber.text,
-                          workersemail: funprovider.workeremail.text,
-                          workersid: funprovider.workerid.text,
-                          workerspassword: funprovider.workerpassword.text,
-                          workerimage:funprovider.imageurl));
-                    },
-                    child: Text(
-                      " Update",
-                      style: GoogleFonts.manrope(),
-                    )),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

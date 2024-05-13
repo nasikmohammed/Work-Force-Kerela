@@ -20,9 +20,14 @@ class ScreenYourProjects extends StatelessWidget {
     return StreamBuilder(
       stream: project.snapshots(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        }
         var projectname = snapshot.data!.docs.first['agentaddprojectname'];
         var projectplace = snapshot.data!.docs.first['agentaddplace'];
         var projectdeaddate = snapshot.data!.docs.first['agentaddenddate'];
+        var projectimages = snapshot.data!.docs.first['projectimage'];
+
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -44,20 +49,13 @@ class ScreenYourProjects extends StatelessWidget {
               "Your projects",
               style: GoogleFonts.amaranth(color: Colors.black),
             ),
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.question_mark_outlined,
-                    color: Colors.black,
-                  ))
-            ],
             centerTitle: true,
           ),
           body: Column(
             children: [
               Expanded(
                 child: ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     return Container(
                       width: 300,
@@ -74,7 +72,7 @@ class ScreenYourProjects extends StatelessWidget {
                               ),
                               SizedBox(
                                   width: 150,
-                                  child: Image.asset(workprovider.house)),
+                                  child: Image.network(projectimages)),
                               Row(
                                 children: [
                                   Text(

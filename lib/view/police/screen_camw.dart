@@ -16,12 +16,13 @@ class ScreenCompamw extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: workprovider.policehomedrawer(context),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
           "Work force kerela",
-          style: GoogleFonts.righteous(
+          style: GoogleFonts.overpass(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

@@ -51,7 +51,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                     ),
                     InkWell(
                       onTap: () {
-                        //   funprovider.imageP();
+                        funprovider.pickimagefromgallery();
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -234,16 +234,17 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                 agentobbj
                                     .addUser(
                                   AgentModel(
-                                    agencyname: funprovider.agencyname.text,
-                                    contactnumber:
-                                        funprovider.agentcontactnumber.text,
-                                    agentaddress:
-                                        funprovider.agentrgaddress.text,
-                                    agentcity: funprovider.agentrgcity.text,
-                                    agentemail: funprovider.agentrgemail.text,
-                                    agentstate: funprovider.agentrgstate.text,
-                                    password: funprovider.agentrgpassword.text,
-                                  ),
+                                      agencyname: funprovider.agencyname.text,
+                                      contactnumber:
+                                          funprovider.agentcontactnumber.text,
+                                      agentaddress:
+                                          funprovider.agentrgaddress.text,
+                                      agentcity: funprovider.agentrgcity.text,
+                                      agentemail: funprovider.agentrgemail.text,
+                                      agentstate: funprovider.agentrgstate.text,
+                                      password:
+                                          funprovider.agentrgpassword.text,
+                                      image: funprovider.imageurl),
 
                                   //  FirebaseAuth.instance.currentUser!.uid
                                 )

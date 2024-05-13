@@ -24,6 +24,9 @@ class ScreenAgentProfile extends StatelessWidget {
     return StreamBuilder(
       stream: agent.snapshots(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        }
         var agentfirstname = snapshot.data!.docs.first['agencyname'];
         var agentaddress = snapshot.data!.docs.first['agentaddress'];
         var agentcity = snapshot.data!.docs.first['agentcity'];
@@ -32,6 +35,7 @@ class ScreenAgentProfile extends StatelessWidget {
 
         var agentemail = snapshot.data!.docs.first['agentemail'];
         var agentrgpassword = snapshot.data!.docs.first['password'];
+        var agentphoto = snapshot.data!.docs.first["image"];
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -68,7 +72,7 @@ class ScreenAgentProfile extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 60,
-                  backgroundImage: AssetImage(workprovider.mc),
+                  backgroundImage: NetworkImage(agentphoto),
                 ),
                 const SizedBox(
                   height: 10,

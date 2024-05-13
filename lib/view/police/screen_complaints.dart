@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_availableworkers.dart';
+import 'package:workforce_project/view/police/screen_camw.dart';
 import 'package:workforce_project/view/police/screen_closedcomplaints.dart';
 import 'package:workforce_project/view/police/screen_newcomplaints.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
@@ -18,6 +20,18 @@ class ScreenComplaints extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenCompamw();
+                },
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: CupertinoColors.black,
+            )),
         backgroundColor: Colors.white,
         title: Text(
           "Complaints",

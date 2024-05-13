@@ -55,7 +55,7 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.error))]),
       body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 36),
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 45),
         child: SingleChildScrollView(
           child: Form(
             key: funprovider.formkey,
@@ -299,9 +299,6 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                         style: GoogleFonts.manrope(),
                       )),
                 ),
-                const SizedBox(
-                  height: 20,
-                )
               ],
             ),
           ),

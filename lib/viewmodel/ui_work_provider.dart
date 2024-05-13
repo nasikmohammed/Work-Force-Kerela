@@ -24,6 +24,7 @@ import 'package:workforce_project/view/manager/screen_manager_profile.dart';
 import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
 import 'package:workforce_project/view/manager/screen_managernotifications.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
+import 'package:workforce_project/view/police/screen_alert.dart';
 import 'package:workforce_project/view/police/screen_notification.dart';
 import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
 import 'package:workforce_project/view/police/screen_updateprofile.dart';
@@ -555,7 +556,10 @@ class WorkProvider extends ChangeNotifier {
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenNotifications()));
+                },
                 child: Row(
                   children: [
                     const Icon(
@@ -569,7 +573,32 @@ class WorkProvider extends ChangeNotifier {
                     ),
                   ],
                 )),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => ScreenAlert()));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Alert",
+                      style:
+                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
         ]));
   }
 

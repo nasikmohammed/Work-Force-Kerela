@@ -14,10 +14,13 @@ class ScreenManagerProfile extends StatelessWidget {
       FirebaseFirestore.instance.collection("MANAGER");
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return StreamBuilder(
       stream: manager.snapshots(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        }
         var managername = snapshot.data!.docs.first['managername'];
         var managerplace = snapshot.data!.docs.first['managerplace'];
         var managerage = snapshot.data!.docs.first['managerage'];
@@ -62,7 +65,7 @@ class ScreenManagerProfile extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 80,
-                backgroundImage: AssetImage(managerphoto),
+                backgroundImage: NetworkImage(managerphoto),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
