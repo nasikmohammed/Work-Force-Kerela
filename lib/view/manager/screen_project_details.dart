@@ -20,6 +20,9 @@ class ScreenProjectDetails extends StatelessWidget {
     return StreamBuilder(
       stream: project.snapshots(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        }
         var projectname = snapshot.data!.docs.first['agentaddprojectname'];
         var projectplace = snapshot.data!.docs.first['agentaddplace'];
         var projectenddate = snapshot.data!.docs.first['agentaddenddate'];
