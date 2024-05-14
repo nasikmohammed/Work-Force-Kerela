@@ -69,10 +69,10 @@ class WorkProvider extends ChangeNotifier {
     "Ongoing investigations"
   ];
   String selectedoption = "Carpenter";
-  String selectedmartial = "Married";
+  String selectedmanager = "salu";
 
   List department = ["Carpenter", "Electrician", "Construction"];
-  List martial = ["Married", "Un Married", "other"];
+  List manager = ["salu", "sinu", "sachu"];
   bool isselected = false;
   AgenteService _agenteService = AgenteService();
   //available workers
@@ -106,7 +106,7 @@ class WorkProvider extends ChangeNotifier {
     );
   }
 
-  martialdropdown(context) {
+  dropdownmanager(context) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -121,12 +121,12 @@ class WorkProvider extends ChangeNotifier {
               height: 100,
               color: Colors.white,
               child: DropdownButtonFormField(
-                value: selectedmartial,
-                items: martial.map<DropdownMenuItem>((e) {
+                value: selectedmanager,
+                items: manager.map<DropdownMenuItem>((e) {
                   return DropdownMenuItem(value: e, child: Text(e));
                 }).toList(),
                 onChanged: (value) {
-                  selectedmartial = value!;
+                  selectedmanager = value!;
                 },
               ),
             ),

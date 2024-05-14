@@ -1,12 +1,14 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_update_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentProfile extends StatelessWidget {
@@ -20,12 +22,13 @@ class ScreenAgentProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
 
     return StreamBuilder(
       stream: agent.snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
         var agentfirstname = snapshot.data!.docs.first['agencyname'];
         var agentaddress = snapshot.data!.docs.first['agentaddress'];
@@ -70,13 +73,19 @@ class ScreenAgentProfile extends StatelessWidget {
             padding: const EdgeInsets.only(left: 100, top: 80),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 60,
-                  backgroundImage: NetworkImage(agentphoto),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
+                SizedBox(
+                    width: 150,
+                    child: agentphoto == ""
+                        ? const Icon(
+                            CupertinoIcons.person_alt_circle,
+                            size: 100,
+                          )
+                        : SizedBox(
+                            height: 130,
+                            child: Image.network(
+                              agentphoto,
+                            ),
+                          )),
                 Text(
                   agentfirstname,
                   style: GoogleFonts.hind(
@@ -119,7 +128,42 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentfirstname),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: SizedBox(
+                              width: 160,
+                              child: Row(
+                                //mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(agentfirstname),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 227, 220, 219),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: IconButton(
+                                          onPressed: () {
+                                            funprovider
+                                                .showagentnamedialoguealert(
+                                                    context, agentfirstname);
+                                          },
+                                          icon: const Icon(
+                                            Icons.edit,
+                                            size: 15,
+                                          )),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                           const SizedBox(
                             height: 10,
                           ),

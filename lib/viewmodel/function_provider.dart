@@ -4,15 +4,18 @@ import 'dart:typed_data';
 import 'package:email_otp/email_otp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -26,11 +29,13 @@ class FunProvider extends ChangeNotifier {
   final formkey = GlobalKey<FormState>();
   final adminloginkey = GlobalKey<FormState>();
   final formkeyregister = GlobalKey<FormState>();
+  List managerlist = [];
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   final adminuid = "RJXMfFwvxgTU5TfW4uHqB5kwcak2";
   FirestoreService firestore = FirestoreService();
+  AgenteService agentstor = AgenteService();
   //          SCREEN REGISTER
   //screen signup
 
@@ -278,6 +283,7 @@ class FunProvider extends ChangeNotifier {
   //     },
   //   );
   // }
+  final updateagentname = TextEditingController();
 
   //admin login function
   checkadminemail(context) {
@@ -360,10 +366,95 @@ class FunProvider extends ChangeNotifier {
     Reference referencedirimage = referencRoot.child("images");
     Reference referencetoimageupload = referencedirimage.child(uniquefilename);
     try {
-      await referencetoimageupload.putFile(File(file.path),metadata);
+      await referencetoimageupload.putFile(File(file.path), metadata);
       imageurl = await referencetoimageupload.getDownloadURL();
     } catch (error) {
       print(error);
     }
+  }
+
+  datepickforstrtdate(context) async {
+    final DateTime? selecteddate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+    );
+    final formatteddate = DateFormat("dd/MM/yyyy").format(selecteddate!);
+
+    print(formatteddate);
+
+    // print(selecteddate);
+    agentaddstartdate.text = formatteddate.toString();
+    notifyListeners();
+  }
+
+  datepickforenddate(context) async {
+    final DateTime? selecteddate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+    );
+    final formatteddate = DateFormat("dd/MM/yyyy").format(selecteddate!);
+
+    print(formatteddate);
+
+    agentaddenddate.text = formatteddate.toString();
+    notifyListeners();
+  }
+
+  Future<void> showagentnamedialoguealert(context, String name) async {
+    updateagentname.text = name;
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            "Edit name",
+            style: GoogleFonts.anekDevanagari(
+                fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: updateagentname,
+                  style: GoogleFonts.abyssinicaSil(),
+                  /////////////////////////////
+                  //focusNode: FocusNode(),
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      hintText: "  Text your Agency name...",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                  //        controller:
+                )
+              ],
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.indigo),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Update")),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.red),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Cancel"))
+          ],
+        );
+      },
+    );
   }
 }

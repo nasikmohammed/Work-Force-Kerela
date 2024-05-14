@@ -24,6 +24,7 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
     return StreamBuilder(
       stream: agent.snapshots(),
       builder: (context, snapshot) {
+       
         var agentfirstname = snapshot.data!.docs.first['agencyname'];
         var agentaddress = snapshot.data!.docs.first['agentaddress'];
         var agentcity = snapshot.data!.docs.first['agentcity'];
@@ -32,36 +33,32 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
 
         var agentemail = snapshot.data!.docs.first['agentemail'];
         var agentrgpassword = snapshot.data!.docs.first['password'];
+        var agentphoto = snapshot.data!.docs.first['image'];
 
         return Scaffold(
+          
           backgroundColor: Colors.white,
           appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) {
-                        return ScreenAgentProfile();
-                      },
-                    ));
-                  },
-                  icon: const Icon(
-                    Icons.arrow_circle_left,
-                    color: Colors.black,
-                  )),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              title: Text(
-                "Update Profile",
-                style: GoogleFonts.nunitoSans(color: Colors.black),
-              ),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.error,
-                      color: Colors.black,
-                    ))
-              ]),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenAgentProfile();
+                    },
+                  ));
+                },
+                icon: const Icon(
+                  Icons.arrow_circle_left,
+                  color: Colors.black,
+                )),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Text(
+              "Update Profile",
+              style: GoogleFonts.overpass(color: Colors.black),
+            ),
+            centerTitle: true,
+          ),
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -69,10 +66,19 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                CircleAvatar(
-                  radius: 40,
-                  backgroundImage: AssetImage(workprovider.mc),
-                ),
+                SizedBox(
+                    width: 150,
+                    child: agentphoto == ""
+                        ? const Icon(
+                            CupertinoIcons.person_alt_circle,
+                            size: 100,
+                          )
+                        : SizedBox(
+                            height: 130,
+                            child: Image.network(
+                              agentphoto,
+                            ),
+                          )),
                 TextButton(
                     onPressed: () {},
                     child: Text(
@@ -105,8 +111,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentfirstname,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentfirstname,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -119,8 +125,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentaddress,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentaddress,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -133,8 +139,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentcontactnumber,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentcontactnumber,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -147,8 +153,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentstate,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentstate,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -161,8 +167,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentcity,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentcity,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -175,8 +181,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentemail,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentemail,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),
@@ -189,8 +195,8 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
                                     fontSize: 17, fontWeight: FontWeight.bold),
                               ),
                               TextFormField(
-                                initialValue: agentrgpassword,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
+                                  hintText: agentrgpassword,
                                   contentPadding: EdgeInsets.all(5),
                                 ),
                               ),

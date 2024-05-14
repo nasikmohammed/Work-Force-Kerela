@@ -231,7 +231,7 @@ class ScreenRegister extends StatelessWidget {
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                           onPressed: () {
-                            workprovider.martialdropdown(context);
+                          
                           },
                           icon: Icon(Icons.arrow_drop_down)),
                       contentPadding:

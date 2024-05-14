@@ -81,4 +81,8 @@ class AgenteService {
   // Future<Stream<QuerySnapshot>> getsingleagentdata() async {
   //   return await FirebaseFirestore.instance.collection("AGENT").snapshots();
   // }
+
+  updateagentprofile(AgentModel agentModel) async {
+    await db.collection("AGENT").doc(agentModel.id).update(agentModel.toJson());
+  }
 }

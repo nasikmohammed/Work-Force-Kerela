@@ -13,6 +13,7 @@ import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/project_store.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 import '../../model/agentmodel.dart';
 import '../../viewmodel/agent_store.dart';
@@ -28,6 +29,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
+    final workprovider = Provider.of<WorkProvider>(context);
     ProjectStore projectobj = ProjectStore();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -122,6 +124,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                   height: 10,
                 ),
                 TextFormField(
+                  readOnly: true,
                   controller: funprovider.agentaddstartdate,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -131,6 +134,12 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                     }
                   },
                   decoration: InputDecoration(
+                      //  hintText: "Project start date",
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            funprovider.datepickforstrtdate(context);
+                          },
+                          icon: Icon(Icons.calendar_month)),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -147,6 +156,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                   height: 10,
                 ),
                 TextFormField(
+                  readOnly: true,
                   controller: funprovider.agentaddenddate,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -156,6 +166,11 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                     }
                   },
                   decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            funprovider.datepickforenddate(context);
+                          },
+                          icon: Icon(Icons.calendar_month)),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -233,6 +248,11 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                     }
                   },
                   decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            workprovider.dropdownmanager(context);
+                          },
+                          icon: Icon(Icons.arrow_drop_down)),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),

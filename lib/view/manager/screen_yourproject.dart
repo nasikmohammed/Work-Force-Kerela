@@ -79,7 +79,7 @@ class ScreenYourProjects extends StatelessWidget {
                                   width: 150,
                                   child: projectimages == ""
                                       ? const Icon(
-                                          CupertinoIcons.person,
+                                          CupertinoIcons.house_fill,
                                           size: 100,
                                         )
                                       : SizedBox(
