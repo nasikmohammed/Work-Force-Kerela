@@ -604,332 +604,341 @@ class WorkProvider extends ChangeNotifier {
 
   int intexnumber = 0;
   managerdrawer(context) {
-    return Drawer(
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
-      child: Column(children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 15, right: 15, bottom: 3, top: 90),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenManagerProfile()));
-              },
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_right,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Profile",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              )),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 15, right: 15, top: 2),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAgentAvailableWorkers()));
-              },
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_right,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Work Assign",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              )),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 15, right: 15, top: 2),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => ScreenManagerNotifications(),
-                ));
-              },
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_right,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Notifications",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              )),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15, top: 2),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenManagerAboutUs()));
-              },
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_right,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "About ",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              )),
-        ),
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 15, right: 15, bottom: 3, top: 2),
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-              onPressed: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => ()));
-              },
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_right,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Logout",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              )),
-        ),
-      ]),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 400, top: 50, right: 150),
+      child: Drawer(
+        backgroundColor: Colors.black,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        child: Column(children: [
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 15, right: 25, bottom: 3, top: 90),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenManagerProfile()));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Profile",
+                      style:
+                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15, right: 25, top: 2),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenAgentAvailableWorkers()));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Work Assign",
+                      style:
+                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15, right: 25, top: 2),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ScreenManagerNotifications(),
+                  ));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Notifications",
+                      style:
+                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 25, top: 2),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenManagerAboutUs()));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "About ",
+                      style:
+                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 15, right: 25, bottom: 3, top: 2),
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: () {
+                  // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //     builder: (context) => ()));
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.arrow_right,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Logout",
+                      style:
+                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
+                )),
+          ),
+        ]),
+      ),
     );
   } /////////////////////////////////////
 
 //USER DRAWER
 
   userdrawer(context) {
-    return Drawer(
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), bottomRight: Radius.circular(20))),
-      backgroundColor: Color.fromARGB(255, 9, 17, 61),
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 60),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenUserPersonalInfo(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Profile",
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 300, top: 60, left: 10),
+      child: Drawer(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        backgroundColor: Color.fromARGB(255, 9, 17, 61),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 10, right: 10, bottom: 3, top: 60),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenUserPersonalInfo(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Profile",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 3),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenSelectIdentity(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Identity",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenUserNotifications(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Notification",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenReportIssue(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        " Reports",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenUserReportList(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "Report List",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => ScreenAboutUs(),
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_right,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        "About ",
+                        style: GoogleFonts.corben(
+                            color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  )),
+            ),
+            const SizedBox(
+              height: 45,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 50,
+                ),
+                const Icon(
+                  Icons.arrow_right,
+                  color: Colors.white,
+                ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Logout",
                       style:
                           GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 3),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenSelectIdentity(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Identity",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenUserNotifications(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Notification",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenReportIssue(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      " Reports",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenUserReportList(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Report List",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAboutUs(),
-                  ));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "About ",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          const SizedBox(
-            height: 45,
-          ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 50,
-              ),
-              const Icon(
-                Icons.arrow_right,
-                color: Colors.white,
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Logout",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ))
-            ],
-          )
-        ],
+                    ))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

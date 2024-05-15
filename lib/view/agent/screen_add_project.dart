@@ -305,7 +305,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
                               builder: (context) {
-                                return ScreenYourProjects();
+                                return ScreenHomeAgent();
                               },
                             ));
                           });

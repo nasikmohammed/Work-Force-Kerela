@@ -94,21 +94,6 @@ class ScreenAgentProfile extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 223, 220, 220)),
-                  child: Text(
-                    "Edit Profile",
-                    style: GoogleFonts.karla(color: Colors.black),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) {
-                        return ScreenUpdateAgentProfile();
-                      },
-                    ));
-                  },
-                ),
                 Container(
                   height: 470,
                   decoration: BoxDecoration(
@@ -143,8 +128,8 @@ class ScreenAgentProfile extends StatelessWidget {
                                     height: 30,
                                     width: 30,
                                     decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 227, 220, 219),
+                                        color: const Color.fromARGB(
+                                            255, 227, 220, 219),
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     child: Center(

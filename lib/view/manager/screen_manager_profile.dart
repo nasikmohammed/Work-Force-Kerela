@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -63,10 +64,20 @@ class ScreenManagerProfile extends StatelessWidget {
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 80,
-                backgroundImage: NetworkImage(managerphoto),
-              ),
+              SizedBox(
+                  width: 150,
+                  child: managerphoto == ""
+                      ? const Icon(
+                          CupertinoIcons.person_alt_circle_fill,
+                          size: 60,
+                        )
+                      : CircleAvatar(
+                          radius: 60,
+                          // height: 130,
+                          child: Image.network(
+                            managerphoto,
+                          ),
+                        )),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color.fromARGB(255, 207, 203, 203),

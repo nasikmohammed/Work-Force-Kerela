@@ -1,14 +1,8 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
-import 'package:workforce_project/view/admin/screen_verifications.dart';
-import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
@@ -232,22 +226,25 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                   islosding = true;
                                 });
                                 agentobbj
-                                    .addUser(
-                                  AgentModel(
-                                      agencyname: funprovider.agencyname.text,
-                                      contactnumber:
-                                          funprovider.agentcontactnumber.text,
-                                      agentaddress:
-                                          funprovider.agentrgaddress.text,
-                                      agentcity: funprovider.agentrgcity.text,
-                                      agentemail: funprovider.agentrgemail.text,
-                                      agentstate: funprovider.agentrgstate.text,
-                                      password:
-                                          funprovider.agentrgpassword.text,
-                                      image: funprovider.imageurl)
+                                    .addUser(AgentModel(
+                                            agencyname:
+                                                funprovider.agencyname.text,
+                                            contactnumber: funprovider
+                                                .agentcontactnumber.text,
+                                            agentaddress:
+                                                funprovider.agentrgaddress.text,
+                                            agentcity:
+                                                funprovider.agentrgcity.text,
+                                            agentemail:
+                                                funprovider.agentrgemail.text,
+                                            agentstate:
+                                                funprovider.agentrgstate.text,
+                                            password: funprovider
+                                                .agentrgpassword.text,
+                                            image: funprovider.imageurl)
 
-                                  //  FirebaseAuth.instance.currentUser!.uid
-                                )
+                                        //  FirebaseAuth.instance.currentUser!.uid
+                                        )
                                     .then((value) {
                                   showDialog(
                                     context: context,

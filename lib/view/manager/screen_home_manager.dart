@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -140,7 +141,7 @@ class ScreenHomeManager extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data!.docs.length,
@@ -151,14 +152,24 @@ class ScreenHomeManager extends StatelessWidget {
                             width: 200,
                             height: 10,
                             decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Color.fromARGB(255, 219, 205, 204),
                                 borderRadius: BorderRadius.circular(15)),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15),
-                              child: Image.network(
-                                projectimages,
-                                fit: BoxFit.cover,
-                              ),
+                              child: SizedBox(
+                                  width: 150,
+                                  child: projectimages == ""
+                                      ? const Icon(
+                                          CupertinoIcons.house_fill,
+                                          size: 100,
+                                        )
+                                      : SizedBox(
+                                          height: 130,
+                                          child: Image.network(
+                                            projectimages,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )),
                             ),
                           );
                         },

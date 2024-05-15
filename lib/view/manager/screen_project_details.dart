@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -27,6 +28,7 @@ class ScreenProjectDetails extends StatelessWidget {
         var projectplace = snapshot.data!.docs.first['agentaddplace'];
         var projectenddate = snapshot.data!.docs.first['agentaddenddate'];
         var projectstartdate = snapshot.data!.docs.first['agentaddstartdate'];
+
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -79,7 +81,7 @@ class ScreenProjectDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "(${projectenddate})",
+                    "(${projectstartdate})",
                     style:
                         GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
                   ),
@@ -89,7 +91,7 @@ class ScreenProjectDetails extends StatelessWidget {
                         GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
                   ),
                   Text(
-                    "(${projectstartdate})",
+                    "(${projectenddate})",
                     style:
                         GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
                   ),
@@ -121,11 +123,26 @@ class ScreenProjectDetails extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
+                    var projectphoto =
+                        snapshot.data!.docs[index]['projectimage'];
+                    var projectname =
+                        snapshot.data!.docs[index]['agentaddprojectname'];
                     return ListTile(
-                      leading: CircleAvatar(
-                          backgroundImage: AssetImage(workprovider.debruyne)),
+                      leading: SizedBox(
+                          width: 150,
+                          child: projectphoto == ""
+                              ? const Icon(
+                                  CupertinoIcons.person_alt_circle_fill,
+                                  size: 60,
+                                )
+                              : SizedBox(
+                                  height: 130,
+                                  child: Image.network(
+                                    projectphoto,
+                                  ),
+                                )),
                       title: Text(
-                        "John hernandez",
+                        projectname,
                         style: GoogleFonts.amaranth(color: Colors.black),
                       ),
                       subtitle: Text(
@@ -153,6 +170,7 @@ class ScreenProjectDetails extends StatelessWidget {
                       ),
                     );
                   },
+                  itemCount: snapshot.data!.docs.length,
                 ),
               )
             ],

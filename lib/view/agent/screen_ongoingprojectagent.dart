@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -106,7 +107,19 @@ class _ScreenOngoingProjectAgentState extends State<ScreenOngoingProjectAgent> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
-                                      Image.network(projectimage),
+                                      SizedBox(
+                                          width: 150,
+                                          child: projectimage == ""
+                                              ? const Icon(
+                                                  CupertinoIcons.house_fill,
+                                                  size: 100,
+                                                )
+                                              : SizedBox(
+                                                  height: 130,
+                                                  child: Image.network(
+                                                    projectimage,
+                                                  ),
+                                                )),
                                       Text(
                                           "Cunstruction work of super market isin progress",
                                           style: GoogleFonts.alata(

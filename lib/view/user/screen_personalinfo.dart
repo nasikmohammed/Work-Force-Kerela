@@ -37,63 +37,52 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
     return StreamBuilder(
       stream: user.snapshots(),
       builder: (context, snapshot) {
-        var workersname = snapshot.data!.docs.first['workersname'];
-        var workersplace = snapshot.data!.docs.first['workersplace'];
-        var workersage = snapshot.data!.docs.first['workersage'];
-        var workersidnumber = snapshot.data!.docs.first['workersidnumber'];
-        var workersid = snapshot.data!.docs.first['workersid'];
-
-        var workersemail = snapshot.data!.docs.first['workersemail'];
-        var workerspassword = snapshot.data!.docs.first['workerspassword'];
-        var workerimage = snapshot.data!.docs.first['workerimage'];
-
         if (snapshot.hasData) {
+          var workersname = snapshot.data!.docs.first['workersname'];
+          var workersplace = snapshot.data!.docs.first['workersplace'];
+          var workersage = snapshot.data!.docs.first['workersage'];
+          var workersidnumber = snapshot.data!.docs.first['workersidnumber'];
+          var workersid = snapshot.data!.docs.first['workersid'];
+
+          var workersemail = snapshot.data!.docs.first['workersemail'];
+          var workerspassword = snapshot.data!.docs.first['workerspassword'];
+          var workerimage = snapshot.data!.docs.first['workerimage'];
           return Scaffold(
               backgroundColor: const Color.fromARGB(255, 247, 255, 222),
               appBar: AppBar(
-                  leading: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) {
-                            return ScreenReportProblems();
-                          },
-                        ));
-                      },
-                      icon: const Icon(
-                        Icons.keyboard_arrow_left_outlined,
-                        color: Colors.black,
-                      )),
-                  backgroundColor: const Color.fromARGB(255, 247, 255, 222),
-                  elevation: 0,
-                  title: Text(
-                    "Personal information",
-                    style: GoogleFonts.overpass(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  centerTitle: true,
-                  actions: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.error,
-                          color: Colors.black,
-                        ))
-                  ]),
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenReportProblems();
+                        },
+                      ));
+                    },
+                    icon: const Icon(
+                      Icons.keyboard_arrow_left_outlined,
+                      color: Colors.black,
+                    )),
+                backgroundColor: const Color.fromARGB(255, 247, 255, 222),
+                elevation: 0,
+                title: Text(
+                  "Personal information",
+                  style: GoogleFonts.overpass(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                centerTitle: true,
+              ),
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10, right: 20, top: 30),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 70,
-                        backgroundImage: AssetImage(workprovider.adminprofile),
-                      ),
-                      Text(
-                        workersname,
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
+                      workerimage == ""
+                          ? Icon(CupertinoIcons.person_alt)
+                          : Container(
+                              height: 100,
+                              child: Image.network(workerimage),
+                            ),
                       const SizedBox(
                         height: 10,
                       ),

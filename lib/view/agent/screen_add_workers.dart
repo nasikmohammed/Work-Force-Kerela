@@ -173,7 +173,7 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                   controller: funprovider.workeremail,
                   validator: (value) {
                     if (funprovider.emailregexp
-                        .hasMatch(funprovider.agentmanageremail.text)) {
+                        .hasMatch(funprovider.workeremail.text)) {
                       return null;
                     } else {
                       return "Please enter valid Email";
