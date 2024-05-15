@@ -244,7 +244,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                       agentstate: funprovider.agentrgstate.text,
                                       password:
                                           funprovider.agentrgpassword.text,
-                                      image: funprovider.imageurl),
+                                      image: funprovider.imageurl)
 
                                   //  FirebaseAuth.instance.currentUser!.uid
                                 )

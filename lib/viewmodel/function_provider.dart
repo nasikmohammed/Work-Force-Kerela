@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_otp/email_otp.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +32,8 @@ class FunProvider extends ChangeNotifier {
   final adminloginkey = GlobalKey<FormState>();
   final formkeyregister = GlobalKey<FormState>();
   List managerlist = [];
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('AGENT');
+  FirebaseStorage storage = FirebaseStorage.instance;
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
@@ -410,25 +414,26 @@ class FunProvider extends ChangeNotifier {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(
-            "Edit name",
-            style: GoogleFonts.anekDevanagari(
-                fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
+          title: Center(
+            child: Text(
+              "Edit name",
+              style: GoogleFonts.anekDevanagari(
+                  fontSize: 22,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           content: SingleChildScrollView(
             child: Column(
               children: [
                 TextField(
                   controller: updateagentname,
-                  style: GoogleFonts.abyssinicaSil(),
-                  /////////////////////////////
-                  //focusNode: FocusNode(),
-                  decoration: InputDecoration(
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(5),
                       hintText: "  Text your Agency name...",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                  //        controller:
                 )
               ],
             ),
@@ -438,20 +443,34 @@ class FunProvider extends ChangeNotifier {
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: Colors.indigo),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("Update")),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
                     backgroundColor: Colors.red),
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Cancel"))
+                child: Text(
+                  "Cancel",
+                  style: GoogleFonts.nunito(),
+                )),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.indigo),
+                onPressed: () {
+                  final CollectionReference agent =
+                      FirebaseFirestore.instance.collection("AGENT");
+                  print("update");
+                  ref.child(agent.id).update({
+                    "agencyname": updateagentname.text.toString()
+                  }).then((value) {
+                    print("afgter update");
+                    Navigator.pop(context);
+                  });
+                },
+                child: Text(
+                  "Update",
+                  style: GoogleFonts.nunito(),
+                )),
           ],
         );
       },
