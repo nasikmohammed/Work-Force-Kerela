@@ -1,11 +1,7 @@
-import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:workforce_project/model/agentmodel.dart';
-import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class AgenteService {
   final db = FirebaseFirestore.instance;

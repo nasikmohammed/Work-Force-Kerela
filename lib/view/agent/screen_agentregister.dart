@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/model/agentmodel.dart';
-import 'package:workforce_project/model/usermodel.dart';
-import 'package:workforce_project/viewmodel/agent_store.dart';
+
 import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenAgentRegister extends StatelessWidget {
@@ -13,7 +9,6 @@ class ScreenAgentRegister extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AgenteService agentfirestore = AgenteService();
     final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 206, 225, 204),

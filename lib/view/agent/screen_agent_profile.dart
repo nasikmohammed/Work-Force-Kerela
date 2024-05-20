@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
-import 'package:workforce_project/view/agent/screen_update_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
-import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentProfile extends StatelessWidget {
   ScreenAgentProfile({super.key});
@@ -21,7 +19,6 @@ class ScreenAgentProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
 
     return StreamBuilder(

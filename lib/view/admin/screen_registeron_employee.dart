@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +21,6 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
 
   @override
   Widget build(BuildContext context) {
-    File? images;
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
     AgenteService agentobbj = AgenteService();

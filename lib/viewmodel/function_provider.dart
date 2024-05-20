@@ -1,21 +1,15 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_otp/email_otp.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
@@ -291,7 +285,6 @@ class FunProvider extends ChangeNotifier {
 
   //admin login function
   checkadminemail(context) {
-  
     auth
         .signInWithEmailAndPassword(
             email: adminemailcontroller.text,
@@ -303,15 +296,13 @@ class FunProvider extends ChangeNotifier {
               builder: (context) => ScreenRegisterAnEmployee(),
             ),
             (route) => false);
-       
       } else {
-      
         auth.signOut();
         return ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Email and Password is Doesn't match")));
       }
     }).onError((error, stackTrace) {
-    return  ScaffoldMessenger.of(context).showSnackBar(
+      return ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Email and Password is Doesn't Match")));
     });
   } //////////////////////////////////////////////////////////////////////////////////////
@@ -475,12 +466,23 @@ class FunProvider extends ChangeNotifier {
       },
     );
   }
-   sendEmail(String subject, String body, String recipientmail) async {
+
+  sendEmail(String subject, String body, String recipientmail) async {
     final Email email = Email(
         body: body,
         subject: subject,
         recipients: [recipientmail],
         isHTML: false);
     await FlutterEmailSender.send(email);
+  }
+
+  clearAddworkersField() {
+    workername.clear();
+    workerplace.clear();
+    workerage.clear();
+    workeridnumber.clear();
+    workeremail.clear();
+    workerid.clear();
+    workerpassword.clear();
   }
 }

@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 

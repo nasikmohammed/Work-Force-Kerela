@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/view/police/screen_camw.dart';
 import 'package:workforce_project/view/police/screen_complaints.dart';
 import 'package:workforce_project/view/police/screen_readnewcomplaints.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';

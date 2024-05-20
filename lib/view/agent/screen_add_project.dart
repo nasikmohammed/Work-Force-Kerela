@@ -1,22 +1,14 @@
-import 'dart:typed_data';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
-import 'package:workforce_project/view/manager/screen_yourproject.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/project_store.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-import '../../model/agentmodel.dart';
-import '../../viewmodel/agent_store.dart';
+
 
 class ScreenAgentAddProject extends StatefulWidget {
   const ScreenAgentAddProject({super.key});

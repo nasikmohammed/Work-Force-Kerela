@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_project_details.dart';
-import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenYourProjects extends StatelessWidget {
   ScreenYourProjects({super.key});
@@ -17,7 +13,6 @@ class ScreenYourProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
     return StreamBuilder(
       stream: project.snapshots(),
       builder: (context, snapshot) {

@@ -2,11 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
-import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
+// ignore: must_be_immutable
 class ScreenUpdateAgentProfile extends StatelessWidget {
   ScreenUpdateAgentProfile({super.key});
 
@@ -17,14 +16,9 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    final workprovider = Provider.of<WorkProvider>(context);
-
     return StreamBuilder(
       stream: agent.snapshots(),
       builder: (context, snapshot) {
-       
         var agentfirstname = snapshot.data!.docs.first['agencyname'];
         var agentaddress = snapshot.data!.docs.first['agentaddress'];
         var agentcity = snapshot.data!.docs.first['agentcity'];
@@ -36,7 +30,6 @@ class ScreenUpdateAgentProfile extends StatelessWidget {
         var agentphoto = snapshot.data!.docs.first['image'];
 
         return Scaffold(
-          
           backgroundColor: Colors.white,
           appBar: AppBar(
             leading: IconButton(

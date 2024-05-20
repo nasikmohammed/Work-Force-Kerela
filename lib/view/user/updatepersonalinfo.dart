@@ -1,11 +1,6 @@
-import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
@@ -51,7 +46,6 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
 
         var workersemail = snapshot.data!.docs.first['workersemail'];
         var workerspassword = snapshot.data!.docs.first['workerspassword'];
-        var workerimage = snapshot.data!.docs.first['workerimage'];
 
         if (snapshot.hasData) {
           return Scaffold(

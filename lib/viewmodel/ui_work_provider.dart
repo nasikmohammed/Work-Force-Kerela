@@ -1,10 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:roundcheckbox/roundcheckbox.dart';
-import 'package:workforce_project/model/agentmodel.dart';
+
 import 'package:workforce_project/view/admin/screen_admin_profile.dart';
 import 'package:workforce_project/view/admin/screen_feedback_reports.dart';
 import 'package:workforce_project/view/admin/screen_human_resouce.dart';
@@ -17,27 +13,21 @@ import 'package:workforce_project/view/agent/screen_add_project.dart';
 import 'package:workforce_project/view/agent/screen_add_workers.dart';
 import 'package:workforce_project/view/agent/screen_agent_profile.dart';
 import 'package:workforce_project/view/agent/screen_availablemanagers.dart';
-import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/agent/screen_notificationagent.dart';
 import 'package:workforce_project/view/manager/screen_availableworkers.dart';
 import 'package:workforce_project/view/agent/screen_ongoingprojectagent.dart';
 import 'package:workforce_project/view/manager/screen_manager_aboutus.dart';
 import 'package:workforce_project/view/manager/screen_manager_profile.dart';
-import 'package:workforce_project/view/manager/screen_manager_upsa.dart';
 import 'package:workforce_project/view/manager/screen_managernotifications.dart';
 import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_alert.dart';
 import 'package:workforce_project/view/police/screen_notification.dart';
-import 'package:workforce_project/view/police/screen_ongoinginvestigation.dart';
-import 'package:workforce_project/view/police/screen_updateprofile.dart';
 import 'package:workforce_project/view/police/screen_upsa.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_report_list.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
 import 'package:workforce_project/view/user/screen_selectidentity.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
-import 'package:workforce_project/view/user/screen_userprofile.dart';
-import 'package:workforce_project/viewmodel/agent_store.dart';
 
 class WorkProvider extends ChangeNotifier {
   String person = "assets/person.jpeg";
@@ -76,7 +66,6 @@ class WorkProvider extends ChangeNotifier {
   List department = ["Carpenter", "Electrician", "Construction"];
   List manager = ["salu", "sinu", "sachu"];
   bool isselected = false;
-  AgenteService _agenteService = AgenteService();
   //available workers
   workassigndropdown(context) {
     return showDialog(

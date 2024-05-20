@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_register.dart';
-import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenSignup extends StatelessWidget {

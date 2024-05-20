@@ -1,12 +1,6 @@
-import 'dart:io';
-import 'dart:typed_data';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
@@ -275,12 +269,12 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                               workerspassword: funprovider.workerpassword.text,
                               workerimage: funprovider.imageurl));
 
-                          funprovider
-                              .sendEmail(
-                                  funprovider.workername.text,
-                                  ('Work force kerela Login Password is:${funprovider.workerpassword.text}'),
-                                  funprovider.workeremail.text)
-                              .then((value) {
+                          funprovider.sendEmail(
+                              funprovider.workername.text,
+                              ('Work force kerela Login Password is:${funprovider.workerpassword.text}'),
+                              funprovider.workeremail.text);
+                          funprovider.clearAddworkersField().
+                          then((value) {
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
                               builder: (context) {

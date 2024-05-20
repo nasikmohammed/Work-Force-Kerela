@@ -1,16 +1,9 @@
-import 'package:email_otp/email_otp.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/model/usermodel.dart';
-import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_otp.dart';
-import 'package:workforce_project/view/user/screen_user_home.dart';
-import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
-import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenRegister extends StatelessWidget {
   ScreenRegister({super.key});
@@ -20,7 +13,7 @@ class ScreenRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
-    final workprovider = Provider.of<WorkProvider>(context);
+   
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 255, 222),
       body: SafeArea(

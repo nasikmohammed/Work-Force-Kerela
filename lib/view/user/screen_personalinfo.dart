@@ -1,21 +1,13 @@
-import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/view/user/updatepersonalinfo.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 
-import 'package:workforce_project/viewmodel/function_provider.dart';
-import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-import '../../model/usermodel.dart';
 
 class ScreenUserPersonalInfo extends StatefulWidget {
   ScreenUserPersonalInfo({super.key});
@@ -31,8 +23,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
-    final funprovider = Provider.of<FunProvider>(context);
+  
 
     return StreamBuilder(
       stream: user.snapshots(),
