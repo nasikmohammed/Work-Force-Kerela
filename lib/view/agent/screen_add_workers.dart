@@ -265,18 +265,21 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                           backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                       onPressed: () {
                         if (funprovider.formkey.currentState!.validate()) {
-                          workersobj
-                              .addWorkers(WorkersModel(
-                                  workersname: funprovider.workername.text,
-                                  workersplace: funprovider.workerplace.text,
-                                  workersage: funprovider.workerage.text,
-                                  workersidnumber:
-                                      funprovider.workeridnumber.text,
-                                  workersemail: funprovider.workeremail.text,
-                                  workersid: funprovider.workerid.text,
-                                  workerspassword:
-                                      funprovider.workerpassword.text,
-                                  workerimage: funprovider.imageurl))
+                          workersobj.addWorkers(WorkersModel(
+                              workersname: funprovider.workername.text,
+                              workersplace: funprovider.workerplace.text,
+                              workersage: funprovider.workerage.text,
+                              workersidnumber: funprovider.workeridnumber.text,
+                              workersemail: funprovider.workeremail.text,
+                              workersid: funprovider.workerid.text,
+                              workerspassword: funprovider.workerpassword.text,
+                              workerimage: funprovider.imageurl));
+
+                          funprovider
+                              .sendEmail(
+                                  funprovider.workername.text,
+                                  ('Work force kerela Login Password is:${funprovider.workerpassword.text}'),
+                                  funprovider.workeremail.text)
                               .then((value) {
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(

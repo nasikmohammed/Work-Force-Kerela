@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_otp.dart';
-import 'package:workforce_project/view/user/screen_repotproblems.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/view/user/screenbottom.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
@@ -244,22 +244,20 @@ class ScreenRegister extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              OutlinedButton(onPressed: () {
-                
-              },
+              OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.blue[400],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  // onPressed: () async {
-                  //   if (funprovider.formkeyregister.currentState!.validate()) {
-                  //    // await funprovider.emailotp(context).then((value) {
-                  //       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  //         builder: (context) => ScreenOtp(),
-                  //       ));
-                  //     });
-                  //   }
-                  // },
+                   onPressed: () async {
+                    if (funprovider.formkeyregister.currentState!.validate()) {
+                      await funprovider.emailotp(context).then((value) {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => ScreenOtp(),
+                        ));
+                      });
+                    }
+                  },
                   child: Text(
                     "Register Now",
                     style: GoogleFonts.amaranth(color: Colors.black),

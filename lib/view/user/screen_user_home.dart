@@ -8,14 +8,14 @@ import 'package:workforce_project/view/user/screen_usernotifications.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenReportProblems extends StatefulWidget {
-  const ScreenReportProblems({super.key});
+class ScreenUserHome extends StatefulWidget {
+  const ScreenUserHome({super.key});
 
   @override
-  State<ScreenReportProblems> createState() => _ScreenReportProblemsState();
+  State<ScreenUserHome> createState() => _ScreenReportProblemsState();
 }
 
-class _ScreenReportProblemsState extends State<ScreenReportProblems> {
+class _ScreenReportProblemsState extends State<ScreenUserHome> {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);

@@ -41,6 +41,7 @@ class AgentModel {
         "password": password,
 
         "image": image
+
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {
     return AgentModel(

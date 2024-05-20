@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:workforce_project/view/user/screen_repotproblems.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUserNotifications extends StatelessWidget {
@@ -19,7 +19,7 @@ class ScreenUserNotifications extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) {
-                  return ScreenReportProblems();
+                  return ScreenUserHome();
                 },
               ));
             },

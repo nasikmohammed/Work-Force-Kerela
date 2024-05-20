@@ -204,23 +204,23 @@ class FunProvider extends ChangeNotifier {
   //   });
   // }
 
-  // Future emailotp(context) async {
-  //   myAuth.setConfig(
-  //       appEmail: "Firebasehub@gmail.com",
-  //       appName: "OTP VERIFICATION",
-  //       userEmail: emailidcontroller.text,
-  //       otpLength: 6,
-  //       otpType: OTPType.digitsOnly);
-  //   if (await myAuth.sendOTP() == true) {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //       content: Text("OTP has been sent"),
-  //     ));
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //       content: Text("Oops, OTP send failed"),
-  //     ));
-  //   }
-  // }
+  Future emailotp(context) async {
+    myAuth.setConfig(
+        appEmail: "Firebasehub@gmail.com",
+        appName: "OTP VERIFICATION",
+        userEmail: emailidcontroller.text,
+        otpLength: 6,
+        otpType: OTPType.digitsOnly);
+    if (await myAuth.sendOTP() == true) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("OTP has been sent"),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Oops, OTP send failed"),
+      ));
+    }
+  }
 
   // verifyOTP(context) async {
   //   if (await myAuth.verifyOTP(otp: otpcontroller.text) == true) {
@@ -291,8 +291,7 @@ class FunProvider extends ChangeNotifier {
 
   //admin login function
   checkadminemail(context) {
-    print(
-        "checcccccccccccccccccccccccccccccccccccccccccccccccckkkkkkkkkkkkkkkk");
+  
     auth
         .signInWithEmailAndPassword(
             email: adminemailcontroller.text,
@@ -304,15 +303,15 @@ class FunProvider extends ChangeNotifier {
               builder: (context) => ScreenRegisterAnEmployee(),
             ),
             (route) => false);
-        print("checkccckeewdeweeweweweweee");
+       
       } else {
-        print("else printsssssssssssssssssssssssssssssssssss");
+      
         auth.signOut();
         return ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Email and Password is Doesn't match")));
       }
     }).onError((error, stackTrace) {
-      ScaffoldMessenger.of(context).showSnackBar(
+    return  ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Email and Password is Doesn't Match")));
     });
   } //////////////////////////////////////////////////////////////////////////////////////
@@ -475,5 +474,13 @@ class FunProvider extends ChangeNotifier {
         );
       },
     );
+  }
+   sendEmail(String subject, String body, String recipientmail) async {
+    final Email email = Email(
+        body: body,
+        subject: subject,
+        recipients: [recipientmail],
+        isHTML: false);
+    await FlutterEmailSender.send(email);
   }
 }

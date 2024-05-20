@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/user_report_model.dart';
-import 'package:workforce_project/view/user/screen_repotproblems.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/view/user/screen_userprofile.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/user_report_service.dart';
@@ -23,7 +23,7 @@ class ScreenReportIssue extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) {
-                  return ScreenReportProblems();
+                  return ScreenUserHome();
                 },
               ));
             },
