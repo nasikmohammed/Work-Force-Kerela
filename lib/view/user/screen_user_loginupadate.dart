@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenUserLogin extends StatelessWidget {
@@ -10,6 +11,7 @@ class ScreenUserLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -46,11 +48,7 @@ class ScreenUserLogin extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) {
-                          return ScreenUserHome();
-                        },
-                      ));
+                  
                     },
                     child: Text("Login"))
               ],

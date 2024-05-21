@@ -10,14 +10,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
+import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:workforce_project/viewmodel/workers_store.dart';
 
 class FunProvider extends ChangeNotifier {
   String? imageurl = "";
+  String? kkk = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -484,5 +487,34 @@ class FunProvider extends ChangeNotifier {
     workeremail.clear();
     workerid.clear();
     workerpassword.clear();
+  }
+
+  Future signupwith(context) async {
+    WorkersStore store = WorkersStore();
+    try {
+      await auth
+          .createUserWithEmailAndPassword(
+              email: workeremail.text, password: workerpassword.text)
+          .then((value) {
+        String kkk = value.user!.uid;
+        //  DocumentSnapshot ds = snapshot.
+        store.addWorkers(
+            WorkersModel(
+                workersname: workername.text,
+                workersplace: workerplace.text,
+                workersidnumber: workeridnumber.text,
+                workersemail: workeremail.text,
+                workersage: workerage.text,
+                workersid: workerid.text,
+                workerimage: imageurl,
+                workerspassword: workerpassword.text,
+                id: kkk),
+            kkk);
+
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+    }
   }
 }

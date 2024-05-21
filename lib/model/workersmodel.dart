@@ -7,6 +7,7 @@ class WorkersModel {
   String? workersid;
   String? workerspassword;
   String? workerimage;
+  String? id;
   WorkersModel(
       {this.workersname,
       this.workersplace,
@@ -15,7 +16,8 @@ class WorkersModel {
       this.workersemail,
       this.workersid,
       this.workerspassword,
-      this.workerimage});
+      this.workerimage,
+      this.id});
 
   Map<String, dynamic> toJson(docId) => {
         "workersname": workersname,
@@ -25,7 +27,8 @@ class WorkersModel {
         "workersemail": workersemail,
         "workersid": workersid,
         "workerspassword": workerspassword,
-        "workerimage": workerimage
+        "workerimage": workerimage,
+         "id": docId
       };
   factory WorkersModel.fromJson(Map<String, dynamic> json) {
     return WorkersModel(

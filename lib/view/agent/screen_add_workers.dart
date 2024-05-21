@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/workers_store.dart';
 
@@ -259,29 +260,19 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                           backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                       onPressed: () {
                         if (funprovider.formkey.currentState!.validate()) {
-                          workersobj.addWorkers(WorkersModel(
-                              workersname: funprovider.workername.text,
-                              workersplace: funprovider.workerplace.text,
-                              workersage: funprovider.workerage.text,
-                              workersidnumber: funprovider.workeridnumber.text,
-                              workersemail: funprovider.workeremail.text,
-                              workersid: funprovider.workerid.text,
-                              workerspassword: funprovider.workerpassword.text,
-                              workerimage: funprovider.imageurl));
-
-                          funprovider.sendEmail(
-                              funprovider.workername.text,
-                              ('Work force kerela Login Password is:${funprovider.workerpassword.text}'),
-                              funprovider.workeremail.text);
-                          funprovider.clearAddworkersField().
-                          then((value) {
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                              builder: (context) {
-                                return ScreenHomeAgent();
-                              },
-                            ));
-                          });
+                          funprovider.signupwith(context).then(
+                            (value) {
+                              funprovider.sendEmail(
+                                  funprovider.workername.text,
+                                  ('Work force kerela Login Password is:${funprovider.workerpassword.text}'),
+                                  funprovider.workeremail.text);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return ScreenHomeAgent();
+                                },
+                              ));
+                            },
+                          );
                         }
                       },
                       child: Text(

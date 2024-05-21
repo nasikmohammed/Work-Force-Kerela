@@ -38,15 +38,7 @@ class _ScreenHomeAgentState extends State<ScreenHomeAgent> {
         ),
         centerTitle: true,
         elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.error,
-              color: Colors.black,
-            ),
-          ),
-        ],
+       
       ),
       body: Stack(
         children: [

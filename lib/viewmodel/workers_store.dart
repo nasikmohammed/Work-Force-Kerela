@@ -5,8 +5,8 @@ class WorkersStore{
    final db = FirebaseFirestore.instance;
   final CollectionReference agent =
       FirebaseFirestore.instance.collection("WORKERS");
-  Future addWorkers(WorkersModel workersModel) async {
-    final doc = db.collection("WORKERS").doc();
-    doc.set(workersModel.toJson(doc.id));
+  Future addWorkers(WorkersModel workersModel,uid) async {
+    final doc = db.collection("WORKERS").doc(uid);
+    doc.set(workersModel.toJson(uid));
   }
 }

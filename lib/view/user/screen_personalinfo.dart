@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +6,9 @@ import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/view/user/updatepersonalinfo.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 
-
-
 class ScreenUserPersonalInfo extends StatefulWidget {
-  ScreenUserPersonalInfo({super.key});
+  
+  ScreenUserPersonalInfo();
 
   @override
   State<ScreenUserPersonalInfo> createState() => _ScreenUserPersonalInfoState();
@@ -23,12 +21,14 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
-  
-
     return StreamBuilder(
       stream: user.snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+        
+    
+
+
           var workersname = snapshot.data!.docs.first['workersname'];
           var workersplace = snapshot.data!.docs.first['workersplace'];
           var workersage = snapshot.data!.docs.first['workersage'];

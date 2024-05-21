@@ -11,7 +11,7 @@ class FirestoreService {
   Future addUser(UserModel userModel, uid) async {
     final doc = db.collection("USER").doc(uid);
 
-    doc.set(userModel.toJson(doc.id));
+    doc.set(userModel.toJson(uid));
   }
 
   UserModel? singleuserData;

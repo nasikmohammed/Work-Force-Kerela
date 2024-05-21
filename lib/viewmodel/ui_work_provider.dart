@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'package:workforce_project/view/admin/screen_admin_profile.dart';
 import 'package:workforce_project/view/admin/screen_feedback_reports.dart';
@@ -28,6 +29,7 @@ import 'package:workforce_project/view/user/screen_report_list.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
 import 'package:workforce_project/view/user/screen_selectidentity.dart';
 import 'package:workforce_project/view/user/screen_usernotifications.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class WorkProvider extends ChangeNotifier {
   String person = "assets/person.jpeg";
@@ -261,6 +263,7 @@ class WorkProvider extends ChangeNotifier {
 
 //agent drawer...
   agentdrawer(context) {
+    final funprovider = Provider.of<FunProvider>(context);
     return Drawer(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -409,9 +412,14 @@ class WorkProvider extends ChangeNotifier {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenAddWorker(),
-                  ));
+                  Navigator.of(context)
+                      .pushReplacement(MaterialPageRoute(
+                          builder: (context) => ScreenAddWorker()))
+                      .then(
+                    (value) {
+                      funprovider.clearAddworkersField();
+                    },
+                  );
                 },
                 child: Row(
                   children: [
