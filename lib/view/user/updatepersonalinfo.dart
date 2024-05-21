@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,7 +54,7 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                       onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) {
-                            return ScreenUserPersonalInfo(id: "",);
+                            return ScreenUserPersonalInfo();
                           },
                         ));
                       },

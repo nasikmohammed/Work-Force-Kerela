@@ -25,7 +25,7 @@ class ScreenOtp extends StatelessWidget {
                 //   funprovider.verifyOTP(context);
 
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => ScreenUserPersonalInfo(id: "",),
+                  builder: (context) => ScreenUserPersonalInfo(),
                 ));
               },
               child: Text("Sumbit")),

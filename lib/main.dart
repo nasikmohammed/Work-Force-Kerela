@@ -4,6 +4,7 @@ import 'package:workforce_project/view/agent/screen_add_workers.dart';
 import 'package:workforce_project/view/user/screen_login.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
+import 'package:workforce_project/view/user/screen_userprofile.dart';
 
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';

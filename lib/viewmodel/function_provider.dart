@@ -546,6 +546,15 @@ class FunProvider extends ChangeNotifier {
   }
 
   WorkersModel? workersModel;
+  String? workname;
+  String? workplace;
+  String? workage;
+  String? workidnumber;
+  String? workemail;
+  String? workid;
+  String? workpassword;
+  String? workimage;
+
   fetchCurrentUserData() async {
     final snapshot = await FirebaseFirestore.instance
         .collection("WORKERS")
@@ -553,7 +562,17 @@ class FunProvider extends ChangeNotifier {
         .get();
     if (snapshot.exists) {
       workersModel = WorkersModel.fromJson(snapshot.data()!);
-      print(workersModel!.workersname);
+      workname = workersModel!.workersname;
+      workplace = workersModel!.workersplace;
+      workage = workersModel!.workersage;
+      workidnumber = workersModel!.workersidnumber;
+      workemail = workersModel!.workersemail;
+      workid = workersModel!.workersemail;
+      workpassword = workersModel!.workerspassword;
+      workimage = imageurl;
+      print(workname);
+      print(workersModel!.workersage);
+      print(workersModel!.workersplace);
     }
   }
 }

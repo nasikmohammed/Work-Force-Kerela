@@ -73,7 +73,7 @@ class ScreenUserProfile extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) {
-                          return ScreenUserPersonalInfo(id: "",);
+                          return ScreenUserPersonalInfo();
                         },
                       ));
                     },
