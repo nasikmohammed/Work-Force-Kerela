@@ -768,7 +768,7 @@ class WorkProvider extends ChangeNotifier {
                           borderRadius: BorderRadius.circular(15))),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenUserPersonalInfo(),
+                      builder: (context) => ScreenUserPersonalInfo(id: "",),
                     ));
                   },
                   child: Row(

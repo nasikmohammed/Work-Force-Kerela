@@ -55,7 +55,7 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                       onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) {
-                            return ScreenUserPersonalInfo();
+                            return ScreenUserPersonalInfo(id: "",);
                           },
                         ));
                       },

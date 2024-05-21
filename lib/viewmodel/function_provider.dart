@@ -12,6 +12,7 @@ import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -20,7 +21,7 @@ import 'package:workforce_project/viewmodel/workers_store.dart';
 
 class FunProvider extends ChangeNotifier {
   String? imageurl = "";
-  String? kkk = "";
+  String? uid = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -118,6 +119,10 @@ class FunProvider extends ChangeNotifier {
   final workeremail = TextEditingController();
   final workerid = TextEditingController();
   final workerpassword = TextEditingController();
+
+  final workerlogemai = TextEditingController();
+
+  final workerlogpassword = TextEditingController();
 
   //update agent profile
 
@@ -496,7 +501,7 @@ class FunProvider extends ChangeNotifier {
           .createUserWithEmailAndPassword(
               email: workeremail.text, password: workerpassword.text)
           .then((value) {
-        String kkk = value.user!.uid;
+        String uid = value.user!.uid;
         //  DocumentSnapshot ds = snapshot.
         store.addWorkers(
             WorkersModel(
@@ -508,13 +513,47 @@ class FunProvider extends ChangeNotifier {
                 workersid: workerid.text,
                 workerimage: imageurl,
                 workerspassword: workerpassword.text,
-                id: kkk),
-            kkk);
+                id: uid),
+            uid);
 
         notifyListeners();
       });
     } on FirebaseAuthException catch (e) {
       print(e.toString());
+    }
+  }
+
+  signin(context) async {
+    print(
+        "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+    print(workerlogemai.text);
+    await auth
+        .signInWithEmailAndPassword(
+            email: workerlogemai.text, password: workerlogpassword.text)
+        .then(
+      (credential) {
+        String id = credential.user!.uid;
+        print("lllllllllllllllllllllllllllllllllllllllllllllllllll");
+        print(id);
+        print("jjjjjjjjjjjjjjjjjjjjjjjjj");
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) {
+            return ScreenUserHome();
+          },
+        ));
+      },
+    );
+  }
+
+  WorkersModel? workersModel;
+  fetchCurrentUserData() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection("WORKERS")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    if (snapshot.exists) {
+      workersModel = WorkersModel.fromJson(snapshot.data()!);
+      print(workersModel!.workersname);
     }
   }
 }

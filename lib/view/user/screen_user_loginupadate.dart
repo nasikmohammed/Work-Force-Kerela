@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,7 @@ class ScreenUserLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.workerlogemai,
                   decoration: InputDecoration(
                       hintText: "Username",
                       hintStyle: GoogleFonts.sarabun(),
@@ -40,6 +42,7 @@ class ScreenUserLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.workerlogpassword,
                   decoration: InputDecoration(
                       hintText: "Password",
                       hintStyle: GoogleFonts.sarabun(),
@@ -48,7 +51,9 @@ class ScreenUserLogin extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                  
+                      print("object");
+                      funprovider.signin(context);
+                      print("bgbggggggggggggg");
                     },
                     child: Text("Login"))
               ],

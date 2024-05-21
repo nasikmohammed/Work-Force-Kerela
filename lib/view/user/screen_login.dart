@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_signup.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 
@@ -61,21 +63,19 @@ class ScreenLogin extends StatelessWidget {
                     backgroundColor: const Color.fromARGB(255, 245, 255, 158),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                onPressed: () async {
-                 
-                 // await funprovider.signin();
-                  
-                },
+                onPressed: () async {},
                 child: Text(
                   "Log in",
-                  style: GoogleFonts.amaranth( color: Colors.black),
+                  style: GoogleFonts.amaranth(color: Colors.black),
                 )),
             TextButton(
               child: Text(
                 "Forgot password?",
                 style: GoogleFonts.amaranth(color: Colors.black),
               ),
-              onPressed: () {},
+              onPressed: () {
+             
+              },
             ),
             Row(
               children: [

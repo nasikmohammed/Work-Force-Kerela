@@ -7,8 +7,8 @@ import 'package:workforce_project/view/user/updatepersonalinfo.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 
 class ScreenUserPersonalInfo extends StatefulWidget {
-  
-  ScreenUserPersonalInfo();
+  final String? id;
+  ScreenUserPersonalInfo({required this.id});
 
   @override
   State<ScreenUserPersonalInfo> createState() => _ScreenUserPersonalInfoState();
@@ -18,17 +18,20 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
   FirestoreService firestore = FirestoreService();
   final CollectionReference user =
       FirebaseFirestore.instance.collection("WORKERS");
+      
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: user.snapshots(),
+      
+      
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
         
-    
+        if (snapshot.hasData) {
+             //      DocumentSnapshot ds=snapshot.data!.docs[id];
 
-
+          
           var workersname = snapshot.data!.docs.first['workersname'];
           var workersplace = snapshot.data!.docs.first['workersplace'];
           var workersage = snapshot.data!.docs.first['workersage'];
