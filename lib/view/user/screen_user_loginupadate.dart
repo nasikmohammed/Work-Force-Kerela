@@ -31,7 +31,7 @@ class ScreenUserLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
-                  controller: funprovider.workerlogemai,
+                  controller: funprovider.workerlogemail,
                   decoration: InputDecoration(
                       hintText: "Username",
                       hintStyle: GoogleFonts.sarabun(),
@@ -51,9 +51,9 @@ class ScreenUserLogin extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      print("object");
+                     
                       funprovider.signin(context);
-                      print("bgbggggggggggggg");
+                     
                     },
                     child: Text("Login"))
               ],

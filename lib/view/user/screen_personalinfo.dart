@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/workersmodel.dart';
@@ -33,13 +34,26 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
     return FutureBuilder(
       future: funprovider.fetchCurrentUserData(),
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        }
+
         return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ScreenUserHome(),
+                  ));
+                },
+                icon: Icon(Icons.arrow_circle_left_outlined)),
+          ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                   width: 150,
-                  child: funprovider.workimage.toString() == ""
+                  child: funprovider.workimage == ""
                       ? const Icon(
                           CupertinoIcons.person_alt_circle_fill,
                           size: 60,
@@ -47,7 +61,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                       : CircleAvatar(
                           radius: 60,
                           // height: 130,
-                          child: Image.network(funprovider.imageurl!),
+                          child: Image.network(funprovider.workimage!),
                         )),
               Padding(
                 padding: const EdgeInsets.only(

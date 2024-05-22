@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,11 @@ import 'package:workforce_project/view/police/screen_alert.dart';
 import 'package:workforce_project/view/police/screen_notification.dart';
 import 'package:workforce_project/view/police/screen_upsa.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
-import 'package:workforce_project/view/user/screen_report_list.dart';
+import 'package:workforce_project/view/user/Screen_Notifications.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
 import 'package:workforce_project/view/user/screen_selectidentity.dart';
-import 'package:workforce_project/view/user/screen_usernotifications.dart';
+import 'package:workforce_project/view/user/Screen_Report_list.dart';
+import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class WorkProvider extends ChangeNotifier {
@@ -872,8 +874,7 @@ class WorkProvider extends ChangeNotifier {
                           borderRadius: BorderRadius.circular(15))),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenUserReportList(),
-                    ));
+                        builder: (context) => ScreenUserReportList()));
                   },
                   child: Row(
                     children: [
@@ -928,7 +929,14 @@ class WorkProvider extends ChangeNotifier {
                   color: Colors.white,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) {
+                          return ScreenUserLogin();
+                        },
+                      ));
+                    },
                     child: Text(
                       "Logout",
                       style:

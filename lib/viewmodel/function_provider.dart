@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:workforce_project/model/agentmodel.dart';
+import 'package:workforce_project/model/user_report_model.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
@@ -25,6 +26,7 @@ class FunProvider extends ChangeNotifier {
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
   FirebaseAuth auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
   EmailOTP myAuth = EmailOTP();
   final formkey = GlobalKey<FormState>();
   final adminloginkey = GlobalKey<FormState>();
@@ -120,7 +122,7 @@ class FunProvider extends ChangeNotifier {
   final workerid = TextEditingController();
   final workerpassword = TextEditingController();
 
-  final workerlogemai = TextEditingController();
+  final workerlogemail = TextEditingController();
 
   final workerlogpassword = TextEditingController();
 
@@ -524,25 +526,55 @@ class FunProvider extends ChangeNotifier {
   }
 
   signin(context) async {
-    print(
-        "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-    print(workerlogemai.text);
-    await auth
-        .signInWithEmailAndPassword(
-            email: workerlogemai.text, password: workerlogpassword.text)
-        .then(
-      (credential) {
-        String id = credential.user!.uid;
-        print("lllllllllllllllllllllllllllllllllllllllllllllllllll");
-        print(id);
-        print("jjjjjjjjjjjjjjjjjjjjjjjjj");
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) {
-            return ScreenUserHome();
+    print(workerlogemail.text);
+    try {
+      await auth
+          .signInWithEmailAndPassword(
+              email: workerlogemail.text, password: workerlogpassword.text)
+          .then(
+        (credential) {
+          String id = credential.user!.uid;
+
+          print(id);
+          final snackBar = SnackBar(
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+            content: Text(
+              "Login Succesfully",
+              style: GoogleFonts.sarabun(),
+            ),
+          );
+
+          // Display the Snackbar
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return ScreenUserHome();
+            },
+          ));
+        },
+      );
+    } catch (e) {
+      print("ccccccccccccccccccccccccccccccc");
+      print(e.toString());
+      final snackBar = SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(
+          "Check Your Emai and Password",
+          style: GoogleFonts.plusJakartaSans(),
+        ),
+        action: SnackBarAction(
+          label: 'Undo',
+          textColor: const Color.fromARGB(255, 0, 0, 0),
+          onPressed: () {
+            // Some code to undo the change.
           },
-        ));
-      },
-    );
+        ),
+      );
+
+      // Display the Snackbar
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   WorkersModel? workersModel;
@@ -574,5 +606,22 @@ class FunProvider extends ChangeNotifier {
       print(workersModel!.workersage);
       print(workersModel!.workersplace);
     }
+  }
+
+  
+// SPECIFIED DATA FETCHING FROM ONE COLLECTION IN SCREEN 
+  List<UserReportsModel> userreportModel = [];
+  Future getreport() async {
+    final snapshot = await db
+        .collection('UserReports')
+        .where(
+          'reportid',
+          isEqualTo: auth.currentUser!.uid,
+        )
+        .get();
+
+    userreportModel = snapshot.docs.map((doc) {
+      return UserReportsModel.fromJson(doc.data());
+    }).toList();
   }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:random_string/random_string.dart';
 import 'package:workforce_project/model/user_report_model.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
@@ -32,7 +33,7 @@ class ScreenReportIssue extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Report yor problems",
-          style: GoogleFonts.merriweather(
+          style: GoogleFonts.caveat(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -65,11 +66,21 @@ class ScreenReportIssue extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
+                  String reportid = FirebaseAuth.instance.currentUser!.uid;
+                  String id = randomAlphaNumeric(10);
                   userReportServicer.addUserreports(
                       UserReportsModel(
+                          reportid: reportid,
                           reportuserissues:
-                              funprovider.reportproblemcontroller.text),
-                      FirebaseAuth.instance.currentUser!.uid);
+                              funprovider.reportproblemcontroller.text,
+                          id: id),
+                      reportid,
+                      id);
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenUserHome();
+                    },
+                  ));
                 },
                 child: Text(
                   "Report the issue",
