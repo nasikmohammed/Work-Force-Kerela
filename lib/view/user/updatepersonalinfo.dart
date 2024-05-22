@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -18,16 +19,23 @@ class ScreenUpdatePersonalInfo extends StatefulWidget {
 
 class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
   FirestoreService firestore = FirestoreService();
-  bool editnameicon = true;
-  bool editplaceicon = true;
-  bool editageicon = true;
-  bool editidnumbericon = true;
-  bool editemailicon = true;
-  bool editidicon = true;
-  bool editpasswordicon = true;
 
-  final CollectionReference user =
-      FirebaseFirestore.instance.collection("WORKERS");
+  TextEditingController _namecontroller = TextEditingController();
+
+  final DocumentReference<Map<String, dynamic>> user = FirebaseFirestore
+      .instance
+      .collection("WORKERS")
+      .doc(FirebaseAuth.instance.currentUser!.uid);
+
+  update() {
+    final DocumentReference<Map<String, dynamic>> user = FirebaseFirestore
+        .instance
+        .collection("WORKERS")
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+    user.update({
+      "workersname": _namecontroller.text,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +45,6 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
     return StreamBuilder(
       stream: user.snapshots(),
       builder: (context, snapshot) {
-        var workersname = snapshot.data!.docs.first['workersname'];
-        var workersplace = snapshot.data!.docs.first['workersplace'];
-        var workersage = snapshot.data!.docs.first['workersage'];
-        var workersidnumber = snapshot.data!.docs.first['workersidnumber'];
-        var workersid = snapshot.data!.docs.first['workersid'];
-
-        var workersemail = snapshot.data!.docs.first['workersemail'];
-        var workerspassword = snapshot.data!.docs.first['workerspassword'];
-
         if (snapshot.hasData) {
           return Scaffold(
               backgroundColor: const Color.fromARGB(255, 247, 255, 222),
@@ -124,7 +123,7 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersname,
+                                      controller: _namecontroller,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Enter Your Name";
@@ -133,16 +132,11 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                         }
                                       },
                                       decoration: InputDecoration(
-                                        suffixIcon: editnameicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
+                                        suffix: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.rtt_rounded)),
                                         contentPadding: EdgeInsets.all(10),
                                       ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editnameicon = false;
-                                        });
-                                      },
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -155,24 +149,12 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersplace,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Enter Your Place";
                                         } else {
                                           return null;
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editplaceicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editplaceicon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -186,24 +168,12 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersage,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Please Enter Enter Your Age ";
                                         } else {
                                           return null;
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editageicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editageicon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -217,24 +187,12 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersidnumber,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Enter Your ID number";
                                         } else {
                                           return null;
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editidnumbericon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editidnumbericon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -248,7 +206,6 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersemail,
                                       validator: (value) {
                                         if (funprovider.emailregexp
                                             .hasMatch(value!)) {
@@ -256,17 +213,6 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                         } else {
                                           return "Check your Email";
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editemailicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editemailicon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -280,24 +226,12 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workersid,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Enter Your ID";
                                         } else {
                                           return null;
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editidicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editidicon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -314,24 +248,12 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                                       height: 10,
                                     ),
                                     TextFormField(
-                                      initialValue: workerspassword,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return "Enter Your Password";
                                         } else {
                                           return null;
                                         }
-                                      },
-                                      decoration: InputDecoration(
-                                        suffixIcon: editpasswordicon
-                                            ? Icon(Icons.edit)
-                                            : SizedBox(),
-                                        contentPadding: EdgeInsets.all(10),
-                                      ),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          editpasswordicon = false;
-                                        });
                                       },
                                     ),
                                     const SizedBox(
@@ -349,6 +271,7 @@ class _ScreenUpdatePersonalInfoState extends State<ScreenUpdatePersonalInfo> {
                               backgroundColor: Colors.indigo),
                           onPressed: () {
                             if (funprovider.formkey.currentState!.validate()) {
+                              update();
                               print("navigator done");
                             }
                           },

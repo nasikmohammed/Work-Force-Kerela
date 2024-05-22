@@ -125,6 +125,8 @@ class FunProvider extends ChangeNotifier {
   final workerlogemail = TextEditingController();
 
   final workerlogpassword = TextEditingController();
+  //update
+  final workernameupdate = TextEditingController();
 
   //update agent profile
 
@@ -409,7 +411,7 @@ class FunProvider extends ChangeNotifier {
   }
 
   Future<void> showagentnamedialoguealert(context, String name) async {
-    updateagentname.text = name;
+    workernameupdate.text = name;
     return showDialog(
       context: context,
       builder: (context) {
@@ -427,7 +429,7 @@ class FunProvider extends ChangeNotifier {
             child: Column(
               children: [
                 TextField(
-                  controller: updateagentname,
+                  controller: workernameupdate,
                   style: GoogleFonts.overpass(),
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(5),
@@ -449,7 +451,7 @@ class FunProvider extends ChangeNotifier {
                 },
                 child: Text(
                   "Cancel",
-                  style: GoogleFonts.nunito(),
+                  style: GoogleFonts.nunito(color: Colors.white),
                 )),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -460,21 +462,27 @@ class FunProvider extends ChangeNotifier {
                   final CollectionReference agent =
                       FirebaseFirestore.instance.collection("AGENT");
                   print("update");
-                  ref.child(agent.id).update({
-                    "agencyname": updateagentname.text.toString()
-                  }).then((value) {
-                    print("afgter update");
-                    Navigator.pop(context);
-                  });
+                  update();
+                  Navigator.pop(context);
                 },
                 child: Text(
                   "Update",
-                  style: GoogleFonts.nunito(),
+                  style: GoogleFonts.nunito(color: Colors.white),
                 )),
           ],
         );
       },
     );
+  }
+
+  update() {
+    final DocumentReference<Map<String, dynamic>> user = FirebaseFirestore
+        .instance
+        .collection("WORKERS")
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+    user.update({
+      "workersname": workernameupdate.text,
+    });
   }
 
   sendEmail(String subject, String body, String recipientmail) async {
@@ -608,8 +616,7 @@ class FunProvider extends ChangeNotifier {
     }
   }
 
-  
-// SPECIFIED DATA FETCHING FROM ONE COLLECTION IN SCREEN 
+// SPECIFIED DATA FETCHING FROM ONE COLLECTION IN SCREEN
   List<UserReportsModel> userreportModel = [];
   Future getreport() async {
     final snapshot = await db

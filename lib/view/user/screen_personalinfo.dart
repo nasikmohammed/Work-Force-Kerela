@@ -63,6 +63,12 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                           // height: 130,
                           child: Image.network(funprovider.workimage!),
                         )),
+              OutlinedButton(
+                  onPressed: () {
+                    funprovider.showagentnamedialoguealert(
+                        context, funprovider.workname!);
+                  },
+                  child: Text("Edit Profile")),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 20,
