@@ -20,6 +20,10 @@ class ManagerModel {
       this.managerid,
       this.managerimage,
       this.id});
+
+  get isEmpty => null;
+
+  get length => null;
   Map<String, dynamic> toJson(docId) => {
         "managername": managername,
         "managerplace": managerplace,

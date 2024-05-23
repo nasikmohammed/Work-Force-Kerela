@@ -16,6 +16,7 @@ import 'package:workforce_project/model/user_report_model.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
@@ -27,6 +28,9 @@ import 'package:workforce_project/viewmodel/workers_store.dart';
 
 class FunProvider extends ChangeNotifier {
   String? imageurl = "";
+  String? imageurllicense = "";
+  String? imageurlpasspot = "";
+  String imageurladhaar = "";
   String? uid = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
@@ -42,7 +46,7 @@ class FunProvider extends ChangeNotifier {
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
-  final adminuid = "RJXMfFwvxgTU5TfW4uHqB5kwcak2";
+  final adminuid = "tPeJTvglpOR7x17hNjhezuzR4it1";
   FirestoreService firestore = FirestoreService();
   AgenteService agentstor = AgenteService();
   //          SCREEN REGISTER
@@ -99,6 +103,8 @@ class FunProvider extends ChangeNotifier {
   final agentrgaddress = TextEditingController();
   final agentrgcity = TextEditingController();
   final agentrgemail = TextEditingController();
+  final policeloginemail = TextEditingController();
+  final policeloginpassword = TextEditingController();
 
   final agentcompanyname = TextEditingController();
   final agentrgpassword = TextEditingController();
@@ -168,6 +174,9 @@ class FunProvider extends ChangeNotifier {
   //managerLOGIN
   final managerloginemail = TextEditingController();
   final managerloginpassword = TextEditingController();
+  //Agent Login
+  final Agentloginemail = TextEditingController();
+  final Agentloginpassword = TextEditingController();
 
   // Future signup(context) async {
   //   try {
@@ -315,7 +324,7 @@ class FunProvider extends ChangeNotifier {
       if (credential.user!.uid == adminuid) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => ScreenRegisterAnEmployee(),
+              builder: (context) => ScreenRegisteronEmployee(),
             ),
             (route) => false);
       } else {
@@ -384,9 +393,71 @@ class FunProvider extends ChangeNotifier {
     try {
       await referencetoimageupload.putFile(File(file.path), metadata);
       imageurl = await referencetoimageupload.getDownloadURL();
+      print(imageurl);
     } catch (error) {
       print(error);
     }
+    notifyListeners();
+  }
+
+  pickimageforadhaar() async {
+    ImagePicker imagePicker = ImagePicker();
+    SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print(".................${file?.path}");
+    if (file == null) return;
+    String uniquefilename = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference referencRoot = FirebaseStorage.instance.ref();
+    Reference referencedirimage = referencRoot.child("images");
+    Reference referencetoimageupload = referencedirimage.child(uniquefilename);
+    try {
+      await referencetoimageupload.putFile(File(file.path), metadata);
+      imageurladhaar = await referencetoimageupload.getDownloadURL();
+      print(imageurllicense);
+    } catch (error) {
+      print(error);
+    }
+    notifyListeners();
+  }
+
+  pickimageforlicense() async {
+    ImagePicker imagePicker = ImagePicker();
+    SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print(".................${file?.path}");
+    if (file == null) return;
+    String uniquefilename = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference referencRoot = FirebaseStorage.instance.ref();
+    Reference referencedirimage = referencRoot.child("images");
+    Reference referencetoimageupload = referencedirimage.child(uniquefilename);
+    try {
+      await referencetoimageupload.putFile(File(file.path), metadata);
+      imageurllicense = await referencetoimageupload.getDownloadURL();
+      print(imageurllicense);
+    } catch (error) {
+      print(error);
+    }
+    notifyListeners();
+  }
+
+  pickimageforpassport() async {
+    ImagePicker imagePicker = ImagePicker();
+    SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print(".................${file?.path}");
+    if (file == null) return;
+    String uniquefilename = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference referencRoot = FirebaseStorage.instance.ref();
+    Reference referencedirimage = referencRoot.child("images");
+    Reference referencetoimageupload = referencedirimage.child(uniquefilename);
+    try {
+      await referencetoimageupload.putFile(File(file.path), metadata);
+      imageurlpasspot = await referencetoimageupload.getDownloadURL();
+      print(imageurlpasspot);
+    } catch (error) {
+      print(error);
+    }
+    notifyListeners();
   }
 
   datepickforstrtdate(context) async {
@@ -613,6 +684,38 @@ class FunProvider extends ChangeNotifier {
     }
   }
 
+  //Signupwith Agent
+  Future signupwithAgent(context) async {
+    AgenteService agenteService = AgenteService();
+    try {
+      await auth
+          .createUserWithEmailAndPassword(
+              email: agentrgemail.text, password: agentrgpassword.text)
+          .then((value) {
+        String uid = value.user!.uid;
+        //  DocumentSnapshot ds = snapshot.
+        agenteService.addUser(
+            AgentModel(
+
+                agencyname: agencyname.text,
+                agentaddress: agentrgaddress.text,
+                contactnumber: agentcontactnumber.text,
+                agentstate: agentrgstate.text,
+                agentcity: agentrgcity.text,
+                agentemail: agentrgemail.text,
+                image: imageurl,
+                
+                password: agentrgpassword.text,
+                id: uid,),
+            uid);
+
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+    }
+  }
+
 //login worker
   signin(context) async {
     try {
@@ -718,6 +821,58 @@ class FunProvider extends ChangeNotifier {
     }
   }
 
+  ///Logi With Agent
+  LoginwithAgent(context) async {
+    try {
+      await auth
+          .signInWithEmailAndPassword(
+              email: Agentloginemail.text, password: Agentloginpassword.text)
+          .then(
+        (credential) {
+          String id = credential.user!.uid;
+
+          print(id);
+          final snackBar = SnackBar(
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+            content: Text(
+              "Login Succesfully",
+              style: GoogleFonts.sarabun(),
+            ),
+          );
+
+          // Display the Snackbar
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return ScreenHomeAgent();
+            },
+          ));
+        },
+      );
+    } catch (e) {
+      print("ccccccccccccccccccccccccccccccc");
+      print(e.toString());
+      final snackBar = SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(
+          "Check Your Emai and Password",
+          style: GoogleFonts.plusJakartaSans(),
+        ),
+        action: SnackBarAction(
+          label: 'Undo',
+          textColor: const Color.fromARGB(255, 0, 0, 0),
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+
+      // Display the Snackbar
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   WorkersModel? workersModel;
   String? workname;
   String? workplace;
@@ -743,6 +898,7 @@ class FunProvider extends ChangeNotifier {
       workid = workersModel!.workersid;
       workpassword = workersModel!.workerspassword;
       workimage = imageurl;
+
       print(workname);
       print(workersModel!.workersage);
       print(workersModel!.workersplace);
@@ -781,6 +937,43 @@ class FunProvider extends ChangeNotifier {
       print(managername);
       print("VVvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
       print(managermodel!.managername);
+    }
+  }
+
+  //fetch agent data
+  AgentModel? agentModel;
+  String? agentname;
+  String? agentaddress;
+  String? agentcity;
+  String? agentcntctctnumber;
+  String? agentemail;
+  String? agentstate;
+  String? agentpassword;
+  String? agentimage;
+
+  fetchCurrentagentData() async {
+    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+    print(FirebaseAuth.instance.currentUser!.uid);
+    final snapshot = await FirebaseFirestore.instance
+        .collection("AGENT")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    if (snapshot.exists) {
+      agentModel = AgentModel.fromJson(snapshot.data()!);
+      agentname = agentModel!.agencyname;
+      agentaddress = agentModel!.agentaddress;
+      agentcity = agentModel!.agentcity;
+      agentcntctctnumber = agentModel!.contactnumber;
+      agentemail = agentModel!.agentemail;
+      agentstate = agentModel!.agentstate;
+      agentpassword = agentModel!.password;
+      agentimage = imageurl;
+      print("ccccccccccccccccccccccccccccccc");
+      print(agentname);
+      print("ddddddddddddddddddddddddddddddddddd");
+
+      print(agentModel!.agentcity);
+      print(agentModel!.agencyname);
     }
   }
 

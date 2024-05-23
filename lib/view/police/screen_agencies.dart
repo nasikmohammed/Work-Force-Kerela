@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +10,13 @@ class ScreenAgencies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CollectionReference agent =
+        FirebaseFirestore.instance.collection("AGENT");
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(  leading: IconButton(
+      appBar: AppBar(
+        leading: IconButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) {
@@ -41,27 +45,22 @@ class ScreenAgencies extends StatelessWidget {
               ))
         ],
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(workprovider.person),
-            ),
-            title: Text("John hernandez", style: GoogleFonts.alata()),
-            trailing: SizedBox(
-              height: 30,
-              width: 110,
-              child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {},
-                  child: Text("View Profile",
-                      style: GoogleFonts.amaranth(
-                        color: Colors.white,
-                      ))),
-            ),
+      body: StreamBuilder(
+        stream: agent.snapshots(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              final DocumentSnapshot agentsnap = snapshot.data!.docs[index];
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(workprovider.person),
+                ),
+                title: Text(
+                  agentsnap['agencyname'],
+                ),
+              );
+            },
           );
         },
       ),

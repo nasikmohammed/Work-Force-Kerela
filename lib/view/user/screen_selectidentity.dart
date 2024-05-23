@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,7 @@ class ScreenSelectIdentity extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                funprovider.pickimagefromgallery();
+                funprovider.pickimageforadhaar();
                 print("Adhaar picker");
               },
               child: Container(
@@ -62,9 +63,19 @@ class ScreenSelectIdentity extends StatelessWidget {
                       style: GoogleFonts.karla(),
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 62,
                     ),
-                    Container(width: 100, height: 100, color: Colors.red),
+                    SizedBox(
+                      width: 60,
+                      child: funprovider.imageurladhaar == ""
+                          ? const Icon(
+                              CupertinoIcons.person_alt_circle_fill,
+                              size: 60,
+                            )
+                          :
+                          // height: 130,
+                          Image.network(funprovider.imageurladhaar!),
+                    ),
                   ],
                 ),
               ),
@@ -74,7 +85,7 @@ class ScreenSelectIdentity extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                funprovider.pickimagefromgallery();
+                funprovider.pickimageforlicense();
                 print("license picker");
               },
               child: Container(
@@ -94,7 +105,16 @@ class ScreenSelectIdentity extends StatelessWidget {
                       style: GoogleFonts.karla(),
                     ),
                     const SizedBox(
-                      width: 80,
+                      width: 45,
+                    ),
+                    SizedBox(
+                      width: 60,
+                      child: funprovider.imageurllicense == ""
+                          ? const Icon(
+                              CupertinoIcons.person_alt_circle_fill,
+                              size: 60,
+                            )
+                          : Image.network(funprovider.imageurllicense!),
                     ),
                   ],
                 ),
@@ -105,7 +125,7 @@ class ScreenSelectIdentity extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                funprovider.pickimagefromgallery();
+                funprovider.pickimageforpassport();
                 print("passport picker");
               },
               child: Container(
@@ -128,7 +148,16 @@ class ScreenSelectIdentity extends StatelessWidget {
                       style: GoogleFonts.karla(),
                     ),
                     const SizedBox(
-                      width: 100,
+                      width: 60,
+                    ),
+                    SizedBox(
+                      width: 60,
+                      child: funprovider.imageurlpasspot == ""
+                          ? const Icon(
+                              CupertinoIcons.person_alt_circle_fill,
+                              size: 60,
+                            )
+                          : Image.network(funprovider.imageurlpasspot!),
                     ),
                   ],
                 ),
@@ -139,7 +168,13 @@ class ScreenSelectIdentity extends StatelessWidget {
             ),
             OutlinedButton(
                 style: OutlinedButton.styleFrom(backgroundColor: Colors.blue),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return ScreenUserHome();
+                    },
+                  ));
+                },
                 child: Text(
                   "Done",
                   style: GoogleFonts.karla(color: Colors.white),

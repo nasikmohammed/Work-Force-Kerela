@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentAvailableManagers extends StatelessWidget {
@@ -12,6 +14,8 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
+    
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
@@ -41,14 +45,19 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Column(children: [
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(workprovider.mc),
-                ),
-                title: Text(
-                  "MC HOUSE BUILDING",
-                  style: GoogleFonts.andika(),
-                ),
+              FutureBuilder(
+                future: funprovider.fetchCurrentagentData(),
+                builder: (context, snapshot) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(funprovider.agentimage.toString()),
+                    ),
+                    title: Text(
+                      funprovider.agentname.toString(),
+                      style: GoogleFonts.andika(),
+                    ),
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsets.all(15),
@@ -81,34 +90,14 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
 
                             return ListTile(
                               leading: CircleAvatar(
-                                backgroundImage: AssetImage(workprovider.kanew),
+                                backgroundImage:
+                                    AssetImage(managersnap['managerimage']),
                               ),
                               title: Text(managersnap['managername'],
                                   style: GoogleFonts.alata()),
                               subtitle: Text(
-                                "Building Designer",
+                                managersnap['managerplace'],
                                 style: GoogleFonts.libreFranklin(),
-                              ),
-                              trailing: SizedBox(
-                                width: 90,
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      child: OutlinedButton(
-                                          style: OutlinedButton.styleFrom(
-                                              backgroundColor:
-                                                  const Color.fromARGB(
-                                                      255, 37, 49, 117)),
-                                          onPressed: () {},
-                                          child: Text(
-                                            "Assign",
-                                            style: GoogleFonts.amaranth(
-                                                color: Colors.white),
-                                          )),
-                                    ),
-                                  ],
-                                ),
                               ),
                             );
                           },

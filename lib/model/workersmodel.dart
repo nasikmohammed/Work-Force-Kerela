@@ -28,7 +28,7 @@ class WorkersModel {
         "workersid": workersid,
         "workerspassword": workerspassword,
         "workerimage": workerimage,
-         "id": docId
+        "id": docId
       };
   factory WorkersModel.fromJson(Map<String, dynamic> json) {
     return WorkersModel(

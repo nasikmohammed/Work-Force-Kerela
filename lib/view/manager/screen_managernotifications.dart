@@ -1,89 +1,76 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
+import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenManagerNotifications extends StatelessWidget {
-  ScreenManagerNotifications({super.key});
-  final CollectionReference workers =
-      FirebaseFirestore.instance.collection("MANAGER");
+class ScreenManagernotifications extends StatelessWidget {
+  const ScreenManagernotifications({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
+    String? currentuserid = FirebaseAuth.instance.currentUser?.uid;
     final funprovider = Provider.of<FunProvider>(context);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) {
-                  return ScreenHomeManager();
-                },
-              ));
-            },
-            icon: const Icon(
-              Icons.arrow_circle_left_outlined,
-              color: Colors.black,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Notifications",
-          style: GoogleFonts.nunitoSans(color: Colors.black),
-        ),
-      ),
-      body: FutureBuilder(
+    final workprovider = Provider.of<WorkProvider>(context);
+    return FutureBuilder(
         future: funprovider.getreportmanager(),
         builder: (context, snapshot) {
-          final data = funprovider.managermodel;
-          if (snapshot.hasData) {
-            return Column(
+          final data = funprovider.managerreports;
+
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("Report List"),
+              centerTitle: true,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) {
+                        return ScreenHomeManager();
+                      },
+                    ));
+                  },
+                  icon: Icon(Icons.arrow_circle_left_outlined)),
+            ),
+            body: Column(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Expanded(
+                SizedBox(
+                  height: 20,
+                ),
+                data.isEmpty
+                    ? Center(
+                        child: Text('No report'),
+                      )
+                    : Expanded(
                         child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                leading: CircleAvatar(
-                                    backgroundImage:
-                                        AssetImage(workprovider.person)),
-                                title: Text(
-                                  "Your Complaints ({data[index].reportuserissues.toString()}) is Registered On nearby Police Station ",
-                                ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(left: 200),
-                                  child: Text(
-                                    "10 minutes ago",
-                                    style: GoogleFonts.quicksand(fontSize: 10),
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Card(
+                                color: const Color.fromARGB(255, 238, 236, 235),
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    radius: 5,
+                                    backgroundColor: Colors.black,
+                                  ),
+                                  title: Text(
+                                    "Your Complaints (${data[index].reportManagerissues.toString()}) is Registered On nearby Police Station ",
+                                    style: GoogleFonts.overpass(
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                              );
-                            },
-                            itemCount: 45),
-                      ),
-                    ),
-                  ),
-                )
+                              ),
+                            );
+                          },
+                        ),
+                      )
               ],
-            );
-          } else {
-            return Container();
-          }
-        },
-      ),
-    );
+            ),
+          );
+        });
   }
 }

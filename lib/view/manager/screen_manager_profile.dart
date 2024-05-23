@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/managermodel.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
-import 'package:workforce_project/view/manager/screen_manager_update_profile.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenManagerProfile extends StatelessWidget {
@@ -14,7 +13,7 @@ class ScreenManagerProfile extends StatelessWidget {
   final manager = FirebaseFirestore.instance
       .collection("MANAGER")
       .doc(FirebaseAuth.instance.currentUser!.uid);
-      
+
   ManagerModel managersModel = ManagerModel();
 
   @override
@@ -74,23 +73,6 @@ class ScreenManagerProfile extends StatelessWidget {
                             funprovider.managerimage!,
                           ),
                         )),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 207, 203, 203),
-                  elevation: 2,
-                ),
-                child: Text(
-                  "Update Profile",
-                  style: GoogleFonts.exo2(color: Colors.black),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) {
-                      return ScreenManagerUpdateProfile();
-                    },
-                  ));
-                },
-              ),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 20,

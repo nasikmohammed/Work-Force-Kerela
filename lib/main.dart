@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/screen_splash.dart';
-import 'package:workforce_project/view/admin/screen_verifications.dart';
+import 'package:workforce_project/view/admin/screen_register_onemployee.dart';
 import 'package:workforce_project/view/agent/screen_add_manager.dart';
-import 'package:workforce_project/view/agent/screen_add_workers.dart';
+import 'package:workforce_project/view/agent/screen_agent_login.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
-import 'package:workforce_project/view/manager/screen_home_manager.dart';
-import 'package:workforce_project/view/manager/screen_manager_login.dart';
-import 'package:workforce_project/view/user/screen_personalinfo.dart';
-import 'package:workforce_project/view/user/screen_user_home.dart';
-import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
-import 'package:workforce_project/view/user/Screen_Report_list.dart';
-
+import 'package:workforce_project/view/user/screen_register.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 import 'package:firebase_core/firebase_core.dart';

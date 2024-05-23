@@ -22,7 +22,7 @@ class ScreenUserReportList extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text("Report List"),
+              title: Text("Notifications"),
               centerTitle: true,
               leading: IconButton(
                   onPressed: () {
@@ -52,7 +52,7 @@ class ScreenUserReportList extends StatelessWidget {
                               child: Card(
                                 color: const Color.fromARGB(255, 238, 236, 235),
                                 child: ListTile(
-                                  leading: CircleAvatar(
+                                  leading: const CircleAvatar(
                                     radius: 5,
                                     backgroundColor: Colors.black,
                                   ),

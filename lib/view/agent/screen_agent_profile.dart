@@ -21,58 +21,42 @@ class ScreenAgentProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final funprovider = Provider.of<FunProvider>(context);
 
-    return StreamBuilder(
-      stream: agent.snapshots(),
+    return FutureBuilder(
+      future: funprovider.fetchCurrentagentData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
-        var agentfirstname = snapshot.data!.docs.first['agencyname'];
-        var agentaddress = snapshot.data!.docs.first['agentaddress'];
-        var agentcity = snapshot.data!.docs.first['agentcity'];
-        var agentcontactnumber = snapshot.data!.docs.first['contactnumber'];
-        var agentstate = snapshot.data!.docs.first['agentstate'];
-
-        var agentemail = snapshot.data!.docs.first['agentemail'];
-        var agentrgpassword = snapshot.data!.docs.first['password'];
-        var agentphoto = snapshot.data!.docs.first["image"];
 
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) {
-                        return const ScreenHomeAgent();
-                      },
-                    ));
-                  },
-                  icon: const Icon(
-                    Icons.arrow_circle_left,
-                    color: Colors.black,
-                  )),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              title: Text(
-                "Profile",
-                style: GoogleFonts.overpass(color: Colors.black),
-              ),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.error,
-                      color: Colors.black,
-                    ))
-              ]),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) {
+                      return const ScreenHomeAgent();
+                    },
+                  ));
+                },
+                icon: const Icon(
+                  Icons.arrow_circle_left,
+                  color: Colors.black,
+                )),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Text(
+              "Profile",
+              style: GoogleFonts.overpass(color: Colors.black),
+            ),
+          ),
           body: Padding(
             padding: const EdgeInsets.only(left: 100, top: 80),
             child: Column(
               children: [
                 SizedBox(
                     width: 150,
-                    child: agentphoto == ""
+                    child: funprovider.agentimage! == ""
                         ? const Icon(
                             CupertinoIcons.person_alt_circle,
                             size: 100,
@@ -80,14 +64,9 @@ class ScreenAgentProfile extends StatelessWidget {
                         : SizedBox(
                             height: 130,
                             child: Image.network(
-                              agentphoto,
+                              funprovider.agentimage!,
                             ),
                           )),
-                Text(
-                  agentfirstname,
-                  style: GoogleFonts.hind(
-                      fontSize: 22, fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -110,41 +89,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30),
-                            child: SizedBox(
-                              width: 160,
-                              child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(agentfirstname),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                        color: const Color.fromARGB(
-                                            255, 227, 220, 219),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.edit,
-                                            size: 15,
-                                          )),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
+                          Text(funprovider.agentname!),
                           Text(
                             "Address",
                             style: GoogleFonts.hind(
@@ -152,7 +97,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentaddress),
+                          Text(funprovider.agentaddress!),
                           const SizedBox(
                             height: 10,
                           ),
@@ -163,7 +108,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentcontactnumber),
+                          Text(funprovider.agentcntctctnumber!),
                           const SizedBox(
                             height: 10,
                           ),
@@ -174,7 +119,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentstate),
+                          Text(funprovider.agentstate!),
                           const SizedBox(
                             height: 10,
                           ),
@@ -185,7 +130,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentcity),
+                          Text(funprovider.agentcity!),
                           const SizedBox(
                             height: 10,
                           ),
@@ -196,7 +141,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentemail),
+                          Text(funprovider.agentemail!),
                           const SizedBox(
                             height: 10,
                           ),
@@ -207,7 +152,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(agentrgpassword),
+                          Text(funprovider.agentpassword!),
                           const SizedBox(
                             height: 10,
                           ),

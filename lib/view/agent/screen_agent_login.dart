@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgentLogin extends StatelessWidget {
@@ -9,6 +11,7 @@ class ScreenAgentLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -27,6 +30,7 @@ class ScreenAgentLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.Agentloginemail,
                   decoration: InputDecoration(
                       hintText: "Username",
                       hintStyle: GoogleFonts.sarabun(),
@@ -37,12 +41,21 @@ class ScreenAgentLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.Agentloginpassword,
                   decoration: InputDecoration(
                       hintText: "Password",
                       hintStyle: GoogleFonts.sarabun(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      funprovider.LoginwithAgent(context);
+                    },
+                    child: Text("Login"))
               ],
             ),
           ),

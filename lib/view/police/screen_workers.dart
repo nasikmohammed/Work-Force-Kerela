@@ -58,20 +58,6 @@ class ScreenWorkers extends StatelessWidget {
                   ),
                   title: Text(workerssnap["workersname"],
                       style: GoogleFonts.alata()),
-                  trailing: SizedBox(
-                    height: 30,
-                    width: 103,
-                    child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.blue[900],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        onPressed: () {},
-                        child: Text("View Profile",
-                            style: GoogleFonts.amaranth(
-                              color: Colors.white,
-                            ))),
-                  ),
                 );
               },
               itemCount: snapshot.data!.docs.length,

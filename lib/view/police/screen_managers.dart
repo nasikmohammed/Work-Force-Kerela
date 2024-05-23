@@ -15,7 +15,8 @@ class ScreenManagers extends StatelessWidget {
     final workprovider = Provider.of<WorkProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar( leading: IconButton(
+      appBar: AppBar(
+        leading: IconButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) {
@@ -46,31 +47,17 @@ class ScreenManagers extends StatelessWidget {
       ),
       body: StreamBuilder(
         stream: manager.snapshots(),
-        builder: (context, AsyncSnapshot snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemBuilder: (context, index) {
-                final DocumentSnapshot managersnap = snapshot.data.docs[index];
+                final DocumentSnapshot managersnap = snapshot.data!.docs[index];
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundImage: AssetImage(workprovider.debruyne),
                   ),
                   title: Text(managersnap['managername'],
                       style: GoogleFonts.barlow()),
-                  trailing: SizedBox(
-                    height: 30,
-                    width: 105,
-                    child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.blue[900],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        onPressed: () {},
-                        child: Text("View Profile",
-                            style: GoogleFonts.amaranth(
-                              color: Colors.white,
-                            ))),
-                  ),
                 );
               },
               itemCount: snapshot.data!.docs.length,

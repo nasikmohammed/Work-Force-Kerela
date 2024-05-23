@@ -191,7 +191,7 @@ class WorkProvider extends ChangeNotifier {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ScreenRegisterAnEmployee(),
+                        builder: (context) => ScreenRegisteronEmployee(),
                       ));
                 },
                 child: Text(
@@ -492,24 +492,24 @@ class WorkProvider extends ChangeNotifier {
           const SizedBox(
             height: 45,
           ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 50,
-              ),
-              const Icon(
-                Icons.arrow_right,
-                color: Colors.white,
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Logout",
-                    style:
-                        GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                  ))
-            ],
-          )
+          // Row(
+          //   children: [
+          //     const SizedBox(
+          //       width: 50,
+          //     ),
+          //     const Icon(
+          //       Icons.arrow_right,
+          //       color: Colors.white,
+          //     ),
+          //     TextButton(
+          //         onPressed: () {},
+          //         child: Text(
+          //           "Logout",
+          //           style:
+          //               GoogleFonts.corben(color: Colors.white, fontSize: 12),
+          //         ))
+          //   ],
+          // )
         ],
       ),
     );
@@ -674,7 +674,7 @@ class WorkProvider extends ChangeNotifier {
                         borderRadius: BorderRadius.circular(15))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => ScreenManagerNotifications(),
+                    builder: (context) => ScreenManagernotifications(),
                   ));
                 },
                 child: Row(
@@ -710,32 +710,6 @@ class WorkProvider extends ChangeNotifier {
                     ),
                     Text(
                       "About ",
-                      style:
-                          GoogleFonts.corben(color: Colors.black, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 15, right: 25, bottom: 3, top: 2),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  //     builder: (context) => ()));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.black,
-                    ),
-                    Text(
-                      "Logout",
                       style:
                           GoogleFonts.corben(color: Colors.black, fontSize: 12),
                     ),
@@ -822,7 +796,7 @@ class WorkProvider extends ChangeNotifier {
                           borderRadius: BorderRadius.circular(15))),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenUserNotifications(),
+                      builder: (context) => ScreenUserReportList(),
                     ));
                   },
                   child: Row(
@@ -859,31 +833,6 @@ class WorkProvider extends ChangeNotifier {
                       ),
                       Text(
                         " Reports",
-                        style: GoogleFonts.corben(
-                            color: Colors.white, fontSize: 12),
-                      ),
-                    ],
-                  )),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
-              child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => ScreenUserReportList()));
-                  },
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.arrow_right,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        "Report List",
                         style: GoogleFonts.corben(
                             color: Colors.white, fontSize: 12),
                       ),

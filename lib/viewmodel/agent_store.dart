@@ -7,7 +7,7 @@ class AgenteService {
   final CollectionReference agent =
       FirebaseFirestore.instance.collection("AGENT");
   Future addUser(AgentModel agentModel, uid) async {
-    final doc = db.collection("AGENT").doc();
+    final doc = db.collection("AGENT").doc(uid);
     doc.set(agentModel.toJson(uid));
   }
 

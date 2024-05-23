@@ -1,26 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenRegisterAnEmployee extends StatefulWidget {
-  ScreenRegisterAnEmployee({super.key});
+class ScreenRegisteronEmployee extends StatefulWidget {
+  const ScreenRegisteronEmployee({super.key});
 
   @override
-  State<ScreenRegisterAnEmployee> createState() =>
-      _ScreenRegisterAnEmployeeState();
+  State<ScreenRegisteronEmployee> createState() =>
+      _ScreenRegisteronEmployeeState();
 }
 
-class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
-  bool islosding = false;
-
+class _ScreenRegisteronEmployeeState extends State<ScreenRegisteronEmployee> {
   @override
   Widget build(BuildContext context) {
-    final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
-   
+    final workprovider = Provider.of<WorkProvider>(context);
+
     return Scaffold(
         body: Row(
       children: [
@@ -217,7 +217,23 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                               // funprovider.signupwithagent(context);
+                                AgenteService agenteService = AgenteService();
+                                agenteService.addUser(
+                                    AgentModel(
+                                        agencyname: funprovider.agencyname.text,
+                                        agentaddress:
+                                            funprovider.agentrgaddress.text,
+                                        agentcity: funprovider.agentrgcity.text,
+                                        agentemail:
+                                            funprovider.agentrgemail.text,
+                                        agentstate:
+                                            funprovider.agentrgstate.text,
+                                        contactnumber:
+                                            funprovider.agentcontactnumber.text,
+                                        image: funprovider.imageurl,
+                                        password:
+                                            funprovider.agentrgpassword.text),
+                                    FirebaseAuth.instance.currentUser!.uid);
                               },
                               child: Text(
                                 "Register Now",
