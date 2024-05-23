@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/screen_splash.dart';
+import 'package:workforce_project/view/admin/screen_verifications.dart';
+import 'package:workforce_project/view/agent/screen_add_manager.dart';
 import 'package:workforce_project/view/agent/screen_add_workers.dart';
-import 'package:workforce_project/view/user/screen_login.dart';
+import 'package:workforce_project/view/agent/screen_homeagent.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
+import 'package:workforce_project/view/manager/screen_manager_login.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/view/user/screen_user_loginupadate.dart';
 import 'package:workforce_project/view/user/Screen_Report_list.dart';
-import 'package:workforce_project/view/user/screen_userprofile.dart';
-import 'package:workforce_project/view/user/updatepersonalinfo.dart';
 
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
@@ -47,6 +50,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: ScreenUserPersonalInfo()));
+            home: ScreenSplash()));
   }
 }

@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:random_string/random_string.dart';
 import 'package:workforce_project/model/manager_report_model.dart';
+import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/manager_report_service.dart';
@@ -11,6 +14,7 @@ class ScreenManagerReportProblems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ManagerReportModel managerReportModel = ManagerReportModel();
     ManagerReportService managerReportServicer = ManagerReportService();
     final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
@@ -64,10 +68,17 @@ class ScreenManagerReportProblems extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
+                  String reportid = FirebaseAuth.instance.currentUser!.uid;
+                  String id = randomAlphaNumeric(10);
                   managerReportServicer
-                      .addManagerreports(ManagerReportModel(
-                          reportManagerissues:
-                              funprovider.managerreportproblemcontroller.text))
+                      .addManagerreports(
+                          ManagerReportModel(
+                              reportid: reportid,
+                              reportManagerissues: funprovider
+                                  .managerreportproblemcontroller.text,
+                              id: id),
+                          reportid,
+                          id)
                       .then((value) {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) {

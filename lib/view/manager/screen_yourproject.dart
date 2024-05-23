@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_project_details.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenYourProjects extends StatelessWidget {
   ScreenYourProjects({super.key});
@@ -13,50 +16,56 @@ class ScreenYourProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: project.snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
-        }
+    ProjectDetailsModel projectdetails = ProjectDetailsModel();
+    final funprovider = Provider.of<FunProvider>(context);
 
-        return Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) {
-                      return ScreenHomeManager();
-                    },
-                  ));
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) {
+                  return ScreenHomeManager();
                 },
-                icon: const Icon(
-                  Icons.arrow_circle_left_outlined,
-                  color: Colors.black,
-                )),
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: Text(
-              "Your projects",
-              style: GoogleFonts.amaranth(color: Colors.black),
-            ),
-            centerTitle: true,
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: snapshot.data!.docs.length,
+              ));
+            },
+            icon: const Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.black,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          "Your projects",
+          style: GoogleFonts.amaranth(color: Colors.black),
+        ),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: StreamBuilder<List<ProjectDetailsModel>>(
+              stream: funprovider.getInstitutionsStream(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasData) {
+                  print(snapshot.error);
+                }
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(
+                    child: Text("No institute"),
+                  );
+                }
+                final projectdata = snapshot.data!;
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    var projectname =
-                        snapshot.data!.docs[index]['agentaddprojectname'];
-                    var projectplace =
-                        snapshot.data!.docs[index]['agentaddplace'];
-                    var projectdeaddate =
-                        snapshot.data!.docs[index]['agentaddenddate'];
-                    var projectimages =
-                        snapshot.data!.docs[index]['projectimage'];
+                    final prodata = projectdata[index];
                     return Container(
                       width: 300,
                       height: 190,
@@ -72,7 +81,7 @@ class ScreenYourProjects extends StatelessWidget {
                               ),
                               SizedBox(
                                   width: 150,
-                                  child: projectimages == ""
+                                  child: prodata.projectimage == ""
                                       ? const Icon(
                                           CupertinoIcons.house_fill,
                                           size: 100,
@@ -80,17 +89,17 @@ class ScreenYourProjects extends StatelessWidget {
                                       : SizedBox(
                                           height: 130,
                                           child: Image.network(
-                                            projectimages,
+                                            prodata.projectimage!,
                                           ),
                                         )),
                               Row(
                                 children: [
                                   Text(
-                                    projectname,
+                                    prodata.agentaddprojectname!,
                                     style: GoogleFonts.mukta(),
                                   ),
                                   Text(
-                                    "(${projectplace})",
+                                    "(${prodata.agentaddplace!})",
                                     style:
                                         GoogleFonts.mukta(color: Colors.grey),
                                   ),
@@ -114,7 +123,7 @@ class ScreenYourProjects extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      'Deadlock :   ${projectdeaddate}',
+                                      'Deadlock :   ${prodata.agentaddenddate}',
                                       style: GoogleFonts.mukta(),
                                     ),
                                     IconButton(
@@ -142,7 +151,8 @@ class ScreenYourProjects extends StatelessWidget {
                                       },
                                       child: Text(
                                         "View Details",
-                                        style: GoogleFonts.mukta(),
+                                        style: GoogleFonts.mukta(
+                                            color: Colors.white),
                                       )),
                                 )
                               ],
@@ -152,12 +162,12 @@ class ScreenYourProjects extends StatelessWidget {
                       ),
                     );
                   },
-                ),
-              )
-            ],
-          ),
-        );
-      },
+                );
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 }

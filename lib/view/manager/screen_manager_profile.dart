@@ -1,31 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:workforce_project/model/managermodel.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/manager/screen_manager_update_profile.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 class ScreenManagerProfile extends StatelessWidget {
   ScreenManagerProfile({super.key});
-  final CollectionReference manager =
-      FirebaseFirestore.instance.collection("MANAGER");
+  final manager = FirebaseFirestore.instance
+      .collection("MANAGER")
+      .doc(FirebaseAuth.instance.currentUser!.uid);
+      
+  ManagerModel managersModel = ManagerModel();
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: manager.snapshots(),
+    final funprovider = Provider.of<FunProvider>(context);
+    return FutureBuilder(
+      future: funprovider.fetchCurrentmaangerdata(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         }
-        var managername = snapshot.data!.docs.first['managername'];
-        var managerplace = snapshot.data!.docs.first['managerplace'];
-        var managerage = snapshot.data!.docs.first['managerage'];
-        var manageridnumber = snapshot.data!.docs.first['manageridnumber'];
-        var managerid = snapshot.data!.docs.first['managerid'];
-        var manageremail = snapshot.data!.docs.first['manageremail'];
-        var managerpassword = snapshot.data!.docs.first['managerpassword'];
-        var managerphoto = snapshot.data!.docs.first['managerimage'];
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -62,7 +62,7 @@ class ScreenManagerProfile extends StatelessWidget {
             children: [
               SizedBox(
                   width: 150,
-                  child: managerphoto == ""
+                  child: funprovider.managerimage == ""
                       ? const Icon(
                           CupertinoIcons.person_alt_circle_fill,
                           size: 60,
@@ -71,7 +71,7 @@ class ScreenManagerProfile extends StatelessWidget {
                           radius: 60,
                           // height: 130,
                           child: Image.network(
-                            managerphoto,
+                            funprovider.managerimage!,
                           ),
                         )),
               ElevatedButton(
@@ -116,7 +116,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              managername,
+                              funprovider.managername!,
                             ),
                             const SizedBox(
                               height: 15,
@@ -128,7 +128,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(managerplace),
+                            Text(funprovider.managerplace!),
                             const SizedBox(
                               height: 15,
                             ),
@@ -139,7 +139,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(managerage),
+                            Text(funprovider.managerage!),
                             const SizedBox(
                               height: 15,
                             ),
@@ -150,7 +150,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(manageridnumber),
+                            Text(funprovider.manageridnumber!),
                             const SizedBox(
                               height: 15,
                             ),
@@ -161,7 +161,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(manageremail),
+                            Text(funprovider.manageremail!),
                             const SizedBox(
                               height: 15,
                             ),
@@ -172,7 +172,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(managerid),
+                            Text(funprovider.managerid!),
                             const SizedBox(
                               height: 15,
                             ),
@@ -186,7 +186,7 @@ class ScreenManagerProfile extends StatelessWidget {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(managerpassword),
+                            Text(funprovider.managerpassword!),
                             const SizedBox(
                               height: 15,
                             ),

@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
-
-import '../../model/agentmodel.dart';
 
 class ScreenRegisterAnEmployee extends StatefulWidget {
   ScreenRegisterAnEmployee({super.key});
@@ -23,7 +20,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
-    AgenteService agentobbj = AgenteService();
+   
     return Scaffold(
         body: Row(
       children: [
@@ -220,55 +217,7 @@ class _ScreenRegisterAnEmployeeState extends State<ScreenRegisterAnEmployee> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                                setState(() {
-                                  islosding = true;
-                                });
-                                agentobbj
-                                    .addUser(AgentModel(
-                                            agencyname:
-                                                funprovider.agencyname.text,
-                                            contactnumber: funprovider
-                                                .agentcontactnumber.text,
-                                            agentaddress:
-                                                funprovider.agentrgaddress.text,
-                                            agentcity:
-                                                funprovider.agentrgcity.text,
-                                            agentemail:
-                                                funprovider.agentrgemail.text,
-                                            agentstate:
-                                                funprovider.agentrgstate.text,
-                                            password: funprovider
-                                                .agentrgpassword.text,
-                                            image: funprovider.imageurl)
-
-                                        //  FirebaseAuth.instance.currentUser!.uid
-                                        )
-                                    .then((value) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 600, right: 300),
-                                        child: AlertDialog(
-                                          backgroundColor: const Color.fromARGB(
-                                              255, 20, 32, 99),
-                                          actions: [
-                                            Text(
-                                              "   Registered Successfully        ",
-                                              style: GoogleFonts.anekDevanagari(
-                                                  color: Colors.white),
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                });
-                                // setState(() {
-                                //islosding = false;
-
-                                // });
+                               // funprovider.signupwithagent(context);
                               },
                               child: Text(
                                 "Register Now",

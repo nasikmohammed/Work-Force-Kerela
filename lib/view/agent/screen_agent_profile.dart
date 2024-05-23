@@ -131,11 +131,7 @@ class ScreenAgentProfile extends StatelessWidget {
                                             BorderRadius.circular(10)),
                                     child: Center(
                                       child: IconButton(
-                                          onPressed: () {
-                                            funprovider
-                                                .showagentnamedialoguealert(
-                                                    context, agentfirstname);
-                                          },
+                                          onPressed: () {},
                                           icon: const Icon(
                                             Icons.edit,
                                             size: 15,

@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:workforce_project/model/agentmodel.dart';
@@ -7,9 +6,9 @@ class AgenteService {
   final db = FirebaseFirestore.instance;
   final CollectionReference agent =
       FirebaseFirestore.instance.collection("AGENT");
-  Future addUser(AgentModel agentModel,) async {
+  Future addUser(AgentModel agentModel, uid) async {
     final doc = db.collection("AGENT").doc();
-    doc.set(agentModel.toJson());
+    doc.set(agentModel.toJson(uid));
   }
 
   //AgentModel? singleagentuserData;
@@ -77,8 +76,4 @@ class AgenteService {
   // Future<Stream<QuerySnapshot>> getsingleagentdata() async {
   //   return await FirebaseFirestore.instance.collection("AGENT").snapshots();
   // }
-
-  updateagentprofile(AgentModel agentModel) async {
-    await db.collection("AGENT").doc(agentModel.id).update(agentModel.toJson());
-  }
 }

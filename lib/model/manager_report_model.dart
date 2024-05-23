@@ -1,10 +1,16 @@
 class ManagerReportModel {
   String? reportManagerissues;
-  ManagerReportModel({this.reportManagerissues});
-  Map<String, dynamic> toJson(docId) => {
-        "reportManagerissues": reportManagerissues,
-      };
+  String? reportid;
+  String? id;
+
+  ManagerReportModel({this.reportManagerissues, this.reportid, this.id});
+  Map<String, dynamic> toJson(docId) =>
+      {"reportManagerissues": reportManagerissues, "reportid": reportid};
   factory ManagerReportModel.fromJson(Map<String, dynamic> json) {
-    return ManagerReportModel(reportManagerissues: json["reportManagerissues"]);
+    return ManagerReportModel(
+      reportManagerissues: json["reportManagerissues"],
+      reportid: json["reportid"],
+      id: json["id"],
+    );
   }
 }

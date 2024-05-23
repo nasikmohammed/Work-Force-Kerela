@@ -7,6 +7,7 @@ class ManagerModel {
   String? managerid;
   String? manageremail;
   String? managerimage;
+  String? id;
 
   String? managerpassword;
   ManagerModel(
@@ -17,7 +18,8 @@ class ManagerModel {
       this.manageremail,
       this.managerpassword,
       this.managerid,
-      this.managerimage});
+      this.managerimage,
+      this.id});
   Map<String, dynamic> toJson(docId) => {
         "managername": managername,
         "managerplace": managerplace,
@@ -26,7 +28,7 @@ class ManagerModel {
         "manageremail": manageremail,
         "managerpassword": managerpassword,
         "managerid": managerid,
-        "managerimage": managerimage
+        "managerimage": managerimage,
       };
   factory ManagerModel.fromJson(Map<String, dynamic> json) {
     return ManagerModel(

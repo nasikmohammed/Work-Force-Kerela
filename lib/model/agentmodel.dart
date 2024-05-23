@@ -27,7 +27,7 @@ class AgentModel {
       this.password,
       this.id,
       this.image});
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson(docId) => {
         //agent
 
         "agencyname": agencyname,
@@ -40,7 +40,8 @@ class AgentModel {
 
         "password": password,
 
-        "image": image
+        "image": image,
+        "id":docId,
 
       };
   factory AgentModel.fromJson(Map<String, dynamic> json) {

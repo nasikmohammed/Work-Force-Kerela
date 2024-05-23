@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -263,29 +262,19 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                           backgroundColor: Color.fromARGB(255, 13, 42, 91)),
                       onPressed: () {
                         if (funprovider.formkey.currentState!.validate()) {
-                          managermodel
-                              .addManager(ManagerModel(
-                                  managername:
-                                      funprovider.agentmanagername.text,
-                                  managerplace:
-                                      funprovider.agentmanagerplace.text,
-                                  managerage: funprovider.agentmanagerage.text,
-                                  manageridnumber:
-                                      funprovider.agentmanagerIdnumber.text,
-                                  manageremail:
-                                      funprovider.agentmanageremail.text,
-                                  managerid: funprovider.agentmanagerid.text,
-                                  managerpassword:
-                                      funprovider.agentmanagerpassword.text,
-                                  managerimage: funprovider.imageurl))
-                              .then((value) {
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                              builder: (context) {
-                                return ScreenHomeAgent();
-                              },
-                            ));
-                          });
+                          funprovider.signupwithmanager(context).then(
+                            (value) {
+                              funprovider.sendEmail(
+                                  funprovider.agentmanagerpassword.text,
+                                  ('Work force kerela Login Password is:${funprovider.agentmanagerpassword.text}'),
+                                  funprovider.agentmanageremail.text);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return ScreenHomeAgent();
+                                },
+                              ));
+                            },
+                          );
                         }
                       },
                       child: Text(

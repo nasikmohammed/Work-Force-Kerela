@@ -5,8 +5,8 @@ class ManagerService {
   final db = FirebaseFirestore.instance;
   final CollectionReference agent =
       FirebaseFirestore.instance.collection("MANAGER");
-  Future addManager(ManagerModel managerModel) async {
-    final doc = db.collection("MANAGER").doc();
-    doc.set(managerModel.toJson(doc.id));
+  Future addManager(ManagerModel managerModel, uid) async {
+    final doc = db.collection("MANAGER").doc(uid);
+    doc.set(managerModel.toJson(uid));
   }
 }

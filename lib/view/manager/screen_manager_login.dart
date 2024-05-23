@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 
 import '../../viewmodel/ui_work_provider.dart';
 
@@ -11,6 +12,7 @@ class ScreenManagerLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -29,6 +31,7 @@ class ScreenManagerLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.managerloginemail,
                   decoration: InputDecoration(
                       hintText: "Username",
                       hintStyle: GoogleFonts.sarabun(),
@@ -39,6 +42,7 @@ class ScreenManagerLogin extends StatelessWidget {
                   height: 10,
                 ),
                 TextField(
+                  controller: funprovider.managerloginpassword,
                   decoration: InputDecoration(
                       hintText: "Password",
                       hintStyle: GoogleFonts.sarabun(),
@@ -54,11 +58,7 @@ class ScreenManagerLogin extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         backgroundColor: Color.fromARGB(255, 242, 253, 188)),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) {
-                          return ScreenHomeManager();
-                        },
-                      ));
+                      funprovider.Loginwithmanager(context);
                     },
                     child: Text(
                       "Login",

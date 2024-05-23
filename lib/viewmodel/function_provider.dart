@@ -9,12 +9,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:workforce_project/model/agentmodel.dart';
+import 'package:workforce_project/model/manager_report_model.dart';
+import 'package:workforce_project/model/managermodel.dart';
+import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/model/user_report_model.dart';
 import 'package:workforce_project/model/usermodel.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/admin/screen_registeron_employee.dart';
+import 'package:workforce_project/view/manager/screen_home_manager.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/agent_store.dart';
+import 'package:workforce_project/viewmodel/manager_store.dart';
 import 'package:workforce_project/viewmodel/user_store.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -127,6 +132,8 @@ class FunProvider extends ChangeNotifier {
   final workerlogpassword = TextEditingController();
   //update
   final workernameupdate = TextEditingController();
+  final workerplaceupdate = TextEditingController();
+  final workerageupdate = TextEditingController();
 
   //update agent profile
 
@@ -158,6 +165,9 @@ class FunProvider extends ChangeNotifier {
   //admin
   final adminemailcontroller = TextEditingController();
   final adminpasswordcontroller = TextEditingController();
+  //managerLOGIN
+  final managerloginemail = TextEditingController();
+  final managerloginpassword = TextEditingController();
 
   // Future signup(context) async {
   //   try {
@@ -410,8 +420,16 @@ class FunProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> showagentnamedialoguealert(context, String name) async {
+  Future<void> userprofileupdate(
+    context,
+    String name,
+    place,
+    age,
+  ) async {
     workernameupdate.text = name;
+    workerplaceupdate.text = place;
+    workerageupdate.text = age;
+
     return showDialog(
       context: context,
       builder: (context) {
@@ -433,10 +451,37 @@ class FunProvider extends ChangeNotifier {
                   style: GoogleFonts.overpass(),
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(5),
-                      hintText: "  Text your Agency name...",
+                      labelText: "Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20)))),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: workerplaceupdate,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Place',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: workerageupdate,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Age',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           ),
@@ -482,6 +527,8 @@ class FunProvider extends ChangeNotifier {
         .doc(FirebaseAuth.instance.currentUser!.uid);
     user.update({
       "workersname": workernameupdate.text,
+      "workersplace": workerplaceupdate.text,
+      "workersage": workerageupdate.text,
     });
   }
 
@@ -503,6 +550,7 @@ class FunProvider extends ChangeNotifier {
     workerid.clear();
     workerpassword.clear();
   }
+  //signupwithworkers
 
   Future signupwith(context) async {
     WorkersStore store = WorkersStore();
@@ -533,8 +581,40 @@ class FunProvider extends ChangeNotifier {
     }
   }
 
+  //Signupwith manager
+
+  Future signupwithmanager(context) async {
+    ManagerService managerService = ManagerService();
+    try {
+      await auth
+          .createUserWithEmailAndPassword(
+              email: agentmanageremail.text,
+              password: agentmanagerpassword.text)
+          .then((value) {
+        String uid = value.user!.uid;
+
+        managerService.addManager(
+            ManagerModel(
+                managername: agentmanagername.text,
+                managerplace: agentmanagerplace.text,
+                managerage: agentmanagerage.text,
+                manageridnumber: agentmanagerIdnumber.text,
+                manageremail: agentmanageremail.text,
+                managerid: agentmanagerid.text,
+                managerpassword: agentmanagerpassword.text,
+                managerimage: imageurl,
+                id: uid),
+            uid);
+
+        notifyListeners();
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+    }
+  }
+
+//login worker
   signin(context) async {
-    print(workerlogemail.text);
     try {
       await auth
           .signInWithEmailAndPassword(
@@ -585,6 +665,59 @@ class FunProvider extends ChangeNotifier {
     }
   }
 
+  //signwithmanager.......................
+  Loginwithmanager(context) async {
+    try {
+      await auth
+          .signInWithEmailAndPassword(
+              email: managerloginemail.text,
+              password: managerloginpassword.text)
+          .then(
+        (credential) {
+          String id = credential.user!.uid;
+
+          print(id);
+          final snackBar = SnackBar(
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+            content: Text(
+              "Login Succesfully",
+              style: GoogleFonts.sarabun(),
+            ),
+          );
+
+          // Display the Snackbar
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return ScreenHomeManager();
+            },
+          ));
+        },
+      );
+    } catch (e) {
+      print("ccccccccccccccccccccccccccccccc");
+      print(e.toString());
+      final snackBar = SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(
+          "Check Your Emai and Password",
+          style: GoogleFonts.plusJakartaSans(),
+        ),
+        action: SnackBarAction(
+          label: 'Undo',
+          textColor: const Color.fromARGB(255, 0, 0, 0),
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+
+      // Display the Snackbar
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   WorkersModel? workersModel;
   String? workname;
   String? workplace;
@@ -607,16 +740,52 @@ class FunProvider extends ChangeNotifier {
       workage = workersModel!.workersage;
       workidnumber = workersModel!.workersidnumber;
       workemail = workersModel!.workersemail;
-      workid = workersModel!.workersemail;
+      workid = workersModel!.workersid;
       workpassword = workersModel!.workerspassword;
       workimage = imageurl;
       print(workname);
       print(workersModel!.workersage);
       print(workersModel!.workersplace);
     }
+  } //fetchmanagerdata/..............................
+
+  ManagerModel? managermodel;
+  String? managername;
+  String? managerplace;
+  String? managerage;
+  String? manageridnumber;
+  String? manageremail;
+  String? managerid;
+  String? managerpassword;
+  String? managerimage;
+
+  fetchCurrentmaangerdata() async {
+    print('obje..........................................................');
+    print(FirebaseAuth.instance.currentUser!.uid);
+    print('bje..........................................................');
+    final snapshot = await FirebaseFirestore.instance
+        .collection("MANAGER")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    if (snapshot.exists) {
+      print("ttttttttttttttttttttttttttttttttttttttttttttttt");
+      managermodel = ManagerModel.fromJson(snapshot.data()!);
+      managername = managermodel!.managername;
+      managerplace = managermodel!.managerplace;
+      managerage = managermodel!.managerage;
+      manageridnumber = managermodel!.manageridnumber;
+      manageremail = managermodel!.manageremail;
+      managerid = managermodel!.managerid;
+      managerpassword = managermodel!.managerpassword;
+      managerimage = imageurl;
+      print(managername);
+      print("VVvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+      print(managermodel!.managername);
+    }
   }
 
 // SPECIFIED DATA FETCHING FROM ONE COLLECTION IN SCREEN
+//userreport
   List<UserReportsModel> userreportModel = [];
   Future getreport() async {
     final snapshot = await db
@@ -630,5 +799,42 @@ class FunProvider extends ChangeNotifier {
     userreportModel = snapshot.docs.map((doc) {
       return UserReportsModel.fromJson(doc.data());
     }).toList();
+  }
+
+  ///////////////////////////////////////////////
+
+  List<ManagerReportModel> managerreports = [];
+  Future getreportmanager() async {
+    final snapshot = await db
+        .collection('ManagerReports')
+        .where(
+          'reportid',
+          isEqualTo: auth.currentUser!.uid,
+        )
+        .get();
+
+    managerreports = snapshot.docs.map((doc) {
+      return ManagerReportModel.fromJson(doc.data());
+    }).toList();
+  }
+
+  Stream<List<ProjectDetailsModel>> getInstitutionsStream() {
+    return FirebaseFirestore.instance
+        .collection('PROJECT')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return ProjectDetailsModel(
+          agentaddprojectname: doc['agentaddprojectname'],
+          agentaddplace: doc['agentaddplace'] ?? '',
+          agentaddmanager: doc['agentaddmanager'],
+          agentaddnoworers: doc['agentaddnoworers'],
+          projectimage: doc['projectimage'] ?? '',
+          agentaddbudget: doc['agentaddbudget'] ?? '',
+          agentaddenddate: doc['agentaddenddate'] ?? '',
+          agentaddstartdate: doc['agentaddstartdate'],
+        );
+      }).toList();
+    });
   }
 }
