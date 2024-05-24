@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:workforce_project/view/manager/screen_manager_reportproblems.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenHomeManager extends StatelessWidget {
@@ -15,6 +16,7 @@ class ScreenHomeManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
     return StreamBuilder(
       stream: project.snapshots(),
       builder: (context, snapshot) {
@@ -79,6 +81,7 @@ class ScreenHomeManager extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
+                      funprovider.managerreportproblemcontroller.clear();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => ScreenManagerReportProblems(),
                       ));

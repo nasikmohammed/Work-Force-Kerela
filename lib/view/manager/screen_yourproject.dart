@@ -108,7 +108,7 @@ class ScreenYourProjects extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(
-                            width: 40,
+                            width: 10,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 25),
@@ -144,9 +144,11 @@ class ScreenYourProjects extends StatelessWidget {
                                           backgroundColor: Colors.indigo),
                                       onPressed: () {
                                         Navigator.of(context)
-                                            .pushReplacement(MaterialPageRoute(
+                                            .push(MaterialPageRoute(
                                           builder: (context) =>
-                                              ScreenProjectDetails(projectDetailsModel: prodata,),
+                                              ScreenProjectDetails(
+                                            projectDetailsModel: prodata,
+                                          ),
                                         ));
                                       },
                                       child: Text(

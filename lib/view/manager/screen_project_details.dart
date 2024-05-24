@@ -26,106 +26,72 @@ class ScreenProjectDetails extends StatelessWidget {
         var projectstartdate = snapshot.data!.docs.first['agentaddstartdate'];
 
         return Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) {
-                      return ScreenYourProjects();
-                    },
-                  ));
-                },
-                icon: const Icon(
-                  Icons.arrow_circle_left_outlined,
-                  color: Colors.black,
-                )),
-            elevation: 0,
-          ),
-          body: Column(
-            children: [
-              SizedBox(
-                  width: 150,
-                  height: 300,
-                  child: projectDetailsModel.projectimage == ""
-                      ? const Icon(
-                          CupertinoIcons.house_fill,
-                          size: 150,
-                        )
-                      : SizedBox(
-                          height: 200,
-                          child: Image.network(
-                            projectDetailsModel.projectimage!,
-                          ),
-                        )),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40),
-                child: Container(
-                  width: 400,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Center(
-                      child: Text(
-                    "Project Details",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_circle_left_outlined,
+                    color: Colors.black,
                   )),
-                ),
-              ),
-              const Icon(
-                Icons.arrow_drop_down,
-                size: 30,
-              ),
-              Text(
-                projectDetailsModel.agentaddprojectname!,
-                style: GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
-              ),
-              Text(
-                projectDetailsModel.agentaddplace!,
-                style: GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "(${projectDetailsModel.agentaddstartdate})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+              elevation: 0,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.only(top: 70, left: 10, right: 10),
+              child: Container(
+                width: 450,
+                height: 550,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 237, 234, 234),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Column(children: [
+                  SizedBox(
+                      width: 150,
+                      height: 300,
+                      child: projectDetailsModel.projectimage == ""
+                          ? const Icon(
+                              CupertinoIcons.house_fill,
+                              size: 150,
+                            )
+                          : SizedBox(
+                              height: 200,
+                              child: Image.network(
+                                projectDetailsModel.projectimage!,
+                              ),
+                            )),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40, right: 40),
+                    child: Container(
+                      width: 400,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                          child: Text(
+                        "Project Details",
+                        style: GoogleFonts.amaranth(
+                            color: Colors.black, fontSize: 15),
+                      )),
+                    ),
                   ),
-                  Text(
-                    "to",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+                  const Icon(
+                    Icons.arrow_drop_down,
+                    size: 30,
                   ),
-                  Text(
-                    "(${projectDetailsModel.agentaddenddate})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25, left: 15),
+                    child: Text(
+                      "The ${projectDetailsModel.agentaddprojectname} Project at  ${projectDetailsModel.agentaddplace} was carried out from  ${projectDetailsModel.agentaddstartdate} to  ${projectDetailsModel.agentaddenddate} under  ${projectDetailsModel.agentaddmanager} With  ${projectDetailsModel.agentaddnoworers} Workers.",
+                      style: GoogleFonts.mukta(fontSize: 20),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
+                ]),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Project Manager :",
-                style: GoogleFonts.overpass(fontSize: 18, color: Colors.blue),
-              ),
-              Text(
-                projectDetailsModel.agentaddmanager!,
-                style: GoogleFonts.amarante(fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-        );
+            ));
       },
     );
   }
