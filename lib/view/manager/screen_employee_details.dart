@@ -14,18 +14,18 @@ class ScreenEmployeeDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) {
-                  return ScreenProjectDetails();
-                },
-              ));
-            },
-            icon: const Icon(
-              Icons.arrow_circle_left_outlined,
-              color: Colors.black,
-            )),
+        // leading: IconButton(
+        //     onPressed: () {
+        //       Navigator.of(context).pushReplacement(MaterialPageRoute(
+        //         builder: (context) {
+        //           return ScreenProjectDetails();
+        //         },
+        //       ));
+        //     },
+        //     icon: const Icon(
+        //       Icons.arrow_circle_left_outlined,
+        //       color: Colors.black,
+        //     )),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(

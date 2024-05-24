@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workforce_project/view/admin/screen_adminlogin.dart';
+import 'package:workforce_project/view/admin/screen_register_onemployee.dart';
 import 'package:workforce_project/view/agent/screen_agent_login.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/manager/screen_home_manager.dart';
@@ -23,7 +24,7 @@ class ScreenSplash extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ScreenAdminLogin(),
+                    builder: (context) => ScreenRegisterOn(),
                   ));
                 },
                 child: Text("Admin")),

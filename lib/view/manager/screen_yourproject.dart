@@ -146,7 +146,7 @@ class ScreenYourProjects extends StatelessWidget {
                                         Navigator.of(context)
                                             .pushReplacement(MaterialPageRoute(
                                           builder: (context) =>
-                                              ScreenProjectDetails(),
+                                              ScreenProjectDetails(projectDetailsModel: prodata,),
                                         ));
                                       },
                                       child: Text(

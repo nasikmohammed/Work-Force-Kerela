@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workforce_project/model/projectmodel.dart';
 import 'package:workforce_project/view/manager/screen_employee_details.dart';
 import 'package:workforce_project/view/manager/screen_yourproject.dart';
 
 class ScreenProjectDetails extends StatelessWidget {
-  ScreenProjectDetails({super.key});
+  ScreenProjectDetails({required this.projectDetailsModel});
+  final ProjectDetailsModel projectDetailsModel;
   final CollectionReference project =
       FirebaseFirestore.instance.collection("PROJECT");
 
@@ -38,62 +40,24 @@ class ScreenProjectDetails extends StatelessWidget {
                   Icons.arrow_circle_left_outlined,
                   color: Colors.black,
                 )),
-            backgroundColor: Colors.white,
-            title: Text(
-              "Project Details",
-              style: GoogleFonts.amaranth(color: Colors.black),
-            ),
-            centerTitle: true,
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.question_mark,
-                    color: Colors.black,
-                  ))
-            ],
             elevation: 0,
           ),
           body: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    projectname,
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
-                  ),
-                  Text(
-                    "(${projectplace})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "(${projectstartdate})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
-                  ),
-                  Text(
-                    "to",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
-                  ),
-                  Text(
-                    "(${projectenddate})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
+              SizedBox(
+                  width: 150,
+                  height: 300,
+                  child: projectDetailsModel.projectimage == ""
+                      ? const Icon(
+                          CupertinoIcons.house_fill,
+                          size: 150,
+                        )
+                      : SizedBox(
+                          height: 200,
+                          child: Image.network(
+                            projectDetailsModel.projectimage!,
+                          ),
+                        )),
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40),
                 child: Container(
@@ -104,7 +68,7 @@ class ScreenProjectDetails extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: Center(
                       child: Text(
-                    "Employees included in this project",
+                    "Project Details",
                     style:
                         GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
                   )),
@@ -114,58 +78,50 @@ class ScreenProjectDetails extends StatelessWidget {
                 Icons.arrow_drop_down,
                 size: 30,
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    var projectphoto =
-                        snapshot.data!.docs[index]['projectimage'];
-                    var projectname =
-                        snapshot.data!.docs[index]['agentaddprojectname'];
-                    return ListTile(
-                      leading: SizedBox(
-                          width: 150,
-                          child: projectphoto == ""
-                              ? const Icon(
-                                  CupertinoIcons.person_alt_circle_fill,
-                                  size: 60,
-                                )
-                              : SizedBox(
-                                  height: 130,
-                                  child: Image.network(
-                                    projectphoto,
-                                  ),
-                                )),
-                      title: Text(
-                        projectname,
-                        style: GoogleFonts.amaranth(color: Colors.black),
-                      ),
-                      subtitle: Text(
-                        "construction worker",
-                        style: GoogleFonts.amaranth(fontSize: 10),
-                      ),
-                      trailing: SizedBox(
-                        height: 30,
-                        child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                backgroundColor:
-                                    Color.fromARGB(255, 21, 41, 153)),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                builder: (context) => ScreenEmployeeDetails(),
-                              ));
-                            },
-                            child: Text(
-                              "View",
-                              style: GoogleFonts.amaranth(color: Colors.white),
-                            )),
-                      ),
-                    );
-                  },
-                  itemCount: snapshot.data!.docs.length,
-                ),
+              Text(
+                projectDetailsModel.agentaddprojectname!,
+                style: GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
+              ),
+              Text(
+                projectDetailsModel.agentaddplace!,
+                style: GoogleFonts.amaranth(color: Colors.black, fontSize: 22),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "(${projectDetailsModel.agentaddstartdate})",
+                    style:
+                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+                  ),
+                  Text(
+                    "to",
+                    style:
+                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+                  ),
+                  Text(
+                    "(${projectDetailsModel.agentaddenddate})",
+                    style:
+                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Project Manager :",
+                style: GoogleFonts.overpass(fontSize: 18, color: Colors.blue),
+              ),
+              Text(
+                projectDetailsModel.agentaddmanager!,
+                style: GoogleFonts.amarante(fontWeight: FontWeight.bold),
               )
             ],
           ),
