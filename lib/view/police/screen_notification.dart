@@ -18,7 +18,7 @@ class ScreenNotifications extends StatelessWidget {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => ScreenCompamw()));
             },
-            icon:const Icon(
+            icon: const Icon(
               Icons.arrow_circle_left_outlined,
               color: Colors.black,
             )),

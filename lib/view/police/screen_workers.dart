@@ -31,19 +31,11 @@ class ScreenWorkers extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Workers",
+          "Workers", 
           style: GoogleFonts.quicksand(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.error,
-                color: Colors.black,
-              ))
-        ],
       ),
       body: StreamBuilder(
         stream: worker.snapshots(),
@@ -54,7 +46,7 @@ class ScreenWorkers extends StatelessWidget {
                 final DocumentSnapshot workerssnap = snapshot.data.docs[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: AssetImage(workprovider.adminprofile),
+                    backgroundImage: NetworkImage(workerssnap['workerimage']),
                   ),
                   title: Text(workerssnap["workersname"],
                       style: GoogleFonts.alata()),

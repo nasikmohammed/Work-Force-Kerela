@@ -24,7 +24,6 @@ import 'package:workforce_project/view/manager/screen_managernotifications.dart'
 import 'package:workforce_project/view/police/screen_aboutus.dart';
 import 'package:workforce_project/view/police/screen_alert.dart';
 import 'package:workforce_project/view/police/screen_notification.dart';
-import 'package:workforce_project/view/police/screen_upsa.dart';
 import 'package:workforce_project/view/user/screen_personalinfo.dart';
 import 'package:workforce_project/view/user/Screen_Notifications.dart';
 import 'package:workforce_project/view/user/screen_reportissue.dart';
@@ -524,32 +523,6 @@ class WorkProvider extends ChangeNotifier {
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
         child: Column(children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 50),
-            child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => ScreenUpdtPswdSttngAbt()));
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.arrow_right,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Profile",
-                      style:
-                          GoogleFonts.corben(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                )),
-          ),
           Padding(
             padding: EdgeInsets.only(left: 10, right: 10, bottom: 3),
             child: OutlinedButton(

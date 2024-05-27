@@ -47,3 +47,11 @@ class MyApp extends StatelessWidget {
             home: ScreenSplash()));
   }
 }
+//  apiKey: 'AIzaSyBeNrFCQjitZM87iSO3kA_UzKrTcRQuRkc',
+//     appId: '1:817839298426:web:9af160100c1a20e61c28c3',
+//     messagingSenderId: '817839298426',
+//     projectId: 'work-force-kerala',
+//     authDomain: 'work-force-kerala.firebaseapp.com',
+//     storageBucket: 'work-force-kerala.appspot.com',
+//     measurementId: 'G-J3NMVX4L9V',
+//     databaseURL: 'https://work-force-kerala-default-rtdb.firebaseio.com',

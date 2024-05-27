@@ -24,10 +24,10 @@ class ScreenSplash extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ScreenRegisterOn(),
+                    builder: (context) => ScreenAdminLogin(),
                   ));
                 },
-                child: Text("Admin")),
+                child: const Text("Admin")),
             const SizedBox(
               height: 10,
             ),
@@ -37,7 +37,7 @@ class ScreenSplash extends StatelessWidget {
                     builder: (context) => ScreenAgentLogin(),
                   ));
                 },
-                child: Text("Agent")),
+                child: const Text("Agent")),
             const SizedBox(
               height: 10,
             ),
@@ -47,7 +47,7 @@ class ScreenSplash extends StatelessWidget {
                     builder: (context) => ScreenManagerLogin(),
                   ));
                 },
-                child: Text("Manager")),
+                child: const Text("Manager")),
             const SizedBox(
               height: 10,
             ),
@@ -57,14 +57,17 @@ class ScreenSplash extends StatelessWidget {
                     builder: (context) => ScreenUserLogin(),
                   ));
                 },
-                child: Text("Workers")),
+                child: const Text("Workers")),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ScreenCompamw(),
                   ));
                 },
-                child: Text("Police"))
+                child: const Text("Police"))
           ],
         ),
       )),

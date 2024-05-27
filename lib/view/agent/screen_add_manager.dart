@@ -247,7 +247,7 @@ class _ScreenAddManagerState extends State<ScreenAddManager> {
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.white),
                     onPressed: () {
-                      funprovider.pickimagefromgallery();
+                      funprovider.pickimageforaddmanager();
                     },
                     child: Text(
                       "Add Image",

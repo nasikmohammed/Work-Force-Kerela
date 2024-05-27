@@ -35,14 +35,6 @@ class ScreenCompamw extends StatelessWidget {
                 color: Colors.black,
               ));
         }),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.error,
-                color: Colors.black,
-              ))
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 9),
@@ -60,7 +52,7 @@ class ScreenCompamw extends StatelessWidget {
                 height: 150,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [BoxShadow(blurRadius: 2)],
+                    boxShadow: [BoxShadow(blurRadius: 0)],
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +88,7 @@ class ScreenCompamw extends StatelessWidget {
                       height: 130,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
+                          boxShadow: [BoxShadow(blurRadius: 0)],
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +120,7 @@ class ScreenCompamw extends StatelessWidget {
                       height: 130,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
+                          boxShadow: [BoxShadow(blurRadius: 0)],
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +152,7 @@ class ScreenCompamw extends StatelessWidget {
                       height: 130,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
+                          boxShadow: [BoxShadow(blurRadius: 0)],
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -54,7 +54,7 @@ class ScreenManagers extends StatelessWidget {
                 final DocumentSnapshot managersnap = snapshot.data!.docs[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: AssetImage(workprovider.debruyne),
+                    backgroundImage: NetworkImage(managersnap['managerimage']),
                   ),
                   title: Text(managersnap['managername'],
                       style: GoogleFonts.barlow()),

@@ -58,7 +58,7 @@ class ScreenYourProjects extends StatelessWidget {
                 }
                 if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(
-                    child: Text("No institute"),
+                    child: Text("No Projects"),
                   );
                 }
                 final projectdata = snapshot.data!;

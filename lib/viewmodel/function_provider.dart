@@ -31,6 +31,7 @@ class FunProvider extends ChangeNotifier {
   String? imageurllicense = "";
   String? imageurlpasspot = "";
   String imageurladhaar = "";
+  String? imageaddmanager = "";
   String? uid = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
@@ -46,7 +47,7 @@ class FunProvider extends ChangeNotifier {
 
   final RegExp emailregexp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
-  final adminuid = "tPeJTvglpOR7x17hNjhezuzR4it1";
+  final adminuid = "NuzliqYGEyYPtE8nTtC43j4lvmb2";
   FirestoreService firestore = FirestoreService();
   AgenteService agentstor = AgenteService();
   //          SCREEN REGISTER
@@ -400,6 +401,26 @@ class FunProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  pickimageforaddmanager() async {
+    ImagePicker imagePicker = ImagePicker();
+    SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print(".................${file?.path}");
+    if (file == null) return;
+    String uniquefilename = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference referencRoot = FirebaseStorage.instance.ref();
+    Reference referencedirimage = referencRoot.child("images");
+    Reference referencetoimageupload = referencedirimage.child(uniquefilename);
+    try {
+      await referencetoimageupload.putFile(File(file.path), metadata);
+      imageaddmanager = await referencetoimageupload.getDownloadURL();
+      print(imageurl);
+    } catch (error) {
+      print(error);
+    }
+    notifyListeners();
+  }
+
   pickimageforadhaar() async {
     ImagePicker imagePicker = ImagePicker();
     SettableMetadata metadata = SettableMetadata(contentType: "image/jpeg");
@@ -673,7 +694,7 @@ class FunProvider extends ChangeNotifier {
                 manageremail: agentmanageremail.text,
                 managerid: agentmanagerid.text,
                 managerpassword: agentmanagerpassword.text,
-                managerimage: imageurl,
+                managerimage: imageaddmanager,
                 id: uid),
             uid);
 
@@ -696,17 +717,16 @@ class FunProvider extends ChangeNotifier {
         //  DocumentSnapshot ds = snapshot.
         agenteService.addUser(
             AgentModel(
-
-                agencyname: agencyname.text,
-                agentaddress: agentrgaddress.text,
-                contactnumber: agentcontactnumber.text,
-                agentstate: agentrgstate.text,
-                agentcity: agentrgcity.text,
-                agentemail: agentrgemail.text,
-                image: imageurl,
-                
-                password: agentrgpassword.text,
-                id: uid,),
+              agencyname: agencyname.text,
+              agentaddress: agentrgaddress.text,
+              contactnumber: agentcontactnumber.text,
+              agentstate: agentrgstate.text,
+              agentcity: agentrgcity.text,
+              agentemail: agentrgemail.text,
+              image: imageurl,
+              password: agentrgpassword.text,
+              id: uid,
+            ),
             uid);
 
         notifyListeners();
@@ -1026,6 +1046,25 @@ class FunProvider extends ChangeNotifier {
           agentaddbudget: doc['agentaddbudget'] ?? '',
           agentaddenddate: doc['agentaddenddate'] ?? '',
           agentaddstartdate: doc['agentaddstartdate'],
+        );
+      }).toList();
+    });
+  }
+
+  Stream<List<AgentModel>> GetAgentDetails() {
+    return FirebaseFirestore.instance
+        .collection('AGENT')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return AgentModel(
+          agencyname: doc['agencyname'],
+          agentaddress: doc['agentaddress'] ?? '',
+          agentcity: doc['agentcity'],
+          agentstate: doc['agentstate'],
+          agentemail: doc['agentemail'] ?? '',
+          contactnumber: doc['contactnumber'] ?? '',
+          image: doc['image'] ?? '',
         );
       }).toList();
     });

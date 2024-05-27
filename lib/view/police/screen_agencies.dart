@@ -2,7 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/model/agentmodel.dart';
+import 'package:workforce_project/view/police/screen_Agencies_details.dart';
 import 'package:workforce_project/view/police/screen_camw.dart';
+import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
 class ScreenAgencies extends StatelessWidget {
@@ -13,6 +16,8 @@ class ScreenAgencies extends StatelessWidget {
     final CollectionReference agent =
         FirebaseFirestore.instance.collection("AGENT");
     final workprovider = Provider.of<WorkProvider>(context);
+    final funprovider = Provider.of<FunProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,32 +37,58 @@ class ScreenAgencies extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Agencies",
-          style: GoogleFonts.merriweather(
+          style: GoogleFonts.eduNswActFoundation(
               color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.error,
-                color: Colors.black,
-              ))
-        ],
       ),
-      body: StreamBuilder(
-        stream: agent.snapshots(),
+      body: StreamBuilder<List<AgentModel>>(
+        stream: funprovider.GetAgentDetails(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasData) {
+            print(snapshot.error);
+          }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(
+              child: Text("No Agencies"),
+            );
+          }
+          final agencyDetais = snapshot.data!;
+
           return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
+            itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
-              final DocumentSnapshot agentsnap = snapshot.data!.docs[index];
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(workprovider.person),
-                ),
-                title: Text(
-                  agentsnap['agencyname'],
+              final agentdata = agencyDetais[index];
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 70,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(agentdata.image!),
+                    ),
+                    title: Text(
+                      agentdata.agencyname!,
+                      style: GoogleFonts.eduNswActFoundation(),
+                    ),
+                    trailing: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) {
+                              return ScreenAgenciesDetails(
+                                agentModel: agentdata,
+                              );
+                            },
+                          ));
+                        },
+                        child: Text("View Profile")),
+                  ),
                 ),
               );
             },

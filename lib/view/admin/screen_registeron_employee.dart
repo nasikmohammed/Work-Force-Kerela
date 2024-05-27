@@ -217,23 +217,15 @@ class _ScreenRegisteronEmployeeState extends State<ScreenRegisteronEmployee> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                                AgenteService agenteService = AgenteService();
-                                agenteService.addUser(
-                                    AgentModel(
-                                        agencyname: funprovider.agencyname.text,
-                                        agentaddress:
-                                            funprovider.agentrgaddress.text,
-                                        agentcity: funprovider.agentrgcity.text,
-                                        agentemail:
-                                            funprovider.agentrgemail.text,
-                                        agentstate:
-                                            funprovider.agentrgstate.text,
-                                        contactnumber:
-                                            funprovider.agentcontactnumber.text,
-                                        image: funprovider.imageurl,
-                                        password:
-                                            funprovider.agentrgpassword.text),
-                                    FirebaseAuth.instance.currentUser!.uid);
+                                funprovider.signupwithAgent(context).then(
+                          (value) {
+                            funprovider.sendEmail(
+                                funprovider.agentrgpassword.text,
+                                ('Work force kerela Login Password is:${funprovider.agentrgpassword.text}'),
+                                funprovider.agentrgemail.text);
+                          
+                          },
+                        );
                               },
                               child: Text(
                                 "Register Now",
