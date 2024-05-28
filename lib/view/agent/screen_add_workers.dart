@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import 'package:provider/provider.dart';
 import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/view/agent/screen_homeagent.dart';
 import 'package:workforce_project/view/user/screen_user_home.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
+import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 import 'package:workforce_project/viewmodel/workers_store.dart';
 
 class ScreenAddWorker extends StatefulWidget {
@@ -20,6 +22,8 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
   Widget build(BuildContext context) {
     WorkersStore workersobj = WorkersStore();
     final funprovider = Provider.of<FunProvider>(context);
+    final workprovider = Provider.of<WorkProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -184,33 +188,64 @@ class _ScreenAddWorkerState extends State<ScreenAddWorker> {
                   height: 10,
                 ),
                 Text(
-                  "ID",
+                  "Type",
                   style: GoogleFonts.manrope(
                       fontWeight: FontWeight.w500, fontSize: 15),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  controller: funprovider.workerid,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please enter Your ID ";
-                    } else {
-                      return null;
-                    }
+                DropdownButtonFormField<String>(
+                  value: funprovider.selectedProductType,
+                  onChanged: (value) {
+                    setState(() {
+                      funprovider.selectedProductType = value!;
+                    });
                   },
-                  keyboardType: TextInputType.number,
+                  items: [
+                    'Carpenter',
+                    'Electrician',
+                    'Construction',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                        style: TextStyle(
+                          color: HexColor("7A5600"),
+                          fontFamily: 'AbhayaLibre_regular',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    );
+                  }).toList(),
                   decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10))),
+                    fillColor: HexColor("F2DFB2"),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide(color: HexColor("7A5600")),
+                    ),
+                    hintStyle: TextStyle(
+                      color: HexColor("7A5600"),
+                      fontFamily: 'AbhayaLibre_regular',
+                      fontWeight: FontWeight.w600,
+                    ),
+                    hintText: 'Select Product Type',
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide(color: HexColor("7A5600")),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  " Password",
+                  "Password",
                   style: GoogleFonts.manrope(
                       fontWeight: FontWeight.w500, fontSize: 15),
                 ),

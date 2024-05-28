@@ -4,7 +4,7 @@ class WorkersModel {
   String? workersage;
   String? workersidnumber;
   String? workersemail;
-  String? workersid;
+  String? workerstype;
   String? workerspassword;
   String? workerimage;
   String? id;
@@ -14,7 +14,7 @@ class WorkersModel {
       this.workersage,
       this.workersidnumber,
       this.workersemail,
-      this.workersid,
+      this.workerstype,
       this.workerspassword,
       this.workerimage,
       this.id});
@@ -25,7 +25,7 @@ class WorkersModel {
         "workersage": workersage,
         "workersidnumber": workersidnumber,
         "workersemail": workersemail,
-        "workersid": workersid,
+        "workersid": workerstype,
         "workerspassword": workerspassword,
         "workerimage": workerimage,
         "id": docId
@@ -37,7 +37,7 @@ class WorkersModel {
       workersage: json["workersage"],
       workersidnumber: json["workersidnumber"],
       workersemail: json["workersemail"],
-      workersid: json["workersid"],
+      workerstype: json["workerstype"],
       workerspassword: json["workerspassword"],
       workerimage: json["workerimage"],
     );

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 import 'package:workforce_project/view/admin/screen_admin_profile.dart';
@@ -63,41 +64,15 @@ class WorkProvider extends ChangeNotifier {
     "Closed Complaints",
     "Ongoing investigations"
   ];
-  String selectedoption = "Carpenter";
+
   String selectedmanager = "salu";
 
   List department = ["Carpenter", "Electrician", "Construction"];
   List manager = ["salu", "sinu", "sachu"];
   bool isselected = false;
   //available workers
-  workassigndropdown(context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          content: Padding(
-            padding: const EdgeInsets.only(
-              left: 25,
-              right: 25,
-            ),
-            child: Container(
-              width: 100,
-              height: 100,
-              color: Colors.white,
-              child: DropdownButtonFormField(
-                value: selectedoption,
-                items: department.map<DropdownMenuItem>((e) {
-                  return DropdownMenuItem(value: e, child: Text(e));
-                }).toList(),
-                onChanged: (value) {
-                  selectedoption = value!;
-                },
-              ),
-            ),
-          ),
-        );
-      },
-    );
+  workassigndropdown() {
+  
   }
 
   dropdownmanager(context) {

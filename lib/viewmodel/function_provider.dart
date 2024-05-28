@@ -32,6 +32,7 @@ class FunProvider extends ChangeNotifier {
   String? imageurlpasspot = "";
   String imageurladhaar = "";
   String? imageaddmanager = "";
+  String? selectedProductType = "Carpenter";
   String? uid = "";
   UserModel usermodelobj = UserModel();
   AgentModel agentmodelobj = AgentModel();
@@ -131,7 +132,7 @@ class FunProvider extends ChangeNotifier {
   final workerage = TextEditingController();
   final workeridnumber = TextEditingController();
   final workeremail = TextEditingController();
-  final workerid = TextEditingController();
+  final workertype = TextEditingController();
   final workerpassword = TextEditingController();
 
   final workerlogemail = TextEditingController();
@@ -639,7 +640,7 @@ class FunProvider extends ChangeNotifier {
     workerage.clear();
     workeridnumber.clear();
     workeremail.clear();
-    workerid.clear();
+    workertype.clear();
     workerpassword.clear();
   }
   //signupwithworkers
@@ -660,7 +661,7 @@ class FunProvider extends ChangeNotifier {
                 workersidnumber: workeridnumber.text,
                 workersemail: workeremail.text,
                 workersage: workerage.text,
-                workersid: workerid.text,
+                workerstype: selectedProductType,
                 workerimage: imageurl,
                 workerspassword: workerpassword.text,
                 id: uid),
@@ -714,7 +715,7 @@ class FunProvider extends ChangeNotifier {
               email: agentrgemail.text, password: agentrgpassword.text)
           .then((value) {
         String uid = value.user!.uid;
-        //  DocumentSnapshot ds = snapshot.
+
         agenteService.addUser(
             AgentModel(
               agencyname: agencyname.text,
@@ -915,7 +916,7 @@ class FunProvider extends ChangeNotifier {
       workage = workersModel!.workersage;
       workidnumber = workersModel!.workersidnumber;
       workemail = workersModel!.workersemail;
-      workid = workersModel!.workersid;
+      workid = workersModel!.workerstype;
       workpassword = workersModel!.workerspassword;
       workimage = imageurl;
 
@@ -936,15 +937,12 @@ class FunProvider extends ChangeNotifier {
   String? managerimage;
 
   fetchCurrentmaangerdata() async {
-    print('obje..........................................................');
     print(FirebaseAuth.instance.currentUser!.uid);
-    print('bje..........................................................');
     final snapshot = await FirebaseFirestore.instance
         .collection("MANAGER")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     if (snapshot.exists) {
-      print("ttttttttttttttttttttttttttttttttttttttttttttttt");
       managermodel = ManagerModel.fromJson(snapshot.data()!);
       managername = managermodel!.managername;
       managerplace = managermodel!.managerplace;
@@ -978,6 +976,7 @@ class FunProvider extends ChangeNotifier {
         .collection("AGENT")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
+
     if (snapshot.exists) {
       agentModel = AgentModel.fromJson(snapshot.data()!);
       agentname = agentModel!.agencyname;
@@ -1051,6 +1050,27 @@ class FunProvider extends ChangeNotifier {
     });
   }
 
+  Stream<List<WorkersModel>> fetchdataworkers() {
+    return FirebaseFirestore.instance
+        .collection('WORKERS')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return WorkersModel(
+          workersname: doc['workersname'],
+          id: doc['id'],
+          workersplace: doc['workersplace'] ?? '',
+          workersage: doc['workersage'],
+          workersemail: doc['workersemail'],
+          workerimage: doc['workerimage'] ?? '',
+          workersidnumber: doc['workersidnumber'] ?? '',
+          workerspassword: doc['workerspassword'] ?? '',
+          workerstype: doc['workersid'],
+        );
+      }).toList();
+    });
+  }
+
   Stream<List<AgentModel>> GetAgentDetails() {
     return FirebaseFirestore.instance
         .collection('AGENT')
@@ -1069,4 +1089,5 @@ class FunProvider extends ChangeNotifier {
       }).toList();
     });
   }
+ 
 }
