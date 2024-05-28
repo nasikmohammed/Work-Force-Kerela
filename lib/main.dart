@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:workforce_project/firebase_options.dart';
 import 'package:workforce_project/screen_splash.dart';
 import 'package:workforce_project/view/admin/screen_pending_verification.dart';
 import 'package:workforce_project/view/admin/screen_verifications.dart';
@@ -10,18 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyBeNrFCQjitZM87iSO3kA_UzKrTcRQuRkc',
-      appId: '1:817839298426:web:9af160100c1a20e61c28c3',
-      messagingSenderId: '817839298426',
-      projectId: 'work-force-kerala',
-      authDomain: 'work-force-kerala.firebaseapp.com',
-      storageBucket: 'work-force-kerala.appspot.com',
-      measurementId: 'G-J3NMVX4L9V',
-      databaseURL: 'https://work-force-kerala-default-rtdb.firebaseio.com',
-    ),
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -50,7 +40,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: ScreenAdminVerification()));
+            home: ScreenSplash()));
   }
 }
 // FirebaseOptions(

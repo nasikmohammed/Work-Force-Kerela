@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,8 +8,17 @@ import 'package:workforce_project/model/workersmodel.dart';
 import 'package:workforce_project/viewmodel/function_provider.dart';
 import 'package:workforce_project/viewmodel/ui_work_provider.dart';
 
-class ScreenPendingVerifications extends StatelessWidget {
+class ScreenPendingVerifications extends StatefulWidget {
   const ScreenPendingVerifications({super.key});
+
+  @override
+  State<ScreenPendingVerifications> createState() =>
+      _ScreenPendingVerificationsState();
+}
+
+class _ScreenPendingVerificationsState
+    extends State<ScreenPendingVerifications> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -267,3 +277,38 @@ class ScreenPendingVerifications extends StatelessWidget {
     );
   }
 }
+
+  // Future<void> addFieldToAgent() async {
+  //   try {
+  //     // Get a specific document from the workers collection
+  //     DocumentSnapshot workerDoc = await _firestore
+  //         .collection('AGENT')
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
+  //         .get();
+
+  //     if (workerDoc.exists) {
+  //       // Extract the field you want to add
+  //       var workerField = workerDoc['agencyname'];
+
+  //       // Update the agent collection with the new field
+  //       await _firestore
+  //           .collection('WORKERS')
+  //           .doc(FirebaseAuth.instance.currentUser!.uid)
+  //           .update({
+  //         'agentupdatename': workerField,
+  //       });
+
+  //       print('Field added to agent collection successfully!');
+  //     } else {
+  //       print('Worker document does not exist!');
+  //     }
+  //   } catch (e) {
+  //     print('Error updating agent document: $e');
+  //   }
+  // }
+
+  // @override
+  // void initState() {
+  //   addFieldToAgent();
+  //   super.initState();
+  // }

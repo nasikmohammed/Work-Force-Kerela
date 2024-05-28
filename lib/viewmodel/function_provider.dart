@@ -145,7 +145,7 @@ class FunProvider extends ChangeNotifier {
 
   //update agent profile
 
-  var agentupdatename = TextEditingController();
+  final agentupdatename = TextEditingController();
   final agentupdateaddress = TextEditingController();
   final agentupdatecity = TextEditingController();
   final agentupdatestate = TextEditingController();
@@ -625,6 +625,169 @@ class FunProvider extends ChangeNotifier {
     });
   }
 
+  ///////////////////////////////
+  //update agent profile
+  Future<void> agentprofileupdate(context, String name, address, contact, state,
+      city, mail, password) async {
+    agentupdatename.text = name;
+    agentupdateaddress.text = address;
+    agentupdatecontactnumber.text = contact;
+    agentupdatestate.text = state;
+    agentupdatecity.text = city;
+    agentupdateemail.text = mail;
+    agentupdatepassword.text = password;
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              "Edit name",
+              style: GoogleFonts.anekDevanagari(
+                  fontSize: 22,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: agentupdatename,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: "Name",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdateaddress,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Address',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdatecontactnumber,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Contact Number',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdatestate,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'State',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdatecity,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'City',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdateemail,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: agentupdatepassword,
+                  style: GoogleFonts.overpass(),
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(5),
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)))),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.red),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Cancel",
+                  style: GoogleFonts.nunito(color: Colors.white),
+                )),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    backgroundColor: Colors.indigo),
+                onPressed: () {
+                  final CollectionReference agent =
+                      FirebaseFirestore.instance.collection("AGENT");
+                  print("update");
+                  updateagent();
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Update",
+                  style: GoogleFonts.nunito(color: Colors.white),
+                )),
+          ],
+        );
+      },
+    );
+  }
+
+  updateagent() {
+    final DocumentReference<Map<String, dynamic>> user = FirebaseFirestore
+        .instance
+        .collection("AGENT")
+        .doc(FirebaseAuth.instance.currentUser!.uid);
+    user.update({
+      "agencyname": agentupdatename.text,
+      "agentaddress": agentupdateaddress.text,
+      "contactnumber": agentupdatecontactnumber.text,
+      "agentstate": agentupdatestate.text,
+      "agentcity": agentupdatecity.text,
+      "agentemail": agentupdateemail.text,
+      "agentpassword": agentupdatepassword.text,
+    });
+  }
+
   sendEmail(String subject, String body, String recipientmail) async {
     final Email email = Email(
         body: body,
@@ -643,6 +806,7 @@ class FunProvider extends ChangeNotifier {
     workertype.clear();
     workerpassword.clear();
   }
+
   //signupwithworkers
 
   Future signupwith(context) async {
@@ -1089,5 +1253,4 @@ class FunProvider extends ChangeNotifier {
       }).toList();
     });
   }
- 
 }

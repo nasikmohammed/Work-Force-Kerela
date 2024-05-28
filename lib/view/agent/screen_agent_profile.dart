@@ -67,6 +67,19 @@ class ScreenAgentProfile extends StatelessWidget {
                               funprovider.agentimage!,
                             ),
                           )),
+                ElevatedButton(
+                    onPressed: () {
+                      funprovider.agentprofileupdate(
+                          context,
+                          funprovider.agentname!,
+                          funprovider.agentaddress,
+                          funprovider.agentcntctctnumber,
+                          funprovider.agentstate,
+                          funprovider.agentcity,
+                          funprovider.agentemail,
+                          funprovider.agentpassword);
+                    },
+                    child: Text("Edit Profile")),
                 const SizedBox(
                   height: 10,
                 ),
