@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
+import 'package:random_string/random_string.dart';
 import 'package:workforce_project/model/agentmodel.dart';
 import 'package:workforce_project/model/manager_report_model.dart';
 import 'package:workforce_project/model/managermodel.dart';
@@ -643,7 +644,7 @@ class FunProvider extends ChangeNotifier {
         return AlertDialog(
           title: Center(
             child: Text(
-              "Edit name",
+              "Edit Profile",
               style: GoogleFonts.anekDevanagari(
                   fontSize: 22,
                   color: Colors.black,
@@ -816,7 +817,9 @@ class FunProvider extends ChangeNotifier {
           .createUserWithEmailAndPassword(
               email: workeremail.text, password: workerpassword.text)
           .then((value) {
-        String uid = value.user!.uid;
+        String reportid = FirebaseAuth.instance.currentUser!.uid;
+        String idnum = randomAlphaNumeric(10);
+       
         //  DocumentSnapshot ds = snapshot.
         store.addWorkers(
             WorkersModel(
@@ -825,11 +828,13 @@ class FunProvider extends ChangeNotifier {
                 workersidnumber: workeridnumber.text,
                 workersemail: workeremail.text,
                 workersage: workerage.text,
-                workerstype: selectedProductType,
+                //    workerstype: workertype.text,
                 workerimage: imageurl,
                 workerspassword: workerpassword.text,
-                id: uid),
-            uid);
+                reportid: reportid,
+                id: idnum),
+            reportid,
+            idnum);
 
         notifyListeners();
       });
@@ -1085,8 +1090,12 @@ class FunProvider extends ChangeNotifier {
       workimage = imageurl;
 
       print(workname);
-      print(workersModel!.workersage);
-      print(workersModel!.workersplace);
+      print(workid);
+
+      print(workersModel!.workerstype);
+      print(workersModel!.workersidnumber);
+      print(workersModel!.workersemail);
+      print(workersModel!.workerspassword);
     }
   } //fetchmanagerdata/..............................
 

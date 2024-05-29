@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
     final funprovider = Provider.of<FunProvider>(context);
-    
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
@@ -49,9 +50,19 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                 future: funprovider.fetchCurrentagentData(),
                 builder: (context, snapshot) {
                   return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage(funprovider.agentimage.toString()),
-                    ),
+                    leading: SizedBox(
+                        width: 150,
+                        child: funprovider.agentimage == ""
+                            ? const Icon(
+                                CupertinoIcons.person_alt_circle,
+                                size: 60,
+                              )
+                            : SizedBox(
+                                height: 130,
+                                child: Image.network(
+                                  funprovider.agentimage!,
+                                ),
+                              )),
                     title: Text(
                       funprovider.agentname.toString(),
                       style: GoogleFonts.andika(),
@@ -91,7 +102,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                             return ListTile(
                               leading: CircleAvatar(
                                 backgroundImage:
-                                    AssetImage(managersnap['managerimage']),
+                                    NetworkImage(managersnap['managerimage']),
                               ),
                               title: Text(managersnap['managername'],
                                   style: GoogleFonts.alata()),

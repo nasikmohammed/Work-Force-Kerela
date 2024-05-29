@@ -217,15 +217,7 @@ class _ScreenRegisteronEmployeeState extends State<ScreenRegisteronEmployee> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               onPressed: () {
-                                funprovider.signupwithAgent(context).then(
-                          (value) {
-                            funprovider.sendEmail(
-                                funprovider.agentrgpassword.text,
-                                ('Work force kerela Login Password is:${funprovider.agentrgpassword.text}'),
-                                funprovider.agentrgemail.text);
-                          
-                          },
-                        );
+                                funprovider.signupwithAgent(context);
                               },
                               child: Text(
                                 "Register Now",

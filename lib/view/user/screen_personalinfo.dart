@@ -65,11 +65,11 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
               OutlinedButton(
                   onPressed: () {
                     funprovider.userprofileupdate(
-                        context,
-                        funprovider.workname!,
-                        funprovider.workplace,
-                        funprovider.workage,
-                       );
+                      context,
+                      funprovider.workname!,
+                      funprovider.workplace,
+                      funprovider.workage,
+                    );
                   },
                   child: Text("Edit Profile")),
               Padding(
@@ -153,7 +153,7 @@ class _ScreenUserPersonalInfoState extends State<ScreenUserPersonalInfo> {
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(funprovider.workid!),
+                            //  Text(funprovider.workid!),
                             const SizedBox(
                               height: 15,
                             ),
